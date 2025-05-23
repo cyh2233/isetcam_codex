@@ -10,6 +10,8 @@ from .luminance_from_energy import luminance_from_energy
 from .luminance_from_photons import luminance_from_photons
 from .ie_luminance_to_radiance import ie_luminance_to_radiance
 from .ie_param_format import ie_param_format
+from .ie_session_get import ie_session_get
+from .ie_session_set import ie_session_set
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 
@@ -26,6 +28,8 @@ __all__ = [
     'luminance_from_photons',
     'ie_luminance_to_radiance',
     'ie_param_format',
+    'ie_session_get',
+    'ie_session_set',
     'rgb_to_xw_format',
     'xw_to_rgb_format',
     'ie_init',
