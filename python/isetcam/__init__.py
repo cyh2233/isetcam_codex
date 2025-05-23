@@ -6,6 +6,8 @@ from .quanta2energy import quanta_to_energy
 from .energy_to_quanta import energy_to_quanta
 from .ie_init import ie_init
 from .ie_init_session import ie_init_session
+from .luminance_from_energy import luminance_from_energy
+from .luminance_from_photons import luminance_from_photons
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -16,6 +18,8 @@ __all__ = [
     'vc_get_image_format',
     'quanta_to_energy',
     'energy_to_quanta',
+    'luminance_from_energy',
+    'luminance_from_photons',
     'ie_init',
     'ie_init_session',
     'scene',
