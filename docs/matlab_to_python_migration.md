@@ -113,11 +113,48 @@ combined = scene_add(s1, s2, "add")
 When multiple scenes are supplied you can optionally provide weights to
 accumulate them or remove the spatial mean of individual scenes.
 
+## Optical Image Utilities
+
+Optical images are represented by the `OpticalImage` dataclass found in
+`isetcam.opticalimage`.  Helper functions mirror the scene accessors and
+an `oi_add` routine implements the MATLAB `oiAdd` logic:
+
+```python
+from isetcam.opticalimage import OpticalImage, oi_add, get_photons
+
+o1 = OpticalImage(photons=data1, wave=wave)
+o2 = OpticalImage(photons=data2, wave=wave)
+combined = oi_add(o1, o2, "average")
+print(get_photons(combined).shape)
+```
+
+Multiple optical images can also be combined with weights or with the
+spatial mean removed from each component.
+
+## Sensor Dataclass
+
+The `Sensor` dataclass located in `isetcam.sensor` stores voltage data,
+wavelength sampling and exposure time. Accessor helpers simplify reading
+and updating these values:
+
+```python
+from isetcam.sensor import (
+    Sensor,
+    get_volts,
+    set_volts,
+    get_exposure_time,
+    set_exposure_time,
+)
+
+sensor = Sensor(volts=raw_volts, wave=wave, exposure_time=0.01)
+set_exposure_time(sensor, 0.02)
+```
+
 ## Updated Tests
 
 Unit tests in `python/tests` exercise the conversion helpers, format
-utilities and the initialization routines.  Run `pytest` to verify that
-all tests pass:
+utilities and the dataclasses for scenes, optical images and sensors.
+Run `pytest -q` to verify that all tests pass:
 
 ```bash
 export PYTHONPATH=$PWD/python
