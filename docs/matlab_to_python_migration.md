@@ -123,3 +123,47 @@ all tests pass:
 export PYTHONPATH=$PWD/python
 pytest -q
 ```
+
+## Session Helpers
+
+The global session dictionary mirrors the MATLAB `vcSESSION` structure. Use
+`ie_session_get` and `ie_session_set` to query or modify values:
+
+```python
+from isetcam import ie_init, ie_session_get, ie_session_set
+
+session = ie_init()
+ie_session_set('name', 'demo')
+print(ie_session_get('name'))
+```
+
+You can also store or retrieve the currently selected object type using the
+`selected` parameter.
+
+## XYZ and Chromaticity Conversions
+
+Color calculations are provided through the following helpers:
+
+* `ie_xyz_from_energy` – compute CIE XYZ from spectral energy
+* `ie_xyz_from_photons` – compute CIE XYZ from photon data
+* `chromaticity` – convert XYZ values to (x, y) chromaticities
+
+```python
+import numpy as np
+from isetcam import (
+    energy_to_quanta,
+    ie_xyz_from_energy,
+    ie_xyz_from_photons,
+    chromaticity,
+)
+
+wave = np.arange(400, 701, 10)
+energy = np.ones((1, len(wave)))
+xyz = ie_xyz_from_energy(energy, wave)
+photons = energy_to_quanta(wave, energy.T).T
+xyz2 = ie_xyz_from_photons(photons, wave)
+xy = chromaticity(xyz)
+```
+
+Remember to run the Python unit tests via `pytest` after installing the
+environment to ensure these functions behave as expected.
