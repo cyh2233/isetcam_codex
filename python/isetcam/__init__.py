@@ -9,6 +9,10 @@ from .ie_init_session import ie_init_session
 from .luminance_from_energy import luminance_from_energy
 from .luminance_from_photons import luminance_from_photons
 from .ie_luminance_to_radiance import ie_luminance_to_radiance
+from .ie_xyz_from_energy import ie_xyz_from_energy
+from .ie_xyz_from_photons import ie_xyz_from_photons
+from .chromaticity import chromaticity
+from .cct import cct
 from .ie_param_format import ie_param_format
 from .ie_session_get import ie_session_get
 from .ie_session_set import ie_session_set
@@ -27,6 +31,10 @@ __all__ = [
     'luminance_from_energy',
     'luminance_from_photons',
     'ie_luminance_to_radiance',
+    'ie_xyz_from_energy',
+    'ie_xyz_from_photons',
+    'chromaticity',
+    'cct',
     'ie_param_format',
     'ie_session_get',
     'ie_session_set',
