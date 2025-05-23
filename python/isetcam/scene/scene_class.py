@@ -13,3 +13,4 @@ class Scene:
 
     photons: np.ndarray
     wave: np.ndarray
+    name: str | None = None
