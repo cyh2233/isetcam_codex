@@ -2,18 +2,12 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Sequence, Union, List
 
 import numpy as np
 
-
-@dataclass
-class Scene:
-    """Minimal representation of an ISETCam scene."""
-
-    photons: np.ndarray
-    wave: np.ndarray
+from .scene_utils import get_photons, set_photons, get_n_wave
+from .scene_class import Scene
 
 
 SceneInput = Union[Scene, Sequence[Scene]]
@@ -51,19 +45,20 @@ def scene_add(in1: SceneInput, in2: Union[Scene, Sequence[float]], add_flag: str
         if len(weights) != len(scenes):
             raise ValueError("Weight vector length must match number of scenes")
         wave = scenes[0].wave
+        n_wave = get_n_wave(scenes[0])
         for sc in scenes[1:]:
-            if not np.array_equal(sc.wave, wave):
+            if get_n_wave(sc) != n_wave or not np.array_equal(sc.wave, wave):
                 raise ValueError("All scenes must share the same wavelength")
 
         if flag == "average":
-            total = np.zeros_like(scenes[0].photons, dtype=float)
+            total = np.zeros_like(get_photons(scenes[0]), dtype=float)
             for sc in scenes:
-                total += sc.photons
+                total += get_photons(sc)
             photons = total / len(scenes)
         else:
-            photons = weights[0] * scenes[0].photons
+            photons = weights[0] * get_photons(scenes[0])
             for w, sc in zip(weights[1:], scenes[1:]):
-                band = sc.photons
+                band = get_photons(sc)
                 if flag == "removespatialmean":
                     band = _remove_spatial_mean(band)
                 elif flag != "add":
@@ -77,8 +72,8 @@ def scene_add(in1: SceneInput, in2: Union[Scene, Sequence[float]], add_flag: str
     if not np.array_equal(in1.wave, in2.wave):
         raise ValueError("Scenes must have matching wavelength samples")
 
-    photons1 = in1.photons
-    photons2 = in2.photons
+    photons1 = get_photons(in1)
+    photons2 = get_photons(in2)
 
     if flag == "add":
         photons = photons1 + photons2
