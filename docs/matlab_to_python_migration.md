@@ -73,6 +73,29 @@ l_from_p = luminance_from_photons(photons, wave)
 These routines match the behavior of their MATLAB counterparts and are
 used throughout the Python tests.
 
+Additional helpers convert between the MATLAB "XW" format and standard
+RGB arrays. This is useful when reshaping image data for matrix
+operations:
+
+```python
+import numpy as np
+from isetcam import rgb_to_xw_format, xw_to_rgb_format
+
+rgb = np.arange(24).reshape(2, 3, 4)
+xw, rows, cols = rgb_to_xw_format(rgb)
+rgb2 = xw_to_rgb_format(xw, rows, cols)
+```
+
+The function `ie_luminance_to_radiance` generates a spectral radiance
+distribution from a target luminance and peak wavelength:
+
+```python
+from isetcam import ie_luminance_to_radiance
+
+lum = 10.0
+energy, wave = ie_luminance_to_radiance(lum, 360)
+```
+
 ## Scene Utilities
 
 The Python package also includes a minimal `Scene` dataclass and a
@@ -92,9 +115,9 @@ accumulate them or remove the spatial mean of individual scenes.
 
 ## Updated Tests
 
-Unit tests in `python/tests` exercise the new conversion and scene
-utilities in addition to the initialization routines.  Execute them with
-`pytest`:
+Unit tests in `python/tests` exercise the conversion helpers, format
+utilities and the initialization routines.  Run `pytest` to verify that
+all tests pass:
 
 ```bash
 export PYTHONPATH=$PWD/python
