@@ -113,6 +113,18 @@ combined = scene_add(s1, s2, "add")
 When multiple scenes are supplied you can optionally provide weights to
 accumulate them or remove the spatial mean of individual scenes.
 
+Accessors `scene_get` and `scene_set` retrieve or update values on a
+scene instance.  You can also read images directly using
+`scene_from_file`:
+
+```python
+from isetcam.scene import scene_get, scene_set, scene_from_file
+
+sc = scene_from_file('demo.png', mean_luminance=20)
+print(scene_get(sc, 'n wave'))
+scene_set(sc, 'name', 'demo scene')
+```
+
 ## Optical Image Utilities
 
 Optical images are represented by the `OpticalImage` dataclass found in
@@ -126,6 +138,15 @@ o1 = OpticalImage(photons=data1, wave=wave)
 o2 = OpticalImage(photons=data2, wave=wave)
 combined = oi_add(o1, o2, "average")
 print(get_photons(combined).shape)
+```
+
+Use `oi_get` and `oi_set` to access or modify optical image fields:
+
+```python
+from isetcam.opticalimage import oi_get, oi_set
+
+oi_set(o1, 'name', 'primary')
+avg_lum = oi_get(o1, 'luminance').mean()
 ```
 
 Multiple optical images can also be combined with weights or with the
@@ -204,3 +225,9 @@ xy = chromaticity(xyz)
 
 Remember to run the Python unit tests via `pytest` after installing the
 environment to ensure these functions behave as expected.
+
+After working with these modules you can rerun the unit tests using:
+
+```bash
+pytest -q
+```
