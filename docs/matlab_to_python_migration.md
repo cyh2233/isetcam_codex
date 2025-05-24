@@ -566,6 +566,18 @@ temp, table = srgb_to_cct(srgb)
 
 Run `pytest -q` to confirm the color temperature routine functions correctly.
 
+## Color Temperature to sRGB
+
+`ctemp_to_srgb` converts a blackbody color temperature to an sRGB white point.
+
+```python
+from isetcam import ctemp_to_srgb
+
+srgb = ctemp_to_srgb(6500)
+```
+
+Run `pytest -q` after modifying the temperature conversion helper.
+
 ## Camera Dataclass
 
 A `Camera` bundles a sensor with an optical image. Accessor helpers retrieve or update fields just like the other dataclasses.
