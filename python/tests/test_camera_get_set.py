@@ -13,18 +13,18 @@ def test_camera_get_set():
     oi = OpticalImage(photons=photons.copy(), wave=wave)
     cam = Camera(sensor=sensor, optical_image=oi, name="orig")
 
-    assert camera_get(cam, "sensor") is sensor
-    assert camera_get(cam, "optical image") is oi
-    assert camera_get(cam, "n wave") == 3
-    assert camera_get(cam, "name") == "orig"
+    assert camera_get(cam, "Sensor") is sensor
+    assert camera_get(cam, "OPTICAL IMAGE") is oi
+    assert camera_get(cam, "N WAVE") == 3
+    assert camera_get(cam, " NAME ") == "orig"
 
     new_sensor = Sensor(volts=np.zeros_like(volts), wave=wave, exposure_time=0.02)
-    camera_set(cam, "sensor", new_sensor)
-    assert camera_get(cam, "sensor") is new_sensor
+    camera_set(cam, " SENSOR ", new_sensor)
+    assert camera_get(cam, " SENSOR") is new_sensor
 
     new_oi = OpticalImage(photons=np.zeros_like(photons), wave=wave)
-    camera_set(cam, "optical_image", new_oi)
+    camera_set(cam, " OPTICAL_image", new_oi)
     assert camera_get(cam, "oi") is new_oi
 
-    camera_set(cam, "name", "new")
-    assert camera_get(cam, "name") == "new"
+    camera_set(cam, " NaMe", "new")
+    assert camera_get(cam, " NaMe ") == "new"

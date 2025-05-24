@@ -7,6 +7,7 @@ from typing import Any
 import numpy as np
 
 from .oi_class import OpticalImage
+from ..ie_param_format import ie_param_format
 
 
 def oi_set(oi: OpticalImage, param: str, val: Any) -> None:
@@ -15,7 +16,7 @@ def oi_set(oi: OpticalImage, param: str, val: Any) -> None:
     Supported parameters are ``photons``, ``wave`` and ``name``. ``n_wave`` and
     ``luminance`` are derived values and therefore cannot be set.
     """
-    key = param.lower().replace(" ", "")
+    key = ie_param_format(param)
     if key == "photons":
         oi.photons = np.asarray(val)
         return

@@ -9,22 +9,22 @@ def test_oi_get_set():
     photons = np.ones((2, 2, 3))
     oi = OpticalImage(photons=photons.copy(), wave=wave, name="orig")
 
-    assert np.allclose(oi_get(oi, "photons"), photons)
-    assert np.array_equal(oi_get(oi, "wave"), wave)
-    assert oi_get(oi, "n wave") == 3
-    assert oi_get(oi, "name") == "orig"
+    assert np.allclose(oi_get(oi, "PHOTONS"), photons)
+    assert np.array_equal(oi_get(oi, " wAvE"), wave)
+    assert oi_get(oi, "N WAVE") == 3
+    assert oi_get(oi, " NAme ") == "orig"
 
     expected_lum = luminance_from_photons(photons, wave)
-    assert np.allclose(oi_get(oi, "luminance"), expected_lum)
+    assert np.allclose(oi_get(oi, " LUMINANCE"), expected_lum)
 
     new_photons = np.zeros_like(photons)
-    oi_set(oi, "photons", new_photons)
-    assert np.allclose(oi_get(oi, "photons"), new_photons)
+    oi_set(oi, " PhoTonS", new_photons)
+    assert np.allclose(oi_get(oi, " phOtOnS"), new_photons)
 
     new_wave = np.array([400, 500])
-    oi_set(oi, "wave", new_wave)
-    assert np.array_equal(oi_get(oi, "wave"), new_wave)
-    assert oi_get(oi, "n_wave") == len(new_wave)
+    oi_set(oi, "WAVE", new_wave)
+    assert np.array_equal(oi_get(oi, " WAVE"), new_wave)
+    assert oi_get(oi, "N_WAVE") == len(new_wave)
 
-    oi_set(oi, "name", "new")
-    assert oi_get(oi, "name") == "new"
+    oi_set(oi, " NaMe ", "new")
+    assert oi_get(oi, "Name" ) == "new"

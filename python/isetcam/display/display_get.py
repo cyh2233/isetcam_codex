@@ -7,6 +7,7 @@ from typing import Any
 import numpy as np
 
 from .display_class import Display
+from ..ie_param_format import ie_param_format
 
 
 def display_get(display: Display, param: str) -> Any:
@@ -15,7 +16,7 @@ def display_get(display: Display, param: str) -> Any:
     Supported parameters are ``spd``, ``wave``, ``n_wave``/``nwave``, ``gamma``
     and ``name``.
     """
-    key = param.lower().replace(" ", "")
+    key = ie_param_format(param)
     if key == "spd":
         return display.spd
     if key == "wave":

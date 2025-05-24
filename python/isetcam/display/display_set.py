@@ -7,6 +7,7 @@ from typing import Any
 import numpy as np
 
 from .display_class import Display
+from ..ie_param_format import ie_param_format
 
 
 def display_set(display: Display, param: str, val: Any) -> None:
@@ -15,7 +16,7 @@ def display_set(display: Display, param: str, val: Any) -> None:
     Supported parameters are ``spd``, ``wave``, ``gamma`` and ``name``.
     ``n_wave`` is a derived value and therefore cannot be set.
     """
-    key = param.lower().replace(" ", "")
+    key = ie_param_format(param)
     if key == "spd":
         display.spd = np.asarray(val)
         return

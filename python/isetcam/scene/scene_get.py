@@ -8,6 +8,7 @@ import numpy as np
 
 from .scene_class import Scene
 from ..luminance_from_photons import luminance_from_photons
+from ..ie_param_format import ie_param_format
 
 
 def scene_get(scene: Scene, param: str) -> Any:
@@ -16,7 +17,7 @@ def scene_get(scene: Scene, param: str) -> Any:
     Supported parameters are ``photons``, ``wave``, ``n_wave``/``nwave``,
     ``name``, and ``luminance``.
     """
-    key = param.lower().replace(" ", "")
+    key = ie_param_format(param)
     if key == "photons":
         return scene.photons
     if key == "wave":
