@@ -7,6 +7,7 @@ import numpy as np
 from .sensor_class import Sensor
 from .sensor_get import sensor_get
 from .sensor_set import sensor_set
+from .sensor_from_file import sensor_from_file
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -43,4 +44,5 @@ __all__ = [
     "get_n_wave",
     "sensor_get",
     "sensor_set",
+    "sensor_from_file",
 ]
