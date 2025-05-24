@@ -24,6 +24,12 @@ from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
 from .lab_to_xyz import lab_to_xyz
+from .srgb_xyz import (
+    srgb_to_linear,
+    linear_to_srgb,
+    srgb_to_xyz,
+    xyz_to_srgb,
+)
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -52,6 +58,10 @@ __all__ = [
     'xw_to_rgb_format',
     'xyz_to_lab',
     'lab_to_xyz',
+    'srgb_to_linear',
+    'linear_to_srgb',
+    'srgb_to_xyz',
+    'xyz_to_srgb',
     'ie_init',
     'ie_init_session',
     'scene',
