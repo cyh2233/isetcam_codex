@@ -16,6 +16,7 @@ from .ie_color_transform import ie_color_transform
 from .chromaticity import chromaticity
 from .cct import cct
 from .cct_to_sun import cct_to_sun
+from .circle_points import circle_points
 from .ie_param_format import ie_param_format
 from .ie_session_get import ie_session_get
 from .ie_session_set import ie_session_set
@@ -51,6 +52,7 @@ __all__ = [
     'chromaticity',
     'cct',
     'cct_to_sun',
+    'circle_points',
     'ie_param_format',
     'ie_session_get',
     'ie_session_set',
