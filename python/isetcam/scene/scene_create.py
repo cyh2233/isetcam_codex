@@ -80,10 +80,50 @@ def _create_whitenoise(size: int = 128, contrast: float = 0.2,
     return Scene(photons=photons, wave=wave, name="White noise")
 
 
+def _create_frequency_sweep(size: int = 128, max_freq: Optional[float] = None,
+                            wave: Optional[np.ndarray] = None) -> Scene:
+    """Return a sinusoidal grating pattern with spatial frequency sweep."""
+    if max_freq is None:
+        max_freq = size / 16
+    if wave is None:
+        wave = np.array([550.0], dtype=float)
+    else:
+        wave = np.asarray(wave, dtype=float).reshape(-1)
+
+    x = np.linspace(1, size, size) / size
+    freq = (x ** 2) * float(max_freq)
+    x_img = np.sin(2 * np.pi * (freq * x))
+    y_contrast = np.linspace(size, 1, size) / size
+    img = np.outer(y_contrast, x_img) + 0.5
+    img /= img.max()
+    photons = np.repeat(img[:, :, None], wave.size, axis=2)
+    return Scene(photons=photons, wave=wave, name="Frequency sweep")
+
+
+def _create_grid_lines(size: int = 128, spacing: int = 16, thickness: int = 1,
+                       wave: Optional[np.ndarray] = None) -> Scene:
+    """Return an image of grid lines used for resolution testing."""
+    if wave is None:
+        wave = np.array([550.0], dtype=float)
+    else:
+        wave = np.asarray(wave, dtype=float).reshape(-1)
+
+    photons = np.full((size, size, wave.size), 1e-5, dtype=float)
+    half = spacing // 2
+    for t in range(thickness):
+        rows = np.arange(half + t, size, spacing)
+        cols = np.arange(half + t, size, spacing)
+        photons[rows, :, :] = 1.0
+        photons[:, cols, :] = 1.0
+    return Scene(photons=photons, wave=wave, name="Grid lines")
+
+
 _VALID_TYPES = {
     "macbethd65": _create_macbeth_d65,
     "uniformmonochromatic": _create_uniform_monochromatic,
     "whitenoise": _create_whitenoise,
+    "frequencysweep": _create_frequency_sweep,
+    "gridlines": _create_grid_lines,
 }
 
 
@@ -93,3 +133,13 @@ def scene_create(name: str, **kwargs) -> Scene:
     if flag not in _VALID_TYPES:
         raise ValueError(f"Unknown scene type '{name}'")
     return _VALID_TYPES[flag](**kwargs)
+
+
+__all__ = [
+    "scene_create",
+    "_create_macbeth_d65",
+    "_create_uniform_monochromatic",
+    "_create_whitenoise",
+    "_create_frequency_sweep",
+    "_create_grid_lines",
+]
