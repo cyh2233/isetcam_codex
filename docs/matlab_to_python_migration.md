@@ -125,6 +125,16 @@ print(scene_get(sc, 'n wave'))
 scene_set(sc, 'name', 'demo scene')
 ```
 
+Scenes can be manipulated after creation. Use `scene_adjust_luminance` to
+scale the luminance statistic and `scene_crop` to extract a region:
+
+```python
+from isetcam.scene import scene_adjust_luminance, scene_crop
+
+sc2 = scene_adjust_luminance(sc, 'mean', 50)
+cropped = scene_crop(sc2, (10, 10, 64, 64))
+```
+
 ## Optical Image Utilities
 
 Optical images are represented by the `OpticalImage` dataclass found in
@@ -165,9 +175,13 @@ from isetcam.sensor import (
     set_volts,
     get_exposure_time,
     set_exposure_time,
+    sensor_get,
+    sensor_set,
 )
 
 sensor = Sensor(volts=raw_volts, wave=wave, exposure_time=0.01)
+sensor_set(sensor, "name", "demo sensor")
+nwave = sensor_get(sensor, "n wave")
 set_exposure_time(sensor, 0.02)
 ```
 
@@ -249,6 +263,15 @@ display_set(disp, "name", "main display")
 n_wave = display_get(disp, "n wave")
 ```
 
+A convenience factory `display_create` loads calibration data by name:
+
+```python
+from isetcam.display import display_create
+
+default_disp = display_create()
+lcd = display_create("lcdExample")
+```
+
 ## Illuminant Helpers
 
 Illuminant spectral data are provided through the `Illuminant` dataclass
@@ -324,6 +347,15 @@ lab = xyz_to_lab(xyz, white)
 xyz2 = lab_to_xyz(lab, white)
 ```
 
+Chromaticity and CIELUV coordinates can also be computed:
+
+```python
+from isetcam import xyz_to_uv, xyz_to_luv
+
+uv = xyz_to_uv(xyz)
+luv = xyz_to_luv(xyz, white)
+```
+
 ## sRGB and XYZ
 
 The helpers `srgb_to_xyz` and `xyz_to_srgb` convert between sRGB and CIE XYZ.
@@ -359,4 +391,4 @@ from isetcam import circle_points
 x, y = circle_points()
 ```
 
-After experimenting with these conversions and utilities remember to run `pytest -q` to verify the Python tests pass.
+After adding these modules or experimenting with them remember to run `pytest -q` to verify the Python tests pass.
