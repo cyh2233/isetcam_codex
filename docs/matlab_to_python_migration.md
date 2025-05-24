@@ -462,3 +462,54 @@ x, y = circle_points()
 ```
 
 After adding these modules or experimenting with them remember to run `pytest -q` to verify the Python tests pass.
+
+## Camera Dataclass
+
+A `Camera` bundles a sensor with an optical image. Accessor helpers retrieve or update fields just like the other dataclasses.
+
+```python
+from isetcam.camera import Camera, camera_get, camera_set
+from isetcam.sensor import Sensor
+from isetcam.opticalimage import OpticalImage
+
+cam = Camera(
+    sensor=Sensor(volts=raw_volts, exposure_time=0.01, wave=wave),
+    optical_image=OpticalImage(photons=oi_photons, wave=wave),
+    name="demo cam",
+)
+camera_set(cam, "name", "main camera")
+print(camera_get(cam, "n wave"))
+```
+
+Remember to run `pytest -q` after experimenting with the camera helpers.
+
+## Scene and Optical Image Padding
+
+Scenes and optical images can be padded, shifted or cropped using small helper functions.
+
+```python
+from isetcam.scene import scene_pad, scene_translate
+from isetcam.opticalimage import oi_crop, oi_pad
+
+padded_scene = scene_pad(sc, 8)
+shifted_scene = scene_translate(sc, 4, -4)
+cropped_oi = oi_crop(oi, (10, 10, 64, 64))
+padded_oi = oi_pad(oi, (20, 20))
+```
+
+These utilities mirror the MATLAB equivalents and are covered by the unit tests. Run `pytest -q` after modifying them.
+
+## Image Distortion and PSNR
+
+The module `isetcam.imgproc` includes a simple `image_distort` routine. Use `ie_psnr` from `isetcam.metrics` to evaluate image quality.
+
+```python
+from isetcam.imgproc import image_distort
+from isetcam.metrics import ie_psnr
+
+distorted = image_distort(img, "gaussian noise", 10)
+score = ie_psnr(img, distorted)
+print(f"PSNR: {score:.2f} dB")
+```
+
+As always, run `pytest -q` to confirm these functions behave as expected.
