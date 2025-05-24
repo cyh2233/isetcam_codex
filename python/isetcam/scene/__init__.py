@@ -7,6 +7,7 @@ from .scene_from_file import scene_from_file
 from .scene_get import scene_get
 from .scene_set import scene_set
 from .scene_adjust_luminance import scene_adjust_luminance
+from .scene_crop import scene_crop
 
 __all__ = [
     "Scene",
@@ -18,4 +19,5 @@ __all__ = [
     "scene_get",
     "scene_set",
     "scene_adjust_luminance",
+    "scene_crop",
 ]
