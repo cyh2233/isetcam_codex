@@ -11,6 +11,7 @@ from .luminance_from_photons import luminance_from_photons
 from .ie_luminance_to_radiance import ie_luminance_to_radiance
 from .ie_xyz_from_energy import ie_xyz_from_energy
 from .ie_xyz_from_photons import ie_xyz_from_photons
+from .ie_color_transform import ie_color_transform
 from .chromaticity import chromaticity
 from .cct import cct
 from .ie_param_format import ie_param_format
@@ -33,6 +34,7 @@ __all__ = [
     'ie_luminance_to_radiance',
     'ie_xyz_from_energy',
     'ie_xyz_from_photons',
+    'ie_color_transform',
     'chromaticity',
     'cct',
     'ie_param_format',
