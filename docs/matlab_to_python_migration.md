@@ -560,3 +560,60 @@ print(f"PSNR: {score:.2f} dB")
 ```
 
 As always, run `pytest -q` to confirm these functions behave as expected.
+## Scene and Optical Image Rotation
+
+The helpers `scene_rotate` and `oi_rotate` rotate photon data while optionally filling empty regions. Pass an angle in degrees.
+
+```python
+from isetcam.scene import scene_rotate
+from isetcam.opticalimage import oi_rotate
+
+rotated_sc = scene_rotate(sc, 45, fill=0.5)
+rotated_oi = oi_rotate(oi, -30)
+```
+
+Run `pytest -q` to verify the rotation routines.
+
+## Display Gamma Correction
+
+Use `display_apply_gamma` to convert between digital counts and linear values based on a display's gamma table.
+
+```python
+import numpy as np
+from isetcam.display import Display, display_apply_gamma
+
+gamma = np.linspace(0, 1, 256).reshape(-1, 1)
+disp = Display(gamma=gamma)
+lin = display_apply_gamma(dac_img, disp, inverse=True)
+dac = display_apply_gamma(lin, disp)
+```
+
+Remember to run `pytest -q` after editing the display helpers.
+
+## SCIELAB Color Difference
+
+The `scielab` metric provides a perceptual color difference measure in the spatial domain.
+
+```python
+from isetcam.metrics import scielab, sc_params
+
+params = sc_params()
+de = scielab(img1, img2, [0.95047, 1.0, 1.08883], params)
+```
+
+Run `pytest -q` to ensure the metric operates correctly.
+
+## Sensor Compute
+
+`sensor_compute` integrates the photons from an optical image to produce sensor volts.
+
+```python
+from isetcam.sensor import Sensor, sensor_compute
+from isetcam.opticalimage import OpticalImage
+
+sensor = Sensor(volts=np.zeros((2, 2)), wave=oi.wave, exposure_time=0.01)
+sensor_compute(sensor, oi)
+print(sensor.volts)
+```
+
+As always, run `pytest -q` after adding or modifying sensor routines.
