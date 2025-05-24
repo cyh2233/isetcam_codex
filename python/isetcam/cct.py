@@ -6,10 +6,12 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
+from .iset_root_path import iset_root_path
+
 
 def _load_cct_table() -> np.ndarray:
     """Load isotemperature line data."""
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     # Prefer data in human subfolder if available
     path = root / "data" / "human" / "cct.mat"
     if not path.exists():

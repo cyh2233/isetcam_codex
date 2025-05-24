@@ -9,13 +9,14 @@ import numpy as np
 from scipy.io import loadmat
 
 from .vc_get_image_format import vc_get_image_format
+from .iset_root_path import iset_root_path
 
 _DEF_BINWIDTH = 10
 
 
 def _photopic_luminosity(wave: np.ndarray) -> np.ndarray:
     """Return the photopic luminosity function interpolated to ``wave``."""
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     fpath = root / 'data' / 'human' / 'luminosity.mat'
     data = loadmat(fpath)
     src_wave = data['wavelength'].ravel()

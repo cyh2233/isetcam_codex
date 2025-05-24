@@ -2,6 +2,8 @@ import numpy as np
 from pathlib import Path
 from scipy.io import loadmat
 
+from isetcam import iset_root_path
+
 from isetcam import (
     luminance_from_energy,
     luminance_from_photons,
@@ -10,7 +12,7 @@ from isetcam import (
 
 
 def _expected_luminance(wave, energy):
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     mat = loadmat(root / 'data' / 'human' / 'luminosity.mat')
     V = np.interp(wave, mat['wavelength'].ravel(), mat['data'].ravel(), left=0.0, right=0.0)
     binwidth = wave[1] - wave[0] if len(wave) > 1 else 10

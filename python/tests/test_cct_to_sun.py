@@ -2,14 +2,14 @@ import numpy as np
 from pathlib import Path
 from scipy.io import loadmat
 
-from isetcam import cct_to_sun, energy_to_quanta
+from isetcam import cct_to_sun, energy_to_quanta, iset_root_path
 
 
 def test_cct_to_sun_matches_d65():
     wave = np.arange(380, 781, 5)
     spd = cct_to_sun(wave, 6500)
 
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     d65 = loadmat(root / "data" / "lights" / "D65.mat")
     d_wave = d65["wavelength"].ravel()
     d_spd = d65["data"].ravel()

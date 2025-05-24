@@ -1,6 +1,7 @@
 """Python utilities migrated from ISETCam."""
 
 from .vc_constants import vc_constants
+from .iset_root_path import iset_root_path
 from .vc_get_image_format import vc_get_image_format
 from .quanta2energy import quanta_to_energy
 from .energy_to_quanta import energy_to_quanta
@@ -94,6 +95,7 @@ __all__ = [
     'scielab',
     'sc_params',
     'SCIELABParams',
+    'iset_root_path',
     'ie_init',
     'ie_init_session',
     'camera',
