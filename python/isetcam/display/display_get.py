@@ -12,14 +12,16 @@ from .display_class import Display
 def display_get(display: Display, param: str) -> Any:
     """Return a parameter value from ``display``.
 
-    Supported parameters are ``spd``, ``wave``, ``n_wave``/``nwave`` and
-    ``name``.
+    Supported parameters are ``spd``, ``wave``, ``n_wave``/``nwave``, ``gamma``
+    and ``name``.
     """
     key = param.lower().replace(" ", "")
     if key == "spd":
         return display.spd
     if key == "wave":
         return display.wave
+    if key == "gamma":
+        return display.gamma
     if key in {"nwave", "n_wave"}:
         return len(display.wave)
     if key == "name":
