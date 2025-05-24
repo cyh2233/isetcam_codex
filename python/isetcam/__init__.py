@@ -43,6 +43,7 @@ from .srgb_xyz import (
     srgb_to_xyz,
     xyz_to_srgb,
 )
+from .srgb_to_cct import srgb_to_cct
 from .init_default_spectrum import init_default_spectrum
 from .imgproc import image_distort
 from .metrics.ie_psnr import ie_psnr
@@ -91,6 +92,7 @@ __all__ = [
     'linear_to_srgb',
     'srgb_to_xyz',
     'xyz_to_srgb',
+    'srgb_to_cct',
     'init_default_spectrum',
     'image_distort',
     'ie_psnr',
