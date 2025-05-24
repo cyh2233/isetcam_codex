@@ -17,6 +17,8 @@ from .cct import cct
 from .ie_param_format import ie_param_format
 from .ie_session_get import ie_session_get
 from .ie_session_set import ie_session_set
+from .ie_save_session import ie_save_session
+from .ie_load_session import ie_load_session
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 
@@ -40,6 +42,8 @@ __all__ = [
     'ie_param_format',
     'ie_session_get',
     'ie_session_set',
+    'ie_save_session',
+    'ie_load_session',
     'rgb_to_xw_format',
     'xw_to_rgb_format',
     'ie_init',
