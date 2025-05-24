@@ -22,6 +22,8 @@ from .ie_save_session import ie_save_session
 from .ie_load_session import ie_load_session
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
+from .xyz_to_lab import xyz_to_lab
+from .lab_to_xyz import lab_to_xyz
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -48,6 +50,8 @@ __all__ = [
     'ie_load_session',
     'rgb_to_xw_format',
     'xw_to_rgb_format',
+    'xyz_to_lab',
+    'lab_to_xyz',
     'ie_init',
     'ie_init_session',
     'scene',
