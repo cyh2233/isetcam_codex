@@ -31,6 +31,10 @@ from .xyy_to_xyz import xyy_to_xyz
 from .y_to_lstar import y_to_lstar
 from .xyz_to_uv import xyz_to_uv
 from .xyz_to_luv import xyz_to_luv
+from .lms_to_xyz import lms_to_xyz
+from .xyz_to_lms import xyz_to_lms
+from .lms_to_srgb import lms_to_srgb
+from .srgb_to_lms import srgb_to_lms
 from .srgb_xyz import (
     srgb_to_linear,
     linear_to_srgb,
@@ -72,6 +76,10 @@ __all__ = [
     'y_to_lstar',
     'xyz_to_uv',
     'xyz_to_luv',
+    'lms_to_xyz',
+    'xyz_to_lms',
+    'lms_to_srgb',
+    'srgb_to_lms',
     'srgb_to_linear',
     'linear_to_srgb',
     'srgb_to_xyz',
