@@ -12,6 +12,7 @@ from .scene_create import scene_create
 from .scene_crop import scene_crop
 from .scene_pad import scene_pad
 from .scene_translate import scene_translate
+from .scene_rotate import scene_rotate
 
 __all__ = [
     "Scene",
@@ -27,5 +28,6 @@ __all__ = [
     "scene_crop",
     "scene_pad",
     "scene_translate",
+    "scene_rotate",
     "scene_create",
 ]
