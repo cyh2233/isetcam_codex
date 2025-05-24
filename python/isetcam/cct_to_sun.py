@@ -8,6 +8,7 @@ from typing import Literal
 import numpy as np
 from scipy.io import loadmat
 
+from .iset_root_path import iset_root_path
 from .energy_to_quanta import energy_to_quanta
 
 
@@ -16,7 +17,7 @@ _DEF_FILE = "cieDaylightBasis.mat"
 
 def _load_daylight_basis(wave: np.ndarray) -> np.ndarray:
     """Return daylight basis functions interpolated to ``wave``."""
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     mat = loadmat(root / "data" / "lights" / _DEF_FILE)
     src_wave = mat["wavelength"].ravel()
     data = mat["data"]

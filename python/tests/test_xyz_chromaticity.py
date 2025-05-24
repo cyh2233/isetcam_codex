@@ -2,6 +2,8 @@ import numpy as np
 from pathlib import Path
 from scipy.io import loadmat
 
+from isetcam import iset_root_path
+
 from isetcam import (
     energy_to_quanta,
     ie_xyz_from_energy,
@@ -12,7 +14,7 @@ from isetcam import (
 
 
 def _expected_xyz(wave: np.ndarray, energy: np.ndarray) -> np.ndarray:
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     mat = loadmat(root / 'data' / 'human' / 'XYZ.mat')
     src_wave = mat['wavelength'].ravel()
     data = mat['data']

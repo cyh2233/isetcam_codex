@@ -7,6 +7,8 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
+from ..iset_root_path import iset_root_path
+
 from .display_class import Display
 
 _DEFAULT_NAME = "LCD-Apple"
@@ -36,7 +38,7 @@ def display_create(name: str | None = None) -> Display:
     """
     if name is None:
         name = _DEFAULT_NAME
-    root = Path(__file__).resolve().parents[3]
+    root = iset_root_path()
     path = root / _DEF_DIR / "displays" / f"{name}.mat"
     if not path.exists():
         raise FileNotFoundError(f"Unknown display '{name}'")

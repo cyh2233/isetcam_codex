@@ -2,7 +2,7 @@ import numpy as np
 from pathlib import Path
 from scipy.io import loadmat
 
-from isetcam import ie_color_transform
+from isetcam import ie_color_transform, iset_root_path
 from isetcam.illuminant import illuminant_create
 
 
@@ -27,7 +27,7 @@ def test_ie_color_transform_xyz():
     T = ie_color_transform(sensor_qe, wave, "XYZ", illum)
     assert T.shape == (3, 3)
 
-    root = Path(__file__).resolve().parents[2]
+    root = iset_root_path()
     sur = loadmat(root / "data" / "surfaces" / "reflectances" / "macbethChart.mat")
     sur_ref = _interp(sur["wavelength"].ravel(), sur["data"], wave)
     cmf = loadmat(root / "data" / "human" / "XYZ.mat")
