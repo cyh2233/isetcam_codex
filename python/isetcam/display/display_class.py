@@ -13,4 +13,5 @@ class Display:
 
     spd: np.ndarray
     wave: np.ndarray
+    gamma: np.ndarray | None = None
     name: str | None = None
