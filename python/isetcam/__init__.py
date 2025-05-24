@@ -46,6 +46,7 @@ from .srgb_xyz import (
 from .srgb_to_cct import srgb_to_cct
 from .ctemp_to_srgb import ctemp_to_srgb
 from .init_default_spectrum import init_default_spectrum
+from .mk_inv_gamma_table import mk_inv_gamma_table
 from .imgproc import image_distort
 from .metrics.ie_psnr import ie_psnr
 from .metrics.scielab import scielab, sc_params, SCIELABParams
@@ -97,6 +98,7 @@ __all__ = [
     'srgb_to_cct',
     'ctemp_to_srgb',
     'init_default_spectrum',
+    'mk_inv_gamma_table',
     'image_distort',
     'ie_psnr',
     'scielab',
