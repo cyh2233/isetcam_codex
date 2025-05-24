@@ -9,22 +9,22 @@ def test_scene_get_set():
     photons = np.ones((2, 2, 3))
     sc = Scene(photons=photons.copy(), wave=wave, name="orig")
 
-    assert np.allclose(scene_get(sc, "photons"), photons)
-    assert np.array_equal(scene_get(sc, "wave"), wave)
-    assert scene_get(sc, "n wave") == 3
-    assert scene_get(sc, "name") == "orig"
+    assert np.allclose(scene_get(sc, " PhoTonS "), photons)
+    assert np.array_equal(scene_get(sc, "WAVE"), wave)
+    assert scene_get(sc, "N WAVE") == 3
+    assert scene_get(sc, " NAME ") == "orig"
 
     expected_lum = luminance_from_photons(photons, wave)
-    assert np.allclose(scene_get(sc, "luminance"), expected_lum)
+    assert np.allclose(scene_get(sc, " LuMiNaNcE"), expected_lum)
 
     new_photons = np.zeros_like(photons)
-    scene_set(sc, "photons", new_photons)
-    assert np.allclose(scene_get(sc, "photons"), new_photons)
+    scene_set(sc, " PhoTonS", new_photons)
+    assert np.allclose(scene_get(sc, " PHOTONS"), new_photons)
 
     new_wave = np.array([400, 500])
-    scene_set(sc, "wave", new_wave)
-    assert np.array_equal(scene_get(sc, "wave"), new_wave)
-    assert scene_get(sc, "n_wave") == len(new_wave)
+    scene_set(sc, " WaVe ", new_wave)
+    assert np.array_equal(scene_get(sc, "waVe"), new_wave)
+    assert scene_get(sc, "N_WAVE") == len(new_wave)
 
-    scene_set(sc, "name", "new")
-    assert scene_get(sc, "name") == "new"
+    scene_set(sc, " NaMe", "new")
+    assert scene_get(sc, " NAME ") == "new"

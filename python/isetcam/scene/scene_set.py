@@ -7,6 +7,7 @@ from typing import Any
 import numpy as np
 
 from .scene_class import Scene
+from ..ie_param_format import ie_param_format
 
 
 def scene_set(scene: Scene, param: str, val: Any) -> None:
@@ -15,7 +16,7 @@ def scene_set(scene: Scene, param: str, val: Any) -> None:
     Supported parameters are ``photons``, ``wave`` and ``name``. ``n_wave`` and
     ``luminance`` are derived values and therefore cannot be set.
     """
-    key = param.lower().replace(" ", "")
+    key = ie_param_format(param)
     if key == "photons":
         scene.photons = np.asarray(val)
         return

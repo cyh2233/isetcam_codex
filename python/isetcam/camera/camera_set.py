@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from .camera_class import Camera
+from ..ie_param_format import ie_param_format
 
 
 def camera_set(camera: Camera, param: str, val: Any) -> None:
@@ -13,7 +14,7 @@ def camera_set(camera: Camera, param: str, val: Any) -> None:
     Supported parameters are ``sensor``, ``optical_image``/``oi`` and
     ``name``. ``n_wave`` is derived from the sensor and cannot be set.
     """
-    key = param.lower().replace(" ", "").replace("_", "")
+    key = ie_param_format(param).replace("_", "")
     if key == "sensor":
         camera.sensor = val
         return

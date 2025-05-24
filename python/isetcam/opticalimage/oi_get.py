@@ -8,6 +8,7 @@ import numpy as np
 
 from .oi_class import OpticalImage
 from ..luminance_from_photons import luminance_from_photons
+from ..ie_param_format import ie_param_format
 
 
 def oi_get(oi: OpticalImage, param: str) -> Any:
@@ -16,7 +17,7 @@ def oi_get(oi: OpticalImage, param: str) -> Any:
     Supported parameters are ``photons``, ``wave``, ``n_wave``/``nwave``,
     ``name``, and ``luminance``.
     """
-    key = param.lower().replace(" ", "")
+    key = ie_param_format(param)
     if key == "photons":
         return oi.photons
     if key == "wave":

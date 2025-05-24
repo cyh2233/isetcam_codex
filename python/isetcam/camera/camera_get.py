@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from .camera_class import Camera
+from ..ie_param_format import ie_param_format
 
 
 def camera_get(camera: Camera, param: str) -> Any:
@@ -13,7 +14,7 @@ def camera_get(camera: Camera, param: str) -> Any:
     Supported parameters are ``sensor``, ``optical_image``/``oi``, ``name``
     and ``n_wave``/``nwave`` (derived from the sensor's wavelength sampling).
     """
-    key = param.lower().replace(" ", "").replace("_", "")
+    key = ie_param_format(param).replace("_", "")
     if key == "sensor":
         return camera.sensor
     if key in {"opticalimage", "oi"}:
