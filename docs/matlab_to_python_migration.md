@@ -53,6 +53,20 @@ pytest -q
 Running these tests verifies that the initialization routines and helper
 functions behave as expected.
 
+## Finding the Repository Root
+
+Use `iset_root_path` to locate the top level of the repository when
+constructing paths to test data or calibration files.
+
+```python
+from isetcam import iset_root_path
+
+root = iset_root_path()
+print(root)
+```
+
+Run `pytest -q` after adding code that depends on the repository layout.
+
 ## Conversion Functions
 
 Several common ISETCam unit conversions have been reimplemented in
@@ -128,14 +142,16 @@ scene_set(sc, 'name', 'demo scene')
 ## Scene Creation
 
 The helper `scene_create` generates simple scenes by name. Available
-options include Macbeth charts, uniform monochromatic fields and white
-noise patterns:
+options include Macbeth charts, uniform monochromatic fields, white
+noise patterns and newer types such as frequency sweeps or grid lines:
 
 ```python
 from isetcam.scene import scene_create
 
 macbeth = scene_create('macbeth d65', patch_size=4)
 noise = scene_create('whitenoise', size=8, contrast=0.1)
+sweep = scene_create('frequency sweep', size=256)
+grid = scene_create('grid lines', spacing=32, thickness=2)
 ```
 
 Run `pytest -q` to confirm the factory works.
@@ -399,6 +415,16 @@ illum = illuminant_create("D65", wave).spd
 T = ie_color_transform(qe, wave, "srgb", illum)
 ```
 
+The helper `color_transform_matrix` can also return predefined matrices or
+fit one from sample data:
+
+```python
+from isetcam import color_transform_matrix
+
+M = color_transform_matrix('xyz2srgb')
+M2 = color_transform_matrix(src=src, dst=dst, offset=True)
+```
+
 After adding these modules remember to run the unit tests again with
 `pytest -q` to confirm everything works.
 ## Scotopic Luminance
@@ -590,6 +616,21 @@ dac = display_apply_gamma(lin, disp)
 
 Remember to run `pytest -q` after editing the display helpers.
 
+## Scene and Optical Image Photon Noise
+
+`scene_photon_noise` and `oi_photon_noise` add Poisson noise to the
+photon data stored in a scene or optical image.
+
+```python
+from isetcam.scene import scene_photon_noise
+from isetcam.opticalimage import oi_photon_noise
+
+noisy_sc, sc_noise = scene_photon_noise(sc)
+noisy_oi, oi_noise = oi_photon_noise(oi)
+```
+
+Run `pytest -q` after modifying the noise utilities.
+
 ## SCIELAB Color Difference
 
 The `scielab` metric provides a perceptual color difference measure in the spatial domain.
@@ -602,6 +643,26 @@ de = scielab(img1, img2, [0.95047, 1.0, 1.08883], params)
 ```
 
 Run `pytest -q` to ensure the metric operates correctly.
+
+## Delta E Metrics
+
+Color difference calculations are also available through several helpers:
+
+```python
+from isetcam.metrics import (
+    delta_e_ab,
+    delta_e_94,
+    delta_e_2000,
+    delta_e_uv,
+)
+
+de2000 = delta_e_2000(lab1, lab2)
+de94 = delta_e_94(lab1, lab2)
+de76 = delta_e_ab(lab1, lab2, "1976")
+deuv = delta_e_uv(luv1, luv2)
+```
+
+Remember to run `pytest -q` after working with the color difference metrics.
 
 ## Sensor Compute
 
