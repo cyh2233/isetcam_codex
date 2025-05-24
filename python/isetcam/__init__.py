@@ -14,6 +14,7 @@ from .ie_luminance_to_radiance import ie_luminance_to_radiance
 from .ie_xyz_from_energy import ie_xyz_from_energy
 from .ie_xyz_from_photons import ie_xyz_from_photons
 from .ie_color_transform import ie_color_transform
+from .color_transform_matrix import color_transform_matrix
 from .chromaticity import chromaticity
 from .cct import cct
 from .cct_to_sun import cct_to_sun
@@ -63,6 +64,7 @@ __all__ = [
     'ie_xyz_from_energy',
     'ie_xyz_from_photons',
     'ie_color_transform',
+    'color_transform_matrix',
     'chromaticity',
     'cct',
     'cct_to_sun',
