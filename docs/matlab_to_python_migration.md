@@ -297,3 +297,66 @@ T = ie_color_transform(qe, wave, "srgb", illum)
 
 After adding these modules remember to run the unit tests again with
 `pytest -q` to confirm everything works.
+## Scotopic Luminance
+
+The function `scotopic_luminance_from_energy` computes scotopic luminance from a spectral energy distribution.
+
+```python
+import numpy as np
+from isetcam import scotopic_luminance_from_energy
+
+wave = np.arange(400, 701, 10)
+energy = np.ones((1, len(wave))) * 1e-4
+lum = scotopic_luminance_from_energy(energy, wave)
+```
+
+## XYZ and L\*a\*b\* Conversions
+
+Use `xyz_to_lab` and `lab_to_xyz` to convert between XYZ tristimulus values and CIE L\*a\*b\*.
+
+```python
+import numpy as np
+from isetcam import xyz_to_lab, lab_to_xyz
+
+white = np.array([0.95047, 1.0, 1.08883])
+xyz = np.random.rand(2, 3, 3)
+lab = xyz_to_lab(xyz, white)
+xyz2 = lab_to_xyz(lab, white)
+```
+
+## sRGB and XYZ
+
+The helpers `srgb_to_xyz` and `xyz_to_srgb` convert between sRGB and CIE XYZ.
+
+```python
+import numpy as np
+from isetcam import srgb_to_xyz, xyz_to_srgb
+
+srgb = np.random.rand(4, 3)
+xyz = srgb_to_xyz(srgb)
+srgb2, lrgb, maxY = xyz_to_srgb(xyz)
+```
+
+## Daylight Spectra
+
+`cct_to_sun` generates a daylight spectral distribution for a desired correlated color temperature.
+
+```python
+import numpy as np
+from isetcam import cct_to_sun
+
+wave = np.arange(380, 781, 5)
+spd = cct_to_sun(wave, 6500)
+```
+
+## Circle Sampling
+
+Call `circle_points` to obtain evenly spaced coordinates on a unit circle.
+
+```python
+from isetcam import circle_points
+
+x, y = circle_points()
+```
+
+After experimenting with these conversions and utilities remember to run `pytest -q` to verify the Python tests pass.
