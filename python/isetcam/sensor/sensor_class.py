@@ -14,3 +14,4 @@ class Sensor:
     volts: np.ndarray
     wave: np.ndarray
     exposure_time: float
+    name: str | None = None
