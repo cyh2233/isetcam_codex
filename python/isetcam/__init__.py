@@ -21,7 +21,7 @@ from .xw_to_rgb_format import xw_to_rgb_format
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor
+from . import scene, opticalimage, sensor, display
 
 __all__ = [
     'vc_constants',
@@ -45,4 +45,5 @@ __all__ = [
     'scene',
     'opticalimage',
     'sensor',
+    'display',
 ]
