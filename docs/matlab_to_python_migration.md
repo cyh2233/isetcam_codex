@@ -265,6 +265,22 @@ oi = oi_from_file("myoi.mat")
 After loading, the usual accessor helpers work as expected.  Run
 `pytest -q` to confirm the file utilities operate correctly.
 
+## Scene to File and Display from File
+
+Scenes and displays can also be saved or loaded using convenience
+functions.
+
+```python
+from isetcam.scene import scene_from_file, scene_to_file
+from isetcam.display import display_from_file
+
+scene = scene_from_file('demo.png', mean_luminance=20)
+scene_to_file(scene, 'scene.mat')
+disp = display_from_file('display.mat')
+```
+
+Remember to run `pytest -q` after using these I/O helpers.
+
 ## Updated Tests
 
 Unit tests in `python/tests` exercise the conversion helpers, format
@@ -536,6 +552,20 @@ x, y = circle_points()
 
 After adding these modules or experimenting with them remember to run `pytest -q` to verify the Python tests pass.
 
+## sRGB to CCT
+
+Use `srgb_to_cct` to estimate the correlated color temperature from an sRGB image.
+
+```python
+import numpy as np
+from isetcam import srgb_to_cct
+
+srgb = np.random.rand(10, 10, 3)
+temp, table = srgb_to_cct(srgb)
+```
+
+Run `pytest -q` to confirm the color temperature routine functions correctly.
+
 ## Camera Dataclass
 
 A `Camera` bundles a sensor with an optical image. Accessor helpers retrieve or update fields just like the other dataclasses.
@@ -555,6 +585,25 @@ print(camera_get(cam, "n wave"))
 ```
 
 Remember to run `pytest -q` after experimenting with the camera helpers.
+
+## Scene and Optical Image Spatial Support
+
+Helpers `scene_spatial_support` and `oi_spatial_support` return the spatial
+coordinates of each sample. Use `scene_spatial_resample` and
+`oi_spatial_resample` to change the pixel spacing while keeping the field of
+view constant.
+
+```python
+from isetcam.scene import scene_spatial_support, scene_spatial_resample
+from isetcam.opticalimage import oi_spatial_support, oi_spatial_resample
+
+sup = scene_spatial_support(sc, "mm")
+sc2 = scene_spatial_resample(sc, 0.5e-3, method="nearest")
+oi_sup = oi_spatial_support(oi)
+oi2 = oi_spatial_resample(oi, 1e-3)
+```
+
+Run `pytest -q` after editing the spatial routines.
 
 ## Scene and Optical Image Padding
 
@@ -663,6 +712,21 @@ deuv = delta_e_uv(luv1, luv2)
 ```
 
 Remember to run `pytest -q` after working with the color difference metrics.
+
+## Visual Signal-to-Noise Ratio
+
+`xyz_to_vsnr` computes the visual SNR of an XYZ region of interest.
+
+```python
+import numpy as np
+from isetcam.metrics import xyz_to_vsnr, SCIELABParams
+
+roi = np.random.rand(32, 32, 3)
+white = np.array([1.0, 1.0, 1.0])
+score = xyz_to_vsnr(roi, white)
+```
+
+Run `pytest -q` after modifying the VSNR implementation.
 
 ## Sensor Compute
 
