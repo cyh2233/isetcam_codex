@@ -30,3 +30,21 @@ def test_scene_create_whitenoise():
     assert sc.photons.shape == (8, 8, 1)
     assert sc.photons.min() >= 0
 
+
+def test_scene_create_frequency_sweep():
+    sc = scene_create("frequency sweep", size=32, max_freq=8)
+    assert sc.photons.shape == (32, 32, 1)
+    # Higher variance in the top row than the bottom row
+    top_var = sc.photons[0, :, 0].var()
+    bottom_var = sc.photons[-1, :, 0].var()
+    assert top_var > bottom_var
+
+
+def test_scene_create_grid_lines():
+    sc = scene_create("grid lines", size=32, spacing=8, thickness=1)
+    assert sc.photons.shape == (32, 32, 1)
+    mid = 8 // 2
+    # Check that a grid line exists at the expected location
+    assert np.allclose(sc.photons[mid, :, 0], sc.photons.max())
+    assert np.allclose(sc.photons[:, mid, 0], sc.photons.max())
+
