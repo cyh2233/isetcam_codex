@@ -10,6 +10,8 @@ from .oi_photon_noise import oi_photon_noise
 from .oi_crop import oi_crop
 from .oi_pad import oi_pad
 from .oi_rotate import oi_rotate
+from .oi_spatial_support import oi_spatial_support
+from .oi_spatial_resample import oi_spatial_resample
 
 __all__ = [
     "OpticalImage",
@@ -23,5 +25,7 @@ __all__ = [
     "oi_crop",
     "oi_pad",
     "oi_rotate",
+    "oi_spatial_support",
+    "oi_spatial_resample",
     "oi_photon_noise",
 ]
