@@ -15,6 +15,7 @@ from .ie_xyz_from_photons import ie_xyz_from_photons
 from .ie_color_transform import ie_color_transform
 from .chromaticity import chromaticity
 from .cct import cct
+from .cct_to_sun import cct_to_sun
 from .ie_param_format import ie_param_format
 from .ie_session_get import ie_session_get
 from .ie_session_set import ie_session_set
@@ -49,6 +50,7 @@ __all__ = [
     'ie_color_transform',
     'chromaticity',
     'cct',
+    'cct_to_sun',
     'ie_param_format',
     'ie_session_get',
     'ie_session_set',
