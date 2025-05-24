@@ -14,6 +14,8 @@ from .scene_crop import scene_crop
 from .scene_pad import scene_pad
 from .scene_translate import scene_translate
 from .scene_rotate import scene_rotate
+from .scene_spatial_support import scene_spatial_support
+from .scene_spatial_resample import scene_spatial_resample
 
 __all__ = [
     "Scene",
@@ -30,6 +32,8 @@ __all__ = [
     "scene_pad",
     "scene_translate",
     "scene_rotate",
+    "scene_spatial_support",
+    "scene_spatial_resample",
     "scene_create",
     "scene_photon_noise",
 ]
