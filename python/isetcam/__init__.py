@@ -41,6 +41,7 @@ from .srgb_xyz import (
     srgb_to_xyz,
     xyz_to_srgb,
 )
+from .init_default_spectrum import init_default_spectrum
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -84,6 +85,7 @@ __all__ = [
     'linear_to_srgb',
     'srgb_to_xyz',
     'xyz_to_srgb',
+    'init_default_spectrum',
     'ie_init',
     'ie_init_session',
     'scene',
