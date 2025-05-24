@@ -30,4 +30,4 @@ def ie_psnr(im1: np.ndarray, im2: np.ndarray) -> float:
     if rmse == 0:
         return np.inf
 
-    return 20 * np.log10(255 / np.sqrt(rmse))
+    return 20 * np.log10(255 / rmse)
