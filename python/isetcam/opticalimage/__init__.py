@@ -6,6 +6,8 @@ from .oi_add import oi_add
 from .oi_get import oi_get
 from .oi_set import oi_set
 from .oi_from_file import oi_from_file
+from .oi_crop import oi_crop
+from .oi_pad import oi_pad
 
 __all__ = [
     "OpticalImage",
@@ -16,4 +18,6 @@ __all__ = [
     "oi_get",
     "oi_set",
     "oi_from_file",
+    "oi_crop",
+    "oi_pad",
 ]
