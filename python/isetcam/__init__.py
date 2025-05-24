@@ -26,6 +26,9 @@ from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
 from .lab_to_xyz import lab_to_xyz
+from .y_to_lstar import y_to_lstar
+from .xyz_to_uv import xyz_to_uv
+from .xyz_to_luv import xyz_to_luv
 from .srgb_xyz import (
     srgb_to_linear,
     linear_to_srgb,
@@ -62,6 +65,9 @@ __all__ = [
     'xw_to_rgb_format',
     'xyz_to_lab',
     'lab_to_xyz',
+    'y_to_lstar',
+    'xyz_to_uv',
+    'xyz_to_luv',
     'srgb_to_linear',
     'linear_to_srgb',
     'srgb_to_xyz',
