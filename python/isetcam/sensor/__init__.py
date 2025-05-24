@@ -5,6 +5,8 @@ from __future__ import annotations
 import numpy as np
 
 from .sensor_class import Sensor
+from .sensor_get import sensor_get
+from .sensor_set import sensor_set
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -39,4 +41,6 @@ __all__ = [
     "get_exposure_time",
     "set_exposure_time",
     "get_n_wave",
+    "sensor_get",
+    "sensor_set",
 ]
