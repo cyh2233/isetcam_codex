@@ -185,6 +185,40 @@ nwave = sensor_get(sensor, "n wave")
 set_exposure_time(sensor, 0.02)
 ```
 
+## Default Spectrum Initialization
+
+The helper `init_default_spectrum` assigns a standard wavelength
+sampling to dataclass objects.  Use it when creating new scenes,
+optical images or sensors:
+
+```python
+from isetcam import init_default_spectrum
+from isetcam.scene import Scene
+
+sc = Scene(photons=data, wave=None)
+init_default_spectrum(sc)
+print(sc.wave[:3])
+```
+
+Remember to run `pytest -q` after adding or modifying code to verify
+the tests still pass.
+
+## Loading from MAT-files
+
+You can reconstruct dataclass instances from saved MATLAB structures
+using `sensor_from_file` and `oi_from_file`:
+
+```python
+from isetcam.sensor import sensor_from_file
+from isetcam.opticalimage import oi_from_file
+
+sensor = sensor_from_file("mysensor.mat")
+oi = oi_from_file("myoi.mat")
+```
+
+After loading, the usual accessor helpers work as expected.  Run
+`pytest -q` to confirm the file utilities operate correctly.
+
 ## Updated Tests
 
 Unit tests in `python/tests` exercise the conversion helpers, format
@@ -356,6 +390,21 @@ uv = xyz_to_uv(xyz)
 luv = xyz_to_luv(xyz, white)
 ```
 
+## xyY Conversions
+
+Convert between XYZ tristimulus values and xyY coordinates using
+`xyz_to_xyy` and `xyy_to_xyz`:
+
+```python
+from isetcam import xyz_to_xyy, xyy_to_xyz
+
+xyy = xyz_to_xyy(xyz)
+xyz2 = xyy_to_xyz(xyy)
+```
+
+These helpers preserve the array shape and are tested via
+`pytest -q`.
+
 ## sRGB and XYZ
 
 The helpers `srgb_to_xyz` and `xyz_to_srgb` convert between sRGB and CIE XYZ.
@@ -368,6 +417,27 @@ srgb = np.random.rand(4, 3)
 xyz = srgb_to_xyz(srgb)
 srgb2, lrgb, maxY = xyz_to_srgb(xyz)
 ```
+
+## LMS Conversions
+
+Functions `xyz_to_lms`, `lms_to_xyz`, `srgb_to_lms` and `lms_to_srgb`
+convert among XYZ, LMS and sRGB representations:
+
+```python
+from isetcam import (
+    xyz_to_lms,
+    lms_to_xyz,
+    srgb_to_lms,
+    lms_to_srgb,
+)
+
+lms = xyz_to_lms(xyz)
+xyz2 = lms_to_xyz(lms)
+srgb2 = lms_to_srgb(lms)
+lms2 = srgb_to_lms(srgb)
+```
+
+Run `pytest -q` to ensure these color transforms remain valid.
 
 ## Daylight Spectra
 
