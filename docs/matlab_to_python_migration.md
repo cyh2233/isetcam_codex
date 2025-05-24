@@ -125,6 +125,21 @@ print(scene_get(sc, 'n wave'))
 scene_set(sc, 'name', 'demo scene')
 ```
 
+## Scene Creation
+
+The helper `scene_create` generates simple scenes by name. Available
+options include Macbeth charts, uniform monochromatic fields and white
+noise patterns:
+
+```python
+from isetcam.scene import scene_create
+
+macbeth = scene_create('macbeth d65', patch_size=4)
+noise = scene_create('whitenoise', size=8, contrast=0.1)
+```
+
+Run `pytest -q` to confirm the factory works.
+
 Scenes can be manipulated after creation. Use `scene_adjust_luminance` to
 scale the luminance statistic and `scene_crop` to extract a region:
 
@@ -134,6 +149,21 @@ from isetcam.scene import scene_adjust_luminance, scene_crop
 sc2 = scene_adjust_luminance(sc, 'mean', 50)
 cropped = scene_crop(sc2, (10, 10, 64, 64))
 ```
+
+## Adjusting Scene Illuminant
+
+The function `scene_adjust_illuminant` multiplies scene photons by a new
+illuminant while optionally preserving mean luminance. The illuminant can
+be a vector or a MAT-file with `data` and `wavelength` variables:
+
+```python
+from isetcam.scene import scene_adjust_illuminant
+
+spd = np.linspace(0.5, 1.0, len(sc.wave))
+sc3 = scene_adjust_illuminant(sc, spd)
+```
+
+Run `pytest -q` after modifying the scene routines.
 
 ## Optical Image Utilities
 
@@ -284,7 +314,8 @@ pytest -q
 
 Displays are represented by a small `Display` dataclass found in
 `isetcam.display`.  Use `display_get` and `display_set` to retrieve or
-update values:
+update values. The accessors now support gamma tables in addition to SPD,
+wave and name fields:
 
 ```python
 import numpy as np
@@ -292,9 +323,11 @@ from isetcam.display import Display, display_get, display_set
 
 wave = np.arange(400, 701, 10)
 spd = np.ones((len(wave), 3))
-disp = Display(spd=spd, wave=wave, name="lcd")
+gamma = np.linspace(0, 1, len(wave)).reshape(-1, 1).repeat(3, axis=1)
+disp = Display(spd=spd, wave=wave, gamma=gamma, name="lcd")
 display_set(disp, "name", "main display")
 n_wave = display_get(disp, "n wave")
+print(display_get(disp, "gamma").shape)
 ```
 
 A convenience factory `display_create` loads calibration data by name:
@@ -305,6 +338,20 @@ from isetcam.display import display_create
 default_disp = display_create()
 lcd = display_create("lcdExample")
 ```
+
+## Updated Display Accessors
+
+`display_get` and `display_set` now handle a `gamma` table in addition to
+`spd`, `wave` and `name`.  Set the gamma to `None` to remove it:
+
+```python
+from isetcam.display import display_get, display_set
+
+display_set(disp, "gamma", None)
+print(display_get(disp, "gamma"))
+```
+
+Run `pytest -q` to ensure the display utilities behave correctly.
 
 ## Illuminant Helpers
 
