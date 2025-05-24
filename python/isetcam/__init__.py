@@ -44,6 +44,7 @@ from .srgb_xyz import (
 from .init_default_spectrum import init_default_spectrum
 from .imgproc import image_distort
 from .metrics.ie_psnr import ie_psnr
+from .metrics.scielab import scielab, sc_params, SCIELABParams
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -90,6 +91,9 @@ __all__ = [
     'init_default_spectrum',
     'image_distort',
     'ie_psnr',
+    'scielab',
+    'sc_params',
+    'SCIELABParams',
     'ie_init',
     'ie_init_session',
     'camera',
