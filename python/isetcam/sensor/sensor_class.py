@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from ..init_default_spectrum import init_default_spectrum
+
 import numpy as np
 
 
@@ -12,6 +14,10 @@ class Sensor:
     """Minimal representation of an ISETCam sensor."""
 
     volts: np.ndarray
-    wave: np.ndarray
     exposure_time: float
+    wave: np.ndarray | None = None
     name: str | None = None
+
+    def __post_init__(self) -> None:
+        if self.wave is None:
+            init_default_spectrum(self)
