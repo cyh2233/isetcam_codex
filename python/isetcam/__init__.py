@@ -42,10 +42,11 @@ from .srgb_xyz import (
     xyz_to_srgb,
 )
 from .init_default_spectrum import init_default_spectrum
+from .imgproc import image_distort
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, display, illuminant, camera
+from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc
 
 __all__ = [
     'vc_constants',
@@ -86,6 +87,7 @@ __all__ = [
     'srgb_to_xyz',
     'xyz_to_srgb',
     'init_default_spectrum',
+    'image_distort',
     'ie_init',
     'ie_init_session',
     'camera',
@@ -94,4 +96,5 @@ __all__ = [
     'sensor',
     'display',
     'illuminant',
+    'imgproc',
 ]
