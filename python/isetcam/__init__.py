@@ -8,6 +8,7 @@ from .ie_init import ie_init
 from .ie_init_session import ie_init_session
 from .luminance_from_energy import luminance_from_energy
 from .luminance_from_photons import luminance_from_photons
+from .scotopic_luminance_from_energy import scotopic_luminance_from_energy
 from .ie_luminance_to_radiance import ie_luminance_to_radiance
 from .ie_xyz_from_energy import ie_xyz_from_energy
 from .ie_xyz_from_photons import ie_xyz_from_photons
@@ -33,6 +34,7 @@ __all__ = [
     'energy_to_quanta',
     'luminance_from_energy',
     'luminance_from_photons',
+    'scotopic_luminance_from_energy',
     'ie_luminance_to_radiance',
     'ie_xyz_from_energy',
     'ie_xyz_from_photons',
