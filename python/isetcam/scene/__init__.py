@@ -8,6 +8,7 @@ from .scene_get import scene_get
 from .scene_set import scene_set
 from .scene_adjust_luminance import scene_adjust_luminance
 from .scene_adjust_illuminant import scene_adjust_illuminant
+from .scene_create import scene_create
 from .scene_crop import scene_crop
 from .scene_pad import scene_pad
 from .scene_translate import scene_translate
@@ -26,4 +27,5 @@ __all__ = [
     "scene_crop",
     "scene_pad",
     "scene_translate",
+    "scene_create",
 ]
