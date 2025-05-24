@@ -43,10 +43,11 @@ from .srgb_xyz import (
 )
 from .init_default_spectrum import init_default_spectrum
 from .imgproc import image_distort
+from .metrics.ie_psnr import ie_psnr
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc
+from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics
 
 __all__ = [
     'vc_constants',
@@ -88,6 +89,7 @@ __all__ = [
     'xyz_to_srgb',
     'init_default_spectrum',
     'image_distort',
+    'ie_psnr',
     'ie_init',
     'ie_init_session',
     'camera',
@@ -97,4 +99,5 @@ __all__ = [
     'display',
     'illuminant',
     'imgproc',
+    'metrics',
 ]
