@@ -231,3 +231,69 @@ After working with these modules you can rerun the unit tests using:
 ```bash
 pytest -q
 ```
+
+## Display Dataclass
+
+Displays are represented by a small `Display` dataclass found in
+`isetcam.display`.  Use `display_get` and `display_set` to retrieve or
+update values:
+
+```python
+import numpy as np
+from isetcam.display import Display, display_get, display_set
+
+wave = np.arange(400, 701, 10)
+spd = np.ones((len(wave), 3))
+disp = Display(spd=spd, wave=wave, name="lcd")
+display_set(disp, "name", "main display")
+n_wave = display_get(disp, "n wave")
+```
+
+## Illuminant Helpers
+
+Illuminant spectral data are provided through the `Illuminant` dataclass
+and factory helpers in `isetcam.illuminant`:
+
+```python
+from isetcam.illuminant import illuminant_create, illuminant_blackbody
+
+illum = illuminant_create("D65")
+bb_spd = illuminant_blackbody(6500, illum.wave)
+```
+
+## Session Persistence
+
+The global session dictionary can be serialized to disk and reloaded via
+`ie_save_session` and `ie_load_session`:
+
+```python
+from isetcam import ie_init, ie_save_session, ie_load_session
+
+session = ie_init()
+session["name"] = "temp"
+ie_save_session(session, "session.json")
+loaded = ie_load_session("session.json")
+```
+
+## Color Transformation Matrix
+
+Use `ie_color_transform` to compute a linear transform from sensor
+quantum efficiency to a color space such as XYZ or linear sRGB:
+
+```python
+import numpy as np
+from isetcam import ie_color_transform
+from isetcam.illuminant import illuminant_create
+
+wave = np.arange(400, 701, 10)
+qe = np.stack([
+    np.exp(-0.5 * ((wave - 450) / 20) ** 2),
+    np.exp(-0.5 * ((wave - 550) / 20) ** 2),
+    np.exp(-0.5 * ((wave - 650) / 20) ** 2),
+], axis=1)
+illum = illuminant_create("D65", wave).spd
+T = ie_color_transform(qe, wave, "srgb", illum)
+```
+
+After adding these modules remember to run the unit tests again with
+`pytest -q` to confirm everything works.
