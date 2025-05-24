@@ -45,7 +45,7 @@ from .init_default_spectrum import init_default_spectrum
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, display, illuminant
+from . import scene, opticalimage, sensor, display, illuminant, camera
 
 __all__ = [
     'vc_constants',
@@ -88,6 +88,7 @@ __all__ = [
     'init_default_spectrum',
     'ie_init',
     'ie_init_session',
+    'camera',
     'scene',
     'opticalimage',
     'sensor',
