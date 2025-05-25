@@ -7,6 +7,7 @@ from .oi_get import oi_get
 from .oi_set import oi_set
 from .oi_from_file import oi_from_file
 from .oi_photon_noise import oi_photon_noise
+from .oi_to_file import oi_to_file
 from .oi_crop import oi_crop
 from .oi_pad import oi_pad
 from .oi_rotate import oi_rotate
@@ -28,4 +29,5 @@ __all__ = [
     "oi_spatial_support",
     "oi_spatial_resample",
     "oi_photon_noise",
+    "oi_to_file",
 ]

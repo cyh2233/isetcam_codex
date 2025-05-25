@@ -281,6 +281,23 @@ scene_to_file(scene, 'scene.mat')
 disp = display_from_file('display.mat')
 ```
 
+## Saving Objects to MAT-files
+
+Dataclasses can be written back out to MATLAB compatible files using the
+matching ``*_to_file`` helpers.
+
+```python
+from isetcam.sensor import sensor_to_file, sensor_from_file
+from isetcam.opticalimage import oi_to_file, oi_from_file
+from isetcam.display import display_to_file, display_from_file, Display
+from isetcam.camera import camera_to_file, Camera
+
+sensor_to_file(sensor, 'mysensor.mat')
+oi_to_file(oi, 'myoi.mat')
+display_to_file(disp, 'display.mat')
+camera_to_file(Camera(sensor=sensor, optical_image=oi), 'cam.mat')
+```
+
 Remember to run `pytest -q` after using these I/O helpers.
 
 ## Updated Tests
