@@ -446,6 +446,25 @@ M2 = color_transform_matrix(src=src, dst=dst, offset=True)
 After adding these modules remember to run the unit tests again with
 `pytest -q` to confirm everything works.
 
+## Color Block Matrix
+
+Use `color_block_matrix` to visualize a spectral distribution as RGB values.
+The default matrix spans 400--700 nm in 10 nm steps.  Other wavelength
+sampling is handled through interpolation with optional extrapolation for
+out‑of‑range values.
+
+```python
+from isetcam import color_block_matrix
+
+wave = np.arange(400, 701, 10)
+B = color_block_matrix(wave)
+
+wave2 = np.array([350, 400, 500, 650, 750])
+B2 = color_block_matrix(wave2, extrap_val=0.1)
+```
+
+Run `pytest -q` after modifying the block matrix routine.
+
 ## Internal Color to Display Transform
 
 `ie_internal_to_display` computes a matrix that maps values in an internal
