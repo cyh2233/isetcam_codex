@@ -46,6 +46,7 @@ from .srgb_xyz import (
     xyz_to_srgb,
 )
 from .srgb_to_cct import srgb_to_cct
+from .spd_to_cct import spd_to_cct
 from .srgb_parameters import srgb_parameters
 from .ctemp_to_srgb import ctemp_to_srgb
 from .init_default_spectrum import init_default_spectrum
@@ -102,6 +103,7 @@ __all__ = [
     'srgb_to_xyz',
     'xyz_to_srgb',
     'srgb_to_cct',
+    'spd_to_cct',
     'srgb_parameters',
     'ctemp_to_srgb',
     'init_default_spectrum',
