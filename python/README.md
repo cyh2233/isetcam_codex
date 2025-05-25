@@ -10,6 +10,12 @@ conda create -n py39 python=3.9
 
 # Activate it
 conda activate py39
+
+# Install the dependencies
+pip install -r requirements.txt
+
+# Install the package in editable mode
+pip install -e .
 ```
 
 Inside MATLAB, point `pyenv` to the environment's Python interpreter:
