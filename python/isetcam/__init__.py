@@ -61,6 +61,10 @@ from .metrics.ssim_metric import ssim_metric
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
 from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics
+from .opticalimage import oi_to_file
+from .sensor import sensor_to_file
+from .display import display_to_file
+from .camera import camera_to_file
 
 __all__ = [
     'vc_constants',
@@ -129,4 +133,8 @@ __all__ = [
     'illuminant',
     'imgproc',
     'metrics',
+    'oi_to_file',
+    'sensor_to_file',
+    'display_to_file',
+    'camera_to_file',
 ]
