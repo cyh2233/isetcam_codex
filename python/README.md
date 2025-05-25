@@ -2,7 +2,8 @@
 
 This directory contains experimental Python code that mirrors portions of the
 MATLAB ISETCam toolbox.  To use these modules, activate the Python environment
-that accompanies the MATLAB examples.
+that accompanies the MATLAB examples. Installing the package will pull in
+`numpy`, `scipy`, `pillow`, `imageio`, and `scikit-image` automatically.
 
 ```bash
 # Create the environment
@@ -14,7 +15,7 @@ conda activate py39
 # Install the dependencies
 pip install -r requirements.txt
 
-# Install the package in editable mode
+# Install the package in editable mode (installs the requirements as well)
 pip install -e .
 ```
 
