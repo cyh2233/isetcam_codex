@@ -647,6 +647,19 @@ print(f"PSNR: {score:.2f} dB")
 ```
 
 As always, run `pytest -q` to confirm these functions behave as expected.
+
+## Structural Similarity (SSIM)
+
+Use `ssim_metric` to compute the structural similarity index and map
+between two images.
+
+```python
+from isetcam.metrics import ssim_metric
+
+score, ssim_map = ssim_metric(img1, img2)
+```
+
+Run `pytest -q` after modifying the SSIM implementation.
 ## Scene and Optical Image Rotation
 
 The helpers `scene_rotate` and `oi_rotate` rotate photon data while optionally filling empty regions. Pass an angle in degrees.
