@@ -13,6 +13,8 @@ Use a dedicated conda environment as described in
 ```bash
 conda create -n py39 python=3.9
 conda activate py39
+pip install -r python/requirements.txt
+pip install -e python
 ```
 
 Within MATLAB, point `pyenv` to the environment interpreter:
