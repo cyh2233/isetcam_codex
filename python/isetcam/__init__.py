@@ -52,6 +52,7 @@ from .imgproc import image_distort, ie_internal_to_display
 from .metrics.ie_psnr import ie_psnr
 from .metrics.scielab import scielab, sc_params, SCIELABParams
 from .metrics.xyz_to_vsnr import xyz_to_vsnr
+from .metrics.ssim_metric import ssim_metric
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -108,6 +109,7 @@ __all__ = [
     'sc_params',
     'SCIELABParams',
     'xyz_to_vsnr',
+    'ssim_metric',
     'iset_root_path',
     'ie_init',
     'ie_init_session',
