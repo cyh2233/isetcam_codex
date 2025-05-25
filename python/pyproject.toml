@@ -11,5 +11,12 @@ requires-python = ">=3.8"
 authors = [{name = "ISETCam Team"}]
 license = {text = "MIT"}
 
+[project.dependencies]
+numpy = "*"
+scipy = "*"
+pillow = "*"
+imageio = "*"
+scikit-image = "*"
+
 [project.optional-dependencies]
 tests = ["pytest"]
