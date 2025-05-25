@@ -8,6 +8,21 @@ This ISETCam distribution originated with a commercial product, ISET from Imagev
 
 A set of tutorial videos introducing aspects of ISETCam and the companion tool for biological vision ISETBio is available at [this YouTube playlist](https://www.youtube.com/playlist?list=PLr6PuubdQrtQ-rz5RIe13k3YFrmwBh7gr).
 
+## Python Modules
+
+An experimental Python package is provided under the [`python`](python) directory. These
+modules mirror portions of the MATLAB toolbox and can be called either from
+Python directly or through MATLAB using `pyenv`. Environment setup and
+installation steps are described in
+[`docs/matlab_to_python_migration.md`](docs/matlab_to_python_migration.md).
+
+After installing the package (e.g. `pip install -e python`) you can run the unit
+tests with
+
+```bash
+pytest -q
+```
+
 # Notes
 
 ### Software architecture
