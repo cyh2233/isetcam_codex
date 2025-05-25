@@ -443,6 +443,20 @@ M2 = color_transform_matrix(src=src, dst=dst, offset=True)
 
 After adding these modules remember to run the unit tests again with
 `pytest -q` to confirm everything works.
+
+## Internal Color to Display Transform
+
+`ie_internal_to_display` computes a matrix that maps values in an internal
+color space to RGB intensities for a particular display.
+
+```python
+import numpy as np
+from isetcam.imgproc import ie_internal_to_display
+
+T = ie_internal_to_display(cmf, spd)
+```
+
+Run `pytest -q` whenever you update the color transform routines.
 ## Scotopic Luminance
 
 The function `scotopic_luminance_from_energy` computes scotopic luminance from a spectral energy distribution.
@@ -690,6 +704,21 @@ dac = display_apply_gamma(lin, disp)
 
 Remember to run `pytest -q` after editing the display helpers.
 
+## Inverse Gamma Table
+
+`mk_inv_gamma_table` generates a lookup table mapping linear values back to
+digital counts. This is helpful when converting images to the display domain.
+
+```python
+import numpy as np
+from isetcam import mk_inv_gamma_table
+
+gamma = np.linspace(0, 1, 4)
+inv = mk_inv_gamma_table(gamma)
+```
+
+Run `pytest -q` after changing the gamma utilities.
+
 ## Scene and Optical Image Photon Noise
 
 `scene_photon_noise` and `oi_photon_noise` add Poisson noise to the
@@ -752,6 +781,20 @@ score = xyz_to_vsnr(roi, white)
 ```
 
 Run `pytest -q` after modifying the VSNR implementation.
+
+## Responsivity Unit Conversion
+
+`ie_responsivity_convert` converts spectral responsivity curves between energy
+and photon units.
+
+```python
+import numpy as np
+from isetcam import ie_responsivity_convert
+
+resp_q, scale = ie_responsivity_convert(resp, wave, "e2q")
+```
+
+Remember to run `pytest -q` when editing responsivity helpers.
 
 ## Sensor Compute
 
