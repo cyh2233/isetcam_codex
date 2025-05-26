@@ -1030,3 +1030,67 @@ ax = chromaticity_plot(x, y)
 ```
 
 Run `pytest -q` after updating the plotting utilities.
+
+## Reading Spectral Data
+
+`ie_read_spectra` loads spectral measurements from a MAT-file. Provide an optional wavelength vector to interpolate the data.
+
+```python
+from isetcam import ie_read_spectra
+
+spd, wave, comment, path = ie_read_spectra("filters.mat", range(400, 701, 10))
+```
+
+Run `pytest -q` after editing the I/O helpers.
+
+## Extracting Wavebands
+
+Use `scene_extract_waveband` and `oi_extract_waveband` to subset scenes or optical images by wavelength.
+
+```python
+from isetcam.scene import scene_extract_waveband
+from isetcam.opticalimage import oi_extract_waveband
+
+sc_band = scene_extract_waveband(scene, [450, 550])
+oi_band = oi_extract_waveband(oi, [450, 550], illuminance=True)
+```
+
+Run `pytest -q` to confirm the waveband helpers work.
+
+## Adding and Selecting Objects
+
+`vc_add_and_select_object` stores an object in the global session and marks it as selected.
+
+```python
+from isetcam import ie_init, vc_add_and_select_object
+
+session = ie_init()
+index = vc_add_and_select_object("scene", my_scene)
+```
+
+Run `pytest -q` after changing session utilities.
+
+## Sensor Signal-to-Noise Ratio
+
+`sensor_snr` returns SNR versus voltage while `sensor_snr_luxsec` converts the values to photometric exposure.
+
+```python
+from isetcam.sensor import sensor_snr, sensor_snr_luxsec
+
+snr, volts, *_ = sensor_snr(sensor)
+snr_lux, luxsec = sensor_snr_luxsec(sensor)
+```
+
+Remember to run `pytest -q` after updating the sensor analysis routines.
+
+## Camera MTF
+
+Use `camera_mtf` to compute the modulation transfer function of a camera model based on its sensor and optics.
+
+```python
+from isetcam.camera import camera_mtf
+
+freqs, mtf = camera_mtf(camera)
+```
+
+Run `pytest -q` after editing camera utilities.
