@@ -10,6 +10,7 @@ from .sensor_set import sensor_set
 from .sensor_from_file import sensor_from_file
 from .sensor_compute import sensor_compute
 from .sensor_to_file import sensor_to_file
+from .sensor_create import sensor_create
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -49,4 +50,5 @@ __all__ = [
     "sensor_from_file",
     "sensor_compute",
     "sensor_to_file",
+    "sensor_create",
 ]
