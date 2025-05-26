@@ -210,6 +210,21 @@ avg_lum = oi_get(o1, 'luminance').mean()
 Multiple optical images can also be combined with weights or with the
 spatial mean removed from each component.
 
+## Optics Dataclass
+
+Basic lens parameters are stored in the `Optics` dataclass located in
+`isetcam.optics`. A convenience factory `optics_create` returns a
+default instance or loads data by name.
+
+```python
+from isetcam.optics import optics_create, Optics
+
+optics = optics_create()
+print(optics.f_number)
+```
+
+Run `pytest -q` after editing the optics routines.
+
 ## Sensor Dataclass
 
 The `Sensor` dataclass located in `isetcam.sensor` stores voltage data,
@@ -299,6 +314,21 @@ camera_to_file(Camera(sensor=sensor, optical_image=oi), 'cam.mat')
 ```
 
 Remember to run `pytest -q` after using these I/O helpers.
+
+## OpenEXR Image I/O
+
+Floating point images can be saved or loaded using `openexr_write` and
+`openexr_read`. These helpers rely on the OpenEXR bindings when
+available and fall back to the ``imageio`` backend.
+
+```python
+from isetcam.io import openexr_read, openexr_write
+
+openexr_write('img.exr', {'R': rgb[:, :, 0], 'G': rgb[:, :, 1], 'B': rgb[:, :, 2]})
+channels = openexr_read('img.exr')
+```
+
+Run `pytest -q` to confirm the EXR utilities work.
 
 ## Updated Tests
 
@@ -650,6 +680,20 @@ print(camera_get(cam, "n wave"))
 
 Remember to run `pytest -q` after experimenting with the camera helpers.
 
+## Sensor and Camera Creation
+
+Factory helpers build dataclass instances with default parameters.
+
+```python
+from isetcam.sensor import sensor_create
+from isetcam.camera import camera_create
+
+sensor = sensor_create()
+cam = camera_create(sensor=sensor)
+```
+
+Run `pytest -q` to verify these factories.
+
 ## Scene and Optical Image Spatial Support
 
 Helpers `scene_spatial_support` and `oi_spatial_support` return the spatial
@@ -684,6 +728,21 @@ padded_oi = oi_pad(oi, (20, 20))
 ```
 
 These utilities mirror the MATLAB equivalents and are covered by the unit tests. Run `pytest -q` after modifying them.
+
+## Demosaicing Helpers
+
+The `ie_nearest_neighbor` and `ie_bilinear` functions in
+`isetcam.imgproc` convert a Bayer mosaic into an RGB image using simple
+interpolation strategies.
+
+```python
+from isetcam.imgproc import ie_nearest_neighbor, ie_bilinear
+
+rgb_nn = ie_nearest_neighbor(bayer, "rggb")
+rgb_bl = ie_bilinear(bayer, "rggb")
+```
+
+Run `pytest -q` after changing the demosaicing routines.
 
 ## Image Distortion and PSNR
 
