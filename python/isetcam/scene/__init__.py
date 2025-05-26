@@ -22,6 +22,7 @@ from .scene_frequency_resample import scene_frequency_resample
 from .scene_to_file import scene_to_file
 from .scene_extract_waveband import scene_extract_waveband
 from .scene_add_grid import scene_add_grid
+from .scene_combine import scene_combine
 
 __all__ = [
     "Scene",
@@ -48,4 +49,5 @@ __all__ = [
     "scene_to_file",
     "scene_extract_waveband",
     "scene_add_grid",
+    "scene_combine",
 ]
