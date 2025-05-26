@@ -960,3 +960,73 @@ print(sensor.volts)
 ```
 
 As always, run `pytest -q` after adding or modifying sensor routines.
+
+## AdobeRGB Parameters
+
+Use `adobergb_parameters` to obtain chromaticity, luminance and white
+point values defined by the Adobe RGB standard.
+
+```python
+from isetcam import adobergb_parameters
+
+params = adobergb_parameters()
+xyy_white = adobergb_parameters("xyywhite")
+```
+
+Run `pytest -q` after updating the color space helpers.
+
+## Adjust Optical Image Illuminance
+
+The routine `oi_adjust_illuminance` scales an optical image so its mean
+illuminance matches a desired level.
+
+```python
+from isetcam.opticalimage import OpticalImage, oi_adjust_illuminance
+
+oi = OpticalImage(photons=data, wave=wave)
+scaled = oi_adjust_illuminance(oi, 100.0)
+```
+
+Remember to run `pytest -q` after editing the illuminance utilities.
+
+## Bayer Indices
+
+`bayer_indices` returns the column and row positions of each color in a
+Bayer mosaic for a given CFA pattern and image size.
+
+```python
+from isetcam.imgproc.demosaic import bayer_indices
+
+rx, ry, bx, by, g1x, g1y, g2x, g2y = bayer_indices("rggb", (4, 4))
+```
+
+Run `pytest -q` after modifying the demosaicing helpers.
+
+## Exposure Value
+
+Call `exposure_value` to compute the photographic exposure value from an
+F-number and shutter time.
+
+```python
+from isetcam import exposure_value
+
+ev = exposure_value(2.8, 1 / 60)
+```
+
+Remember to run `pytest -q` when changing the metric routines.
+
+## Chromaticity Plot
+
+`chromaticity_plot` displays the CIE xy chromaticity diagram and optional
+points.
+
+```python
+import numpy as np
+from isetcam import chromaticity_plot
+
+x = np.array([0.3, 0.4])
+y = np.array([0.3, 0.4])
+ax = chromaticity_plot(x, y)
+```
+
+Run `pytest -q` after updating the plotting utilities.
