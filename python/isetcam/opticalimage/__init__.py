@@ -16,6 +16,7 @@ from .oi_spatial_resample import oi_spatial_resample
 from .oi_frequency_support import oi_frequency_support
 from .oi_frequency_resample import oi_frequency_resample
 from .oi_adjust_illuminance import oi_adjust_illuminance
+from .oi_extract_waveband import oi_extract_waveband
 
 __all__ = [
     "OpticalImage",
@@ -36,4 +37,5 @@ __all__ = [
     "oi_photon_noise",
     "oi_to_file",
     "oi_adjust_illuminance",
+    "oi_extract_waveband",
 ]
