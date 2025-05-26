@@ -65,6 +65,7 @@ from .opticalimage import oi_to_file
 from .sensor import sensor_to_file
 from .display import display_to_file
 from .camera import camera_to_file
+from .io import openexr_read, openexr_write
 
 __all__ = [
     'vc_constants',
@@ -137,4 +138,6 @@ __all__ = [
     'sensor_to_file',
     'display_to_file',
     'camera_to_file',
+    'openexr_read',
+    'openexr_write',
 ]
