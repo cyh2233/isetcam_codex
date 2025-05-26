@@ -20,6 +20,7 @@ from .color_block_matrix import color_block_matrix
 from .chromaticity import chromaticity
 from .cct import cct
 from .cct_to_sun import cct_to_sun
+from .daylight import daylight
 from .circle_points import circle_points
 from .ie_param_format import ie_param_format
 from .ie_session_get import ie_session_get
@@ -90,6 +91,7 @@ __all__ = [
     'chromaticity',
     'cct',
     'cct_to_sun',
+    'daylight',
     'circle_points',
     'ie_param_format',
     'ie_session_get',
