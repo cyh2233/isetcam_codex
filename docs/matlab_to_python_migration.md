@@ -159,15 +159,21 @@ grid = scene_create('grid lines', spacing=32, thickness=2)
 Run `pytest -q` to confirm the factory works.
 
 Scenes can be manipulated after creation. Use `scene_adjust_luminance` to
-scale the luminance statistic and `scene_crop` to extract a region:
+scale the luminance statistic and `scene_crop` to extract a region.
+
+## Scene Insert
+
+Insert one scene into another with `scene_insert`:
 
 ```python
 from isetcam.scene import scene_adjust_luminance, scene_crop, scene_insert
 
 sc2 = scene_adjust_luminance(sc, 'mean', 50)
-cropped = scene_crop(sc2, (10, 10, 64, 64))
-sc3 = scene_insert(sc2, cropped, (0, 0))
+roi = scene_crop(sc2, (10, 10, 64, 64))
+sc3 = scene_insert(sc2, roi, (0, 0))
 ```
+
+Run `pytest -q` after updating the scene helpers.
 
 ## Adjusting Scene Illuminant
 
@@ -714,24 +720,35 @@ oi2 = oi_spatial_resample(oi, 1e-3)
 
 Run `pytest -q` after editing the spatial routines.
 
-## Scene and Optical Image Frequency Support
+## Scene Frequency Support
 
-Helpers `scene_frequency_support` and `oi_frequency_support` return the spatial
-frequency coordinates of each sample. Use `scene_frequency_resample` and
-`oi_frequency_resample` to change the number of frequency samples while keeping
-the field of view constant.
+`scene_frequency_support` returns the spatial frequency grid for a scene.
+`scene_frequency_resample` changes the frequency resolution while
+preserving the field of view.
 
 ```python
 from isetcam.scene import scene_frequency_support, scene_frequency_resample
-from isetcam.opticalimage import oi_frequency_support, oi_frequency_resample
 
 f_sup = scene_frequency_support(sc)
 sc_f = scene_frequency_resample(sc, 32, 32)
+```
+
+Run `pytest -q` after modifying the scene frequency helpers.
+
+## Optical Image Frequency Support
+
+Use `oi_frequency_support` to obtain the frequency grid of an optical
+image and `oi_frequency_resample` to adjust the number of frequency
+samples.
+
+```python
+from isetcam.opticalimage import oi_frequency_support, oi_frequency_resample
+
 oi_f_sup = oi_frequency_support(oi)
 oi_f = oi_frequency_resample(oi, 64, 64)
 ```
 
-Run `pytest -q` after editing the frequency routines.
+Remember to run `pytest -q` once these routines are updated.
 
 ## Scene and Optical Image Padding
 
@@ -853,6 +870,19 @@ noisy_s, s_noise = sensor_photon_noise(sensor)
 ```
 
 Run `pytest -q` after modifying the noise utilities.
+
+## Sensor Photon Noise
+
+The helper `sensor_photon_noise` adds Poisson noise directly to the
+volt data stored in a sensor instance.
+
+```python
+from isetcam.sensor import sensor_photon_noise
+
+noisy_s, noise = sensor_photon_noise(sensor)
+```
+
+Remember to run `pytest -q` after adjusting the sensor noise routines.
 
 ## SCIELAB Color Difference
 
