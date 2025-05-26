@@ -713,6 +713,25 @@ oi2 = oi_spatial_resample(oi, 1e-3)
 
 Run `pytest -q` after editing the spatial routines.
 
+## Scene and Optical Image Frequency Support
+
+Helpers `scene_frequency_support` and `oi_frequency_support` return the spatial
+frequency coordinates of each sample. Use `scene_frequency_resample` and
+`oi_frequency_resample` to change the number of frequency samples while keeping
+the field of view constant.
+
+```python
+from isetcam.scene import scene_frequency_support, scene_frequency_resample
+from isetcam.opticalimage import oi_frequency_support, oi_frequency_resample
+
+f_sup = scene_frequency_support(sc)
+sc_f = scene_frequency_resample(sc, 32, 32)
+oi_f_sup = oi_frequency_support(oi)
+oi_f = oi_frequency_resample(oi, 64, 64)
+```
+
+Run `pytest -q` after editing the frequency routines.
+
 ## Scene and Optical Image Padding
 
 Scenes and optical images can be padded, shifted or cropped using small helper functions.

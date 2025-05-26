@@ -16,6 +16,8 @@ from .scene_translate import scene_translate
 from .scene_rotate import scene_rotate
 from .scene_spatial_support import scene_spatial_support
 from .scene_spatial_resample import scene_spatial_resample
+from .scene_frequency_support import scene_frequency_support
+from .scene_frequency_resample import scene_frequency_resample
 from .scene_to_file import scene_to_file
 
 __all__ = [
@@ -35,6 +37,8 @@ __all__ = [
     "scene_rotate",
     "scene_spatial_support",
     "scene_spatial_resample",
+    "scene_frequency_support",
+    "scene_frequency_resample",
     "scene_create",
     "scene_photon_noise",
     "scene_to_file",
