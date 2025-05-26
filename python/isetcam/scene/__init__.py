@@ -20,6 +20,7 @@ from .scene_spatial_resample import scene_spatial_resample
 from .scene_frequency_support import scene_frequency_support
 from .scene_frequency_resample import scene_frequency_resample
 from .scene_to_file import scene_to_file
+from .scene_extract_waveband import scene_extract_waveband
 
 __all__ = [
     "Scene",
@@ -44,4 +45,5 @@ __all__ = [
     "scene_create",
     "scene_photon_noise",
     "scene_to_file",
+    "scene_extract_waveband",
 ]
