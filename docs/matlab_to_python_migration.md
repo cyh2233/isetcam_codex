@@ -162,10 +162,11 @@ Scenes can be manipulated after creation. Use `scene_adjust_luminance` to
 scale the luminance statistic and `scene_crop` to extract a region:
 
 ```python
-from isetcam.scene import scene_adjust_luminance, scene_crop
+from isetcam.scene import scene_adjust_luminance, scene_crop, scene_insert
 
 sc2 = scene_adjust_luminance(sc, 'mean', 50)
 cropped = scene_crop(sc2, (10, 10, 64, 64))
+sc3 = scene_insert(sc2, cropped, (0, 0))
 ```
 
 ## Adjusting Scene Illuminant
