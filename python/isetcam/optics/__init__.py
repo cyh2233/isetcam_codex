@@ -4,10 +4,14 @@ from .optics_class import Optics
 from .optics_get import optics_get
 from .optics_set import optics_set
 from .optics_create import optics_create
+from .optics_to_file import optics_to_file
+from .optics_from_file import optics_from_file
 
 __all__ = [
     "Optics",
     "optics_get",
     "optics_set",
     "optics_create",
+    "optics_to_file",
+    "optics_from_file",
 ]
