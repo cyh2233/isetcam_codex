@@ -12,6 +12,8 @@ from .sensor_compute import sensor_compute
 from .sensor_photon_noise import sensor_photon_noise
 from .sensor_to_file import sensor_to_file
 from .sensor_create import sensor_create
+from .sensor_snr import sensor_snr
+from .sensor_snr_luxsec import sensor_snr_luxsec
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -53,4 +55,6 @@ __all__ = [
     "sensor_photon_noise",
     "sensor_to_file",
     "sensor_create",
+    "sensor_snr",
+    "sensor_snr_luxsec",
 ]
