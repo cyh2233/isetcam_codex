@@ -51,7 +51,12 @@ from .srgb_parameters import srgb_parameters
 from .ctemp_to_srgb import ctemp_to_srgb
 from .init_default_spectrum import init_default_spectrum
 from .mk_inv_gamma_table import mk_inv_gamma_table
-from .imgproc import image_distort, ie_internal_to_display
+from .imgproc import (
+    image_distort,
+    ie_internal_to_display,
+    ie_nearest_neighbor,
+    ie_bilinear,
+)
 from .ie_spectra_sphere import ie_spectra_sphere
 from .metrics.ie_psnr import ie_psnr
 from .metrics.scielab import scielab, sc_params, SCIELABParams
@@ -117,6 +122,8 @@ __all__ = [
     'ie_spectra_sphere',
     'image_distort',
     'ie_internal_to_display',
+    'ie_nearest_neighbor',
+    'ie_bilinear',
     'ie_psnr',
     'scielab',
     'sc_params',
