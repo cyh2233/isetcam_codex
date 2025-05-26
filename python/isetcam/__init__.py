@@ -18,6 +18,7 @@ from .ie_color_transform import ie_color_transform
 from .color_transform_matrix import color_transform_matrix
 from .color_block_matrix import color_block_matrix
 from .chromaticity import chromaticity
+from .chromaticity_plot import chromaticity_plot
 from .cct import cct
 from .cct_to_sun import cct_to_sun
 from .daylight import daylight
@@ -94,6 +95,7 @@ __all__ = [
     'color_transform_matrix',
     'color_block_matrix',
     'chromaticity',
+    'chromaticity_plot',
     'cct',
     'cct_to_sun',
     'daylight',
