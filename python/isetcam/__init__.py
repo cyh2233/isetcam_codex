@@ -52,6 +52,7 @@ from .srgb_parameters import srgb_parameters
 from .ctemp_to_srgb import ctemp_to_srgb
 from .init_default_spectrum import init_default_spectrum
 from .mk_inv_gamma_table import mk_inv_gamma_table
+from .ie_cov_ellipsoid import ie_cov_ellipsoid
 from .imgproc import (
     image_distort,
     ie_internal_to_display,
@@ -122,6 +123,7 @@ __all__ = [
     'ctemp_to_srgb',
     'init_default_spectrum',
     'mk_inv_gamma_table',
+    'ie_cov_ellipsoid',
     'ie_spectra_sphere',
     'image_distort',
     'ie_internal_to_display',
