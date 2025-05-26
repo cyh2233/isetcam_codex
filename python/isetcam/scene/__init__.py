@@ -12,6 +12,7 @@ from .scene_create import scene_create
 from .scene_photon_noise import scene_photon_noise
 from .scene_crop import scene_crop
 from .scene_pad import scene_pad
+from .scene_insert import scene_insert
 from .scene_translate import scene_translate
 from .scene_rotate import scene_rotate
 from .scene_spatial_support import scene_spatial_support
@@ -33,6 +34,7 @@ __all__ = [
     "scene_adjust_illuminant",
     "scene_crop",
     "scene_pad",
+    "scene_insert",
     "scene_translate",
     "scene_rotate",
     "scene_spatial_support",
