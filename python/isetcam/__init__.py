@@ -59,6 +59,7 @@ from .imgproc import (
     ie_internal_to_display,
     ie_nearest_neighbor,
     ie_bilinear,
+    bayer_indices,
 )
 from .ie_spectra_sphere import ie_spectra_sphere
 from .metrics.ie_psnr import ie_psnr
@@ -131,6 +132,7 @@ __all__ = [
     'ie_internal_to_display',
     'ie_nearest_neighbor',
     'ie_bilinear',
+    'bayer_indices',
     'ie_psnr',
     'scielab',
     'sc_params',
