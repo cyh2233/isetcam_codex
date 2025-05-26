@@ -66,6 +66,7 @@ from .metrics.ie_psnr import ie_psnr
 from .metrics.scielab import scielab, sc_params, SCIELABParams
 from .metrics.xyz_to_vsnr import xyz_to_vsnr
 from .metrics.ssim_metric import ssim_metric
+from .metrics.exposure_value import exposure_value
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -139,6 +140,7 @@ __all__ = [
     'SCIELABParams',
     'xyz_to_vsnr',
     'ssim_metric',
+    'exposure_value',
     'iset_root_path',
     'ie_init',
     'ie_init_session',
