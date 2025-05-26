@@ -6,6 +6,7 @@ from .camera_set import camera_set
 from .camera_to_file import camera_to_file
 from .camera_from_file import camera_from_file
 from .camera_create import camera_create
+from .camera_compute import camera_compute
 
 __all__ = [
     "Camera",
@@ -14,4 +15,5 @@ __all__ = [
     "camera_to_file",
     "camera_from_file",
     "camera_create",
+    "camera_compute",
 ]
