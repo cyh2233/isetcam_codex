@@ -28,6 +28,7 @@ from .ie_session_get import ie_session_get
 from .ie_session_set import ie_session_set
 from .ie_save_session import ie_save_session
 from .ie_load_session import ie_load_session
+from .vc_add_and_select_object import vc_add_and_select_object
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
@@ -166,4 +167,5 @@ __all__ = [
     'optics_from_file',
     'openexr_read',
     'openexr_write',
+    'vc_add_and_select_object',
 ]
