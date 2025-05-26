@@ -9,6 +9,7 @@ from .sensor_get import sensor_get
 from .sensor_set import sensor_set
 from .sensor_from_file import sensor_from_file
 from .sensor_compute import sensor_compute
+from .sensor_photon_noise import sensor_photon_noise
 from .sensor_to_file import sensor_to_file
 from .sensor_create import sensor_create
 
@@ -49,6 +50,7 @@ __all__ = [
     "sensor_set",
     "sensor_from_file",
     "sensor_compute",
+    "sensor_photon_noise",
     "sensor_to_file",
     "sensor_create",
 ]

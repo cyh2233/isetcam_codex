@@ -836,17 +836,20 @@ inv = mk_inv_gamma_table(gamma)
 
 Run `pytest -q` after changing the gamma utilities.
 
-## Scene and Optical Image Photon Noise
+## Scene, Optical Image and Sensor Photon Noise
 
-`scene_photon_noise` and `oi_photon_noise` add Poisson noise to the
-photon data stored in a scene or optical image.
+`scene_photon_noise`, `oi_photon_noise` and `sensor_photon_noise` add
+Poisson noise to the photon or voltage data stored in a scene, optical
+image or sensor.
 
 ```python
 from isetcam.scene import scene_photon_noise
 from isetcam.opticalimage import oi_photon_noise
+from isetcam.sensor import sensor_photon_noise
 
 noisy_sc, sc_noise = scene_photon_noise(sc)
 noisy_oi, oi_noise = oi_photon_noise(oi)
+noisy_s, s_noise = sensor_photon_noise(sensor)
 ```
 
 Run `pytest -q` after modifying the noise utilities.
