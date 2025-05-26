@@ -21,6 +21,7 @@ from .scene_frequency_support import scene_frequency_support
 from .scene_frequency_resample import scene_frequency_resample
 from .scene_to_file import scene_to_file
 from .scene_extract_waveband import scene_extract_waveband
+from .scene_add_grid import scene_add_grid
 
 __all__ = [
     "Scene",
@@ -46,4 +47,5 @@ __all__ = [
     "scene_photon_noise",
     "scene_to_file",
     "scene_extract_waveband",
+    "scene_add_grid",
 ]
