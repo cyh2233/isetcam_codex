@@ -8,6 +8,7 @@ from .camera_from_file import camera_from_file
 from .camera_create import camera_create
 from .camera_compute import camera_compute
 from .camera_mtf import camera_mtf
+from .camera_vsnr import camera_vsnr
 
 __all__ = [
     "Camera",
@@ -18,4 +19,5 @@ __all__ = [
     "camera_create",
     "camera_compute",
     "camera_mtf",
+    "camera_vsnr",
 ]
