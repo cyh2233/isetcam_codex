@@ -1094,3 +1094,66 @@ freqs, mtf = camera_mtf(camera)
 ```
 
 Run `pytest -q` after editing camera utilities.
+
+## Scene Add Grid
+
+`scene_add_grid` overlays black grid lines on a scene's photon data.
+
+```python
+from isetcam.scene import scene_add_grid
+
+gridded = scene_add_grid(scene, (16, 16), g_width=2)
+```
+
+Run `pytest -q` after updating the grid helper.
+
+## Scene Combine
+
+`scene_combine` joins two scenes horizontally, vertically or in a grid.
+
+```python
+from isetcam.scene import scene_combine
+
+combined = scene_combine(scene1, scene2, "horizontal")
+```
+
+Run `pytest -q` after modifying the combination utilities.
+
+## Sensor Crop
+
+Use `sensor_crop` to extract a voltage region while keeping the 2x2 CFA
+alignment.
+
+```python
+from isetcam.sensor import sensor_crop
+
+cropped = sensor_crop(sensor, (0, 0, 128, 128))
+```
+
+Remember to run `pytest -q` after editing the sensor routines.
+
+## Optical Image Compute
+
+`oi_compute` forms an optical image from a scene using an optics model.
+
+```python
+from isetcam.opticalimage import oi_compute
+from isetcam.optics import Optics
+
+oi = oi_compute(scene, Optics(f_number=2.8, f_length=5.0, wave=scene.wave))
+```
+
+Run `pytest -q` to confirm the optical image calculations.
+
+## Camera VSNR
+
+`camera_vsnr` estimates the visible SNR for a camera imaging a scene.
+
+```python
+from isetcam.camera import camera_create, camera_vsnr
+
+cam = camera_create()
+score = camera_vsnr(cam, scene)
+```
+
+Run `pytest -q` after modifying the VSNR routines.
