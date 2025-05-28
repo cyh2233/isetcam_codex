@@ -190,7 +190,7 @@ sc3 = scene_adjust_illuminant(sc, spd)
 
 Run `pytest -q` after modifying the scene routines.
 
-## Adjusting Scene Reflectance
+## scene_adjust_reflectance
 
 The helper `scene_adjust_reflectance` replaces the scene reflectance
 data while leaving the illuminant untouched. The reflectance can be a
@@ -469,6 +469,8 @@ illum = illuminant_create("D65")
 bb_spd = illuminant_blackbody(6500, illum.wave)
 ```
 
+## Illuminant File Utilities
+
 Use `illuminant_to_file` and `illuminant_from_file` to write or read an
 `Illuminant` from a simple MAT-file:
 
@@ -483,6 +485,8 @@ illum = Illuminant(spd=np.ones(4), wave=np.arange(4))
 illuminant_to_file(illum, "illum.mat")
 reloaded = illuminant_from_file("illum.mat")
 ```
+
+Run `pytest -q` after editing the illuminant I/O helpers.
 
 ## Session Persistence
 
@@ -751,6 +755,8 @@ oi2 = oi_spatial_resample(oi, 1e-3)
 
 Run `pytest -q` after editing the spatial routines.
 
+## Scene Adjust Pixel Size
+
 `scene_adjust_pixel_size` sets the scene distance so its sample spacing
 matches a desired sensor pixel size and updates the field of view.
 
@@ -759,6 +765,8 @@ from isetcam.scene import scene_adjust_pixel_size
 
 sc, new_d = scene_adjust_pixel_size(sc, oi, 2e-6)
 ```
+
+Run `pytest -q` when modifying the pixel size helper.
 
 ## Scene Frequency Support
 
@@ -1029,7 +1037,7 @@ scaled = oi_adjust_illuminance(oi, 100.0)
 
 Remember to run `pytest -q` after editing the illuminance utilities.
 
-## Calculate Optical Image Irradiance
+## oi_calculate_irradiance and oi_calculate_illuminance
 
 Use `oi_calculate_irradiance` to integrate the spectral photon data of an
 optical image and return an irradiance map.
