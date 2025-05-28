@@ -16,6 +16,8 @@ class Scene:
     photons: np.ndarray
     wave: np.ndarray | None = None
     name: str | None = None
+    distance: float | None = None
+    fov: float | None = None
 
     def __post_init__(self) -> None:
         if self.wave is None:

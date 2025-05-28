@@ -735,6 +735,15 @@ oi2 = oi_spatial_resample(oi, 1e-3)
 
 Run `pytest -q` after editing the spatial routines.
 
+`scene_adjust_pixel_size` sets the scene distance so its sample spacing
+matches a desired sensor pixel size and updates the field of view.
+
+```python
+from isetcam.scene import scene_adjust_pixel_size
+
+sc, new_d = scene_adjust_pixel_size(sc, oi, 2e-6)
+```
+
 ## Scene Frequency Support
 
 `scene_frequency_support` returns the spatial frequency grid for a scene.
