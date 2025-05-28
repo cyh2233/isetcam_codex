@@ -77,7 +77,7 @@ from .human import human_pupil_size, human_macular_transmittance
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics, optics, human
+from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics, optics, human, ip
 from .opticalimage import oi_to_file
 from .sensor import sensor_to_file
 from .display import display_to_file
@@ -166,6 +166,7 @@ __all__ = [
     'imgproc',
     'metrics',
     'human',
+    'ip',
     'oi_to_file',
     'sensor_to_file',
     'display_to_file',
