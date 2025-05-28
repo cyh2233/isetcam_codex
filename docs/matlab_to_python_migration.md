@@ -453,6 +453,21 @@ illum = illuminant_create("D65")
 bb_spd = illuminant_blackbody(6500, illum.wave)
 ```
 
+Use `illuminant_to_file` and `illuminant_from_file` to write or read an
+`Illuminant` from a simple MAT-file:
+
+```python
+from isetcam.illuminant import (
+    Illuminant,
+    illuminant_to_file,
+    illuminant_from_file,
+)
+
+illum = Illuminant(spd=np.ones(4), wave=np.arange(4))
+illuminant_to_file(illum, "illum.mat")
+reloaded = illuminant_from_file("illum.mat")
+```
+
 ## Session Persistence
 
 The global session dictionary can be serialized to disk and reloaded via
