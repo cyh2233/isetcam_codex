@@ -79,6 +79,7 @@ from .sensor import sensor_to_file
 from .display import display_to_file
 from .camera import camera_to_file, camera_from_file
 from .optics import optics_to_file, optics_from_file
+from .illuminant import illuminant_to_file, illuminant_from_file
 from .io import openexr_read, openexr_write
 
 __all__ = [
@@ -161,6 +162,8 @@ __all__ = [
     'oi_to_file',
     'sensor_to_file',
     'display_to_file',
+    'illuminant_to_file',
+    'illuminant_from_file',
     'camera_to_file',
     'camera_from_file',
     'optics_to_file',
