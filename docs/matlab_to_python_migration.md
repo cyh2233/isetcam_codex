@@ -1029,6 +1029,22 @@ scaled = oi_adjust_illuminance(oi, 100.0)
 
 Remember to run `pytest -q` after editing the illuminance utilities.
 
+## Calculate Optical Image Irradiance
+
+Use `oi_calculate_irradiance` to integrate the spectral photon data of an
+optical image and return an irradiance map.
+
+```python
+from isetcam.opticalimage import OpticalImage, oi_calculate_irradiance,
+oi_calculate_illuminance
+
+oi = OpticalImage(photons=data, wave=wave)
+irr = oi_calculate_irradiance(oi)
+lux = oi_calculate_illuminance(oi)
+```
+
+Run `pytest -q` after updating the irradiance helpers.
+
 ## Bayer Indices
 
 `bayer_indices` returns the column and row positions of each color in a
