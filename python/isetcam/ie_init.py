@@ -28,9 +28,6 @@ def ie_init(clear: bool = False) -> Dict[str, Any]:
     Dict[str, Any]
         The initialized session dictionary.
     """
-    # Warn about known incompatibilities (mirrors MATLAB behavior)
-    if "2019b" in os.sys.version:
-        warnings.warn("Windows do not run correctly under version 2019b")
 
     # Close any open GUI windows
     if plt is not None:
