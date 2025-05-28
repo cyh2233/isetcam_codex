@@ -73,10 +73,11 @@ from .metrics.scielab import scielab, sc_params, SCIELABParams
 from .metrics.xyz_to_vsnr import xyz_to_vsnr
 from .metrics.ssim_metric import ssim_metric
 from .metrics.exposure_value import exposure_value
+from .human import human_pupil_size, human_macular_transmittance
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics, optics
+from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics, optics, human
 from .opticalimage import oi_to_file
 from .sensor import sensor_to_file
 from .display import display_to_file
@@ -150,6 +151,8 @@ __all__ = [
     'xyz_to_vsnr',
     'ssim_metric',
     'exposure_value',
+    'human_pupil_size',
+    'human_macular_transmittance',
     'iset_root_path',
     'ie_init',
     'ie_init_session',
@@ -162,6 +165,7 @@ __all__ = [
     'illuminant',
     'imgproc',
     'metrics',
+    'human',
     'oi_to_file',
     'sensor_to_file',
     'display_to_file',
