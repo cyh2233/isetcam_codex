@@ -8,6 +8,7 @@ from .scene_get import scene_get
 from .scene_set import scene_set
 from .scene_adjust_luminance import scene_adjust_luminance
 from .scene_adjust_illuminant import scene_adjust_illuminant
+from .scene_adjust_reflectance import scene_adjust_reflectance
 from .scene_create import scene_create
 from .scene_photon_noise import scene_photon_noise
 from .scene_crop import scene_crop
@@ -36,6 +37,7 @@ __all__ = [
     "scene_set",
     "scene_adjust_luminance",
     "scene_adjust_illuminant",
+    "scene_adjust_reflectance",
     "scene_crop",
     "scene_pad",
     "scene_insert",

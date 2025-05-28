@@ -190,6 +190,22 @@ sc3 = scene_adjust_illuminant(sc, spd)
 
 Run `pytest -q` after modifying the scene routines.
 
+## Adjusting Scene Reflectance
+
+The helper `scene_adjust_reflectance` replaces the scene reflectance
+data while leaving the illuminant untouched. The reflectance can be a
+uniform vector or a spatial-spectral cube matching the scene photon
+array:
+
+```python
+from isetcam.scene import scene_adjust_reflectance
+
+new_refl = np.linspace(0.2, 0.8, len(sc.wave))
+sc4 = scene_adjust_reflectance(sc, new_refl)
+```
+
+Run `pytest -q` after updating the reflectance routines.
+
 ## Optical Image Utilities
 
 Optical images are represented by the `OpticalImage` dataclass found in
