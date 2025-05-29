@@ -73,7 +73,13 @@ from .metrics.scielab import scielab, sc_params, SCIELABParams
 from .metrics.xyz_to_vsnr import xyz_to_vsnr
 from .metrics.ssim_metric import ssim_metric
 from .metrics.exposure_value import exposure_value
-from .human import human_pupil_size, human_macular_transmittance
+from .human import (
+    human_pupil_size,
+    human_macular_transmittance,
+    human_optical_density,
+    human_otf,
+    human_lsf,
+)
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
@@ -153,6 +159,9 @@ __all__ = [
     'exposure_value',
     'human_pupil_size',
     'human_macular_transmittance',
+    'human_optical_density',
+    'human_otf',
+    'human_lsf',
     'iset_root_path',
     'ie_init',
     'ie_init_session',
