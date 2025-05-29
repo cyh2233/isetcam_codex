@@ -84,7 +84,7 @@ from .display import display_to_file
 from .camera import camera_to_file, camera_from_file
 from .optics import optics_to_file, optics_from_file
 from .illuminant import illuminant_to_file, illuminant_from_file
-from .io import openexr_read, openexr_write
+from .io import openexr_read, openexr_write, pfm_read, pfm_write
 
 __all__ = [
     'vc_constants',
@@ -178,6 +178,8 @@ __all__ = [
     'optics_from_file',
     'openexr_read',
     'openexr_write',
+    'pfm_read',
+    'pfm_write',
     'vc_add_and_select_object',
     'vc_get_object',
     'vc_replace_object',
