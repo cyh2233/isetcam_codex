@@ -51,6 +51,7 @@ from .srgb_xyz import (
     srgb_to_xyz,
     xyz_to_srgb,
 )
+from .rgb_ycbcr import rgb_to_ycbcr, ycbcr_to_rgb
 from .srgb_to_cct import srgb_to_cct
 from .spd_to_cct import spd_to_cct
 from .srgb_parameters import srgb_parameters
@@ -135,6 +136,8 @@ __all__ = [
     'linear_to_srgb',
     'srgb_to_xyz',
     'xyz_to_srgb',
+    'rgb_to_ycbcr',
+    'ycbcr_to_rgb',
     'srgb_to_cct',
     'spd_to_cct',
     'srgb_parameters',
