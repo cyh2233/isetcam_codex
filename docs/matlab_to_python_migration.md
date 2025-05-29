@@ -1221,3 +1221,91 @@ score = camera_vsnr(cam, scene)
 ```
 
 Run `pytest -q` after modifying the VSNR routines.
+## Human Pupil Size and Macular Transmittance
+
+`human_pupil_size` estimates the diameter and area of the human pupil while
+`human_macular_transmittance` applies macular pigment absorption to an
+`OpticalImage` instance.
+
+```python
+from isetcam.human import human_pupil_size, human_macular_transmittance
+from isetcam.opticalimage import OpticalImage
+
+diam, area = human_pupil_size(100, 'wy', age=30)
+oi2 = human_macular_transmittance(oi, density=0.35)
+```
+
+Run `pytest -q` after updating these human vision helpers.
+
+## IP Package
+
+The `ip` package implements a minimal sensor to display pipeline. Use
+`ip_create` to allocate a `VCImage` and `ip_compute` to render sensor volts
+into RGB values.  `ip_get` and `ip_set` retrieve or update fields.
+
+```python
+from isetcam.sensor import sensor_create
+from isetcam.display import display_create
+from isetcam.ip import ip_create, ip_compute, ip_get, ip_set
+
+sensor = sensor_create()
+disp = display_create()
+vc = ip_compute(sensor, disp)
+print(ip_get(vc, 'n wave'))
+ip_set(vc, 'name', 'view')
+```
+
+Run `pytest -q` when modifying the IP pipeline.
+
+## Display Render and Show
+
+`display_render` converts digital RGB values to spectral radiance using a
+`Display` definition.  `display_show_image` renders and displays the result
+with matplotlib.
+
+```python
+from isetcam.display import Display, display_render, display_show_image
+
+spectral = display_render(img, disp)
+ax = display_show_image(img, disp)
+```
+
+Remember to run `pytest -q` after editing the display routines.
+
+## Portable FloatMap I/O
+
+`pfm_read` and `pfm_write` load and save images in the high dynamic range PFM
+format.
+
+```python
+from isetcam.io import pfm_read, pfm_write
+
+pfm_write('img.pfm', data.astype(np.float32))
+loaded = pfm_read('img.pfm')
+```
+
+Run `pytest -q` after modifying these I/O helpers.
+
+## vc_get_object and Replacement Helpers
+
+Objects stored in the global session can be retrieved with `vc_get_object`.
+Use `vc_replace_object` or `vc_replace_and_select_object` to update an entry
+while maintaining the selected index.
+
+```python
+from isetcam import (
+    ie_init,
+    vc_add_and_select_object,
+    vc_get_object,
+    vc_replace_object,
+    vc_replace_and_select_object,
+)
+
+ie_init()
+idx = vc_add_and_select_object('scene', sc)
+sc2 = vc_get_object('scene', idx)
+vc_replace_object('scene', new_sc, idx)
+vc_replace_and_select_object('scene', other_sc)
+```
+
+Run `pytest -q` after changing the session management helpers.
