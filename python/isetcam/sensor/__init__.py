@@ -15,6 +15,7 @@ from .sensor_create import sensor_create
 from .sensor_snr import sensor_snr
 from .sensor_snr_luxsec import sensor_snr_luxsec
 from .sensor_crop import sensor_crop
+from .sensor_plot import sensor_plot
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -59,4 +60,5 @@ __all__ = [
     "sensor_crop",
     "sensor_snr",
     "sensor_snr_luxsec",
+    "sensor_plot",
 ]
