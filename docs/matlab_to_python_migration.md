@@ -580,6 +580,18 @@ energy = np.ones((1, len(wave))) * 1e-4
 lum = scotopic_luminance_from_energy(energy, wave)
 ```
 
+`scotopic_luminance_from_photons` performs the same calculation when the input
+data are photon counts.
+
+```python
+from isetcam import energy_to_quanta, scotopic_luminance_from_photons
+
+photons = energy_to_quanta(wave, energy.T).T
+lum2 = scotopic_luminance_from_photons(photons, wave)
+```
+
+Run `pytest -q` after editing the scotopic luminance routines.
+
 ## XYZ and L\*a\*b\* Conversions
 
 Use `xyz_to_lab` and `lab_to_xyz` to convert between XYZ tristimulus values and CIE L\*a\*b\*.
@@ -651,6 +663,22 @@ lms2 = srgb_to_lms(srgb)
 ```
 
 Run `pytest -q` to ensure these color transforms remain valid.
+
+## RGB and YCbCr
+
+`rgb_to_ycbcr` and `ycbcr_to_rgb` convert between RGB arrays and the YCbCr
+representation used in video processing.
+
+```python
+import numpy as np
+from isetcam import rgb_to_ycbcr, ycbcr_to_rgb
+
+rgb = np.random.rand(4, 3)
+ycbcr = rgb_to_ycbcr(rgb)
+rgb2 = ycbcr_to_rgb(ycbcr)
+```
+
+Remember to run `pytest -q` after modifying these conversion helpers.
 
 ## Daylight Spectra
 
@@ -1009,6 +1037,21 @@ print(sensor.volts)
 
 As always, run `pytest -q` after adding or modifying sensor routines.
 
+## Sensor Plot
+
+Use `sensor_plot` to visualize a sensor voltage image and optionally overlay the
+color filter array.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_plot
+
+s = Sensor(volts=np.random.rand(4, 4), wave=np.array([550]), exposure_time=0.01)
+ax = sensor_plot(s, show_filters=True)
+```
+
+Run `pytest -q` to exercise the plotting helper.
+
 ## AdobeRGB Parameters
 
 Use `adobergb_parameters` to obtain chromaticity, luminance and white
@@ -1237,6 +1280,22 @@ oi2 = human_macular_transmittance(oi, density=0.35)
 
 Run `pytest -q` after updating these human vision helpers.
 
+## Human Optical Density, OTF and LSF
+
+Additional human eye utilities provide typical optical density parameters and
+frequency-domain models.
+
+```python
+import numpy as np
+from isetcam.human import human_optical_density, human_otf, human_lsf
+
+od = human_optical_density()
+otf, fs, wave = human_otf(wave=np.array([550]))
+lsf, x_axis, _ = human_lsf(wave=np.array([550]))
+```
+
+Remember to run `pytest -q` whenever modifying these functions.
+
 ## IP Package
 
 The `ip` package implements a minimal sensor to display pipeline. Use
@@ -1270,7 +1329,9 @@ spectral = display_render(img, disp)
 ax = display_show_image(img, disp)
 ```
 
-Remember to run `pytest -q` after editing the display routines.
+The unit test for `display_show_image` sets the Matplotlib backend to `"Agg"`
+so the function can run without opening a window.  Remember to run
+`pytest -q` after editing the display routines.
 
 ## Portable FloatMap I/O
 
