@@ -9,6 +9,7 @@ from .delta_e_uv import delta_e_uv
 from .xyz_to_vsnr import xyz_to_vsnr
 from .ssim_metric import ssim_metric
 from .exposure_value import exposure_value
+from .iso_acutance import iso_acutance
 
 __all__ = [
     "ie_psnr",
@@ -22,4 +23,5 @@ __all__ = [
     "xyz_to_vsnr",
     "ssim_metric",
     "exposure_value",
+    "iso_acutance",
 ]
