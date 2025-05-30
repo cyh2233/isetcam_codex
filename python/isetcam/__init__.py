@@ -17,6 +17,7 @@ from .ie_xyz_from_energy import ie_xyz_from_energy
 from .ie_xyz_from_photons import ie_xyz_from_photons
 from .ie_color_transform import ie_color_transform
 from .color_transform_matrix import color_transform_matrix
+from .color_transform_matrix_create import color_transform_matrix_create
 from .color_block_matrix import color_block_matrix
 from .chromaticity import chromaticity
 from .chromaticity_plot import chromaticity_plot
@@ -111,6 +112,7 @@ __all__ = [
     'ie_xyz_from_photons',
     'ie_color_transform',
     'color_transform_matrix',
+    'color_transform_matrix_create',
     'color_block_matrix',
     'chromaticity',
     'chromaticity_plot',
