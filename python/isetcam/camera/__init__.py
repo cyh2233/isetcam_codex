@@ -9,6 +9,8 @@ from .camera_create import camera_create
 from .camera_compute import camera_compute
 from .camera_mtf import camera_mtf
 from .camera_vsnr import camera_vsnr
+from .camera_acutance import camera_acutance
+from .camera_color_accuracy import camera_color_accuracy
 
 __all__ = [
     "Camera",
@@ -20,4 +22,6 @@ __all__ = [
     "camera_compute",
     "camera_mtf",
     "camera_vsnr",
+    "camera_acutance",
+    "camera_color_accuracy",
 ]
