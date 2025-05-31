@@ -7,6 +7,7 @@ from .ip_get import ip_get
 from .ip_set import ip_set
 from .ip_to_file import ip_to_file
 from .ip_from_file import ip_from_file
+from .ip_plot import ip_plot
 
 __all__ = [
     "VCImage",
@@ -16,4 +17,5 @@ __all__ = [
     "ip_set",
     "ip_to_file",
     "ip_from_file",
+    "ip_plot",
 ]
