@@ -21,7 +21,7 @@ def optics_set(optics: Optics, param: str, val: Any) -> None:
         return
     if key == "wave":
         optics.wave = np.asarray(val, dtype=float).reshape(-1)
-        if optics.transmittance is not None and optics.transmittance.size != optics.wave.size:
+        if optics.transmittance is not None and optics.transmittance.size != optics.wave.size:  # noqa: E501
             optics.transmittance = np.ones_like(optics.wave, dtype=float)
         return
     if key == "transmittance":

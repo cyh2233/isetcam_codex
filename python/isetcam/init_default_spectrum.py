@@ -37,7 +37,7 @@ def init_default_spectrum(
 
     stype = spectral_type.lower()
     if stype == "multispectral":
-        w = np.arange(400, 701, 10, dtype=float) if wave is None else np.asarray(wave, dtype=float)
+        w = np.arange(400, 701, 10, dtype=float) if wave is None else np.asarray(wave, dtype=float)  # noqa: E501
     elif stype == "monochrome":
         if wave is None:
             w = np.array([550.0], dtype=float)

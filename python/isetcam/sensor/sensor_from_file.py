@@ -17,7 +17,7 @@ def _get_attr(obj: object, name: str):
     return getattr(obj, name, None)
 
 
-def sensor_from_file(path: str | Path, *, candidate_vars: Iterable[str] | None = None) -> Sensor:
+def sensor_from_file(path: str | Path, *, candidate_vars: Iterable[str] | None = None) -> Sensor:  # noqa: E501
     """Load ``path`` and return a :class:`Sensor`.
 
     Parameters

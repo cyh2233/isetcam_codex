@@ -9,7 +9,7 @@ import numpy as np
 from .scene_class import Scene
 
 
-def scene_add_grid(scene: Scene, p_size: int | Sequence[int], g_width: int = 1) -> Scene:
+def scene_add_grid(scene: Scene, p_size: int | Sequence[int], g_width: int = 1) -> Scene:  # noqa: E501
     """Overlay black grid lines on ``scene`` photon data.
 
     Parameters

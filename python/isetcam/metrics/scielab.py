@@ -75,7 +75,7 @@ def _sum_gauss(params: Sequence[float]) -> np.ndarray:
     return g / g.sum()
 
 
-def _sc_gaussian_parameters(samp_per_deg: float, params: SCIELABParams) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def _sc_gaussian_parameters(samp_per_deg: float, params: SCIELABParams) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:  # noqa: E501
     v = params.filterversion.lower()
     if v not in {"distribution", "johnson", "original", "published1996", "hires"}:
         v = "distribution"
@@ -100,7 +100,7 @@ def _sc_gaussian_parameters(samp_per_deg: float, params: SCIELABParams) -> Tuple
     return np.array(x1), np.array(x2), np.array(x3)
 
 
-def _sc_prepare_filters(params: SCIELABParams) -> Tuple[Tuple[np.ndarray, np.ndarray, np.ndarray], np.ndarray]:
+def _sc_prepare_filters(params: SCIELABParams) -> Tuple[Tuple[np.ndarray, np.ndarray, np.ndarray], np.ndarray]:  # noqa: E501
     filter_size = int(np.ceil(params.filterSize))
     if filter_size % 2 == 0:
         support = filter_size - 1
@@ -140,7 +140,7 @@ def _sc_apply_filters(image: np.ndarray, filters: Sequence[np.ndarray]) -> np.nd
             image[:, :, i], ((pad_y, pad_y), (pad_x, pad_x)), mode="reflect"
         )
         conv = fftconvolve(padded, f, mode="same")
-        out[:, :, i] = conv[pad_y : pad_y + image.shape[0], pad_x : pad_x + image.shape[1]]
+        out[:, :, i] = conv[pad_y : pad_y + image.shape[0], pad_x : pad_x + image.shape[1]]  # noqa: E501
     return out
 
 
@@ -204,12 +204,12 @@ def _delta_e_2000(lab1: np.ndarray, lab2: np.ndarray) -> np.ndarray:
     Rt = -Rc * np.sin(2 * np.radians(dtheta))
 
     dE = np.sqrt(
-        (dLp / Sl) ** 2 + (dCp / Sc) ** 2 + (dHp / Sh) ** 2 + Rt * (dCp / Sc) * (dHp / Sh)
+        (dLp / Sl) ** 2 + (dCp / Sc) ** 2 + (dHp / Sh) ** 2 + Rt * (dCp / Sc) * (dHp / Sh)  # noqa: E501
     )
     return dE
 
 
-def _sc_compute_difference(xyz1: np.ndarray, xyz2: np.ndarray, white: Sequence[np.ndarray] | np.ndarray, version: str) -> np.ndarray:
+def _sc_compute_difference(xyz1: np.ndarray, xyz2: np.ndarray, white: Sequence[np.ndarray] | np.ndarray, version: str) -> np.ndarray:  # noqa: E501
     if isinstance(white, Sequence) and not isinstance(white, np.ndarray):
         w1, w2 = white[0], white[1]
     else:
@@ -230,7 +230,7 @@ def _sc_compute_difference(xyz1: np.ndarray, xyz2: np.ndarray, white: Sequence[n
     return de
 
 
-def scielab(image1: np.ndarray, image2: np.ndarray, white_point: Sequence[np.ndarray] | np.ndarray, params: SCIELABParams | None = None) -> np.ndarray:
+def scielab(image1: np.ndarray, image2: np.ndarray, white_point: Sequence[np.ndarray] | np.ndarray, params: SCIELABParams | None = None) -> np.ndarray:  # noqa: E501
     """Return the Spatial CIELAB error map between ``image1`` and ``image2``.
 
     ``image1`` and ``image2`` should be XYZ images in either ``(M,N,3)`` RGB

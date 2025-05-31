@@ -33,7 +33,7 @@ def _load_daylight_basis(wave: np.ndarray) -> np.ndarray:
 Units = Literal["energy", "photons", "quanta"]
 
 
-def cct_to_sun(wave: np.ndarray, cct: np.ndarray | float, units: Units = "energy") -> np.ndarray:
+def cct_to_sun(wave: np.ndarray, cct: np.ndarray | float, units: Units = "energy") -> np.ndarray:  # noqa: E501
     """Return daylight SPD for the given correlated color temperature(s).
 
     Parameters

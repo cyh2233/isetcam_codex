@@ -27,7 +27,7 @@ def _pixel_mtf(freq: np.ndarray, pixel_size: float) -> np.ndarray:
     return np.abs(np.sinc(freq * pixel_mm))
 
 
-def _diffraction_mtf(freq: np.ndarray, f_number: float, wavelength: float) -> np.ndarray:
+def _diffraction_mtf(freq: np.ndarray, f_number: float, wavelength: float) -> np.ndarray:  # noqa: E501
     """Diffraction limited optics MTF for a circular aperture."""
     # cutoff frequency in cycles/mm
     f_cutoff = 1.0 / (wavelength * f_number) / 1e3
@@ -64,7 +64,7 @@ def camera_mtf(camera: Camera,
     """
     pixel_size = getattr(camera.sensor, "pixel_size", _DEF_PIXEL_SIZE)
     f_number = getattr(camera.optics, "f_number", 4.0)
-    wavelength = float(np.mean(camera.sensor.wave)) * 1e-9 if getattr(camera.sensor, "wave", None) is not None else _DEF_WAVELENGTH
+    wavelength = float(np.mean(camera.sensor.wave)) * 1e-9 if getattr(camera.sensor, "wave", None) is not None else _DEF_WAVELENGTH  # noqa: E501
     # diffraction cutoff frequency in cycles/mm
     f_cutoff = 1.0 / (wavelength * f_number) / 1e3
     if freqs is None:

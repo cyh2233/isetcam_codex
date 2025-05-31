@@ -11,7 +11,7 @@ def bayer_indices(
     pattern: str,
     size: int | Sequence[int],
     clip: int = 0,
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:  # noqa: E501
     """Return index arrays for R, B, G1 and G2 pixels.
 
     Parameters
@@ -26,7 +26,7 @@ def bayer_indices(
 
     Returns
     -------
-    Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]
+    Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]  # noqa: E501
         Arrays ``(rx, ry, bx, by, g1x, g1y, g2x, g2y)`` containing zero-based
         column and row indices of the respective pixel types.
     """

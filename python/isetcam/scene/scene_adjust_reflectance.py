@@ -74,7 +74,7 @@ def scene_adjust_reflectance(scene: Scene, new_reflectance: np.ndarray) -> Scene
             else:
                 raise ValueError("Reflectance must be 1-D or 3-D")
             with np.errstate(divide="ignore", invalid="ignore"):
-                illum_cube = np.divide(photons, old_cube, out=np.zeros_like(photons), where=old_cube!=0)
+                illum_cube = np.divide(photons, old_cube, out=np.zeros_like(photons), where=old_cube!=0)  # noqa: E501
         else:
             illum_vec = photons.mean(axis=(0, 1))
             illum_cube = _broadcast_vector(illum_vec, shape)

@@ -34,7 +34,7 @@ def scene_combine(scene1: Scene, scene2: Scene, direction: str = "horizontal") -
         direction = "horizontal"
     direction = str(direction).lower()
     if direction not in _VALID_DIRS:
-        raise ValueError("direction must be 'horizontal', 'vertical', 'both', or 'centered'")
+        raise ValueError("direction must be 'horizontal', 'vertical', 'both', or 'centered'")  # noqa: E501
 
     if not np.array_equal(scene1.wave, scene2.wave):
         raise ValueError("Scenes must have matching wavelength samples")
@@ -46,13 +46,13 @@ def scene_combine(scene1: Scene, scene2: Scene, direction: str = "horizontal") -
 
     if direction == "horizontal":
         if r1 != r2:
-            raise ValueError("Scenes must have the same number of rows for horizontal combination")
+            raise ValueError("Scenes must have the same number of rows for horizontal combination")  # noqa: E501
         photons = np.concatenate((p1, p2), axis=1)
         return Scene(photons=photons, wave=scene1.wave, name=scene1.name)
 
     if direction == "vertical":
         if c1 != c2:
-            raise ValueError("Scenes must have the same number of columns for vertical combination")
+            raise ValueError("Scenes must have the same number of columns for vertical combination")  # noqa: E501
         photons = np.concatenate((p1, p2), axis=0)
         return Scene(photons=photons, wave=scene1.wave, name=scene1.name)
 

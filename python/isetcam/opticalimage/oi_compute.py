@@ -42,4 +42,4 @@ def oi_compute(scene: Scene, optics: Optics) -> OpticalImage:
     scale = (float(optics.f_length) / float(optics.f_number)) ** 2
     oi_photons *= scale
 
-    return OpticalImage(photons=oi_photons, wave=oi_wave, name=getattr(scene, "name", None))
+    return OpticalImage(photons=oi_photons, wave=oi_wave, name=getattr(scene, "name", None))  # noqa: E501

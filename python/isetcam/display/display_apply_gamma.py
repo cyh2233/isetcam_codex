@@ -9,7 +9,7 @@ from ..rgb_to_xw_format import rgb_to_xw_format
 from ..xw_to_rgb_format import xw_to_rgb_format
 
 
-def display_apply_gamma(img: np.ndarray, display: Display, inverse: bool = False) -> np.ndarray:
+def display_apply_gamma(img: np.ndarray, display: Display, inverse: bool = False) -> np.ndarray:  # noqa: E501
     """Apply forward or inverse gamma correction using ``display.gamma``.
 
     Parameters

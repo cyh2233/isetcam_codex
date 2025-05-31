@@ -19,7 +19,7 @@ def _remove_spatial_mean(data: np.ndarray) -> np.ndarray:
     return data - mean
 
 
-def scene_add(in1: SceneInput, in2: Union[Scene, Sequence[float]], add_flag: str = "add") -> Scene:
+def scene_add(in1: SceneInput, in2: Union[Scene, Sequence[float]], add_flag: str = "add") -> Scene:  # noqa: E501
     """Combine scenes using the logic of MATLAB ``sceneAdd``.
 
     Parameters

@@ -58,7 +58,7 @@ def camera_compute_sequence(
     scenes_list, scenes_is_seq = _ensure_sequence(scenes, n_frames)
     exp_list, exp_is_seq = _ensure_sequence(exposure_times, n_frames)
 
-    if n_frames is None and scenes_is_seq and exp_is_seq and len(scenes_list) != len(exp_list):
+    if n_frames is None and scenes_is_seq and exp_is_seq and len(scenes_list) != len(exp_list):  # noqa: E501
         raise ValueError("Length of scenes and exposure_times must match")
 
     if n_frames is None:

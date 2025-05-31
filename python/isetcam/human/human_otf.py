@@ -27,7 +27,7 @@ def _human_wave_defocus(wave: np.ndarray) -> np.ndarray:
     return q1 - (q2 / (wave * 1e-3 - q3))
 
 
-def _human_achromatic_otf(sample_sf: np.ndarray, model: str = "exp", pupil_d: float | None = None) -> np.ndarray:
+def _human_achromatic_otf(sample_sf: np.ndarray, model: str = "exp", pupil_d: float | None = None) -> np.ndarray:  # noqa: E501
     model = model.lower()
     if model in {"exp", "exponential"}:
         a = 0.1212
@@ -80,7 +80,7 @@ def _optics_defocused_mtf(s: np.ndarray, alpha: np.ndarray) -> np.ndarray:
     return otf
 
 
-def _human_core(wave: np.ndarray, sample_sf: np.ndarray, p: float, d0: float) -> np.ndarray:
+def _human_core(wave: np.ndarray, sample_sf: np.ndarray, p: float, d0: float) -> np.ndarray:  # noqa: E501
     D = _human_wave_defocus(wave)
     w20 = p ** 2 / 2 * (d0 * D) / (d0 + D)
     c = 1 / (np.tan(np.deg2rad(1)) * (1 / d0))

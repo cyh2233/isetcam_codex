@@ -26,12 +26,12 @@ def _freq_scale(units: str) -> float:
         return 1.0
     if units in {"cyclespermillimeter", "mm", "millimeter", "millimeters"}:
         return 1e-3
-    if units in {"cyclespermicron", "um", "micron", "microns", "micrometer", "micrometers"}:
+    if units in {"cyclespermicron", "um", "micron", "microns", "micrometer", "micrometers"}:  # noqa: E501
         return 1e-6
     raise ValueError(f"Unknown frequency unit '{units}'")
 
 
-def oi_frequency_support(oi: OpticalImage, units: str = "cyclesPerDegree") -> dict[str, np.ndarray]:
+def oi_frequency_support(oi: OpticalImage, units: str = "cyclesPerDegree") -> dict[str, np.ndarray]:  # noqa: E501
     """Return frequency support of ``oi``.
 
     Parameters

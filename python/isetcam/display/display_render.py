@@ -10,7 +10,7 @@ from ..rgb_to_xw_format import rgb_to_xw_format
 from ..xw_to_rgb_format import xw_to_rgb_format
 
 
-def display_render(image: np.ndarray, display: Display, apply_gamma: bool = True) -> np.ndarray:
+def display_render(image: np.ndarray, display: Display, apply_gamma: bool = True) -> np.ndarray:  # noqa: E501
     """Return spectral radiance for ``image`` on ``display``.
 
     Parameters

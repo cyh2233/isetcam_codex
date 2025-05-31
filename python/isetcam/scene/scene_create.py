@@ -51,7 +51,7 @@ def _create_macbeth_d65(patch_size: int = 16, wave: Optional[np.ndarray] = None,
     for r in range(nrows):
         for c in range(ncols):
             patch = refl[:, idx] * d65
-            photons[r*patch_size:(r+1)*patch_size, c*patch_size:(c+1)*patch_size, :] = patch
+            photons[r*patch_size:(r+1)*patch_size, c*patch_size:(c+1)*patch_size, :] = patch  # noqa: E501
             idx += 1
 
     sc = Scene(photons=photons, wave=wave, name="Macbeth D65")

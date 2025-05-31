@@ -33,7 +33,7 @@ def _default_table() -> np.ndarray:
     return np.column_stack([ctemps, xy])
 
 
-def srgb_to_cct(rgb: np.ndarray, *, table: np.ndarray | None = None) -> tuple[float, np.ndarray]:
+def srgb_to_cct(rgb: np.ndarray, *, table: np.ndarray | None = None) -> tuple[float, np.ndarray]:  # noqa: E501
     """Estimate correlated color temperature from an sRGB image.
 
     Parameters

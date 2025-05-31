@@ -8,7 +8,7 @@ from .oi_class import OpticalImage
 from .oi_illuminant_pattern import oi_illuminant_pattern
 
 
-def oi_illuminant_ss(oi: OpticalImage, pattern: np.ndarray | None = None) -> OpticalImage:
+def oi_illuminant_ss(oi: OpticalImage, pattern: np.ndarray | None = None) -> OpticalImage:  # noqa: E501
     """Ensure the optical image illuminant is spatial-spectral.
 
     Parameters
@@ -21,7 +21,7 @@ def oi_illuminant_ss(oi: OpticalImage, pattern: np.ndarray | None = None) -> Opt
     Returns
     -------
     OpticalImage
-        Optical image with spatial-spectral illuminant, optionally scaled by ``pattern``.
+        Optical image with spatial-spectral illuminant, optionally scaled by ``pattern``.  # noqa: E501
     """
 
     photons = np.asarray(oi.photons, dtype=float)
