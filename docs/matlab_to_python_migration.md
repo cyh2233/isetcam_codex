@@ -1273,6 +1273,72 @@ combined = scene_combine(scene1, scene2, "horizontal")
 
 Run `pytest -q` after modifying the combination utilities.
 
+## scene_show_image and oi_show_image
+
+`scene_show_image` converts scene photons to an sRGB image and displays
+it with Matplotlib. `oi_show_image` renders an optical image in the same
+way using an optional display model.
+
+```python
+from isetcam.scene import Scene, scene_show_image
+from isetcam.opticalimage import OpticalImage, oi_show_image
+
+sc = Scene(photons=np.ones((1, 1, 3)), wave=np.array([500, 600, 700]))
+ax = scene_show_image(sc)
+
+oi = OpticalImage(photons=sc.photons, wave=sc.wave)
+ax2 = oi_show_image(oi)
+```
+
+Run `pytest -q` after updating the image display helpers.
+
+## scene_save_image and oi_save_image
+
+`scene_save_image` writes an sRGB rendering of a scene to disk while
+`oi_save_image` performs the same operation for an optical image.
+
+```python
+from isetcam.scene import scene_save_image
+from isetcam.opticalimage import oi_save_image
+
+scene_save_image(sc, "scene.png")
+oi_save_image(oi, "oi.png")
+```
+
+Remember to run `pytest -q` after modifying the image saving routines.
+
+## scene_illuminant_pattern and oi_illuminant_pattern
+
+These helpers multiply the photons and illuminant by a spatial pattern
+for scenes or optical images.
+
+```python
+import numpy as np
+from isetcam.scene import scene_illuminant_pattern
+from isetcam.opticalimage import oi_illuminant_pattern
+
+pattern = np.array([[1.0, 0.5], [0.5, 1.0]])
+sc2 = scene_illuminant_pattern(sc, pattern)
+oi2 = oi_illuminant_pattern(oi, pattern)
+```
+
+Run `pytest -q` to verify the illuminant helpers.
+
+## scene_thumbnail and oi_thumbnail
+
+`scene_thumbnail` and `oi_thumbnail` create small sRGB previews of a
+scene or optical image.
+
+```python
+from isetcam.scene import scene_thumbnail
+from isetcam.opticalimage import oi_thumbnail
+
+thumb_scene = scene_thumbnail(sc, size=(16, 16))
+thumb_oi = oi_thumbnail(oi, size=(8, 8))
+```
+
+Run `pytest -q` after modifying the thumbnail helpers.
+
 ## Sensor Crop
 
 Use `sensor_crop` to extract a voltage region while keeping the 2x2 CFA
