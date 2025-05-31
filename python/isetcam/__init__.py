@@ -103,6 +103,10 @@ from .display import (
     display_list,
     display_max_contrast,
     display_plot,
+    display_description,
+    display_reflectance,
+    display_set_max_luminance,
+    display_set_white_point,
 )
 from .camera import (
     camera_to_file,
@@ -223,6 +227,10 @@ __all__ = [
     'display_list',
     'display_max_contrast',
     'display_plot',
+    'display_description',
+    'display_reflectance',
+    'display_set_max_luminance',
+    'display_set_white_point',
     'illuminant_to_file',
     'illuminant_from_file',
     'illuminant_get',

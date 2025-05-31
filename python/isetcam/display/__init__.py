@@ -19,6 +19,10 @@ from .display_to_file import display_to_file
 from .display_list import display_list
 from .display_max_contrast import display_max_contrast
 from .display_plot import display_plot
+from .display_description import display_description
+from .display_reflectance import display_reflectance
+from .display_set_max_luminance import display_set_max_luminance
+from .display_set_white_point import display_set_white_point
 
 __all__ = [
     "Display",
@@ -35,4 +39,8 @@ __all__ = [
     "display_list",
     "display_max_contrast",
     "display_plot",
+    "display_description",
+    "display_reflectance",
+    "display_set_max_luminance",
+    "display_set_white_point",
 ]
