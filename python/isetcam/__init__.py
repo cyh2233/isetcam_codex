@@ -122,6 +122,7 @@ from .illuminant import (
     illuminant_set,
     illuminant_list,
 )
+from .ip import ip_to_file, ip_from_file
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
 
 __all__ = [
@@ -243,6 +244,8 @@ __all__ = [
     'camera_moire',
     'optics_to_file',
     'optics_from_file',
+    'ip_to_file',
+    'ip_from_file',
     'openexr_read',
     'openexr_write',
     'pfm_read',
