@@ -25,6 +25,8 @@ from .scene_extract_waveband import scene_extract_waveband
 from .scene_add_grid import scene_add_grid
 from .scene_combine import scene_combine
 from .scene_adjust_pixel_size import scene_adjust_pixel_size
+from .scene_show_image import scene_show_image
+from .scene_save_image import scene_save_image
 
 __all__ = [
     "Scene",
@@ -54,4 +56,6 @@ __all__ = [
     "scene_add_grid",
     "scene_combine",
     "scene_adjust_pixel_size",
+    "scene_show_image",
+    "scene_save_image",
 ]
