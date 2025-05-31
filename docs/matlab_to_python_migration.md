@@ -2000,3 +2000,71 @@ print(oi.photons.shape)
 ```
 
 Run `pytest -q` after editing this factory.
+
+## scene_description
+
+Generate a textual summary of a scene.
+
+```python
+from isetcam.scene import Scene, scene_description
+
+sc = Scene(photons=data, wave=wave, name="demo")
+print(scene_description(sc))
+```
+
+Run `pytest -q` after updating the description helper.
+
+## scene_clear_data
+
+Remove optional cached fields from a scene structure.
+
+```python
+from isetcam.scene import Scene, scene_clear_data
+
+sc = Scene(photons=data, wave=wave)
+sc.ui = {"win": None}
+scene_clear_data(sc)
+```
+
+Run `pytest -q` after modifying the cleanup routine.
+
+## scene_interpolate_w and oi_interpolate_w
+
+Resample the spectral data of a scene or optical image to a new wavelength grid.
+
+```python
+from isetcam.scene import scene_interpolate_w
+from isetcam.opticalimage import oi_interpolate_w
+
+new_wave = np.arange(450, 651, 5)
+sc2 = scene_interpolate_w(sc, new_wave)
+oi2 = oi_interpolate_w(oi, new_wave)
+```
+
+Remember to run `pytest -q` after editing these interpolation functions.
+
+## sensor_show_cfa
+
+Display the sensor color filter array arrangement.
+
+```python
+from isetcam.sensor import Sensor, sensor_show_cfa
+
+s = Sensor(filter_color_letters="rggb")
+ax = sensor_show_cfa(s)
+```
+
+Run `pytest -q` after updating the CFA viewer.
+
+## sensor_stats
+
+Compute mean signal, noise standard deviation and SNR for a sensor ROI.
+
+```python
+from isetcam.sensor import sensor_stats
+
+roi = (0, 0, 2, 2)
+mean_signal, noise_sd, snr = sensor_stats(sensor, roi)
+```
+
+Run `pytest -q` after modifying the sensor statistics helper.
