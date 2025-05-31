@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import numpy as np
-
 try:
     import matplotlib.pyplot as plt
 except Exception:  # pragma: no cover - matplotlib might not be installed
@@ -12,6 +10,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
 from .camera_class import Camera
 from .camera_mtf import camera_mtf
 from ..sensor import sensor_plot
+from ..ie_format_figure import ie_format_figure
 
 
 _DEF_TITLE_IMG = "Sensor response"
@@ -41,10 +40,9 @@ def camera_plot(camera: Camera, *, show_filters: bool = False,
         raise ImportError("matplotlib is required for camera_plot")
 
     if axes is None:
-        fig, (ax_img, ax_mtf) = plt.subplots(1, 2, figsize=(8, 4))
+        _, (ax_img, ax_mtf) = plt.subplots(1, 2, figsize=(8, 4))
     else:
         ax_img, ax_mtf = axes
-        fig = ax_img.figure
 
     sensor_plot(camera.sensor, show_filters=show_filters, ax=ax_img)
     ax_img.set_title(_DEF_TITLE_IMG)
@@ -56,7 +54,8 @@ def camera_plot(camera: Camera, *, show_filters: bool = False,
     ax_mtf.set_title(_DEF_TITLE_MTF)
     ax_mtf.set_ylim(0.0, 1.05)
 
-    fig.tight_layout()
+    ie_format_figure(ax_img)
+    ie_format_figure(ax_mtf)
     return ax_img, ax_mtf
 
 

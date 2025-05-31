@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import numpy as np
-from pathlib import Path
 from scipy.io import loadmat
 
 try:
@@ -13,6 +12,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
 
 from .chromaticity import chromaticity
 from .srgb_xyz import xyz_to_srgb
+from .ie_format_figure import ie_format_figure
 
 
 def chromaticity_plot(
@@ -46,9 +46,7 @@ def chromaticity_plot(
         raise ValueError("x and y must have the same shape")
 
     if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = ax.figure
+        _, ax = plt.subplots()
 
     # Load CIE XYZ color matching functions for wavelengths 370-730 nm
     from .data_path import data_path
@@ -75,9 +73,6 @@ def chromaticity_plot(
 
     ax.set_xlim(0.0, 0.8)
     ax.set_ylim(0.0, 0.9)
-    ax.set_xlabel("CIE x")
-    ax.set_ylabel("CIE y")
-    ax.grid(True)
 
-    fig.tight_layout()
+    ie_format_figure(ax, xlabel="CIE x", ylabel="CIE y", grid=True)
     return ax

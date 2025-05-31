@@ -14,7 +14,7 @@ from ..display import Display, display_create, display_render
 from ..srgb_to_lrgb import srgb_to_lrgb
 from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
-
+from ..ie_format_figure import ie_format_figure
 
 
 def sensor_show_image(sensor: Sensor, display: Display | None = None):
@@ -50,5 +50,5 @@ def sensor_show_image(sensor: Sensor, display: Display | None = None):
     fig, ax = plt.subplots()
     ax.imshow(np.clip(srgb, 0.0, 1.0))
     ax.axis("off")
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax

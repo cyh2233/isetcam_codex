@@ -12,6 +12,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
     to_rgb = None  # type: ignore
 
 from .sensor_class import Sensor
+from ..ie_format_figure import ie_format_figure
 
 
 _COLOR_MAP = {
@@ -53,9 +54,7 @@ def sensor_plot(sensor: Sensor, *, show_filters: bool = False, ax: "plt.Axes | N
         raise ValueError("sensor.volts must be a 2-D array")
 
     if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = ax.figure
+        _, ax = plt.subplots()
     ax.imshow(volts, cmap="gray", origin="upper")
     ax.axis("off")
 
@@ -77,7 +76,7 @@ def sensor_plot(sensor: Sensor, *, show_filters: bool = False, ax: "plt.Axes | N
                 overlay[mask, 3] = 0.4
             ax.imshow(overlay, interpolation="none")
 
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax
 
 

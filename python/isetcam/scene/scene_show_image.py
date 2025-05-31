@@ -12,6 +12,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
 from .scene_class import Scene
 from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
+from ..ie_format_figure import ie_format_figure
 
 
 def scene_show_image(scene: Scene):
@@ -37,5 +38,5 @@ def scene_show_image(scene: Scene):
     fig, ax = plt.subplots()
     ax.imshow(img)
     ax.axis("off")
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax

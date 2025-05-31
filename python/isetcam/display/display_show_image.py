@@ -11,6 +11,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
 
 from .display_class import Display
 from .display_apply_gamma import display_apply_gamma
+from ..ie_format_figure import ie_format_figure
 
 
 def display_show_image(image: np.ndarray, display: Display):
@@ -42,5 +43,5 @@ def display_show_image(image: np.ndarray, display: Display):
     fig, ax = plt.subplots()
     ax.imshow(np.clip(img, 0.0, 1.0))
     ax.axis("off")
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax

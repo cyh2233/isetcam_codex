@@ -12,6 +12,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
 from .display_class import Display
 from ..ie_xyz_from_energy import ie_xyz_from_energy
 from ..chromaticity import chromaticity
+from ..ie_format_figure import ie_format_figure
 
 
 _DEF_COLORS = ["r", "g", "b"]
@@ -41,9 +42,7 @@ def display_plot(display: Display, kind: str = "spd", ax: "plt.Axes | None" = No
         raise ImportError("matplotlib is required for display_plot")
 
     if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = ax.figure
+        _, ax = plt.subplots()
 
     kind = kind.lower()
     if kind == "spd":
@@ -81,7 +80,7 @@ def display_plot(display: Display, kind: str = "spd", ax: "plt.Axes | None" = No
     else:
         raise ValueError("Unknown kind '%s'" % kind)
 
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax
 
 

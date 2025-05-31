@@ -17,9 +17,10 @@ from ..opticalimage.oi_calculate_illuminance import oi_calculate_illuminance
 from ..opticalimage.oi_calculate_irradiance import oi_calculate_irradiance
 from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
-from ..display import Display, display_create, display_render, display_apply_gamma
+from ..display import Display, display_render, display_apply_gamma
 from ..rgb_to_xw_format import rgb_to_xw_format
 from ..xw_to_rgb_format import xw_to_rgb_format
+from ..ie_format_figure import ie_format_figure
 
 
 _DEF_KINDS = {
@@ -81,13 +82,9 @@ def oi_plot(
             pos = np.arange(rows)
             xlabel = "Row index"
         if ax is None:
-            fig, ax = plt.subplots()
-        else:
-            fig = ax.figure
+            _, ax = plt.subplots()
         ax.plot(pos, profile, "r-")
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel("Illuminance (lux)")
-        fig.tight_layout()
+        ie_format_figure(ax, xlabel=xlabel, ylabel="Illuminance (lux)")
         return ax
 
     if key in {"irradiancehline", "irradiancevline"}:
@@ -103,13 +100,9 @@ def oi_plot(
             pos = np.arange(rows)
             xlabel = "Row index"
         if ax is None:
-            fig, ax = plt.subplots()
-        else:
-            fig = ax.figure
+            _, ax = plt.subplots()
         ax.plot(pos, profile, "r-")
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel("Irradiance (photons)")
-        fig.tight_layout()
+        ie_format_figure(ax, xlabel=xlabel, ylabel="Irradiance (photons)")
         return ax
 
     if display is None:
@@ -117,9 +110,7 @@ def oi_plot(
         display = Display(spd=np.eye(len(oi.wave)), wave=oi.wave, gamma=None)
     img = _photons_to_srgb(oi, display)
     if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = ax.figure
+        _, ax = plt.subplots()
     ax.imshow(img)
     ax.axis("off")
 
@@ -134,7 +125,7 @@ def oi_plot(
         rect = Rectangle((c0, r0), w, h, edgecolor="y", facecolor="none", linewidth=1)
         ax.add_patch(rect)
 
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax
 
 

@@ -16,6 +16,7 @@ from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
 from ..luminance_from_photons import luminance_from_photons
 from ..ie_param_format import ie_param_format
+from ..ie_format_figure import ie_format_figure
 
 
 _DEF_KINDS = {
@@ -85,13 +86,9 @@ def scene_plot(
             pos = np.arange(rows)
             xlabel = "Row index"
         if ax is None:
-            fig, ax = plt.subplots()
-        else:
-            fig = ax.figure
+            _, ax = plt.subplots()
         ax.plot(pos, profile, "k-")
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel("Luminance (cd/m$^2$)")
-        fig.tight_layout()
+        ie_format_figure(ax, xlabel=xlabel, ylabel="Luminance (cd/m$^2$)")
         return ax
 
     if key in {"radiancehline", "radiancevline"}:
@@ -111,13 +108,9 @@ def scene_plot(
         else:
             profile = data.mean(axis=1)
         if ax is None:
-            fig, ax = plt.subplots()
-        else:
-            fig = ax.figure
+            _, ax = plt.subplots()
         ax.plot(pos, profile, "k-")
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel("Radiance (photons)")
-        fig.tight_layout()
+        ie_format_figure(ax, xlabel=xlabel, ylabel="Radiance (photons)")
         return ax
 
     # Image rendering
@@ -125,9 +118,7 @@ def scene_plot(
     srgb, _, _ = xyz_to_srgb(xyz)
     img = np.clip(srgb, 0.0, 1.0)
     if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = ax.figure
+        _, ax = plt.subplots()
     ax.imshow(img)
     ax.axis("off")
 
@@ -142,7 +133,7 @@ def scene_plot(
         rect = Rectangle((c0, r0), w, h, edgecolor="y", facecolor="none", linewidth=1)
         ax.add_patch(rect)
 
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax
 
 
