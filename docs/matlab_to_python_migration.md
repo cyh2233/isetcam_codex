@@ -1570,3 +1570,96 @@ vc_replace_and_select_object('scene', other_sc)
 ```
 
 Run `pytest -q` after changing the session management helpers.
+
+## illuminant_get and illuminant_set
+
+`illuminant_get` retrieves values from an `Illuminant` dataclass while
+`illuminant_set` updates its fields.
+
+```python
+import numpy as np
+from isetcam.illuminant import Illuminant, illuminant_get, illuminant_set
+
+illum = Illuminant(spd=np.ones((31, 1)), wave=np.arange(400, 701, 10))
+illuminant_set(illum, "name", "demo")
+nwave = illuminant_get(illum, "n wave")
+```
+
+Run `pytest -q` after editing the illuminant helpers.
+
+## display_compute and display_convert
+
+`display_compute` converts digital RGB values to spectral radiance using a
+`Display` definition.  `display_convert` builds a `Display` instance from a
+Color Toolbox dictionary.
+
+```python
+import numpy as np
+from isetcam.display import Display, display_compute, display_convert
+
+img = np.random.rand(4, 4, 3)
+disp = Display(spd=np.eye(3), wave=np.array([450, 550, 650]))
+spectral = display_compute(img, disp)
+
+ct = {"m_strDisplayName": "demo", "sPhysicalDisplay": {"m_objCDixelStructure": {
+    "m_aWaveLengthSamples": disp.wave,
+    "m_aSpectrumOfPrimaries": disp.spd,
+}}}
+disp2 = display_convert(ct)
+```
+
+Run `pytest -q` after modifying the display routines.
+
+## scene_depth_overlay and scene_depth_range
+
+`scene_depth_overlay` draws depth map contours on a scene RGB rendering.
+`scene_depth_range` masks photons outside a specified depth interval.
+
+```python
+import numpy as np
+from isetcam.scene import Scene, scene_depth_overlay, scene_depth_range
+
+sc = Scene(photons=np.ones((2, 2, 3)), wave=np.array([500, 600, 700]))
+sc.depth_map = np.array([[0.3, 0.5], [0.6, 0.8]])
+ax = scene_depth_overlay(sc, n=5)
+sc2, mask = scene_depth_range(sc, (0.4, 0.7))
+```
+
+Run `pytest -q` after updating the depth utilities.
+
+## sensor_ccm
+
+Use `sensor_ccm` to fit a 3x3 color correction matrix from a Macbeth chart
+captured by a sensor.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_ccm
+
+sensor = Sensor(volts=chart_volts, wave=np.array([550]), exposure_time=0.01)
+corners = np.array([[0, sensor.volts.shape[0]],
+                    [sensor.volts.shape[1], sensor.volts.shape[0]],
+                    [sensor.volts.shape[1], 0],
+                    [0, 0]], dtype=float)
+L = sensor_ccm(sensor, corners)
+```
+
+Run `pytest -q` after editing the sensor CCM routine.
+
+## metrics_compute
+
+`metrics_compute` evaluates image quality metrics such as CIELAB ΔE,
+mean squared error, PSNR or SCIELAB.
+
+```python
+import numpy as np
+from isetcam.metrics import metrics_compute, sc_params
+
+img1 = np.random.rand(4, 4, 3)
+img2 = np.random.rand(4, 4, 3)
+white = np.array([0.95047, 1.0, 1.08883])
+de = metrics_compute(img1, img2, "cielab", white_point=white)
+psnr = metrics_compute(img1, img2, "psnr")
+```
+
+Run `pytest -q` to ensure the metric calculations remain valid.
