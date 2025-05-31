@@ -8,6 +8,8 @@ from .camera_from_file import camera_from_file
 from .camera_create import camera_create
 from .camera_compute import camera_compute
 from .camera_mtf import camera_mtf
+from .camera_plot import camera_plot
+from .camera_moire import camera_moire
 from .camera_vsnr import camera_vsnr
 from .camera_acutance import camera_acutance
 from .camera_color_accuracy import camera_color_accuracy
@@ -22,6 +24,8 @@ __all__ = [
     "camera_create",
     "camera_compute",
     "camera_mtf",
+    "camera_plot",
+    "camera_moire",
     "camera_vsnr",
     "camera_acutance",
     "camera_color_accuracy",
