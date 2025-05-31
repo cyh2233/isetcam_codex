@@ -23,6 +23,10 @@ tests with
 pytest -q
 ```
 
+The same test suite runs automatically via GitHub Actions for every push
+and pull request, but you should also run `pytest -q` locally after
+making changes.
+
 # Notes
 
 ### Software architecture
