@@ -2,12 +2,11 @@ import numpy as np
 import scipy.io
 
 from isetcam.scene import scene_from_file, scene_to_file
-from isetcam import iset_root_path
+from isetcam import data_path
 
 
 def test_scene_to_file_roundtrip(tmp_path):
-    root = iset_root_path()
-    fpath = root / 'data' / 'images' / 'rgb' / 'adelson.png'
+    fpath = data_path('images/rgb/adelson.png')
     wave = np.array([450, 550, 650, 750])
     scene = scene_from_file(fpath, wave=wave)
 

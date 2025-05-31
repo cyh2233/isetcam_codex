@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 
 
 _DEF_DIR = "data"
@@ -17,8 +17,7 @@ def display_list() -> list[str]:
     ISETCam repository.  The returned list is sorted alphabetically and the
     ``.mat`` extension is stripped.
     """
-    root = iset_root_path()
-    disp_dir = root / _DEF_DIR / "displays"
+    disp_dir = data_path("displays")
     names: list[str] = []
     if disp_dir.exists():
         for f in disp_dir.glob("*.mat"):

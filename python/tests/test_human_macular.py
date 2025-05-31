@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.io import loadmat
 
-from isetcam import iset_root_path
+from isetcam import data_path
 from isetcam.opticalimage import OpticalImage
 from isetcam.human import human_macular_transmittance
 
@@ -13,8 +13,7 @@ def test_human_macular_transmittance_basic():
 
     out = human_macular_transmittance(oi, density=0.35)
 
-    root = iset_root_path()
-    mat = loadmat(root / 'data' / 'human' / 'macularPigment.mat')
+    mat = loadmat(data_path('human/macularPigment.mat'))
     src_wave = mat['wavelength'].ravel()
     data = mat['data'].ravel()
     unit = np.interp(wave, src_wave, data, left=0.0, right=0.0) / 0.3521

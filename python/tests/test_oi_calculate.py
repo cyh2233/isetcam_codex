@@ -6,7 +6,7 @@ from isetcam.opticalimage import (
     oi_calculate_irradiance,
     oi_calculate_illuminance,
 )
-from isetcam import quanta_to_energy, iset_root_path
+from isetcam import quanta_to_energy, data_path
 
 
 def _expected_irradiance(wave, photons):
@@ -16,8 +16,7 @@ def _expected_irradiance(wave, photons):
 
 def _expected_illuminance(wave, photons):
     energy = quanta_to_energy(wave, photons)
-    root = iset_root_path()
-    mat = loadmat(root / "data" / "human" / "luminosity.mat")
+    mat = loadmat(data_path("human/luminosity.mat"))
     V = np.interp(wave, mat["wavelength"].ravel(), mat["data"].ravel(), left=0.0, right=0.0)
     bw = wave[1] - wave[0] if len(wave) > 1 else 10
     xw = energy.reshape(-1, len(wave))

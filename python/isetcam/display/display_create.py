@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 
 from .display_class import Display
 
@@ -38,8 +38,7 @@ def display_create(name: str | None = None) -> Display:
     """
     if name is None:
         name = _DEFAULT_NAME
-    root = iset_root_path()
-    path = root / _DEF_DIR / "displays" / f"{name}.mat"
+    path = data_path(f"displays/{name}.mat")
     if not path.exists():
         raise FileNotFoundError(f"Unknown display '{name}'")
     wave, spd, gamma = _load_display(path)

@@ -10,7 +10,7 @@ from scipy.io import loadmat
 
 from .scene_class import Scene
 from ..luminance_from_photons import luminance_from_photons
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 
 
 _DEF_DIR = "data"
@@ -18,8 +18,7 @@ _DEF_DIR = "data"
 
 def _load_macbeth_data(wave: Optional[np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
     """Return reflectance data and wavelength array for the Macbeth chart."""
-    root = iset_root_path()
-    mat = loadmat(root / _DEF_DIR / "surfaces" / "reflectances" / "macbethChart.mat")
+    mat = loadmat(data_path("surfaces/reflectances/macbethChart.mat"))
     src_wave = mat["wavelength"].ravel().astype(float)
     refl = mat["data"].astype(float)
     if wave is None:
@@ -33,8 +32,7 @@ def _load_macbeth_data(wave: Optional[np.ndarray]) -> tuple[np.ndarray, np.ndarr
 
 def _load_d65(wave: np.ndarray) -> np.ndarray:
     """Return D65 spectral power distribution sampled at ``wave``."""
-    root = iset_root_path()
-    mat = loadmat(root / _DEF_DIR / "lights" / "D65.mat")
+    mat = loadmat(data_path("lights/D65.mat"))
     src_wave = mat["wavelength"].ravel().astype(float)
     spd = mat["data"].ravel().astype(float)
     return np.interp(wave, src_wave, spd, left=0.0, right=0.0)

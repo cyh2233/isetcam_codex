@@ -2,7 +2,7 @@ import numpy as np
 from isetcam import (
     color_transform_matrix_create,
     color_transform_matrix,
-    iset_root_path,
+    data_path,
 )
 
 
@@ -15,9 +15,8 @@ def test_color_transform_matrix_create_arrays():
 
 
 def test_color_transform_matrix_create_files():
-    root = iset_root_path()
-    xyz_file = root / "data" / "human" / "XYZ.mat"
-    stock_file = root / "data" / "human" / "stockman.mat"
+    xyz_file = data_path("human/XYZ.mat")
+    stock_file = data_path("human/stockman.mat")
     wave = np.arange(400, 701, 5)
     T = color_transform_matrix_create(xyz_file, stock_file, wave)
     expected = color_transform_matrix("xyz2sto")

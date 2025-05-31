@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 
 from .illuminant_class import Illuminant
 
@@ -24,9 +24,8 @@ def _load_spd(path: Path) -> tuple[np.ndarray, np.ndarray]:
 
 def illuminant_create(name: str, wave: np.ndarray | None = None) -> Illuminant:
     """Create an illuminant by name, optionally interpolated to ``wave``."""
-    root = iset_root_path()
     fname = name.strip().upper() + '.mat'
-    path = root / _DEF_DIR / 'lights' / fname
+    path = data_path(f'lights/{fname}')
     if not path.exists():
         raise FileNotFoundError(f"Unknown illuminant '{name}'")
     src_wave, spd = _load_spd(path)

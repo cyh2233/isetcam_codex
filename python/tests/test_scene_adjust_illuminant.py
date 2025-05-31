@@ -3,7 +3,7 @@ from pathlib import Path
 
 from isetcam.scene import Scene, scene_adjust_illuminant
 from isetcam.luminance_from_photons import luminance_from_photons
-from isetcam import iset_root_path
+from isetcam import data_path
 
 
 def _simple_scene() -> Scene:
@@ -24,8 +24,7 @@ def test_scene_adjust_illuminant_vector():
 
 def test_scene_adjust_illuminant_matfile():
     sc = _simple_scene()
-    root = iset_root_path()
-    path = root / "data" / "lights" / "D65.mat"
+    path = data_path("lights/D65.mat")
     out = scene_adjust_illuminant(sc, path)
     lum_before = luminance_from_photons(sc.photons, sc.wave).mean()
     lum_after = luminance_from_photons(out.photons, out.wave).mean()

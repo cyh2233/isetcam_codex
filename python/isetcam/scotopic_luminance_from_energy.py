@@ -9,16 +9,14 @@ import numpy as np
 from scipy.io import loadmat
 
 from .vc_get_image_format import vc_get_image_format
-from .iset_root_path import iset_root_path
+from .data_path import data_path
 
 _DEF_BINWIDTH = 10
 
 
 def _scotopic_luminosity(wave: np.ndarray) -> np.ndarray:
     """Return the scotopic luminosity function interpolated to ``wave``."""
-    root = iset_root_path()
-    fpath = root / 'data' / 'human' / 'rods.mat'
-    data = loadmat(fpath)
+    data = loadmat(data_path('human/rods.mat'))
     src_wave = data['wavelength'].ravel()
     Vprime = data['data'].ravel()
     return np.interp(wave, src_wave, Vprime, left=0.0, right=0.0)
