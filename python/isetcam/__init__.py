@@ -84,6 +84,8 @@ from .human import (
     human_optical_density,
     human_otf,
     human_lsf,
+    human_cone_contrast,
+    human_cone_isolating,
 )
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
@@ -173,6 +175,8 @@ __all__ = [
     'human_optical_density',
     'human_otf',
     'human_lsf',
+    'human_cone_contrast',
+    'human_cone_isolating',
     'iset_root_path',
     'ie_init',
     'ie_init_session',
