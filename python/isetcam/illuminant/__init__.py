@@ -5,6 +5,8 @@ from .illuminant_blackbody import illuminant_blackbody
 from .illuminant_create import illuminant_create
 from .illuminant_from_file import illuminant_from_file
 from .illuminant_to_file import illuminant_to_file
+from .illuminant_get import illuminant_get
+from .illuminant_set import illuminant_set
 
 __all__ = [
     "Illuminant",
@@ -12,4 +14,6 @@ __all__ = [
     "illuminant_create",
     "illuminant_from_file",
     "illuminant_to_file",
+    "illuminant_get",
+    "illuminant_set",
 ]

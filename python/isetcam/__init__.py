@@ -102,7 +102,12 @@ from .display import (
 )
 from .camera import camera_to_file, camera_from_file
 from .optics import optics_to_file, optics_from_file
-from .illuminant import illuminant_to_file, illuminant_from_file
+from .illuminant import (
+    illuminant_to_file,
+    illuminant_from_file,
+    illuminant_get,
+    illuminant_set,
+)
 from .io import openexr_read, openexr_write, pfm_read, pfm_write
 
 __all__ = [
@@ -206,6 +211,8 @@ __all__ = [
     'display_plot',
     'illuminant_to_file',
     'illuminant_from_file',
+    'illuminant_get',
+    'illuminant_set',
     'camera_to_file',
     'camera_from_file',
     'optics_to_file',
