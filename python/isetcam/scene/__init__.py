@@ -27,6 +27,7 @@ from .scene_combine import scene_combine
 from .scene_adjust_pixel_size import scene_adjust_pixel_size
 from .scene_show_image import scene_show_image
 from .scene_save_image import scene_save_image
+from .scene_thumbnail import scene_thumbnail
 from .scene_illuminant_pattern import scene_illuminant_pattern
 from .scene_illuminant_ss import scene_illuminant_ss
 
@@ -60,6 +61,7 @@ __all__ = [
     "scene_adjust_pixel_size",
     "scene_show_image",
     "scene_save_image",
+    "scene_thumbnail",
     "scene_illuminant_pattern",
     "scene_illuminant_ss",
 ]
