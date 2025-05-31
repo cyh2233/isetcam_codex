@@ -1329,6 +1329,23 @@ ax = chromaticity_plot(x, y)
 
 Run `pytest -q` after updating the plotting utilities.
 
+## ie_hist_image and ie_format_figure
+
+`ie_hist_image` plots histograms for grayscale or RGB images while
+`ie_format_figure` applies ISETCam styling to an existing Matplotlib
+axis.
+
+```python
+import numpy as np
+from isetcam import ie_hist_image, ie_format_figure
+
+img = np.random.rand(32, 32, 3)
+ax = ie_hist_image(img, bins=50)
+ie_format_figure(ax, xlabel="Value", ylabel="Count", grid=True)
+```
+
+Run `pytest -q` after implementing these plotting utilities.
+
 ## Reading Spectral Data
 
 `ie_read_spectra` loads spectral measurements from a MAT-file. Provide an optional wavelength vector to interpolate the data.
@@ -1482,6 +1499,31 @@ thumb_oi = oi_thumbnail(oi, size=(8, 8))
 ```
 
 Run `pytest -q` after modifying the thumbnail helpers.
+
+## scene_plot, oi_plot and ip_plot
+
+These helpers visualize scenes, optical images and IP results.
+`scene_plot` displays luminance or radiance profiles and rendered
+images. `oi_plot` shows irradiance or illuminance information for an
+optical image. `ip_plot` renders data stored in a `VCImage`.
+
+```python
+import numpy as np
+from isetcam.scene import Scene, scene_plot
+from isetcam.opticalimage import OpticalImage, oi_plot
+from isetcam.ip import VCImage, ip_plot
+
+sc = Scene(photons=np.ones((8, 8, 3)), wave=np.array([500, 600, 700]))
+ax1 = scene_plot(sc, kind="radiance image with grid", grid_spacing=4)
+
+oi = OpticalImage(photons=sc.photons, wave=sc.wave)
+ax2 = oi_plot(oi, kind="irradiance hline", loc=2)
+
+ip = VCImage(rgb=np.random.rand(8, 8, 3), wave=sc.wave)
+ax3 = ip_plot(ip, kind="image")
+```
+
+Run `pytest -q` after implementing these plotting utilities.
 
 ## Sensor Crop
 
@@ -1925,6 +1967,26 @@ remaining = vc_delete_object("scene", idx)
 ```
 
 Remember to run `pytest -q` when updating the session manager.
+
+## vc_clear_objects
+
+`vc_clear_objects` removes all stored objects from the global session and
+resets the selection indices.
+
+```python
+from isetcam import (
+    ie_init,
+    vc_add_and_select_object,
+    vc_clear_objects,
+)
+from isetcam.scene import Scene
+
+ie_init()
+vc_add_and_select_object("scene", Scene(photons=np.zeros((1, 1, 1))))
+vc_clear_objects()
+```
+
+Run `pytest -q` after implementing the session cleanup helper.
 
 ## oi_create
 
