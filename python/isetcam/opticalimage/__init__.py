@@ -17,6 +17,7 @@ from .oi_spatial_support import oi_spatial_support
 from .oi_spatial_resample import oi_spatial_resample
 from .oi_frequency_support import oi_frequency_support
 from .oi_frequency_resample import oi_frequency_resample
+from .oi_interpolate_w import oi_interpolate_w
 from .oi_adjust_illuminance import oi_adjust_illuminance
 from .oi_extract_waveband import oi_extract_waveband
 from .oi_calculate_irradiance import oi_calculate_irradiance
@@ -46,6 +47,7 @@ __all__ = [
     "oi_spatial_resample",
     "oi_frequency_support",
     "oi_frequency_resample",
+    "oi_interpolate_w",
     "oi_photon_noise",
     "oi_to_file",
     "oi_adjust_illuminance",
