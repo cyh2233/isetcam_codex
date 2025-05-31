@@ -9,8 +9,12 @@ try:  # pragma: no cover - matplotlib might not be installed
 except Exception:  # pragma: no cover - matplotlib might not be installed
     plt = None  # type: ignore
 
+from .ie_format_figure import ie_format_figure
 
-def ie_hist_image(img: np.ndarray, bins: int = 256, ax: "plt.Axes | None" = None) -> "plt.Axes":
+
+def ie_hist_image(
+    img: np.ndarray, bins: int = 256, ax: "plt.Axes | None" = None
+) -> "plt.Axes":
     """Plot a histogram of ``img`` pixel values.
 
     Parameters
@@ -41,9 +45,7 @@ def ie_hist_image(img: np.ndarray, bins: int = 256, ax: "plt.Axes | None" = None
         raise ValueError("img must be 2-D grayscale or 3-D RGB array")
 
     if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = ax.figure
+        _, ax = plt.subplots()
 
     vmin = float(img.min())
     vmax = float(img.max())
@@ -58,11 +60,16 @@ def ie_hist_image(img: np.ndarray, bins: int = 256, ax: "plt.Axes | None" = None
             data = img[:, :, i].ravel()
             hist, edges = np.histogram(data, bins=bins, range=(vmin, vmax))
             width = edges[1] - edges[0]
-            ax.bar(edges[:-1], hist, width=width, color=color, alpha=0.5, edgecolor="none")
+            ax.bar(
+                edges[:-1],
+                hist,
+                width=width,
+                color=color,
+                alpha=0.5,
+                edgecolor="none",
+            )
 
-    ax.set_xlabel("Pixel value")
-    ax.set_ylabel("Count")
-    fig.tight_layout()
+    ie_format_figure(ax, xlabel="Pixel value", ylabel="Count")
     return ax
 
 

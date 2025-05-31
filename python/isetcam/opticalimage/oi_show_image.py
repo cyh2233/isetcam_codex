@@ -15,6 +15,7 @@ from ..rgb_to_xw_format import rgb_to_xw_format
 from ..xw_to_rgb_format import xw_to_rgb_format
 from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
+from ..ie_format_figure import ie_format_figure
 
 
 def _photons_to_rgb(oi: OpticalImage, display: Display) -> np.ndarray:
@@ -52,5 +53,5 @@ def oi_show_image(oi: OpticalImage, display: Display | None = None):
     fig, ax = plt.subplots()
     ax.imshow(np.clip(srgb, 0.0, 1.0))
     ax.axis("off")
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax

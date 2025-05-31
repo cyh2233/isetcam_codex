@@ -12,6 +12,7 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
 from .scene_class import Scene
 from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
+from ..ie_format_figure import ie_format_figure
 
 
 def scene_depth_overlay(scene: Scene, n: int = 10):
@@ -48,7 +49,7 @@ def scene_depth_overlay(scene: Scene, n: int = 10):
     levels = np.linspace(dmap.min(), dmap.max(), n)
     ax.contour(dmap, levels=levels, colors="k", linewidths=1)
     ax.axis("off")
-    fig.tight_layout()
+    ie_format_figure(ax)
     return ax
 
 
