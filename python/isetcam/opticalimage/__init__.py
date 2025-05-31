@@ -6,6 +6,7 @@ from .oi_add import oi_add
 from .oi_get import oi_get
 from .oi_set import oi_set
 from .oi_from_file import oi_from_file
+from .oi_create import oi_create
 from .oi_compute import oi_compute
 from .oi_photon_noise import oi_photon_noise
 from .oi_to_file import oi_to_file
@@ -35,6 +36,7 @@ __all__ = [
     "oi_get",
     "oi_set",
     "oi_from_file",
+    "oi_create",
     "oi_compute",
     "oi_crop",
     "oi_pad",
