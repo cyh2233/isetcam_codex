@@ -20,6 +20,8 @@ from .oi_adjust_illuminance import oi_adjust_illuminance
 from .oi_extract_waveband import oi_extract_waveband
 from .oi_calculate_irradiance import oi_calculate_irradiance
 from .oi_calculate_illuminance import oi_calculate_illuminance
+from .oi_show_image import oi_show_image
+from .oi_save_image import oi_save_image
 
 __all__ = [
     "OpticalImage",
@@ -44,4 +46,6 @@ __all__ = [
     "oi_extract_waveband",
     "oi_calculate_irradiance",
     "oi_calculate_illuminance",
+    "oi_show_image",
+    "oi_save_image",
 ]
