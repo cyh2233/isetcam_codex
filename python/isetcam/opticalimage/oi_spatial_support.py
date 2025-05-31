@@ -18,7 +18,7 @@ def _unit_scale(units: str) -> float:
     raise ValueError(f"Unknown spatial unit '{units}'")
 
 
-def oi_spatial_support(oi: OpticalImage, units: str = "meters") -> dict[str, np.ndarray]:
+def oi_spatial_support(oi: OpticalImage, units: str = "meters") -> dict[str, np.ndarray]:  # noqa: E501
     """Return spatial support of ``oi``.
 
     Parameters

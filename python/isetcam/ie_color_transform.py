@@ -17,7 +17,7 @@ _XYZ2LRGB = np.array([
 ])
 
 
-def _interp_data(src_wave: np.ndarray, data: np.ndarray, wave: np.ndarray) -> np.ndarray:
+def _interp_data(src_wave: np.ndarray, data: np.ndarray, wave: np.ndarray) -> np.ndarray:  # noqa: E501
     result = np.zeros((len(wave), data.shape[1]))
     for i in range(data.shape[1]):
         result[:, i] = np.interp(wave, src_wave, data[:, i], left=0.0, right=0.0)

@@ -23,6 +23,8 @@ jobs:
             python/pyproject.toml
             python/requirements.txt
       - name: Install package
-        run: pip install -e python
+        run: pip install -e python flake8
       - name: Run tests
         run: pytest -q
+      - name: Run flake8
+        run: flake8 python/isetcam

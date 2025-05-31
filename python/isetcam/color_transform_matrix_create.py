@@ -10,7 +10,7 @@ import numpy as np
 from .ie_read_spectra import ie_read_spectra
 
 
-def _load_data(src: str | Path | np.ndarray, wave: Iterable[float] | None) -> np.ndarray:
+def _load_data(src: str | Path | np.ndarray, wave: Iterable[float] | None) -> np.ndarray:  # noqa: E501
     if isinstance(src, (str, Path)):
         data, _, _, _ = ie_read_spectra(src, wave)
     else:

@@ -43,7 +43,7 @@ def _parse_pattern(letters: np.ndarray | str) -> np.ndarray | None:
     return None
 
 
-def sensor_plot(sensor: Sensor, *, show_filters: bool = False, ax: "plt.Axes | None" = None) -> "plt.Axes":
+def sensor_plot(sensor: Sensor, *, show_filters: bool = False, ax: "plt.Axes | None" = None) -> "plt.Axes":  # noqa: E501
     """Plot ``sensor.volts`` and return the matplotlib axis."""
     if plt is None:
         raise ImportError("matplotlib is required for sensor_plot")

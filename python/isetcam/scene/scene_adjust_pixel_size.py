@@ -8,7 +8,7 @@ from .scene_class import Scene
 from ..opticalimage.oi_class import OpticalImage
 
 
-def scene_adjust_pixel_size(scene: Scene, oi: OpticalImage, pixel_size: float) -> tuple[Scene, float]:
+def scene_adjust_pixel_size(scene: Scene, oi: OpticalImage, pixel_size: float) -> tuple[Scene, float]:  # noqa: E501
     """Adjust scene distance so sample spacing equals ``pixel_size``.
 
     Parameters

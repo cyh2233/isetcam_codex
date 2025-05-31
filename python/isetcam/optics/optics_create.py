@@ -24,13 +24,13 @@ def optics_create(name: str = "default", wave: Optional[np.ndarray] = None) -> O
         raise ValueError(f"Unknown optics type '{name}'")
 
     if trans is None:
-        optics = Optics(f_number=_DEF_FNUMBER, f_length=_DEF_FLENGTH, wave=wave, name=name)
+        optics = Optics(f_number=_DEF_FNUMBER, f_length=_DEF_FLENGTH, wave=wave, name=name)  # noqa: E501
     else:
         if wave is None:
-            optics = Optics(f_number=_DEF_FNUMBER, f_length=_DEF_FLENGTH, wave=None, name=name)
+            optics = Optics(f_number=_DEF_FNUMBER, f_length=_DEF_FLENGTH, wave=None, name=name)  # noqa: E501
             optics.transmittance *= trans
         else:
             wave_arr = np.asarray(wave, dtype=float).reshape(-1)
             optics = Optics(f_number=_DEF_FNUMBER, f_length=_DEF_FLENGTH, wave=wave_arr,
-                            transmittance=np.full(wave_arr.shape, trans, dtype=float), name=name)
+                            transmittance=np.full(wave_arr.shape, trans, dtype=float), name=name)  # noqa: E501
     return optics

@@ -17,7 +17,7 @@ def _get_attr(obj: object, name: str):
     return getattr(obj, name, None)
 
 
-def optics_from_file(path: str | Path, *, candidate_vars: Iterable[str] | None = None) -> Optics:
+def optics_from_file(path: str | Path, *, candidate_vars: Iterable[str] | None = None) -> Optics:  # noqa: E501
     """Load ``path`` and return an :class:`Optics`.
 
     Parameters

@@ -72,7 +72,7 @@ def ie_read_spectra(
         else:
             res = np.column_stack(
                 [
-                    np.interp(wave_out, src_wave, data[:, i], left=extrap_val, right=extrap_val)
+                    np.interp(wave_out, src_wave, data[:, i], left=extrap_val, right=extrap_val)  # noqa: E501
                     for i in range(data.shape[1])
                 ]
             )

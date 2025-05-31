@@ -51,7 +51,7 @@ def color_block_matrix(
         b_matrix = np.zeros((wave.size, 3), dtype=float)
         for i in range(3):
             b_matrix[:, i] = np.interp(
-                wave, default_wave, default_matrix[:, i], left=extrap_val, right=extrap_val
+                wave, default_wave, default_matrix[:, i], left=extrap_val, right=extrap_val  # noqa: E501
             )
 
     # Normalize so that each column sums to one

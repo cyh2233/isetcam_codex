@@ -10,7 +10,7 @@ def display_max_contrast(signal_dir: np.ndarray, back_dir: np.ndarray) -> float:
     """Return the maximum Michelson contrast of ``signal_dir`` vs ``back_dir``.
 
     ``signal_dir`` and ``back_dir`` should be arrays of the same shape.
-    The function computes ``(max(signal) - min(background)) / (max(signal) + min(background))``.
+    The function computes ``(max(signal) - min(background)) / (max(signal) + min(background))``.  # noqa: E501
     When either input contains only zeros the contrast is zero.
     """
     sig = np.asarray(signal_dir, dtype=float)

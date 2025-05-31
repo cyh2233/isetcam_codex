@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 
-def delta_e_94(lab1: np.ndarray, lab2: np.ndarray, k: tuple[float, float, float] | np.ndarray = (1.0, 1.0, 1.0)) -> np.ndarray:
+def delta_e_94(lab1: np.ndarray, lab2: np.ndarray, k: tuple[float, float, float] | np.ndarray = (1.0, 1.0, 1.0)) -> np.ndarray:  # noqa: E501
     """Return CIE94 color difference between ``lab1`` and ``lab2``.
 
     Parameters

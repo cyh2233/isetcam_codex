@@ -17,7 +17,7 @@ from ..chromaticity import chromaticity
 _DEF_COLORS = ["r", "g", "b"]
 
 
-def display_plot(display: Display, kind: str = "spd", ax: "plt.Axes | None" = None) -> "plt.Axes":
+def display_plot(display: Display, kind: str = "spd", ax: "plt.Axes | None" = None) -> "plt.Axes":  # noqa: E501
     """Plot information about ``display``.
 
     Parameters

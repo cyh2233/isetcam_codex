@@ -28,12 +28,12 @@ def _freq_scale(units: str) -> float:
         return 1.0
     if units in {"cyclespermillimeter", "mm", "millimeter", "millimeters"}:
         return 1e-3
-    if units in {"cyclespermicron", "um", "micron", "microns", "micrometer", "micrometers"}:
+    if units in {"cyclespermicron", "um", "micron", "microns", "micrometer", "micrometers"}:  # noqa: E501
         return 1e-6
     raise ValueError(f"Unknown frequency unit '{units}'")
 
 
-def scene_frequency_support(scene: Scene, units: str = "cyclesPerDegree") -> dict[str, np.ndarray]:
+def scene_frequency_support(scene: Scene, units: str = "cyclesPerDegree") -> dict[str, np.ndarray]:  # noqa: E501
     """Return frequency support of ``scene``.
 
     Parameters

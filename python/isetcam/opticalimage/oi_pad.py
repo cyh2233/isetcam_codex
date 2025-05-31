@@ -9,7 +9,7 @@ import numpy as np
 from .oi_class import OpticalImage
 
 
-def oi_pad(oi: OpticalImage, pad_size: int | Sequence[int], value: float = 0) -> OpticalImage:
+def oi_pad(oi: OpticalImage, pad_size: int | Sequence[int], value: float = 0) -> OpticalImage:  # noqa: E501
     """Pad ``oi`` by ``pad_size`` pixels on all sides.
 
     Parameters

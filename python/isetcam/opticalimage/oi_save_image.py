@@ -33,7 +33,7 @@ def _photons_to_rgb(oi: OpticalImage, display: Display) -> np.ndarray:
     return rgb
 
 
-def oi_save_image(oi: OpticalImage, path: str | Path, display: Display | None = None) -> None:
+def oi_save_image(oi: OpticalImage, path: str | Path, display: Display | None = None) -> None:  # noqa: E501
     """Save an sRGB rendering of ``oi`` to ``path``."""
     if display is None:
         display = display_create()

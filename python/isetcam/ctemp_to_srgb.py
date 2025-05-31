@@ -11,7 +11,7 @@ from .srgb_xyz import xyz_to_srgb
 __all__ = ["ctemp_to_srgb"]
 
 
-def ctemp_to_srgb(temp: float | np.ndarray, wave: np.ndarray | None = None) -> np.ndarray:
+def ctemp_to_srgb(temp: float | np.ndarray, wave: np.ndarray | None = None) -> np.ndarray:  # noqa: E501
     """Return sRGB value for a blackbody at the given color temperature.
 
     Parameters

@@ -36,7 +36,7 @@ def _prepare_sensor(sensor: Sensor, wave: np.ndarray) -> Sensor:
     return sensor
 
 
-def camera_compute(camera: Camera, start: Union[str, Scene, OpticalImage, Sensor] = "sensor") -> Camera:
+def camera_compute(camera: Camera, start: Union[str, Scene, OpticalImage, Sensor] = "sensor") -> Camera:  # noqa: E501
     """Run the basic camera pipeline.
 
     Parameters

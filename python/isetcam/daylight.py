@@ -12,7 +12,7 @@ from .luminance_from_photons import luminance_from_photons
 _DEF_CCT = 6500
 
 
-def daylight(wave: np.ndarray, cct: np.ndarray | float = _DEF_CCT, units: Units = "energy") -> np.ndarray:
+def daylight(wave: np.ndarray, cct: np.ndarray | float = _DEF_CCT, units: Units = "energy") -> np.ndarray:  # noqa: E501
     """Return daylight spectrum scaled to 100 cd/m^2.
 
     Parameters

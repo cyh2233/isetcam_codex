@@ -29,7 +29,7 @@ def _get_middle_matrix(m: np.ndarray, size: Sequence[int]) -> np.ndarray:
     return m[r_min:r_max, c_min:c_max, ...]
 
 
-def _sc_compute_scielab(xyz: np.ndarray, white: Sequence[float], params: SCIELABParams) -> np.ndarray:
+def _sc_compute_scielab(xyz: np.ndarray, white: Sequence[float], params: SCIELABParams) -> np.ndarray:  # noqa: E501
     xyz = _clip_xyz_image(xyz, white)
     if params.filters is None:
         params.filters, _ = _sc_prepare_filters(params)
