@@ -120,6 +120,7 @@ from .illuminant import (
     illuminant_from_file,
     illuminant_get,
     illuminant_set,
+    illuminant_list,
 )
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
 
@@ -235,6 +236,7 @@ __all__ = [
     'illuminant_from_file',
     'illuminant_get',
     'illuminant_set',
+    'illuminant_list',
     'camera_to_file',
     'camera_from_file',
     'camera_plot',
