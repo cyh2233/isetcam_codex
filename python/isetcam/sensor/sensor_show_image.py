@@ -1,0 +1,54 @@
+"""Display a Sensor image using Matplotlib."""
+
+from __future__ import annotations
+
+import numpy as np
+
+try:  # pragma: no cover - matplotlib might not be installed
+    import matplotlib.pyplot as plt
+except Exception:  # pragma: no cover - matplotlib might not be installed
+    plt = None  # type: ignore
+
+from .sensor_class import Sensor
+from ..display import Display, display_create, display_render
+from ..srgb_to_lrgb import srgb_to_lrgb
+from ..ie_xyz_from_photons import ie_xyz_from_photons
+from ..srgb_xyz import xyz_to_srgb
+
+
+
+def sensor_show_image(sensor: Sensor, display: Display | None = None):
+    """Render ``sensor.volts`` to sRGB and show with matplotlib.
+
+    Parameters
+    ----------
+    sensor : Sensor
+        Sensor containing voltage data in sRGB format.
+    display : Display, optional
+        Display model used to convert the linear RGB image to spectral
+        radiance. When ``None`` a default display is created.
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+        Axis containing the displayed image.
+    """
+    if plt is None:
+        raise ImportError("matplotlib is required for sensor_show_image")
+    if display is None:
+        display = display_create()
+
+    volts = np.asarray(sensor.volts, dtype=float)
+    if volts.ndim != 3 or volts.shape[2] != 3:
+        raise ValueError("sensor.volts must be (rows, cols, 3)")
+
+    lrgb = srgb_to_lrgb(volts)
+    spectral = display_render(lrgb, display, apply_gamma=False)
+    xyz = ie_xyz_from_photons(spectral, display.wave)
+    srgb, _, _ = xyz_to_srgb(xyz)
+
+    fig, ax = plt.subplots()
+    ax.imshow(np.clip(srgb, 0.0, 1.0))
+    ax.axis("off")
+    fig.tight_layout()
+    return ax
