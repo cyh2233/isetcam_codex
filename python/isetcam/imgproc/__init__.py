@@ -5,6 +5,7 @@ from .ie_internal_to_display import ie_internal_to_display
 from .demosaic import (
     ie_nearest_neighbor,
     ie_bilinear,
+    adaptive_laplacian,
     bayer_indices,
     faulty_insert,
     faulty_list,
@@ -16,6 +17,7 @@ __all__ = [
     "ie_internal_to_display",
     "ie_nearest_neighbor",
     "ie_bilinear",
+    "adaptive_laplacian",
     "bayer_indices",
     "faulty_insert",
     "faulty_list",
