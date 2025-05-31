@@ -35,6 +35,7 @@ from .scene_depth_overlay import scene_depth_overlay
 from .scene_depth_range import scene_depth_range
 from .scene_list import scene_list
 from .scene_wb_create import scene_wb_create
+from .scene_plot import scene_plot
 
 __all__ = [
     "Scene",
@@ -66,6 +67,7 @@ __all__ = [
     "scene_combine",
     "scene_adjust_pixel_size",
     "scene_show_image",
+    "scene_plot",
     "scene_save_image",
     "scene_thumbnail",
     "scene_illuminant_pattern",

@@ -98,7 +98,7 @@ from .human import (
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
 from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip  # noqa: E501
-from .opticalimage import oi_to_file
+from .opticalimage import oi_to_file, oi_plot
 from .sensor import sensor_to_file
 from .display import (
     display_to_file,
@@ -117,6 +117,7 @@ from .camera import (
     camera_moire,
 )
 from .optics import optics_to_file, optics_from_file
+from .scene import scene_plot
 from .illuminant import (
     illuminant_to_file,
     illuminant_from_file,
@@ -124,7 +125,7 @@ from .illuminant import (
     illuminant_set,
     illuminant_list,
 )
-from .ip import ip_to_file, ip_from_file
+from .ip import ip_to_file, ip_from_file, ip_plot
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
 
 __all__ = [
@@ -245,10 +246,13 @@ __all__ = [
     'camera_from_file',
     'camera_plot',
     'camera_moire',
+    'scene_plot',
+    'oi_plot',
     'optics_to_file',
     'optics_from_file',
     'ip_to_file',
     'ip_from_file',
+    'ip_plot',
     'openexr_read',
     'openexr_write',
     'pfm_read',

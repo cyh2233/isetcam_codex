@@ -26,6 +26,7 @@ from .oi_save_image import oi_save_image
 from .oi_thumbnail import oi_thumbnail
 from .oi_illuminant_pattern import oi_illuminant_pattern
 from .oi_illuminant_ss import oi_illuminant_ss
+from .oi_plot import oi_plot
 
 __all__ = [
     "OpticalImage",
@@ -52,6 +53,7 @@ __all__ = [
     "oi_calculate_irradiance",
     "oi_calculate_illuminance",
     "oi_show_image",
+    "oi_plot",
     "oi_save_image",
     "oi_thumbnail",
     "oi_illuminant_pattern",
