@@ -11,6 +11,8 @@ from .display_get import display_get
 from .display_set import display_set
 from .display_apply_gamma import display_apply_gamma
 from .display_render import display_render
+from .display_compute import display_compute
+from .display_convert import display_convert
 from .display_show_image import display_show_image
 from .display_from_file import display_from_file
 from .display_to_file import display_to_file
@@ -25,6 +27,8 @@ __all__ = [
     "display_set",
     "display_apply_gamma",
     "display_render",
+    "display_compute",
+    "display_convert",
     "display_show_image",
     "display_from_file",
     "display_to_file",
