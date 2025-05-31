@@ -93,7 +93,12 @@ from .human import (
 from . import scene, opticalimage, sensor, display, illuminant, camera, imgproc, metrics, optics, human, ip
 from .opticalimage import oi_to_file
 from .sensor import sensor_to_file
-from .display import display_to_file
+from .display import (
+    display_to_file,
+    display_list,
+    display_max_contrast,
+    display_plot,
+)
 from .camera import camera_to_file, camera_from_file
 from .optics import optics_to_file, optics_from_file
 from .illuminant import illuminant_to_file, illuminant_from_file
@@ -194,6 +199,9 @@ __all__ = [
     'oi_to_file',
     'sensor_to_file',
     'display_to_file',
+    'display_list',
+    'display_max_contrast',
+    'display_plot',
     'illuminant_to_file',
     'illuminant_from_file',
     'camera_to_file',
