@@ -100,7 +100,12 @@ from .display import (
     display_max_contrast,
     display_plot,
 )
-from .camera import camera_to_file, camera_from_file
+from .camera import (
+    camera_to_file,
+    camera_from_file,
+    camera_plot,
+    camera_moire,
+)
 from .optics import optics_to_file, optics_from_file
 from .illuminant import (
     illuminant_to_file,
@@ -215,6 +220,8 @@ __all__ = [
     'illuminant_set',
     'camera_to_file',
     'camera_from_file',
+    'camera_plot',
+    'camera_moire',
     'optics_to_file',
     'optics_from_file',
     'openexr_read',
