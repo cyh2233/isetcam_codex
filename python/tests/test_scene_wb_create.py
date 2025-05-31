@@ -14,10 +14,15 @@ def test_scene_wb_create_basic(tmp_path):
         assert p.exists()
         data = loadmat(p)
         sc = data["scene"]
-        assert sc["wave"].ravel()[0] == w
+        wav = sc["wave"]
+        wav = wav.ravel()[0] if wav.size == 1 else wav.ravel()[0]
+        assert wav == w
         saved = sc["photons"]
+        if saved.shape == (1, 1):
+            saved = saved[0, 0]
         assert saved.shape == (2, 2, 1)
-        assert np.allclose(saved.squeeze(), photons[:, :, np.where(wave == w)[0][0]])
+        idx = np.where(wave == w)[0][0]
+        assert np.allclose(saved.squeeze(), photons[:, :, idx])
 
 
 def test_scene_wb_create_default_scene(tmp_path):
@@ -26,5 +31,8 @@ def test_scene_wb_create_default_scene(tmp_path):
     assert len(paths) == 107
     sample = loadmat(paths[0])
     sc = sample["scene"]
-    assert sc["photons"].shape[0] == 8  # 4 rows * patch_size
-    assert sc["photons"].shape[1] == 12  # 6 cols * patch_size
+    photons = sc["photons"]
+    if photons.shape == (1, 1):
+        photons = photons[0, 0]
+    assert photons.shape[0] == 8  # 4 rows * patch_size
+    assert photons.shape[1] == 12  # 6 cols * patch_size
