@@ -1887,3 +1887,54 @@ rgb = pocs(bayer, "rggb", iter_n=10)
 ```
 
 Run `pytest -q` when modifying the POCS routine.
+
+## scene_spd_scale
+
+`scene_spd_scale` multiplies the photons of a scene by a constant factor.
+
+```python
+from isetcam.scene import scene_spd_scale
+
+sc2 = scene_spd_scale(sc, 0.5)
+```
+
+Run `pytest -q` to confirm the scaling helper.
+
+## sensor_rotate
+
+Rotate a sensor voltage image by a chosen angle.
+
+```python
+from isetcam.sensor import sensor_rotate
+
+rotated = sensor_rotate(sensor, 90)
+```
+
+Run `pytest -q` after modifying the rotation utility.
+
+## vc_delete_object
+
+Remove an entry from the global session by type and index.
+
+```python
+from isetcam import ie_init, vc_add_and_select_object, vc_delete_object
+
+ie_init()
+idx = vc_add_and_select_object("scene", sc)
+remaining = vc_delete_object("scene", idx)
+```
+
+Remember to run `pytest -q` when updating the session manager.
+
+## oi_create
+
+`oi_create` builds a uniform `OpticalImage` of a specified size.
+
+```python
+from isetcam.opticalimage import oi_create
+
+oi = oi_create(name="demo", size=64)
+print(oi.photons.shape)
+```
+
+Run `pytest -q` after editing this factory.
