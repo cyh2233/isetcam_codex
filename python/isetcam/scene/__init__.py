@@ -30,6 +30,8 @@ from .scene_save_image import scene_save_image
 from .scene_thumbnail import scene_thumbnail
 from .scene_illuminant_pattern import scene_illuminant_pattern
 from .scene_illuminant_ss import scene_illuminant_ss
+from .scene_depth_overlay import scene_depth_overlay
+from .scene_depth_range import scene_depth_range
 
 __all__ = [
     "Scene",
@@ -64,4 +66,6 @@ __all__ = [
     "scene_thumbnail",
     "scene_illuminant_pattern",
     "scene_illuminant_ss",
+    "scene_depth_overlay",
+    "scene_depth_range",
 ]
