@@ -37,6 +37,7 @@ from .scene_list import scene_list
 from .scene_wb_create import scene_wb_create
 from .scene_plot import scene_plot
 from .scene_description import scene_description
+from .scene_clear_data import scene_clear_data
 
 __all__ = [
     "Scene",
@@ -78,4 +79,5 @@ __all__ = [
     "scene_list",
     "scene_wb_create",
     "scene_description",
+    "scene_clear_data",
 ]
