@@ -7,6 +7,7 @@ from .illuminant_from_file import illuminant_from_file
 from .illuminant_to_file import illuminant_to_file
 from .illuminant_get import illuminant_get
 from .illuminant_set import illuminant_set
+from .illuminant_list import illuminant_list
 
 __all__ = [
     "Illuminant",
@@ -16,4 +17,5 @@ __all__ = [
     "illuminant_to_file",
     "illuminant_get",
     "illuminant_set",
+    "illuminant_list",
 ]
