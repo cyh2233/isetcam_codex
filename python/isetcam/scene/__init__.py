@@ -21,6 +21,7 @@ from .scene_spatial_support import scene_spatial_support
 from .scene_spatial_resample import scene_spatial_resample
 from .scene_frequency_support import scene_frequency_support
 from .scene_frequency_resample import scene_frequency_resample
+from .scene_interpolate_w import scene_interpolate_w
 from .scene_to_file import scene_to_file
 from .scene_extract_waveband import scene_extract_waveband
 from .scene_add_grid import scene_add_grid
@@ -61,6 +62,7 @@ __all__ = [
     "scene_spatial_resample",
     "scene_frequency_support",
     "scene_frequency_resample",
+    "scene_interpolate_w",
     "scene_create",
     "scene_photon_noise",
     "scene_to_file",
