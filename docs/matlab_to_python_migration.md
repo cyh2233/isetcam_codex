@@ -1816,3 +1816,74 @@ psnr = metrics_compute(img1, img2, "psnr")
 ```
 
 Run `pytest -q` to ensure the metric calculations remain valid.
+
+## illuminant_list
+
+List the available illuminant spectral files bundled with the package.
+
+```python
+from isetcam.illuminant import illuminant_list
+
+names = illuminant_list()
+print(names[:3])
+```
+
+Run `pytest -q` after updating the illuminant listing helper.
+
+## sensor_show_image
+
+`sensor_show_image` renders sensor volt data to sRGB and shows it with
+Matplotlib.
+
+```python
+from isetcam.sensor import Sensor, sensor_show_image
+
+sensor = Sensor(volts=raw_volts, wave=wave, exposure_time=0.01)
+ax = sensor_show_image(sensor)
+```
+
+Run `pytest -q` after editing the sensor display helper.
+
+## ip_to_file and ip_from_file
+
+Use `ip_to_file` to save a ``VCImage`` to disk and `ip_from_file` to
+reload it.
+
+```python
+from isetcam.ip import VCImage, ip_to_file, ip_from_file
+
+ip = VCImage(rgb=rgb, wave=wave, name="demo")
+ip_to_file(ip, "vcimage.mat")
+loaded = ip_from_file("vcimage.mat")
+```
+
+Remember to run `pytest -q` after modifying these IP file utilities.
+
+## optics_psf and optics_otf
+
+`optics_psf` converts a PSF to an OTF while `optics_otf` performs the
+inverse operation.
+
+```python
+import numpy as np
+from isetcam.optics import optics_psf, optics_otf
+
+psf = np.ones((5, 5))
+otf = optics_psf(psf)
+psf2 = optics_otf(otf)
+```
+
+Run `pytest -q` after updating the optics transforms.
+
+## pocs Demosaicing
+
+The `pocs` routine demosaics a Bayer pattern using Projection Onto
+Convex Sets.
+
+```python
+from isetcam.imgproc import pocs
+
+rgb = pocs(bayer, "rggb", iter_n=10)
+```
+
+Run `pytest -q` when modifying the POCS routine.
