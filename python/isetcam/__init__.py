@@ -36,6 +36,7 @@ from .vc_get_object import vc_get_object
 from .vc_replace_object import vc_replace_object
 from .vc_replace_and_select_object import vc_replace_and_select_object
 from .vc_delete_object import vc_delete_object
+from .vc_clear_objects import vc_clear_objects
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
@@ -264,4 +265,5 @@ __all__ = [
     'vc_replace_object',
     'vc_replace_and_select_object',
     'vc_delete_object',
+    'vc_clear_objects',
 ]

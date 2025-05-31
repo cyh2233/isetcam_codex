@@ -7,8 +7,13 @@ from isetcam import (
     vc_replace_object,
     vc_replace_and_select_object,
     vc_delete_object,
+    vc_clear_objects,
 )
 from isetcam.scene import Scene
+from isetcam.opticalimage import OpticalImage
+from isetcam.sensor import Sensor
+from isetcam.display import Display
+from isetcam.camera import camera_create
 from isetcam.ie_init_session import vcSESSION
 
 
@@ -68,4 +73,40 @@ def test_vc_delete_selected_object():
     assert remaining == 1
     assert vc_get_object("scene", 1) is sc1
     assert vcSESSION["SELECTED"]["SCENE"] == 1
+
+
+def test_vc_clear_objects():
+    ie_init()
+    sc = Scene(photons=np.zeros((1, 1, 1)))
+    oi = OpticalImage(photons=np.zeros((1, 1, 1)))
+    si = Sensor(volts=np.zeros((1, 1, 1)), exposure_time=0.01)
+    dp = Display(spd=np.zeros((1, 3)), wave=np.array([500, 600, 700]))
+    cam = camera_create(sensor=si)
+
+    vc_add_and_select_object("scene", sc)
+    vc_add_and_select_object("opticalimage", oi)
+    vc_add_and_select_object("sensor", si)
+    vc_add_and_select_object("display", dp)
+    vc_add_and_select_object("camera", cam)
+
+    vc_clear_objects()
+
+    assert vcSESSION["SCENE"] == [None]
+    assert vcSESSION["OPTICALIMAGE"] == [None]
+    assert vcSESSION["ISA"] == [None]
+    assert vcSESSION["VCIMAGE"] == [None]
+    assert vcSESSION["DISPLAY"] == [None]
+    assert vcSESSION["GRAPHWIN"] == []
+    assert vcSESSION["CAMERA"] == [None]
+
+    for fld in [
+        "SCENE",
+        "OPTICALIMAGE",
+        "ISA",
+        "VCIMAGE",
+        "DISPLAY",
+        "GRAPHWIN",
+        "CAMERA",
+    ]:
+        assert vcSESSION["SELECTED"][fld] == []
 
