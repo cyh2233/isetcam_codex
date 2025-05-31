@@ -33,6 +33,7 @@ from .scene_illuminant_ss import scene_illuminant_ss
 from .scene_depth_overlay import scene_depth_overlay
 from .scene_depth_range import scene_depth_range
 from .scene_list import scene_list
+from .scene_wb_create import scene_wb_create
 
 __all__ = [
     "Scene",
@@ -70,4 +71,5 @@ __all__ = [
     "scene_depth_overlay",
     "scene_depth_range",
     "scene_list",
+    "scene_wb_create",
 ]
