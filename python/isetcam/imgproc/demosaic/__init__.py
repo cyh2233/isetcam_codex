@@ -4,6 +4,7 @@ from .ie_nearest_neighbor import ie_nearest_neighbor
 from .ie_bilinear import ie_bilinear
 from .adaptive_laplacian import adaptive_laplacian
 from .bayer_indices import bayer_indices
+from .pocs import pocs
 from .faulty_pixel import (
     faulty_insert,
     faulty_list,
@@ -15,6 +16,7 @@ __all__ = [
     "ie_bilinear",
     "adaptive_laplacian",
     "bayer_indices",
+    "pocs",
     "faulty_insert",
     "faulty_list",
     "faulty_pixel_correction",
