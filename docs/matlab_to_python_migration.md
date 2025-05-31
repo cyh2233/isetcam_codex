@@ -535,6 +535,22 @@ M2 = color_transform_matrix(src=src, dst=dst, offset=True)
 After adding these modules remember to run the unit tests again with
 `pytest -q` to confirm everything works.
 
+## Color Transform Matrix Create
+
+`color_transform_matrix_create` derives a least-squares transform from
+sample spectral data.
+
+```python
+import numpy as np
+from isetcam import color_transform_matrix_create
+
+src = np.array([[1.0, 0.0], [0.0, 1.0], [1.0, 1.0]])
+dst = src @ np.array([[1.0, 2.0], [-1.0, 0.5]])
+T = color_transform_matrix_create(src, dst)
+```
+
+Run `pytest -q` after editing the matrix routines.
+
 ## Color Block Matrix
 
 Use `color_block_matrix` to visualize a spectral distribution as RGB values.
@@ -642,6 +658,22 @@ srgb = np.random.rand(4, 3)
 xyz = srgb_to_xyz(srgb)
 srgb2, lrgb, maxY = xyz_to_srgb(xyz)
 ```
+
+## sRGB and Linear RGB
+
+Use `srgb_to_lrgb` and `lrgb_to_srgb` to convert between nonlinear sRGB
+values and linear RGB.
+
+```python
+import numpy as np
+from isetcam import srgb_to_lrgb, lrgb_to_srgb
+
+srgb = np.random.rand(4, 3)
+lrgb = srgb_to_lrgb(srgb)
+srgb2 = lrgb_to_srgb(lrgb)
+```
+
+Run `pytest -q` to ensure these color transforms work properly.
 
 ## LMS Conversions
 
@@ -1037,6 +1069,21 @@ print(sensor.volts)
 
 As always, run `pytest -q` after adding or modifying sensor routines.
 
+## Camera Compute Sequence
+
+`camera_compute_sequence` renders a camera for multiple scenes and exposure times, returning the captured images.
+
+```python
+from isetcam.camera import camera_create, camera_compute_sequence
+from isetcam.scene import scene_create
+
+cam = camera_create()
+sc = scene_create('uniform', size=8)
+cam, frames = camera_compute_sequence(cam, scenes=sc, exposure_times=[0.5, 1.0], n_frames=2)
+```
+
+Run `pytest -q` after changing the sequence routine.
+
 ## Sensor Plot
 
 Use `sensor_plot` to visualize a sensor voltage image and optionally overlay the
@@ -1264,6 +1311,24 @@ score = camera_vsnr(cam, scene)
 ```
 
 Run `pytest -q` after modifying the VSNR routines.
+
+## Camera Acutance and Color Accuracy
+
+`camera_acutance` evaluates the ISO acutance from a camera's MTF while `camera_color_accuracy` measures luminance differences for a Macbeth chart scene.
+
+```python
+from isetcam.camera import (
+    camera_create,
+    camera_acutance,
+    camera_color_accuracy,
+)
+
+cam = camera_create()
+val = camera_acutance(cam)
+metrics, cam = camera_color_accuracy(cam, lum=50, patch_size=4)
+```
+
+Run `pytest -q` after updating these camera metrics.
 ## Human Pupil Size and Macular Transmittance
 
 `human_pupil_size` estimates the diameter and area of the human pupil while
