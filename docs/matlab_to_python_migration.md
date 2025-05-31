@@ -185,6 +185,19 @@ grid = scene_create('grid lines', spacing=32, thickness=2)
 
 Run `pytest -q` to confirm the factory works.
 
+## scene_list
+
+Retrieve the names of example scenes bundled with the package.
+
+```python
+from isetcam.scene import scene_list
+
+names = scene_list()
+print(len(names))
+```
+
+Run `pytest -q` after modifying the listing helper.
+
 Scenes can be manipulated after creation. Use `scene_adjust_luminance` to
 scale the luminance statistic and `scene_crop` to extract a region.
 
@@ -360,6 +373,22 @@ scene_to_file(scene, 'scene.mat')
 disp = display_from_file('display.mat')
 ```
 
+## scene_wb_create
+
+Split a scene into single-wavelength MAT-files. When ``scene`` is not
+provided, a Macbeth chart is generated using the chosen illuminant and
+patch size.
+
+```python
+from isetcam.scene import scene_create, scene_wb_create
+
+sc = scene_create('macbeth d65', patch_size=4)
+paths = scene_wb_create(sc, 'wb_out')
+print(len(paths))
+```
+
+Run `pytest -q` after editing the scene white-balance helper.
+
 ## Saving Objects to MAT-files
 
 Dataclasses can be written back out to MATLAB compatible files using the
@@ -378,6 +407,35 @@ camera_to_file(Camera(sensor=sensor, optical_image=oi), 'cam.mat')
 ```
 
 Remember to run `pytest -q` after using these I/O helpers.
+
+## DNG Image I/O
+
+Raw sensor data can be stored or loaded using `dng_write` and
+`dng_read`. These helpers rely on the optional ``rawpy`` package.
+
+```python
+from isetcam.io import dng_read, dng_write
+import numpy as np
+
+data = (np.arange(12, dtype=np.uint16).reshape(3, 4) * 17) % 65535
+dng_write('demo.dng', data)
+loaded = dng_read('demo.dng')
+```
+
+Run `pytest -q` to confirm the DNG utilities work.
+
+## sensor_dng_read
+
+Read a DNG file directly into a `Sensor` instance.
+
+```python
+from isetcam.sensor import sensor_dng_read
+
+sensor = sensor_dng_read('demo.dng')
+print(sensor.exposure_time)
+```
+
+Run `pytest -q` after updating the DNG sensor loader.
 
 ## OpenEXR Image I/O
 
@@ -1061,6 +1119,22 @@ noisy_s, noise = sensor_photon_noise(sensor)
 ```
 
 Remember to run `pytest -q` after adjusting the sensor noise routines.
+
+## sensor_add_noise
+
+Add DSNU and PRNU noise to a sensor voltage array.
+
+```python
+from isetcam.sensor import Sensor, sensor_set, sensor_add_noise
+import numpy as np
+
+s = Sensor(volts=np.ones((4, 4)), wave=np.array([550]), exposure_time=0.01)
+sensor_set(s, 'gain_sd', 5.0)
+sensor_set(s, 'offset_sd', 0.1)
+noisy, noise = sensor_add_noise(s)
+```
+
+Run `pytest -q` after modifying the noise model.
 
 ## SCIELAB Color Difference
 
