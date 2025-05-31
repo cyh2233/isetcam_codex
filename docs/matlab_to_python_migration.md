@@ -298,6 +298,20 @@ nwave = sensor_get(sensor, "n wave")
 set_exposure_time(sensor, 0.02)
 ```
 
+## Pixel Dataclass
+
+A simple `Pixel` dataclass stores pixel geometry and capacity. Use `pixel_get` and `pixel_set` to access the fields.
+
+```python
+from isetcam.pixel import Pixel, pixel_get, pixel_set
+
+p = Pixel(width=2e-6, height=2e-6, well_capacity=5000, fill_factor=0.5)
+pixel_set(p, "width", 3e-6)
+cap = pixel_get(p, "well capacity")
+```
+
+Run `pytest -q` after editing the pixel helpers.
+
 ## Default Spectrum Initialization
 
 The helper `init_default_spectrum` assigns a standard wavelength
@@ -916,6 +930,35 @@ rgb_bl = ie_bilinear(bayer, "rggb")
 
 Run `pytest -q` after changing the demosaicing routines.
 
+## adaptive_laplacian
+
+`adaptive_laplacian` implements a higher quality demosaic algorithm.
+
+```python
+from isetcam.imgproc.demosaic import adaptive_laplacian
+
+rgb_al = adaptive_laplacian(bayer, "rggb")
+```
+
+Run `pytest -q` after updating the demosaicing code.
+## Faulty Pixel Correction
+
+Utilities `faulty_insert` and `faulty_pixel_correction` help test and repair malfunctioning pixels.
+
+```python
+import numpy as np
+from isetcam.imgproc.demosaic.faulty_pixel import (
+    faulty_insert,
+    faulty_pixel_correction,
+)
+
+bad = np.array([[1, 1], [2, 2]])
+noisy = faulty_insert(bad, bayer, val=1)
+fixed = faulty_pixel_correction(bad, noisy, "rggb")
+```
+
+Run `pytest -q` to verify the faulty pixel routines.
+
 ## Image Distortion and PSNR
 
 The module `isetcam.imgproc` includes a simple `image_distort` routine. Use `ie_psnr` from `isetcam.metrics` to evaluate image quality.
@@ -1422,6 +1465,20 @@ metrics, cam = camera_color_accuracy(cam, lum=50, patch_size=4)
 ```
 
 Run `pytest -q` after updating these camera metrics.
+## camera_plot and camera_moire
+
+The `camera_plot` routine displays the sensor response together with the camera MTF. `camera_moire` synthesizes a radial sinusoid to test aliasing.
+
+```python
+from isetcam.camera import camera_plot, camera_moire, camera_create
+
+cam = camera_create()
+pattern, cam = camera_moire(cam, size=128)
+ax_img, ax_mtf = camera_plot(cam)
+```
+
+Run `pytest -q` after editing these camera visualization helpers.
+
 ## Human Pupil Size and Macular Transmittance
 
 `human_pupil_size` estimates the diameter and area of the human pupil while
@@ -1532,6 +1589,28 @@ contrast = display_max_contrast(dsp.spd[:, 0], dsp.spd[:, 1])
 ```
 
 Remember to run `pytest -q` and `flake8` after updating the display utilities.
+
+## Additional Display Helpers
+
+The display module now exposes routines for describing and adjusting a display.
+
+```python
+from isetcam.display import (
+    display_description,
+    display_set_max_luminance,
+    display_set_white_point,
+    display_reflectance,
+    display_create,
+)
+
+disp = display_create()
+print(display_description(disp))
+display_set_max_luminance(disp, 150)
+display_set_white_point(disp, (0.31, 0.33))
+ref_disp, primaries, illum = display_reflectance(6500)
+```
+
+Run `pytest -q` and `flake8` after modifying these display helpers.
 
 ## Portable FloatMap I/O
 
