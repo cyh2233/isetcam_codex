@@ -52,8 +52,21 @@ export PYTHONPATH=$PWD/python
 pytest -q
 ```
 
+
 Running these tests verifies that the initialization routines and helper
 functions behave as expected.
+
+## Flake8 Workflow
+
+The GitHub workflow `.github/workflows/python-tests.yml` installs
+`flake8` and checks the code style of the Python package for every push
+and pull request. You can run the same check locally:
+
+```bash
+flake8 python/isetcam
+```
+
+Run `flake8` together with `pytest -q` before submitting changes.
 
 ## Finding the Repository Root
 
@@ -68,6 +81,20 @@ print(root)
 ```
 
 Run `pytest -q` after adding code that depends on the repository layout.
+
+## Data Path Helper
+
+Use `data_path` to locate calibration files bundled with the package. It
+falls back to the repository `data` directory when running from the
+source tree:
+
+```python
+from isetcam import data_path
+
+path = data_path('lights/D65.mat')
+```
+
+Run `pytest -q` after editing functions that rely on `data_path`.
 
 ## Conversion Functions
 
@@ -1425,7 +1452,26 @@ otf, fs, wave = human_otf(wave=np.array([550]))
 lsf, x_axis, _ = human_lsf(wave=np.array([550]))
 ```
 
+
 Remember to run `pytest -q` whenever modifying these functions.
+
+## Human Cone Contrast and Cone Isolating
+
+`human_cone_isolating` returns RGB directions for a display that
+approximately isolate each cone class. `human_cone_contrast` computes the
+L, M and S cone contrast of a signal relative to a background.
+
+```python
+from isetcam.display import display_create
+from isetcam.human import human_cone_isolating, human_cone_contrast
+
+dsp = display_create('LCD-Apple')
+iso, sig_spd = human_cone_isolating(dsp)
+bg_spd = dsp.spd @ (0.5 * np.ones(3))
+contrast = human_cone_contrast(sig_spd, bg_spd, dsp.wave)
+```
+
+Run `pytest -q` after editing these human cone utilities.
 
 ## IP Package
 
@@ -1463,6 +1509,29 @@ ax = display_show_image(img, disp)
 The unit test for `display_show_image` sets the Matplotlib backend to `"Agg"`
 so the function can run without opening a window.  Remember to run
 `pytest -q` after editing the display routines.
+
+## Display List, Plot and Max Contrast
+
+`display_list` returns the names of available display calibration files.
+`display_plot` visualizes a display's SPD, gamma curves or gamut when
+matplotlib is installed. `display_max_contrast` computes the Michelson
+contrast between two RGB directions.
+
+```python
+from isetcam.display import (
+    display_create,
+    display_list,
+    display_plot,
+    display_max_contrast,
+)
+
+names = display_list()
+dsp = display_create(names[0])
+ax = display_plot(dsp, kind="spd")
+contrast = display_max_contrast(dsp.spd[:, 0], dsp.spd[:, 1])
+```
+
+Remember to run `pytest -q` and `flake8` after updating the display utilities.
 
 ## Portable FloatMap I/O
 
