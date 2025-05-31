@@ -121,7 +121,7 @@ from .illuminant import (
     illuminant_get,
     illuminant_set,
 )
-from .io import openexr_read, openexr_write, pfm_read, pfm_write
+from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
 
 __all__ = [
     'vc_constants',
@@ -245,6 +245,8 @@ __all__ = [
     'openexr_write',
     'pfm_read',
     'pfm_write',
+    'dng_read',
+    'dng_write',
     'vc_add_and_select_object',
     'vc_get_object',
     'vc_replace_object',
