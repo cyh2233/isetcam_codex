@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
-from .iset_root_path import iset_root_path
+from .data_path import data_path
 
 from .vc_get_image_format import vc_get_image_format
 from .rgb_to_xw_format import rgb_to_xw_format
@@ -15,8 +15,7 @@ from .xw_to_rgb_format import xw_to_rgb_format
 
 def _xyz_color_matching(wave: np.ndarray) -> np.ndarray:
     """Interpolate the CIE XYZ color matching functions to ``wave``."""
-    root = iset_root_path()
-    data = loadmat(root / "data" / "human" / "XYZ.mat")
+    data = loadmat(data_path("human/XYZ.mat"))
     src_wave = data["wavelength"].ravel()
     xyz = data["data"]
     cmf = np.zeros((len(wave), 3))

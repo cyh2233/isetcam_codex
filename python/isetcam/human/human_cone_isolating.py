@@ -6,7 +6,7 @@ import numpy as np
 
 from ..display import Display
 from ..ie_read_spectra import ie_read_spectra
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 
 
 def human_cone_isolating(display: Display) -> tuple[np.ndarray, np.ndarray]:
@@ -30,8 +30,7 @@ def human_cone_isolating(display: Display) -> tuple[np.ndarray, np.ndarray]:
     wave = np.asarray(display.wave, dtype=float)
     spd = np.asarray(display.spd, dtype=float)
 
-    root = iset_root_path()
-    cone_file = root / "data" / "human" / "stockman.mat"
+    cone_file = data_path("human/stockman.mat")
     cones, _, _, _ = ie_read_spectra(cone_file, wave)
 
     rgb2lms = (cones.T @ spd).T

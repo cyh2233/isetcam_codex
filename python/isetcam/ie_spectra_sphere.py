@@ -8,7 +8,7 @@ import numpy as np
 from scipy.io import loadmat
 
 from .ie_xyz_from_energy import ie_xyz_from_energy, _xyz_color_matching
-from .iset_root_path import iset_root_path
+from .data_path import data_path
 
 _DEF_FILE = "cieDaylightBasis.mat"
 
@@ -17,13 +17,11 @@ def _load_basis(wave: np.ndarray, basis: np.ndarray | str | Path | None) -> np.n
     """Return spectral basis functions interpolated to ``wave``."""
     wave = np.asarray(wave, dtype=float).reshape(-1)
     if basis is None:
-        root = iset_root_path()
-        path = root / "data" / "lights" / _DEF_FILE
+        path = data_path(f"lights/{_DEF_FILE}")
     elif isinstance(basis, (str, Path)):
         p = Path(basis)
         if not p.is_absolute():
-            root = iset_root_path()
-            p2 = root / "data" / "lights" / p
+            p2 = data_path(f"lights/{p}")
             if p2.exists():
                 p = p2
         path = p

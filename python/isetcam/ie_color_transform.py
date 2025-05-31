@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
-from .iset_root_path import iset_root_path
+from .data_path import data_path
 from .illuminant import illuminant_create
 
 
@@ -25,9 +25,8 @@ def _interp_data(src_wave: np.ndarray, data: np.ndarray, wave: np.ndarray) -> np
 
 
 def _load_surfaces(name: str, wave: np.ndarray) -> np.ndarray:
-    root = iset_root_path()
     if name.lower() in {"mcc", "macbeth"}:
-        path = root / "data" / "surfaces" / "reflectances" / "macbethChart.mat"
+        path = data_path("surfaces/reflectances/macbethChart.mat")
     else:
         raise ValueError("Unknown surface set: %s" % name)
     data = loadmat(path)
@@ -37,8 +36,7 @@ def _load_surfaces(name: str, wave: np.ndarray) -> np.ndarray:
 
 
 def _load_xyz(wave: np.ndarray) -> np.ndarray:
-    root = iset_root_path()
-    data = loadmat(root / "data" / "human" / "XYZ.mat")
+    data = loadmat(data_path("human/XYZ.mat"))
     src_wave = data["wavelength"].ravel()
     xyz = data["data"]
     return _interp_data(src_wave, xyz, wave)

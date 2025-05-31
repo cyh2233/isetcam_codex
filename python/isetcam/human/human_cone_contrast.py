@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 from ..ie_read_spectra import ie_read_spectra
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 from ..quanta2energy import quanta_to_energy
 
 Units = "energy", "photons", "quanta"
@@ -46,8 +46,7 @@ def human_cone_contrast(
         spd_signal = quanta_to_energy(wave, spd_signal)
         spd_background = quanta_to_energy(wave, spd_background)
 
-    root = iset_root_path()
-    cone_file = root / "data" / "human" / "stockman.mat"
+    cone_file = data_path("human/stockman.mat")
     cones, _, _, _ = ie_read_spectra(cone_file, wave)
 
     back_cones = cones.T @ spd_background

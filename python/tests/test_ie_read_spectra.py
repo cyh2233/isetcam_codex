@@ -1,12 +1,11 @@
 import numpy as np
 from scipy.io import loadmat
 
-from isetcam import ie_read_spectra, iset_root_path
+from isetcam import ie_read_spectra, data_path
 
 
 def test_ie_read_spectra_interpolation():
-    root = iset_root_path()
-    path = root / "data" / "lights" / "D65.mat"
+    path = data_path("lights/D65.mat")
     mat = loadmat(path)
     wave = np.arange(400, 701, 10)
     data = np.interp(wave, mat["wavelength"].ravel(), mat["data"].ravel()).reshape(-1, 1)
@@ -20,8 +19,7 @@ def test_ie_read_spectra_interpolation():
 
 
 def test_ie_read_spectra_extrapolation():
-    root = iset_root_path()
-    path = root / "data" / "lights" / "D65.mat"
+    path = data_path("lights/D65.mat")
     mat = loadmat(path)
     wave = np.array([295, 300, 320, 835])
     expected = np.interp(

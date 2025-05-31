@@ -7,14 +7,13 @@ from pathlib import Path
 import numpy as np
 from scipy.io import loadmat
 
-from ..iset_root_path import iset_root_path
+from ..data_path import data_path
 from ..opticalimage import OpticalImage
 
 
 def _macular_transmittance(density: float, wave: np.ndarray) -> np.ndarray:
     """Return macular pigment transmittance for ``wave``."""
-    root = iset_root_path()
-    mat = loadmat(root / 'data' / 'human' / 'macularPigment.mat')
+    mat = loadmat(data_path('human/macularPigment.mat'))
     src_wave = mat['wavelength'].ravel()
     data = mat['data'].ravel()
     unit = np.interp(wave, src_wave, data, left=0.0, right=0.0) / 0.3521

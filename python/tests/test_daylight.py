@@ -1,12 +1,11 @@
 import numpy as np
 from scipy.io import loadmat
 
-from isetcam import daylight, energy_to_quanta, luminance_from_energy, iset_root_path
+from isetcam import daylight, energy_to_quanta, luminance_from_energy, data_path
 
 
 def _expected_d65(wave: np.ndarray) -> np.ndarray:
-    root = iset_root_path()
-    mat = loadmat(root / "data" / "lights" / "D65.mat")
+    mat = loadmat(data_path("lights/D65.mat"))
     d_wave = mat["wavelength"].ravel()
     d_spd = np.interp(wave, d_wave, mat["data"].ravel())
     lum = luminance_from_energy(d_spd[np.newaxis, :], wave)[0]

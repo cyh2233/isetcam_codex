@@ -51,7 +51,8 @@ def chromaticity_plot(
         fig = ax.figure
 
     # Load CIE XYZ color matching functions for wavelengths 370-730 nm
-    data = loadmat(Path(__file__).resolve().parents[2] / "data" / "human" / "XYZ.mat")
+    from .data_path import data_path
+    data = loadmat(data_path("human/XYZ.mat"))
     XYZ = data["data"]
     xy = chromaticity(XYZ)
 

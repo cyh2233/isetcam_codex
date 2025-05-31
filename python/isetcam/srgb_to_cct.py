@@ -8,7 +8,7 @@ from scipy.io import loadmat
 from .srgb_xyz import srgb_to_xyz
 from .rgb_to_xw_format import rgb_to_xw_format
 from .chromaticity import chromaticity
-from .iset_root_path import iset_root_path
+from .data_path import data_path
 from .illuminant import illuminant_blackbody
 
 __all__ = ["srgb_to_cct"]
@@ -18,8 +18,7 @@ def _default_table() -> np.ndarray:
     """Return lookup table of xy chromaticities for sample color temperatures."""
     wave = np.arange(400, 701, 10)
     ctemps = np.arange(2500, 10501, 500)
-    root = iset_root_path()
-    data = loadmat(root / "data" / "human" / "XYZEnergy.mat")
+    data = loadmat(data_path("human/XYZEnergy.mat"))
     src_wave = data["wavelength"].ravel()
     XYZ = np.zeros((len(wave), 3))
     for i in range(3):

@@ -14,7 +14,7 @@ from scipy.io import loadmat
 
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
-from .iset_root_path import iset_root_path
+from .data_path import data_path
 
 # XYZ to LMS conversion matrix (Stockman fundamentals)
 _XYZ2LMS = np.array([
@@ -24,7 +24,7 @@ _XYZ2LMS = np.array([
 ])
 
 
-_def_stockman_path = iset_root_path() / "data" / "human" / "stockman.mat"
+_def_stockman_path = data_path("human/stockman.mat")
 
 
 def _stockman_values(wavelengths: list[float]) -> np.ndarray:
