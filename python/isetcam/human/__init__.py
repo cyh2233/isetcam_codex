@@ -12,6 +12,8 @@ from .human_cone_contrast import human_cone_contrast
 from .human_cone_isolating import human_cone_isolating
 from .human_cones import human_cones
 from .human_cone_mosaic import human_cone_mosaic
+from .human_oi import human_oi
+from .human_uv_safety import human_uv_safety
 from .watson_impulse_response import watson_impulse_response
 from .watson_rgc_spacing import watson_rgc_spacing
 
@@ -28,6 +30,8 @@ __all__ = [
     'human_cone_isolating',
     'human_cones',
     'human_cone_mosaic',
+    'human_oi',
+    'human_uv_safety',
     'watson_impulse_response',
     'watson_rgc_spacing',
 ]
