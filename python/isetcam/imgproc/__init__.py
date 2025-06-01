@@ -2,6 +2,8 @@
 
 from .image_distort import image_distort
 from .ie_internal_to_display import ie_internal_to_display
+from .image_illuminant_correction import image_illuminant_correction
+from .image_esser_transform import image_esser_transform
 from .demosaic import (
     ie_nearest_neighbor,
     ie_bilinear,
@@ -24,4 +26,6 @@ __all__ = [
     "faulty_insert",
     "faulty_list",
     "faulty_pixel_correction",
+    "image_illuminant_correction",
+    "image_esser_transform",
 ]
