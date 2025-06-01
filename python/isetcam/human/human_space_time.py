@@ -6,6 +6,7 @@ import numpy as np
 
 from .kelly_space_time import kelly_space_time, _DEF_FS, _DEF_FT
 from .watson_impulse_response import watson_impulse_response
+from .poirson_spatio_chromatic import poirson_spatio_chromatic
 
 
 def human_space_time(
@@ -37,7 +38,9 @@ def human_space_time(
         sens = np.interp(ft, all_ft, t_mtf)
         fs = None
     elif flag in {"poirsoncolor", "wandellpoirsoncolorspace"}:
-        raise NotImplementedError("Poirson/Wandell color model not implemented")
+        lum, rg, by, positions = poirson_spatio_chromatic()
+        sens = {"lum": lum, "rg": rg, "by": by}
+        fs = positions
     else:
         raise ValueError("Unknown model")
 
