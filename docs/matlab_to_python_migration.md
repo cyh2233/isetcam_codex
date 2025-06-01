@@ -2348,3 +2348,85 @@ T = image_esser_transform(patch_size=4)
 ```
 
 Run `pytest -q` after implementing these routines.
+## ie_clip
+
+Clamp array values to a range. With one bound the other is mirrored.
+
+```python
+import numpy as np
+from isetcam import ie_clip
+
+vals = np.linspace(-1, 1, 5)
+clipped = ie_clip(vals, 0, 1)
+```
+
+Run `pytest -q` after implementing the clipping helper.
+
+## ie_scp
+
+Copy a local file to a remote host using ``scp``.
+
+```python
+from isetcam import ie_scp
+
+cmd, rc = ie_scp('user', 'host', 'local.txt', 'remote.txt')
+print(cmd, rc)
+```
+
+Run `pytest -q` to verify the secure copy wrapper.
+
+## sensor_resample_wave
+
+Interpolate sensor spectral data to a new wavelength grid.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_resample_wave
+
+s = Sensor(volts=np.ones((2, 2)), wave=np.arange(400, 701, 10))
+new = sensor_resample_wave(s, np.arange(420, 681, 20))
+print(new.wave)
+```
+
+Run `pytest -q` after adding this resampling routine.
+
+## sensor_rescale
+
+Resize the sensor voltage image and update the pixel size.
+
+```python
+from isetcam.sensor import Sensor, sensor_rescale
+
+s = Sensor(volts=np.ones((2, 2)), wave=np.array([550]), exposure_time=0.01)
+s2 = sensor_rescale(s, (4, 4), (4e-6, 4e-6))
+print(s2.volts.shape)
+```
+
+Run `pytest -q` after implementing the rescaling helper.
+
+## sensor_gain_offset
+
+Apply analog gain and offset to sensor voltages.
+
+```python
+from isetcam.sensor import Sensor, sensor_gain_offset
+
+s = Sensor(volts=np.array([1.0]), wave=np.array([550]), exposure_time=0.01)
+sensor_gain_offset(s, gain=2.0, offset=-0.5)
+```
+
+Run `pytest -q` after updating the gain/offset routine.
+
+## sensor_dr
+
+Compute the sensor dynamic range in decibels.
+
+```python
+from isetcam.sensor import Sensor, sensor_set, sensor_dr
+
+s = Sensor(volts=np.zeros((1,)), wave=np.array([550]), exposure_time=0.01)
+sensor_set(s, 'read_noise_electrons', 5.0)
+dr_db, vmax, vmin = sensor_dr(s)
+```
+
+Run `pytest -q` after adding the dynamic range calculation.
