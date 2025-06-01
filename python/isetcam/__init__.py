@@ -45,6 +45,14 @@ from .vc_replace_object import vc_replace_object
 from .vc_replace_and_select_object import vc_replace_and_select_object
 from .vc_delete_object import vc_delete_object
 from .vc_clear_objects import vc_clear_objects
+from .vc_get_objects import vc_get_objects
+from .vc_count_objects import vc_count_objects
+from .vc_get_object_names import vc_get_object_names
+from .vc_get_selected_object import vc_get_selected_object
+from .vc_set_objects import vc_set_objects
+from .vc_set_selected_object import vc_set_selected_object
+from .vc_new_object_name import vc_new_object_name
+from .vc_new_object_value import vc_new_object_value
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
@@ -311,4 +319,12 @@ __all__ = [
     'vc_replace_and_select_object',
     'vc_delete_object',
     'vc_clear_objects',
+    'vc_get_objects',
+    'vc_count_objects',
+    'vc_get_object_names',
+    'vc_get_selected_object',
+    'vc_set_objects',
+    'vc_set_selected_object',
+    'vc_new_object_name',
+    'vc_new_object_value',
 ]
