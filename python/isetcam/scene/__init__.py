@@ -33,6 +33,10 @@ from .scene_thumbnail import scene_thumbnail
 from .scene_illuminant_pattern import scene_illuminant_pattern
 from .scene_illuminant_ss import scene_illuminant_ss
 from .scene_illuminant_scale import scene_illuminant_scale
+from .scene_hdr_image import scene_hdr_image
+from .scene_hdr_chart import scene_hdr_chart
+from .scene_hdr_lights import scene_hdr_lights
+from .scene_create_hdr import scene_create_hdr
 from .scene_depth_overlay import scene_depth_overlay
 from .scene_depth_range import scene_depth_range
 from .scene_list import scene_list
@@ -84,4 +88,8 @@ __all__ = [
     "scene_wb_create",
     "scene_description",
     "scene_clear_data",
+    "scene_hdr_image",
+    "scene_hdr_chart",
+    "scene_hdr_lights",
+    "scene_create_hdr",
 ]
