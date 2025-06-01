@@ -19,6 +19,7 @@ from .human_oi import human_oi
 from .human_uv_safety import human_uv_safety
 from .watson_impulse_response import watson_impulse_response
 from .watson_rgc_spacing import watson_rgc_spacing
+from .poirson_spatio_chromatic import poirson_spatio_chromatic
 
 __all__ = [
     'human_pupil_size',
@@ -40,4 +41,5 @@ __all__ = [
     'human_uv_safety',
     'watson_impulse_response',
     'watson_rgc_spacing',
+    'poirson_spatio_chromatic',
 ]
