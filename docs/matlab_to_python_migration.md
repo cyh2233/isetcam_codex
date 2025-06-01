@@ -491,6 +491,19 @@ channels = openexr_read('img.exr')
 
 Run `pytest -q` to confirm the EXR utilities work.
 
+## sensor_to_exr
+
+Write sensor volt data to an OpenEXR file.
+
+```python
+from isetcam.sensor import Sensor, sensor_to_exr
+
+path = "sensor.exr"
+sensor_to_exr(sensor, path)
+```
+
+Run `pytest -q` after editing the EXR export helper.
+
 ## Updated Tests
 
 Unit tests in `python/tests` exercise the conversion helpers, format
@@ -1606,6 +1619,20 @@ cropped = sensor_crop(sensor, (0, 0, 128, 128))
 
 Remember to run `pytest -q` after editing the sensor routines.
 
+## sensor_roi
+
+Return a rectangular ROI and its row and column indices.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_roi
+
+s = Sensor(volts=np.arange(16).reshape(4, 4), wave=np.array([550]), exposure_time=0.01)
+roi_volts, rows, cols = sensor_roi(s, (1, 1, 2, 2))
+```
+
+Run `pytest -q` after updating the ROI helper.
+
 ## Optical Image Compute
 
 `oi_compute` forms an optical image from a scene using an optics model.
@@ -1731,10 +1758,13 @@ Run `pytest -q` after updating the achromatic OTF helper.
 ## human_space_time, kelly_space_time and westheimer_lsf
 
 These helpers return spatio-temporal sensitivity surfaces and a line spread function for human vision.
+The `'poirsoncolor'` option (also `'wandellpoirsoncolorspace'`) gives
+luminance and chromatic sensitivity surfaces.
 
 ```python
 from isetcam.human import human_space_time, kelly_space_time, westheimer_lsf
 spatial, fs, ft = human_space_time()
+poirson, pos, _ = human_space_time("poirsoncolor")
 ks_sens, _, _ = kelly_space_time()
 lsf, x = westheimer_lsf()
 ```
@@ -2204,6 +2234,29 @@ ax = sensor_show_cfa(s)
 ```
 
 Run `pytest -q` after updating the CFA viewer.
+
+## sensor_add_filter, sensor_delete_filter and sensor_replace_filter
+
+Modify the color filter array for a `Sensor` instance.
+
+```python
+import numpy as np
+from isetcam import data_path
+from isetcam.sensor import (
+    Sensor,
+    sensor_add_filter,
+    sensor_delete_filter,
+    sensor_replace_filter,
+)
+
+s = Sensor(volts=np.zeros((1, 1)), wave=np.arange(370, 731, 10), exposure_time=0.01)
+sensor_add_filter(s, data_path("sensor/colorfilters/B.mat"))
+sensor_delete_filter(s, 0)
+sensor_add_filter(s, data_path("sensor/colorfilters/G.mat"))
+sensor_replace_filter(s, 0, data_path("sensor/colorfilters/R.mat"))
+```
+
+Run `pytest -q` after editing the CFA helpers.
 
 ## sensor_stats
 
