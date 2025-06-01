@@ -2430,3 +2430,129 @@ dr_db, vmax, vmin = sensor_dr(s)
 ```
 
 Run `pytest -q` after adding the dynamic range calculation.
+## scene_calculate_luminance
+
+Compute the luminance map of a scene in cd/m^2 and return the mean value.
+
+```python
+import numpy as np
+from isetcam.scene import Scene, scene_calculate_luminance
+
+sc = Scene(photons=np.ones((1, 1, 1)), wave=np.array([550]))
+lum, mean_lum = scene_calculate_luminance(sc)
+print(mean_lum)
+```
+
+Run `pytest -q` after editing the luminance routine.
+
+## scene_from_ddf_file
+
+Load a compressed ``.ddf`` file that stores photons and wavelength data.
+
+```python
+from isetcam.scene import scene_from_ddf_file
+
+sc = scene_from_ddf_file('sample.ddf')
+print(sc.photons.shape)
+```
+
+Run `pytest -q` after modifying the DDF reader.
+
+## scene_make_video
+
+Encode a list of scenes into a movie using ``ffmpeg``.
+
+```python
+from isetcam.scene import Scene, scene_make_video
+import numpy as np
+
+wave = np.array([500, 600, 700])
+sc1 = Scene(photons=np.ones((2, 2, 3)), wave=wave)
+sc2 = Scene(photons=np.zeros((2, 2, 3)), wave=wave)
+scene_make_video([sc1, sc2], 'movie.mp4', fps=10)
+```
+
+Run `pytest -q` after updating the video writer.
+
+## scene_init_geometry and scene_init_spatial
+
+Assign default distance and field of view when they are undefined.
+
+```python
+from isetcam.scene import Scene, scene_init_geometry, scene_init_spatial
+import numpy as np
+
+sc = Scene(photons=np.ones((1, 1, 1)), wave=np.array([550]))
+scene_init_geometry(sc)
+scene_init_spatial(sc)
+print(sc.distance, sc.fov)
+```
+
+Run `pytest -q` after editing the initialization helpers.
+
+## scene_photons_from_vector and scene_energy_from_vector
+
+Retrieve the spectral data at a pixel as a vector of photons or energy.
+
+```python
+from isetcam.scene import (
+    Scene,
+    scene_photons_from_vector,
+    scene_energy_from_vector,
+)
+import numpy as np
+
+sc = Scene(photons=np.arange(6).reshape(1, 2, 3), wave=np.array([500, 600, 700]))
+phot_vec = scene_photons_from_vector(sc, 0, 1)
+energy_vec = scene_energy_from_vector(sc, 0, 1)
+```
+
+Run `pytest -q` after modifying the vector utilities.
+
+## oi_calculate_otf
+
+Compute the optical transfer function for an optical image and optics model.
+
+```python
+import numpy as np
+from isetcam.opticalimage import OpticalImage, oi_calculate_otf
+from isetcam.optics import Optics
+
+oi = OpticalImage(photons=np.ones((4, 4, 1)), wave=np.array([550]))
+optics = Optics(f_number=4.0, f_length=0.005, wave=oi.wave)
+otf, fs = oi_calculate_otf(oi, optics)
+print(otf.shape)
+```
+
+Run `pytest -q` after editing the OTF calculation.
+
+## human_oi
+
+Create a human optical image from scene photons using typical eye optics.
+
+```python
+import numpy as np
+from isetcam.scene import Scene
+from isetcam.human import human_oi
+
+sc = Scene(photons=np.ones((8, 8, 1)), wave=np.array([550]))
+oi = human_oi(sc)
+print(oi.illuminance.shape)
+```
+
+Run `pytest -q` after updating the human OI helper.
+
+## human_uv_safety
+
+Evaluate ultraviolet and blue light exposure safety.
+
+```python
+import numpy as np
+from isetcam.human import human_uv_safety
+
+wave = np.arange(300, 401, 10)
+energy = np.ones_like(wave) * 0.01
+val, level, safe = human_uv_safety(energy, wave, method='eye', duration=100)
+```
+
+Run `pytest -q` after modifying the UV safety routine.
