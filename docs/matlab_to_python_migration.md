@@ -2201,3 +2201,63 @@ iso = sensor_iso_speed(s)
 ```
 
 Run `pytest -q` after editing the ISO speed calculation.
+
+## human_cones, human_cone_mosaic, watson_impulse_response and watson_rgc_spacing
+
+These helpers return cone spectral sensitivities, simulate a simple cone mosaic and model ganglion cell temporal and spatial characteristics.
+
+```python
+import numpy as np
+from isetcam.human import (
+    human_cones,
+    human_cone_mosaic,
+    watson_impulse_response,
+    watson_rgc_spacing,
+)
+
+spd = human_cones()
+cones = human_cone_mosaic((64, 64))
+imp = watson_impulse_response(np.linspace(0, 0.1, 100))
+spacing = watson_rgc_spacing(0.5)
+```
+
+Run `pytest -q` after implementing these routines.
+
+## optics_cos4th and optics_defocused_mtf
+
+`optics_cos4th` models cos^4 falloff vignetting while `optics_defocused_mtf` returns an MTF for a defocused optic.
+
+```python
+import numpy as np
+from isetcam.optics import optics_cos4th, optics_defocused_mtf
+
+v = optics_cos4th(np.linspace(0, 1, 5))
+mtf = optics_defocused_mtf(np.arange(0, 60, 10), defocus_d=1.0)
+```
+
+Run `pytest -q` after editing these optics helpers.
+
+## camera_full_reference
+
+`camera_full_reference` compares a rendered image against ground truth and returns quality metrics.
+
+```python
+from isetcam.camera import camera_full_reference
+
+score = camera_full_reference(target, reference)
+```
+
+Run `pytest -q` after adding this metric.
+
+## image_illuminant_correction and image_esser_transform
+
+`image_illuminant_correction` balances an image for a chosen illuminant while `image_esser_transform` computes the Esser chart transform.
+
+```python
+from isetcam.imgproc import image_illuminant_correction, image_esser_transform
+
+balanced = image_illuminant_correction(img, illum)
+T = image_esser_transform(patch_size=4)
+```
+
+Run `pytest -q` after implementing these routines.
