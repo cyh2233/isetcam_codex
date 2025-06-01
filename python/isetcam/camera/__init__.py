@@ -15,6 +15,7 @@ from .camera_acutance import camera_acutance
 from .camera_color_accuracy import camera_color_accuracy
 from .camera_compute_sequence import camera_compute_sequence
 from .camera_clear_data import camera_clear_data
+from .camera_full_reference import camera_full_reference
 
 __all__ = [
     "Camera",
@@ -32,4 +33,5 @@ __all__ = [
     "camera_color_accuracy",
     "camera_compute_sequence",
     "camera_clear_data",
+    "camera_full_reference",
 ]
