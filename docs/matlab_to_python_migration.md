@@ -2223,6 +2223,93 @@ spacing = watson_rgc_spacing(0.5)
 
 Run `pytest -q` after implementing these routines.
 
+## scene_hdr_image
+
+`scene_hdr_image` creates a simple HDR pattern of bright patches over an
+optional background image.
+
+```python
+from isetcam.scene import scene_hdr_image
+
+sc = scene_hdr_image(5, image_size=256, dynamic_range=4.0)
+```
+
+Run `pytest -q` after editing the HDR image helper.
+
+## scene_hdr_chart
+
+`scene_hdr_chart` returns horizontal strips spanning a very wide dynamic
+range.
+
+```python
+from isetcam.scene import scene_hdr_chart
+
+chart = scene_hdr_chart(dynamic_range=1e5, n_levels=10)
+```
+
+Run `pytest -q` after updating the HDR chart helper.
+
+## scene_hdr_lights
+
+`scene_hdr_lights` generates a synthetic scene of geometric lights across
+several intensity levels.
+
+```python
+from isetcam.scene import scene_hdr_lights
+
+lights = scene_hdr_lights(image_size=384, dynamic_range=1e6)
+```
+
+Run `pytest -q` once the lights helper is implemented.
+
+## scene_create_hdr
+
+Use `scene_create_hdr` to access the HDR scene factories by name.
+
+```python
+from isetcam.scene import scene_create_hdr
+
+hdr = scene_create_hdr('hdrimage', n_patches=6)
+```
+
+Run `pytest -q` after modifying the HDR factory.
+
+## CPCamera, CPScene, CPCModule, cp_burst_camera and cp_burst_ip
+
+The `cp` package provides simple computational photography helpers.
+
+```python
+from isetcam.cp import CPScene, CPCModule, CPCamera, cp_burst_camera, cp_burst_ip
+from isetcam.sensor import sensor_create
+from isetcam.optics import optics_create
+from isetcam.scene import scene_create
+
+scene = CPScene([scene_create('uniform', size=8)])
+module = CPCModule(sensor_create(), optics_create())
+camera = CPCamera([module])
+
+exp_times = cp_burst_camera(3, 0.01, mode='hdr')
+captures = camera.take_picture(scene, exposure_times=exp_times)
+combined = cp_burst_ip(captures, mode='sum')
+```
+
+Run `pytest -q` after implementing these burst capture routines.
+
+## ip_hdr_white
+
+`ip_hdr_white` shifts bright regions of a `VCImage` toward white for HDR
+display.
+
+```python
+import numpy as np
+from isetcam.ip import VCImage, ip_hdr_white
+
+ip = VCImage(rgb=np.random.rand(64, 64, 3))
+ip, weights = ip_hdr_white(ip, saturation=1.0, hdr_level=0.9)
+```
+
+Run `pytest -q` after editing the HDR whitening function.
+
 ## optics_cos4th and optics_defocused_mtf
 
 `optics_cos4th` models cos^4 falloff vignetting while `optics_defocused_mtf` returns an MTF for a defocused optic.
