@@ -29,6 +29,9 @@ from .sensor_resample_wave import sensor_resample_wave
 from .sensor_rescale import sensor_rescale
 from .sensor_gain_offset import sensor_gain_offset
 from .sensor_dr import sensor_dr
+from .sensor_add_filter import sensor_add_filter
+from .sensor_delete_filter import sensor_delete_filter
+from .sensor_replace_filter import sensor_replace_filter
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -87,4 +90,7 @@ __all__ = [
     "sensor_rescale",
     "sensor_gain_offset",
     "sensor_dr",
+    "sensor_add_filter",
+    "sensor_delete_filter",
+    "sensor_replace_filter",
 ]
