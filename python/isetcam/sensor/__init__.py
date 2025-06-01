@@ -25,6 +25,9 @@ from .sensor_show_cfa import sensor_show_cfa
 from .sensor_stats import sensor_stats
 from .sensor_clear_data import sensor_clear_data
 from .sensor_iso_speed import sensor_iso_speed
+from .sensor_resample_wave import sensor_resample_wave
+from .sensor_rescale import sensor_rescale
+from .sensor_gain_offset import sensor_gain_offset
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -79,4 +82,7 @@ __all__ = [
     "sensor_stats",
     "sensor_clear_data",
     "sensor_iso_speed",
+    "sensor_resample_wave",
+    "sensor_rescale",
+    "sensor_gain_offset",
 ]
