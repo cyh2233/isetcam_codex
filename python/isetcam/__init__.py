@@ -60,6 +60,7 @@ from .lab_to_xyz import lab_to_xyz
 from .xyz_to_xyy import xyz_to_xyy
 from .xyy_to_xyz import xyy_to_xyz
 from .y_to_lstar import y_to_lstar
+from .lstar_to_y import lstar_to_y
 from .xyz_to_uv import xyz_to_uv
 from .xyz_to_luv import xyz_to_luv
 from .lms_to_xyz import lms_to_xyz
@@ -204,6 +205,7 @@ __all__ = [
     'xyz_to_xyy',
     'xyy_to_xyz',
     'y_to_lstar',
+    'lstar_to_y',
     'xyz_to_uv',
     'xyz_to_luv',
     'lms_to_xyz',
