@@ -151,6 +151,7 @@ from .illuminant import (
 )
 from .ip import ip_to_file, ip_from_file, ip_plot
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
+from .ie_scp import ie_scp
 
 __all__ = [
     '__version__',
@@ -299,6 +300,7 @@ __all__ = [
     'pfm_write',
     'dng_read',
     'dng_write',
+    'ie_scp',
     'vc_add_and_select_object',
     'vc_get_object',
     'vc_replace_object',
