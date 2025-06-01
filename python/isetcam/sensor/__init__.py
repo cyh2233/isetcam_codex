@@ -12,6 +12,7 @@ from .sensor_compute import sensor_compute
 from .sensor_photon_noise import sensor_photon_noise
 from .sensor_add_noise import sensor_add_noise
 from .sensor_to_file import sensor_to_file
+from .sensor_to_exr import sensor_to_exr
 from .sensor_create import sensor_create
 from .sensor_snr import sensor_snr
 from .sensor_snr_luxsec import sensor_snr_luxsec
@@ -74,6 +75,7 @@ __all__ = [
     "sensor_photon_noise",
     "sensor_add_noise",
     "sensor_to_file",
+    "sensor_to_exr",
     "sensor_create",
     "sensor_crop",
     "sensor_roi",
