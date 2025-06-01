@@ -30,3 +30,11 @@ def test_scene_from_file_gray():
     sc = scene_from_file(fpath, wave=wave)
     assert sc.photons.ndim == 3 and sc.photons.shape[2] == 1
     assert np.array_equal(sc.wave, wave)
+
+
+def test_scene_from_file_uint8_scaling():
+    fpath = data_path('images/rgb/adelson.png')
+    sc = scene_from_file(fpath)
+    assert sc.photons.dtype == float
+    assert sc.photons.min() >= 0.0
+    assert sc.photons.max() <= 1.0
