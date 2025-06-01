@@ -49,6 +49,10 @@ from .scene_description import scene_description
 from .scene_clear_data import scene_clear_data
 from .scene_init_geometry import scene_init_geometry
 from .scene_init_spatial import scene_init_spatial
+from .scene_vector_utils import (
+    scene_photons_from_vector,
+    scene_energy_from_vector,
+)
 
 __all__ = [
     "Scene",
@@ -102,4 +106,6 @@ __all__ = [
     "scene_make_video",
     "scene_init_geometry",
     "scene_init_spatial",
+    "scene_photons_from_vector",
+    "scene_energy_from_vector",
 ]
