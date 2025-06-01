@@ -2059,6 +2059,26 @@ scene_clear_data(sc)
 
 Run `pytest -q` after modifying the cleanup routine.
 
+## oi_clear_data, sensor_clear_data, ip_clear_data and camera_clear_data
+
+Remove cached attributes from optical images, sensors, VCImage objects and
+complete cameras.  These helpers strip fields that may have been added by
+user interfaces or previous computations.
+
+```python
+from isetcam.opticalimage import OpticalImage, oi_clear_data
+from isetcam.sensor import Sensor, sensor_clear_data
+from isetcam.ip import VCImage, ip_clear_data
+from isetcam.camera import Camera, camera_clear_data
+
+oi = oi_clear_data(OpticalImage(photons=data, wave=wave))
+sensor = sensor_clear_data(Sensor(volts=raw, wave=wave, exposure_time=0.01))
+ip = ip_clear_data(VCImage(rgb=rgb, wave=wave))
+cam = camera_clear_data(Camera(sensor=sensor, optical_image=oi, ip=ip))
+```
+
+Run `pytest -q` after editing any of these cleanup routines.
+
 ## scene_interpolate_w and oi_interpolate_w
 
 Resample the spectral data of a scene or optical image to a new wavelength grid.
