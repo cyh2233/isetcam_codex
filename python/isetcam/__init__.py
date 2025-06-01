@@ -1,5 +1,12 @@
 """Python utilities migrated from ISETCam."""
 
+from importlib.metadata import PackageNotFoundError, version as _version
+
+try:  # pragma: no cover - fallback for editable installs
+    __version__ = _version("isetcam")
+except PackageNotFoundError:  # pragma: no cover - package metadata not found
+    __version__ = "0.0.0"
+
 from .vc_constants import vc_constants
 from .iset_root_path import iset_root_path
 from .data_path import data_path
@@ -137,6 +144,7 @@ from .ip import ip_to_file, ip_from_file, ip_plot
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
 
 __all__ = [
+    '__version__',
     'vc_constants',
     'vc_get_image_format',
     'quanta_to_energy',
