@@ -47,6 +47,8 @@ from .scene_wb_create import scene_wb_create
 from .scene_plot import scene_plot
 from .scene_description import scene_description
 from .scene_clear_data import scene_clear_data
+from .scene_init_geometry import scene_init_geometry
+from .scene_init_spatial import scene_init_spatial
 
 __all__ = [
     "Scene",
@@ -98,4 +100,6 @@ __all__ = [
     "scene_hdr_lights",
     "scene_create_hdr",
     "scene_make_video",
+    "scene_init_geometry",
+    "scene_init_spatial",
 ]
