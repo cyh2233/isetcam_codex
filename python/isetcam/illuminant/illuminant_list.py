@@ -17,8 +17,11 @@ def illuminant_list() -> list[str]:
     illum_dir = data_path("lights")
     names: list[str] = []
     if illum_dir.exists():
-        for f in illum_dir.glob("*.mat"):
-            names.append(Path(f).stem)
+        for f in illum_dir.iterdir():
+            if f.suffix == ".mat":
+                names.append(f.stem)
+            elif f.suffix == ".b64" and f.name.endswith(".mat.b64"):
+                names.append(Path(f.name[:-4]).stem)
     return sorted(names)
 
 
