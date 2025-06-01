@@ -7,6 +7,8 @@ from scipy.interpolate import interp1d
 
 from scipy.special import jn
 
+from .human_achromatic_otf import human_achromatic_otf
+
 
 _DEF_WAVE = np.arange(400, 701)
 
@@ -27,29 +29,6 @@ def _human_wave_defocus(wave: np.ndarray) -> np.ndarray:
     return q1 - (q2 / (wave * 1e-3 - q3))
 
 
-def _human_achromatic_otf(sample_sf: np.ndarray, model: str = "exp", pupil_d: float | None = None) -> np.ndarray:  # noqa: E501
-    model = model.lower()
-    if model in {"exp", "exponential"}:
-        a = 0.1212
-        w1 = 0.3481
-        w2 = 0.6519
-        return w1 * np.ones_like(sample_sf) + w2 * np.exp(-a * sample_sf)
-    if model in {"dl", "diffractionlimited"}:
-        if pupil_d is None:
-            raise ValueError("pupil diameter required")
-        lam = 555.0
-        u0 = pupil_d * np.pi * 1e6 / lam / 180.0
-        u_hat = sample_sf / u0
-        mtf = 2 / np.pi * (np.arccos(u_hat) - u_hat * np.sqrt(1 - u_hat ** 2))
-        mtf[u_hat >= 1] = 0.0
-        return mtf
-    if model == "watson":
-        if pupil_d is None:
-            raise ValueError("pupil diameter required")
-        u1 = 21.95 - 5.512 * pupil_d + 0.3922 * pupil_d ** 2
-        mtf_dl = _human_achromatic_otf(sample_sf, "dl", pupil_d)
-        return (1 + (sample_sf / u1) ** 2) ** (-0.62) * np.sqrt(mtf_dl)
-    raise ValueError(f"Unknown model '{model}'")
 
 
 def _optics_defocused_mtf(s: np.ndarray, alpha: np.ndarray) -> np.ndarray:
@@ -84,7 +63,7 @@ def _human_core(wave: np.ndarray, sample_sf: np.ndarray, p: float, d0: float) ->
     D = _human_wave_defocus(wave)
     w20 = p ** 2 / 2 * (d0 * D) / (d0 + D)
     c = 1 / (np.tan(np.deg2rad(1)) * (1 / d0))
-    ach_otf = _human_achromatic_otf(sample_sf)
+    ach_otf = human_achromatic_otf(sample_sf)
     s = np.zeros((wave.size, sample_sf.size))
     alpha = np.zeros_like(s)
     otf = np.zeros_like(s)
