@@ -37,9 +37,24 @@ from isetcam import ie_init
 session = ie_init()
 ```
 
+
 This returns a dictionary similar to the MATLAB `vcSESSION` structure.
 You can also call `ie_init_session()` directly to construct the session
 data structure without clearing the environment.
+
+## Version Information
+
+The package exposes ``isetcam.__version__`` so you can verify the
+installed release:
+
+```python
+from isetcam import __version__
+print(__version__)
+```
+
+When working from a source checkout the value is ``"0.0.0"`` if the
+package metadata is unavailable.  After modifying any modules remember
+to run ``pytest -q`` to confirm all tests still pass.
 
 ## Unit Tests
 
@@ -158,7 +173,8 @@ accumulate them or remove the spatial mean of individual scenes.
 
 Accessors `scene_get` and `scene_set` retrieve or update values on a
 scene instance.  You can also read images directly using
-`scene_from_file`:
+`scene_from_file`.  Integer images are automatically scaled to the
+``[0, 1]`` range:
 
 ```python
 from isetcam.scene import scene_get, scene_set, scene_from_file
