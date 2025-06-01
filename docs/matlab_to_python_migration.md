@@ -1628,6 +1628,22 @@ lsf, x_axis, _ = human_lsf(wave=np.array([550]))
 
 Remember to run `pytest -q` whenever modifying these functions.
 
+## human_achromatic_otf
+
+`human_achromatic_otf` returns the achromatic modulation transfer function
+for spatial frequencies in cycles per degree. The ``'dl'`` and
+``'watson'`` models require a pupil diameter in millimeters.
+
+```python
+import numpy as np
+from isetcam.human import human_achromatic_otf
+
+sf = np.arange(0, 51, 10)
+mtf = human_achromatic_otf(sf, 'watson', pupil_d=3.0)
+```
+
+Run `pytest -q` after updating the achromatic OTF helper.
+
 ## Human Cone Contrast and Cone Isolating
 
 `human_cone_isolating` returns RGB directions for a display that
@@ -1941,6 +1957,21 @@ sc2 = scene_spd_scale(sc, 0.5)
 ```
 
 Run `pytest -q` to confirm the scaling helper.
+
+## scene_illuminant_scale
+
+`scene_illuminant_scale` adjusts the scene illuminant so that the
+average reflectance equals one without modifying the photon data.
+
+```python
+from isetcam.scene import Scene, scene_illuminant_scale
+
+sc = Scene(photons=data, wave=wave)
+sc.illuminant = illum
+sc2 = scene_illuminant_scale(sc)
+```
+
+Run `pytest -q` after editing the illuminant scaling routine.
 
 ## sensor_rotate
 
