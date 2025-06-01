@@ -24,6 +24,7 @@ from .sensor_rotate import sensor_rotate
 from .sensor_show_cfa import sensor_show_cfa
 from .sensor_stats import sensor_stats
 from .sensor_clear_data import sensor_clear_data
+from .sensor_iso_speed import sensor_iso_speed
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -77,4 +78,5 @@ __all__ = [
     "sensor_rotate",
     "sensor_stats",
     "sensor_clear_data",
+    "sensor_iso_speed",
 ]
