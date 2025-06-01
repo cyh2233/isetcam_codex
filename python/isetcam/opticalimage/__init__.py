@@ -27,6 +27,7 @@ from .oi_save_image import oi_save_image
 from .oi_thumbnail import oi_thumbnail
 from .oi_illuminant_pattern import oi_illuminant_pattern
 from .oi_illuminant_ss import oi_illuminant_ss
+from .oi_clear_data import oi_clear_data
 from .oi_plot import oi_plot
 
 __all__ = [
@@ -60,4 +61,5 @@ __all__ = [
     "oi_thumbnail",
     "oi_illuminant_pattern",
     "oi_illuminant_ss",
+    "oi_clear_data",
 ]
