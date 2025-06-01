@@ -53,6 +53,7 @@ from .scene_vector_utils import (
     scene_photons_from_vector,
     scene_energy_from_vector,
 )
+from .scene_radiance_from_vector import scene_radiance_from_vector
 
 __all__ = [
     "Scene",
@@ -108,4 +109,5 @@ __all__ = [
     "scene_init_spatial",
     "scene_photons_from_vector",
     "scene_energy_from_vector",
+    "scene_radiance_from_vector",
 ]
