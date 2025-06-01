@@ -19,6 +19,10 @@ def scene_from_file(
 ) -> Scene:
     """Read ``path`` and return a :class:`Scene`.
 
+    Integer-valued images are normalized to the [0, 1] range using the
+    maximum value representable by their data type.  Floating-point images
+    are left unchanged.
+
     Parameters
     ----------
     path : str or Path
@@ -36,7 +40,12 @@ def scene_from_file(
         Scene containing the image data.
     """
     img = imageio.imread(Path(path))
-    data = np.asarray(img, dtype=float)
+    # Scale integer images to the [0, 1] range by dividing by the maximum
+    # representable value.  Floating point images are left as-is.
+    if np.issubdtype(img.dtype, np.integer):
+        data = np.asarray(img, dtype=float) / np.iinfo(img.dtype).max
+    else:
+        data = np.asarray(img, dtype=float)
     if data.ndim == 2:
         data = data[:, :, np.newaxis]
 
