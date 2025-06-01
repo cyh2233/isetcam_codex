@@ -9,6 +9,7 @@ from .ip_to_file import ip_to_file
 from .ip_from_file import ip_from_file
 from .ip_plot import ip_plot
 from .ip_clear_data import ip_clear_data
+from .ip_hdr_white import ip_hdr_white
 
 __all__ = [
     "VCImage",
@@ -20,4 +21,5 @@ __all__ = [
     "ip_from_file",
     "ip_plot",
     "ip_clear_data",
+    "ip_hdr_white",
 ]
