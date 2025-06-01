@@ -79,6 +79,8 @@ from .mk_inv_gamma_table import mk_inv_gamma_table
 from .ie_cov_ellipsoid import ie_cov_ellipsoid
 from .ie_read_spectra import ie_read_spectra
 from .ie_hist_image import ie_hist_image
+from .ie_scale import ie_scale
+from .ie_scale_columns import ie_scale_columns
 from .ie_format_figure import (
     ie_format_figure,
     set_ie_figure_defaults,
@@ -216,6 +218,8 @@ __all__ = [
     'ie_cov_ellipsoid',
     'ie_read_spectra',
     'ie_hist_image',
+    'ie_scale',
+    'ie_scale_columns',
     'ie_format_figure',
     'set_ie_figure_defaults',
     '_IE_FIGURE_DEFAULTS',
