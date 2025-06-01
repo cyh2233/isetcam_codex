@@ -8,6 +8,8 @@ from .optics_to_file import optics_to_file
 from .optics_from_file import optics_from_file
 from .optics_psf import optics_psf
 from .optics_otf import optics_otf
+from .optics_cos4th import optics_cos4th
+from .optics_defocused_mtf import optics_defocused_mtf, optics_defocus_core
 
 __all__ = [
     "Optics",
@@ -18,4 +20,7 @@ __all__ = [
     "optics_from_file",
     "optics_psf",
     "optics_otf",
+    "optics_cos4th",
+    "optics_defocused_mtf",
+    "optics_defocus_core",
 ]
