@@ -81,6 +81,10 @@ from .ie_read_spectra import ie_read_spectra
 from .ie_hist_image import ie_hist_image
 from .ie_scale import ie_scale
 from .ie_scale_columns import ie_scale_columns
+from .ie_prctile import ie_prctile
+from .ie_mvnrnd import ie_mvnrnd
+from .ie_poisson import ie_poisson
+from .ie_normpdf import ie_normpdf
 from .ie_format_figure import (
     ie_format_figure,
     set_ie_figure_defaults,
@@ -220,6 +224,10 @@ __all__ = [
     'ie_hist_image',
     'ie_scale',
     'ie_scale_columns',
+    'ie_prctile',
+    'ie_mvnrnd',
+    'ie_poisson',
+    'ie_normpdf',
     'ie_format_figure',
     'set_ie_figure_defaults',
     '_IE_FIGURE_DEFAULTS',
