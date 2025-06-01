@@ -880,6 +880,22 @@ rgb2 = ycbcr_to_rgb(ycbcr)
 
 Remember to run `pytest -q` after modifying these conversion helpers.
 
+## lstar_to_y
+
+Convert CIE L\* values back to luminance using ``lstar_to_y``. The
+function accepts L\* in either ``(n,)`` or image format and requires the
+luminance of the reference white point.
+
+```python
+import numpy as np
+from isetcam import lstar_to_y
+
+L = np.array([50, 80])
+Y = lstar_to_y(L, 100.0)
+```
+
+Run `pytest -q` after updating the L\* conversion helper.
+
 ## Daylight Spectra
 
 `cct_to_sun` generates a daylight spectral distribution for a desired correlated color temperature.
@@ -1170,6 +1186,25 @@ inv = mk_inv_gamma_table(gamma)
 
 Run `pytest -q` after changing the gamma utilities.
 
+## ie_scale and ie_scale_columns
+
+Use `ie_scale` to normalize an array into a desired range. The
+`ie_scale_columns` helper applies the same logic to each column of a
+matrix.
+
+```python
+import numpy as np
+from isetcam import ie_scale, ie_scale_columns
+
+data = np.array([0.0, 1.0, 2.0])
+scaled, mn, mx = ie_scale(data, -1.0, 1.0)
+
+M = np.arange(6).reshape(3, 2)
+M_scaled = ie_scale_columns(M, 0.0, 1.0)
+```
+
+Run `pytest -q` after editing the scaling helpers.
+
 ## Scene, Optical Image and Sensor Photon Noise
 
 `scene_photon_noise`, `oi_photon_noise` and `sensor_photon_noise` add
@@ -1216,6 +1251,30 @@ noisy, noise = sensor_add_noise(s)
 ```
 
 Run `pytest -q` after modifying the noise model.
+
+## ie_poisson, ie_exprnd, ie_normpdf and ie_prctile
+
+Basic statistical helpers replicate MATLAB behavior. ``ie_poisson``
+generates Poisson samples, ``ie_exprnd`` draws exponential random
+values, ``ie_normpdf`` evaluates the normal distribution and
+``ie_prctile`` computes percentiles along the first dimension.
+
+```python
+import numpy as np
+from isetcam import (
+    ie_poisson,
+    ie_exprnd,
+    ie_normpdf,
+    ie_prctile,
+)
+
+vals, seed = ie_poisson(5, n_samp=2)
+exp = ie_exprnd(1.5, (3, 1))
+pdf = ie_normpdf(np.linspace(-1, 1, 5))
+p50 = ie_prctile(exp, 50)
+```
+
+Run `pytest -q` after editing the statistical helpers.
 
 ## SCIELAB Color Difference
 
@@ -2146,6 +2205,42 @@ vc_clear_objects()
 ```
 
 Run `pytest -q` after implementing the session cleanup helper.
+
+## Additional vc_* Session Utilities
+
+Several helpers manage the global session beyond object insertion and
+deletion:
+
+- `vc_get_objects` and `vc_set_objects` access the full list for a type
+- `vc_count_objects` returns how many objects of a type are stored
+- `vc_get_object_names` lists the stored object names
+- `vc_get_selected_object` and `vc_set_selected_object` handle the
+  current selection
+- `vc_new_object_name` and `vc_new_object_value` generate unique
+  identifiers
+
+```python
+from isetcam import (
+    ie_init,
+    vc_add_and_select_object,
+    vc_get_objects,
+    vc_count_objects,
+    vc_get_object_names,
+    vc_set_selected_object,
+    vc_get_selected_object,
+    vc_new_object_name,
+)
+
+session = ie_init()
+vc_add_and_select_object("scene", my_scene)
+count = vc_count_objects("scene")
+names = vc_get_object_names("scene")
+vc_set_selected_object("scene", 1)
+idx, obj = vc_get_selected_object("scene")
+new_name = vc_new_object_name("scene")
+```
+
+Run `pytest -q` after updating the session utilities.
 
 ## oi_create
 
