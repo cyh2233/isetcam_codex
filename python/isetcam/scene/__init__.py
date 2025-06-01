@@ -42,6 +42,7 @@ from .scene_create_hdr import scene_create_hdr
 from .scene_depth_overlay import scene_depth_overlay
 from .scene_depth_range import scene_depth_range
 from .scene_list import scene_list
+from .scene_make_video import scene_make_video
 from .scene_wb_create import scene_wb_create
 from .scene_plot import scene_plot
 from .scene_description import scene_description
@@ -96,4 +97,5 @@ __all__ = [
     "scene_hdr_chart",
     "scene_hdr_lights",
     "scene_create_hdr",
+    "scene_make_video",
 ]
