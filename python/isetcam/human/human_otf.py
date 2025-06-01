@@ -47,7 +47,7 @@ def human_otf(
     max_f = min(max_f1, max_f2)
     sample_sf = np.linspace(0, max_f, 40)
 
-    otf = _human_core(wave, sample_sf, p_radius, d0)
+    otf = _human_core(sample_sf, p_radius, d0, wave)
 
     r, c = f_support.shape[:2]
     otf2d = np.zeros((r, c, wave.size))
