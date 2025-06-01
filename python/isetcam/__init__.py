@@ -33,6 +33,7 @@ from .cct import cct
 from .cct_to_sun import cct_to_sun
 from .daylight import daylight
 from .circle_points import circle_points
+from .ie_clip import ie_clip
 from .ie_param_format import ie_param_format
 from .ie_session_get import ie_session_get
 from .ie_session_set import ie_session_set
@@ -175,6 +176,7 @@ __all__ = [
     'cct_to_sun',
     'daylight',
     'circle_points',
+    'ie_clip',
     'ie_param_format',
     'ie_session_get',
     'ie_session_set',
