@@ -83,6 +83,16 @@ flake8 python/isetcam
 
 Run `flake8` together with `pytest -q` before submitting changes.
 
+## Multi-version CI Tests
+
+The GitHub action also runs the unit tests on Python 3.9, 3.10 and 3.11.
+Check `.github/workflows/python-tests.yml` for details.
+
+```bash
+pytest -q
+```
+
+
 ## Finding the Repository Root
 
 Use `iset_root_path` to locate the top level of the repository when
@@ -110,6 +120,19 @@ path = data_path('lights/D65.mat')
 ```
 
 Run `pytest -q` after editing functions that rely on `data_path`.
+## Packaged Calibration Files
+
+Calibration MAT-files in the `isetcam.data` package are stored as base64 text.
+`data_path` extracts them to a temporary directory so they work both from a wheel
+and a source checkout.
+
+```python
+from isetcam import data_path
+xyz_mat = data_path("human/XYZ.mat")
+```
+
+Run `pytest -q` when modifying the packaged data.
+
 
 ## Conversion Functions
 
@@ -1705,6 +1728,19 @@ mtf = human_achromatic_otf(sf, 'watson', pupil_d=3.0)
 ```
 
 Run `pytest -q` after updating the achromatic OTF helper.
+## human_space_time, kelly_space_time and westheimer_lsf
+
+These helpers return spatio-temporal sensitivity surfaces and a line spread function for human vision.
+
+```python
+from isetcam.human import human_space_time, kelly_space_time, westheimer_lsf
+spatial, fs, ft = human_space_time()
+ks_sens, _, _ = kelly_space_time()
+lsf, x = westheimer_lsf()
+```
+
+Run `pytest -q` after editing these human vision models.
+
 
 ## Human Cone Contrast and Cone Isolating
 
@@ -2508,6 +2544,17 @@ energy_vec = scene_energy_from_vector(sc, 0, 1)
 ```
 
 Run `pytest -q` after modifying the vector utilities.
+## scene_radiance_from_vector
+
+Return the radiance vector at a pixel in watts/sr/nm/m^2.
+
+```python
+from isetcam.scene import scene_radiance_from_vector
+vec = scene_radiance_from_vector(sc, 0, 1)
+```
+
+Run `pytest -q` after editing this routine.
+
 
 ## oi_calculate_otf
 
