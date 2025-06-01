@@ -120,7 +120,7 @@ from .human import (
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip  # noqa: E501
+from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp  # noqa: E501
 from .opticalimage import oi_to_file, oi_plot
 from .sensor import sensor_to_file
 from .display import (
@@ -264,6 +264,7 @@ __all__ = [
     'metrics',
     'human',
     'ip',
+    'cp',
     'oi_to_file',
     'sensor_to_file',
     'display_to_file',
