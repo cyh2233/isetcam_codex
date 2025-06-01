@@ -811,6 +811,23 @@ lms2 = srgb_to_lms(srgb)
 
 Run `pytest -q` to ensure these color transforms remain valid.
 
+## sRGB and L*a*b*
+
+Convert between nonlinear sRGB values and CIE L\*a\*b\* using
+`srgb_to_lab` and `lab_to_srgb`:
+
+```python
+import numpy as np
+from isetcam import srgb_to_lab, lab_to_srgb
+
+white = np.array([0.95047, 1.0, 1.08883])
+srgb = np.random.rand(2, 2, 3)
+lab = srgb_to_lab(srgb, white)
+srgb2 = lab_to_srgb(lab, white)
+```
+
+Run `pytest -q` after updating these color transforms.
+
 ## RGB and YCbCr
 
 `rgb_to_ycbcr` and `ycbcr_to_rgb` convert between RGB arrays and the YCbCr
@@ -988,6 +1005,18 @@ padded_oi = oi_pad(oi, (20, 20))
 ```
 
 These utilities mirror the MATLAB equivalents and are covered by the unit tests. Run `pytest -q` after modifying them.
+
+## oi_translate
+
+Shift an optical image by whole pixels using `oi_translate`:
+
+```python
+from isetcam.opticalimage import OpticalImage, oi_translate
+
+shifted = oi_translate(oi, 4, -2, fill=0)
+```
+
+Run `pytest -q` after updating the translation helper.
 
 ## Demosaicing Helpers
 
@@ -1644,6 +1673,23 @@ lsf, x_axis, _ = human_lsf(wave=np.array([550]))
 
 Remember to run `pytest -q` whenever modifying these functions.
 
+## human_wave_defocus and human_core
+
+`human_wave_defocus` returns ocular defocus in diopters versus wavelength.
+`human_core` computes the optical transfer function across wavelengths for a
+set of spatial frequencies.
+
+```python
+import numpy as np
+from isetcam.human import human_wave_defocus, human_core
+
+wave = np.arange(450, 651, 50)
+D = human_wave_defocus(wave)
+otf = human_core(np.array([10, 20]), wave=wave)
+```
+
+Run `pytest -q` after editing these human vision routines.
+
 ## human_achromatic_otf
 
 `human_achromatic_otf` returns the achromatic modulation transfer function
@@ -2135,3 +2181,23 @@ mean_signal, noise_sd, snr = sensor_stats(sensor, roi)
 ```
 
 Run `pytest -q` after modifying the sensor statistics helper.
+
+## sensor_iso_speed
+
+`sensor_iso_speed` estimates the ISO speed from sensor noise parameters using
+the SNR=10 criterion.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_set, sensor_iso_speed
+
+s = Sensor(volts=np.zeros((1,)), wave=np.array([550]), exposure_time=0.01)
+sensor_set(s, "conversion_gain", 1.0)
+sensor_set(s, "read_noise_electrons", 5.0)
+sensor_set(s, "gain_sd", 0.0)
+sensor_set(s, "offset_sd", 0.0)
+s.volts_per_lux_sec = 1000.0
+iso = sensor_iso_speed(s)
+```
+
+Run `pytest -q` after editing the ISO speed calculation.
