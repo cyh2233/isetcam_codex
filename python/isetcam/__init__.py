@@ -57,6 +57,8 @@ from .lms_to_xyz import lms_to_xyz
 from .xyz_to_lms import xyz_to_lms
 from .lms_to_srgb import lms_to_srgb
 from .srgb_to_lms import srgb_to_lms
+from .srgb_to_lab import srgb_to_lab
+from .lab_to_srgb import lab_to_srgb
 from .srgb_to_lrgb import srgb_to_lrgb
 from .lrgb_to_srgb import lrgb_to_srgb
 from .srgb_xyz import (
@@ -185,6 +187,8 @@ __all__ = [
     'xyz_to_lms',
     'lms_to_srgb',
     'srgb_to_lms',
+    'srgb_to_lab',
+    'lab_to_srgb',
     'srgb_to_lrgb',
     'lrgb_to_srgb',
     'srgb_to_linear',
