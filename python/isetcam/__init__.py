@@ -112,6 +112,10 @@ from .human import (
     human_lsf,
     human_cone_contrast,
     human_cone_isolating,
+    human_cones,
+    human_cone_mosaic,
+    watson_impulse_response,
+    watson_rgc_spacing,
 )
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
@@ -240,6 +244,10 @@ __all__ = [
     'human_lsf',
     'human_cone_contrast',
     'human_cone_isolating',
+    'human_cones',
+    'human_cone_mosaic',
+    'watson_impulse_response',
+    'watson_rgc_spacing',
     'iset_root_path',
     'data_path',
     'ie_init',

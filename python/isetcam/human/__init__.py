@@ -10,6 +10,10 @@ from .human_achromatic_otf import human_achromatic_otf
 from .human_lsf import human_lsf
 from .human_cone_contrast import human_cone_contrast
 from .human_cone_isolating import human_cone_isolating
+from .human_cones import human_cones
+from .human_cone_mosaic import human_cone_mosaic
+from .watson_impulse_response import watson_impulse_response
+from .watson_rgc_spacing import watson_rgc_spacing
 
 __all__ = [
     'human_pupil_size',
@@ -22,4 +26,8 @@ __all__ = [
     'human_lsf',
     'human_cone_contrast',
     'human_cone_isolating',
+    'human_cones',
+    'human_cone_mosaic',
+    'watson_impulse_response',
+    'watson_rgc_spacing',
 ]
