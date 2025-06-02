@@ -20,6 +20,8 @@ scikit-image = "*"
 
 [project.optional-dependencies]
 tests = ["pytest"]
+rawpy = ["rawpy"]
+OpenEXR = ["OpenEXR"]
 
 [tool.setuptools.package-data]
 "isetcam" = ["data/**/*"]
