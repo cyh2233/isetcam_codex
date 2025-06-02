@@ -99,6 +99,18 @@ Check `.github/workflows/python-tests.yml` for details.
 pytest -q
 ```
 
+## Building the Documentation
+
+HTML documentation is generated with Sphinx. After installing the
+package in editable mode you can build the docs locally:
+
+```bash
+cd docs
+make html
+```
+
+The generated pages will be placed under `docs/build/html`.
+
 
 ## Finding the Repository Root
 
