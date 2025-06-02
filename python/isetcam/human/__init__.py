@@ -16,6 +16,7 @@ from .human_cone_contrast import human_cone_contrast
 from .human_cone_isolating import human_cone_isolating
 from .human_cones import human_cones
 from .human_cone_mosaic import human_cone_mosaic
+from .human_cone_plot import human_cone_plot
 from .human_oi import human_oi
 from .human_uv_safety import human_uv_safety
 from .watson_impulse_response import watson_impulse_response
@@ -38,6 +39,7 @@ __all__ = [
     'human_cone_isolating',
     'human_cones',
     'human_cone_mosaic',
+    'human_cone_plot',
     'human_oi',
     'human_uv_safety',
     'watson_impulse_response',
