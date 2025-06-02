@@ -187,7 +187,7 @@ from .illuminant import (
     illuminant_list,
 )
 from .fonts import font_create, font_get, font_set, font_bitmap_get
-from .ip import ip_to_file, ip_from_file, ip_plot
+from .ip import ip_to_file, ip_from_file, ip_plot, ip_demosaic
 from .io import (
     openexr_read,
     openexr_write,
@@ -363,6 +363,7 @@ __all__ = [
     'ip_to_file',
     'ip_from_file',
     'ip_plot',
+    'ip_demosaic',
     'openexr_read',
     'openexr_write',
     'pfm_read',
