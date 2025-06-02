@@ -937,6 +937,34 @@ rgb2 = ycbcr_to_rgb(ycbcr)
 
 Remember to run `pytest -q` after modifying these conversion helpers.
 
+## RGB and HSV
+
+`rgb_to_hsv` and `hsv_to_rgb` convert between linear RGB values and the
+HSV representation.
+
+```python
+import numpy as np
+from isetcam import rgb_to_hsv, hsv_to_rgb
+
+rgb = np.random.rand(2, 2, 3)
+hsv = rgb_to_hsv(rgb)
+rgb2 = hsv_to_rgb(hsv)
+```
+
+## RGB and HSL
+
+`rgb_to_hsl` and `hsl_to_rgb` transform RGB arrays to or from the HSL
+color model.
+
+```python
+from isetcam import rgb_to_hsl, hsl_to_rgb
+
+hsl = rgb_to_hsl(rgb)
+rgb3 = hsl_to_rgb(hsl)
+```
+
+Run `pytest -q` after updating these color conversions.
+
 ## lstar_to_y
 
 Convert CIE L\* values back to luminance using ``lstar_to_y``. The
@@ -1167,6 +1195,19 @@ rgb_al = adaptive_laplacian(bayer, "rggb")
 ```
 
 Run `pytest -q` after updating the demosaicing code.
+
+## ip_demosaic
+
+`ip_demosaic` dispatches to one of the demosaicing algorithms based on a
+method string.
+
+```python
+from isetcam.ip import ip_demosaic
+
+rgb = ip_demosaic(bayer, "rggb", method="adaptive")
+```
+
+Remember to run `pytest -q` when modifying the demosaic wrapper.
 ## Faulty Pixel Correction
 
 Utilities `faulty_insert` and `faulty_pixel_correction` help test and repair malfunctioning pixels.
@@ -1322,6 +1363,24 @@ noisy, noise = sensor_add_noise(s)
 ```
 
 Run `pytest -q` after modifying the noise model.
+
+## sensor_pixel_coord and sensor_jiggle
+
+`sensor_pixel_coord` returns the pixel centre coordinates relative to the
+sensor origin. Use `sensor_jiggle` to shift sensor voltage data by whole
+pixels while recording the accumulated offset.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_jiggle, sensor_pixel_coord
+
+s = Sensor(volts=np.zeros((3, 3)), wave=np.array([550]), exposure_time=0.01)
+x0, y0 = sensor_pixel_coord(s)
+shifted = sensor_jiggle(s, 1, -1)
+x1, y1 = sensor_pixel_coord(shifted)
+```
+
+Remember to run `pytest -q` after editing these sensor helpers.
 
 ## ie_poisson, ie_exprnd, ie_normpdf and ie_prctile
 
@@ -1911,6 +1970,23 @@ mtf = human_achromatic_otf(sf, 'watson', pupil_d=3.0)
 ```
 
 Run `pytest -q` after updating the achromatic OTF helper.
+
+## human_otf_ibio and ijspeert
+
+`human_otf_ibio` wraps the ISETBio human optical transfer function while
+`ijspeert` evaluates an analytic model for the ocular MTF and, when
+requested, its PSF and LSF.
+
+```python
+import numpy as np
+from isetcam.human import human_otf_ibio, ijspeert
+
+otf2d, support, wave = human_otf_ibio()
+freq = np.linspace(0, 60, 6)
+mtf, _, _ = ijspeert(30, 3.0, 0.4, freq)
+```
+
+Remember to run `pytest -q` after editing these vision functions.
 ## human_space_time, kelly_space_time and westheimer_lsf
 
 These helpers return spatio-temporal sensitivity surfaces and a line spread function for human vision.
