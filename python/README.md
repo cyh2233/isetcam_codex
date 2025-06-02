@@ -41,6 +41,7 @@ validate the installation run the unit tests:
 ```bash
 export PYTHONPATH=$PWD/python
 pytest -q
+mypy python/isetcam
 ```
 
 These tests are also executed automatically via
