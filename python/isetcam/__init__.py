@@ -96,6 +96,7 @@ from .ie_prctile import ie_prctile
 from .ie_mvnrnd import ie_mvnrnd
 from .ie_poisson import ie_poisson
 from .ie_normpdf import ie_normpdf
+from .ie_tikhonov import ie_tikhonov
 from .ie_format_figure import (
     ie_format_figure,
     set_ie_figure_defaults,
@@ -243,6 +244,7 @@ __all__ = [
     'ie_mvnrnd',
     'ie_poisson',
     'ie_normpdf',
+    'ie_tikhonov',
     'ie_format_figure',
     'set_ie_figure_defaults',
     '_IE_FIGURE_DEFAULTS',
