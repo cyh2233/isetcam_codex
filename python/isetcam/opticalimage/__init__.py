@@ -14,6 +14,7 @@ from .oi_crop import oi_crop
 from .oi_pad import oi_pad
 from .oi_translate import oi_translate
 from .oi_rotate import oi_rotate
+from .oi_camera_motion import oi_camera_motion
 from .oi_spatial_support import oi_spatial_support
 from .oi_spatial_resample import oi_spatial_resample
 from .oi_frequency_support import oi_frequency_support
@@ -47,6 +48,7 @@ __all__ = [
     "oi_pad",
     "oi_translate",
     "oi_rotate",
+    "oi_camera_motion",
     "oi_spatial_support",
     "oi_spatial_resample",
     "oi_frequency_support",
