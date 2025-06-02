@@ -26,3 +26,13 @@ def test_sensor_accessors():
     new_exposure = 0.02
     set_exposure_time(s, new_exposure)
     assert get_exposure_time(s) == new_exposure
+
+
+def test_sensor_repr():
+    wave = np.array([500, 510, 520])
+    volts = np.ones((2, 2, 3))
+    s = Sensor(volts=volts, wave=wave, exposure_time=0.01, name="my sensor")
+    r = repr(s)
+    assert "my sensor" in r
+    assert "(2, 2, 3)" in r
+    assert "500" in r and "520" in r
