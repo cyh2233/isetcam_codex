@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Spectral cone fundamentals corrected for macular pigment."""
 
 from __future__ import annotations

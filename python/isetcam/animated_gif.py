@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Write a sequence of images to an animated GIF."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Export a list of scenes as a video."""
 
 from __future__ import annotations

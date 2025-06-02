@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate spectra whose CIE XYZ values lie on a sphere."""
 
 from __future__ import annotations

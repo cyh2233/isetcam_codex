@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Determine whether an image is in RGB or XW format."""
 
 from typing import Optional

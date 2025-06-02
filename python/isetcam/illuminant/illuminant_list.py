@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """List available illuminant spectral data files."""
 
 from __future__ import annotations

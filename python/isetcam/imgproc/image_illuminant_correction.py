@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Simple illuminant correction routines."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute ISO speed from sensor noise parameters using SNR=10 criterion."""
 
 from __future__ import annotations

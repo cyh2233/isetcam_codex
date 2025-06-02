@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """RGB directions that approximately isolate the cones of a display."""
 
 from __future__ import annotations

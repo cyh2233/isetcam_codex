@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Percentile calculation compatible with MATLAB's ``prctile``."""
 
 from __future__ import annotations

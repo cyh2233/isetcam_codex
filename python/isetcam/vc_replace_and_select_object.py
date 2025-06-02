@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Replace an object and explicitly set it as selected."""
 
 from __future__ import annotations

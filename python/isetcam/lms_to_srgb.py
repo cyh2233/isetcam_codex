@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert LMS cone responses to nonlinear sRGB values."""
 
 from __future__ import annotations

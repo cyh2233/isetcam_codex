@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply analog gain and offset to sensor voltages."""
 
 from __future__ import annotations

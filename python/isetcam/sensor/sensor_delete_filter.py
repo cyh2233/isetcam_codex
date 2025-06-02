@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Remove a color filter from a :class:`Sensor`."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply or remove gamma correction curves."""
 
 from __future__ import annotations

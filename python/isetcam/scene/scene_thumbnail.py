@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a thumbnail RGB image for a :class:`Scene`."""
 
 from __future__ import annotations

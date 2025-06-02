@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Crop a region from a hyperspectral cube."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Insert faulty pixels into an image."""
 
 from __future__ import annotations

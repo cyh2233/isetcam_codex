@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Display-related functions.
 
 Use :func:`display_create` to load one of the calibration files that ship

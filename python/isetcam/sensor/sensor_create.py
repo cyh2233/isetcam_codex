@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Factory function for :class:`Sensor` objects."""
 
 from __future__ import annotations

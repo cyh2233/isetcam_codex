@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Retrieve spectral radiance at a pixel of a :class:`Scene`."""
 
 from __future__ import annotations

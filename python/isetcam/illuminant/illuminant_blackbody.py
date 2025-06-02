@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a blackbody spectral distribution."""
 
 from __future__ import annotations

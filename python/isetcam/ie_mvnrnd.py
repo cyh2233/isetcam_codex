@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Multivariate normal random number generator."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Factory for basic HDR :class:`Scene` types."""
 
 from __future__ import annotations

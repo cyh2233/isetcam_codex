@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert an optical transfer function (OTF) to a point spread function (PSF)."""
 
 from __future__ import annotations

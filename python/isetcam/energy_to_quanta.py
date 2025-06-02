@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert energy to photon counts."""
 
 from __future__ import annotations

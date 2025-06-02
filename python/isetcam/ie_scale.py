@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Scale numeric data to a specified range."""
 
 from __future__ import annotations

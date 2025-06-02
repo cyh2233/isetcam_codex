@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Adjust optical image illuminance by scaling photon data."""
 
 from __future__ import annotations

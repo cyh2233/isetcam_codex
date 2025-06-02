@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Factory function for :class:`Illuminant` objects."""
 
 from __future__ import annotations

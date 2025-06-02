@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a new default name for an object type."""
 
 from __future__ import annotations

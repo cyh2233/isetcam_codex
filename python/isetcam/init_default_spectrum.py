@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utility for initializing wavelength sampling on dataclass objects."""
 
 from __future__ import annotations

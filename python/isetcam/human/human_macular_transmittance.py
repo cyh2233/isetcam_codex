@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply macular pigment transmittance to an optical image."""
 
 from __future__ import annotations

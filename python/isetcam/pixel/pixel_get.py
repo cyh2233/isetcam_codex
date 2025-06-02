@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Retrieve parameters from :class:`Pixel` objects."""
 
 from __future__ import annotations

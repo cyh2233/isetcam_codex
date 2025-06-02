@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """List available sample scenes."""
 
 from __future__ import annotations

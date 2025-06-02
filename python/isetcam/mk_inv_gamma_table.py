@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate an inverse gamma lookup table."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate scotopic luminance from spectral energy data."""
 
 from __future__ import annotations

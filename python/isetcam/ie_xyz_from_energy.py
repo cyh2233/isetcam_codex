@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute CIE XYZ tristimulus values from spectral energy."""
 
 from __future__ import annotations

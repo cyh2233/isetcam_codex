@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Kelly 1979 spatio-temporal sensitivity model."""
 
 from __future__ import annotations

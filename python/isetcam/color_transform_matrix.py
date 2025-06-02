@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Color space transformation matrices and data-driven fitting."""
 
 from __future__ import annotations

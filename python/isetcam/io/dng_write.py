@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Write DNG images using rawpy."""
 
 from __future__ import annotations

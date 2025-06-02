@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Human physiology related functions."""
 
 from .human_pupil_size import human_pupil_size

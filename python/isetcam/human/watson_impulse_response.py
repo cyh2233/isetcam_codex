@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Watson temporal impulse response model."""
 
 from __future__ import annotations

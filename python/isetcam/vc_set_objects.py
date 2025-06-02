@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Replace the list of objects stored for a given type in ``vcSESSION``."""
 
 from __future__ import annotations

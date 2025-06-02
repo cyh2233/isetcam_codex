@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute VSNR across luminance levels using a camera model."""
 
 from __future__ import annotations

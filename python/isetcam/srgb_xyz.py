@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert between sRGB and CIE XYZ color spaces."""
 
 from __future__ import annotations

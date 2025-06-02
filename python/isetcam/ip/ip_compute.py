@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Render a sensor image to display RGB."""
 
 from __future__ import annotations

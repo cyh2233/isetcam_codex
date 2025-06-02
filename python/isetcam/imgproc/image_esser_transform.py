@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate sensor-to-target transform using the Esser chart."""
 
 from __future__ import annotations

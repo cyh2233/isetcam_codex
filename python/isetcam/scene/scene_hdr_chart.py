@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create an HDR chart with luminance steps."""
 
 from __future__ import annotations

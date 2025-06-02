@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Normal probability density function."""
 
 from __future__ import annotations

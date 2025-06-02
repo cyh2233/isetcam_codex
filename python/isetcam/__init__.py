@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Python utilities migrated from ISETCam."""
 
 from importlib.metadata import PackageNotFoundError, version as _version

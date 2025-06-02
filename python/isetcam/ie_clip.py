@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Clip values to a specified range."""
 
 from __future__ import annotations

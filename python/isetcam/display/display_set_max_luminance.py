@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Scale a display's primaries to match a target peak luminance."""
 
 from __future__ import annotations

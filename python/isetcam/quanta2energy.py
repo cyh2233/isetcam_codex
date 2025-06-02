@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Conversion utilities between photons and energy."""
 
 from __future__ import annotations

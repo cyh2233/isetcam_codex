@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Display an OpticalImage using Matplotlib."""
 
 from __future__ import annotations

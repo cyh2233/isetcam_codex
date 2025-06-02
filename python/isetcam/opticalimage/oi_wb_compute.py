@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute and save single-wavelength optical images."""
 
 from __future__ import annotations

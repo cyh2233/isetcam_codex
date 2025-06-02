@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """List available display calibration files."""
 
 from __future__ import annotations

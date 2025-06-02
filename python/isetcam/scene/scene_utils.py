@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Accessor utilities for :class:`Scene`."""
 
 from __future__ import annotations

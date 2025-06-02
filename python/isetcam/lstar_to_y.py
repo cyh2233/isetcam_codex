@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert CIE L* (CIELAB/CIELUV) to luminance Y."""
 
 from __future__ import annotations

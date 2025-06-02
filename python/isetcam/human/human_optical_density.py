@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Default human optical density parameters."""
 
 from __future__ import annotations

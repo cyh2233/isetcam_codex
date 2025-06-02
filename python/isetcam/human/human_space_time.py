@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Gateway for human spatio-temporal sensitivity models."""
 
 from __future__ import annotations

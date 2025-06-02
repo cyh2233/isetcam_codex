@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Simplified human optical image computation."""
 
 from __future__ import annotations

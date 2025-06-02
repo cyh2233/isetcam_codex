@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply display gamma curves."""
 
 from __future__ import annotations

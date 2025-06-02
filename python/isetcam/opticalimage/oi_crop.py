@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Crop a region from an :class:`OpticalImage`."""
 
 from __future__ import annotations

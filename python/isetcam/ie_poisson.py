@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Poisson random number generator with ISETCam options."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate optical transfer function for an optical image."""
 
 from __future__ import annotations

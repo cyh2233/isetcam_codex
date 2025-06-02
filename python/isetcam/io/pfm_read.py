@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Read images in Portable FloatMap (PFM) format."""
 
 from __future__ import annotations

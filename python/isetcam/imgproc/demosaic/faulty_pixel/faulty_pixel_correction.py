@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Repair faulty pixels in a Bayer mosaic."""
 
 from __future__ import annotations

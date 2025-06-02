@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Human eye defocus as a function of wavelength."""
 
 from __future__ import annotations

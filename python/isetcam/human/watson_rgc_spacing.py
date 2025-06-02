@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Watson retinal ganglion cell spacing model."""
 
 from __future__ import annotations

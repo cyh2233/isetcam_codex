@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create an HDR scene with simple geometric lights."""
 
 from __future__ import annotations

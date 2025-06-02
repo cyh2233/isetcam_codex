@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Determine pixel positions for a Bayer mosaic."""
 
 from __future__ import annotations

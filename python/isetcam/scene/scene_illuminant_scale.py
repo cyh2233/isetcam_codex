@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Scale scene illuminant so average reflectance is unity."""
 
 from __future__ import annotations

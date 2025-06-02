@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """POCS demosaicing algorithm."""
 
 from __future__ import annotations

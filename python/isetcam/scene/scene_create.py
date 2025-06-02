@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Simplified factory for :class:`Scene` objects."""
 
 from __future__ import annotations

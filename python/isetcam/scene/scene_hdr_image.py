@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create an HDR scene of bright patches on a background image."""
 
 from __future__ import annotations

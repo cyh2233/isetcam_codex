@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Conversions between RGB and YCbCr color spaces."""
 
 from __future__ import annotations

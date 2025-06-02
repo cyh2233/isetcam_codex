@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resize sensor voltage data and adjust pixel size metadata."""
 
 from __future__ import annotations

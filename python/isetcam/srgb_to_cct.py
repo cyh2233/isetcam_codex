@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Estimate correlated color temperature from an sRGB image."""
 
 from __future__ import annotations

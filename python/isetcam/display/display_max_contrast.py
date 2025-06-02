@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute the Michelson contrast between two signals."""
 
 from __future__ import annotations

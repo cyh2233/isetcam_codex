@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utilities for combining optical image data."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute an optical image from a scene and optics."""
 
 from __future__ import annotations

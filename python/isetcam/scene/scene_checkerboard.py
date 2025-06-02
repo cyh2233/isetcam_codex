@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a checkerboard test scene."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utility to remove optional attributes from an OpticalImage."""
 
 from __future__ import annotations

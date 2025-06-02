@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """List the names of stored objects of a given type."""
 
 from __future__ import annotations

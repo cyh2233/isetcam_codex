@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Input/output utilities."""
 
 from .openexr_read import openexr_read

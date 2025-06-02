@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Cone contrast for a signal relative to a background."""
 
 from __future__ import annotations

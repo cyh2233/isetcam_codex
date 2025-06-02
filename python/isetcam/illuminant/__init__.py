@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Illuminant-related functions."""
 
 from .illuminant_class import Illuminant

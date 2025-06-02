@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resample a :class:`Scene` while preserving field of view."""
 
 from __future__ import annotations

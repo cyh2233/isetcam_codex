@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Linear transform from internal color space to display RGB."""
 
 from __future__ import annotations

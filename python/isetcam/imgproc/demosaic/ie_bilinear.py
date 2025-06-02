@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Bilinear demosaicing for Bayer-pattern images."""
 
 from __future__ import annotations

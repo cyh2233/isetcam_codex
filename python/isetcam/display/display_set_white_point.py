@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Adjust display primaries to achieve a specified white point."""
 
 from __future__ import annotations

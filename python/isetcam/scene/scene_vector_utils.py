@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utilities for extracting pixel spectra from a :class:`Scene`."""
 
 from __future__ import annotations

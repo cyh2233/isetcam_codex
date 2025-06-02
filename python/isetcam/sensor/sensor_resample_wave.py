@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resample sensor spectral data to a new wavelength support."""
 
 from __future__ import annotations

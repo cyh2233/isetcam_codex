@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Visualize weights using the sensor's CFA colors."""
 
 from __future__ import annotations

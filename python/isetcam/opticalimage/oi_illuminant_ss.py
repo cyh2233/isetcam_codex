@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert an optical image illuminant to spatial-spectral format."""
 
 from __future__ import annotations

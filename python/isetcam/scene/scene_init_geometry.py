@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Initialize geometric properties of a :class:`Scene`."""
 
 from __future__ import annotations

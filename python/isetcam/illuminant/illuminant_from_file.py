@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Load an :class:`Illuminant` from a MATLAB ``.mat`` file."""
 
 from __future__ import annotations

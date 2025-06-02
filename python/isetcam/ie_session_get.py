@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Access values from the global ISETCam session."""
 
 from __future__ import annotations

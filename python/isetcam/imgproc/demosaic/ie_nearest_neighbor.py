@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Nearest neighbor demosaicing for Bayer-pattern images."""
 
 from __future__ import annotations

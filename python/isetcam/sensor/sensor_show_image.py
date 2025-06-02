@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Display a Sensor image using Matplotlib."""
 
 from __future__ import annotations

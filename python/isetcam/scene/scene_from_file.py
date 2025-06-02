@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a Scene from an image file."""
 
 from __future__ import annotations

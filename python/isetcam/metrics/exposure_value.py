@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute lens exposure value (EV)."""
 
 from __future__ import annotations

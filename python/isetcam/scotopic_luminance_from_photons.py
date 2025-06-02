@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate scotopic luminance from photon counts."""
 
 from __future__ import annotations

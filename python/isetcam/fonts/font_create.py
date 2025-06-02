@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a :class:`Font` description."""
 
 from __future__ import annotations

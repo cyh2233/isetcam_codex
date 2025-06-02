@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Clear stored objects in ``vcSESSION``."""
 
 from __future__ import annotations

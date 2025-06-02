@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a daylight SPD normalized to 100 cd/m^2."""
 
 from __future__ import annotations

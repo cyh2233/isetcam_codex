@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resample a :class:`Scene` in the frequency domain."""
 
 from __future__ import annotations

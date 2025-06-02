@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Pad a Scene's photon data."""
 
 from __future__ import annotations

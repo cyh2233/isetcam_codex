@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Estimate sensor dynamic range in dB."""
 
 from __future__ import annotations

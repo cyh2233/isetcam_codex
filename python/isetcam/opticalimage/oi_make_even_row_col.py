@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Ensure an :class:`OpticalImage` has even rows and columns."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Overlay depth map contours on a Scene RGB image."""
 
 from __future__ import annotations

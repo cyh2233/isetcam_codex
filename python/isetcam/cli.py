@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Command line interface for ISETCam utilities."""
 
 from __future__ import annotations

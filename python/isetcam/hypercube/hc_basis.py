@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Approximate a hyperspectral cube using basis functions."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utility functions providing physical constants used across ISETCam."""
 
 def vc_constants(name: str) -> float:

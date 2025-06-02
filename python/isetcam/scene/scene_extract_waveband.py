@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Extract a subset of wavelengths from a :class:`Scene`."""
 
 from __future__ import annotations

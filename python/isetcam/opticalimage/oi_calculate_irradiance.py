@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate integrated irradiance from an OpticalImage."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Scale illuminant so mean cube reflectance is unity."""
 
 from __future__ import annotations

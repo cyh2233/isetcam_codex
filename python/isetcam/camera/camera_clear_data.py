@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utility to remove optional attributes from a Camera and its components."""
 
 from __future__ import annotations

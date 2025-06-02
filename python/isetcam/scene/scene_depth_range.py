@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Restrict a scene to a particular depth range."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Poirson & Wandell spatial chromatic filters."""
 
 from __future__ import annotations

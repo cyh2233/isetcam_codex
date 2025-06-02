@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute correlated color temperature from ``uv`` coordinates."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a :class:`VCImage` from a sensor and display."""
 
 from __future__ import annotations

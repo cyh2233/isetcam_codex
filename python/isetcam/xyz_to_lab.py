@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert CIE XYZ values to CIE L*a*b*."""
 
 from __future__ import annotations

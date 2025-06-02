@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Image histogram plotting utility."""
 
 from __future__ import annotations

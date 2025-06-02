@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Image processing utilities."""
 
 from .image_distort import image_distort

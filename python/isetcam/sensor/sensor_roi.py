@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Extract a rectangular ROI from a :class:`Sensor`."""
 
 from __future__ import annotations

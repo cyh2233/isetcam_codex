@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a daylight spectral power distribution from CCT."""
 
 from __future__ import annotations

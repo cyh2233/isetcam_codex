@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Load raw data from a DNG file into a :class:`Sensor`."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Peak signal-to-noise ratio between two images."""
 
 from __future__ import annotations

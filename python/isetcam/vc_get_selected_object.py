@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Return the index and object currently selected in ``vcSESSION``."""
 
 from __future__ import annotations

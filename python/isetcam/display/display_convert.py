@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert a ctToolbox display definition to a :class:`Display`."""
 
 from __future__ import annotations

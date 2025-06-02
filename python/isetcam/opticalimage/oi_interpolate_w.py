@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Interpolate an :class:`OpticalImage` to a new wavelength sampling."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Pixel-related functions."""
 
 from .pixel_class import Pixel

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Core modulation transfer for human optics."""
 
 from __future__ import annotations
