@@ -10,6 +10,7 @@ from .xyz_to_vsnr import xyz_to_vsnr
 from .ssim_metric import ssim_metric
 from .exposure_value import exposure_value
 from .iso_acutance import iso_acutance
+from .iso_speed_saturation import iso_speed_saturation
 from .metrics_compute import metrics_compute
 
 __all__ = [
@@ -25,5 +26,6 @@ __all__ = [
     "ssim_metric",
     "exposure_value",
     "iso_acutance",
+    "iso_speed_saturation",
     "metrics_compute",
 ]
