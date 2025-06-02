@@ -1,4 +1,5 @@
 # ISETCam
+[![Codecov](https://codecov.io/gh/iset/isetcam/branch/main/graph/badge.svg)](https://codecov.io/gh/iset/isetcam)
 
 Please see the [ISETCam wiki page](https://github.com/iset/isetcam/wiki) for more information.
 
@@ -25,7 +26,8 @@ pytest -q
 
 The same test suite runs automatically via GitHub Actions for every push
 and pull request, but you should also run `pytest -q` locally after
-making changes.
+making changes. Coverage results are uploaded to
+[Codecov](https://codecov.io/gh/iset/isetcam).
 
 # Notes
 
