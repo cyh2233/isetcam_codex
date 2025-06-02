@@ -54,6 +54,8 @@ from .vc_set_objects import vc_set_objects
 from .vc_set_selected_object import vc_set_selected_object
 from .vc_new_object_name import vc_new_object_name
 from .vc_new_object_value import vc_new_object_value
+from .vc_rect_to_locs import vc_rect_to_locs
+from .vc_locs_to_rect import vc_locs_to_rect
 from .vc_copy_object import vc_copy_object
 from .vc_rename_object import vc_rename_object
 from .rgb_to_xw_format import rgb_to_xw_format
@@ -382,6 +384,8 @@ __all__ = [
     'vc_set_selected_object',
     'vc_new_object_name',
     'vc_new_object_value',
+    'vc_rect_to_locs',
+    'vc_locs_to_rect',
     'vc_copy_object',
     'vc_rename_object',
     'font_create',
