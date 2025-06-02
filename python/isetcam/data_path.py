@@ -19,7 +19,7 @@ def data_path(relative: str | Path) -> Path:
     rel = Path(relative)
     try:
         base = resources.files('isetcam.data')
-        candidate = Path(base / rel)
+        candidate = Path(base) / rel
         if candidate.exists():
             return candidate
         b64_file = candidate.with_suffix(candidate.suffix + '.b64')

@@ -30,7 +30,7 @@ def _make_rng(noise_flag: str, seed: int) -> tuple[Generator, int]:
     if noise_flag == "frozen":
         return np.random.default_rng(seed), seed
     if noise_flag == "random":
-        seed = np.random.SeedSequence().entropy % (2**32)
+        seed = int(np.random.SeedSequence().entropy) % (2**32)
         return np.random.default_rng(int(seed)), int(seed)
     if noise_flag == "donotset":
         return np.random.default_rng(), seed
