@@ -83,6 +83,12 @@ from .srgb_xyz import (
     xyz_to_srgb,
 )
 from .rgb_ycbcr import rgb_to_ycbcr, ycbcr_to_rgb
+from .rgb_hsv_hsl import (
+    rgb_to_hsv,
+    hsv_to_rgb,
+    rgb_to_hsl,
+    hsl_to_rgb,
+)
 from .srgb_to_cct import srgb_to_cct
 from .spd_to_cct import spd_to_cct
 from .xyz_to_cct import xyz_to_cct
@@ -258,6 +264,10 @@ __all__ = [
     'xyz_to_srgb',
     'rgb_to_ycbcr',
     'ycbcr_to_rgb',
+    'rgb_to_hsv',
+    'hsv_to_rgb',
+    'rgb_to_hsl',
+    'hsl_to_rgb',
     'srgb_to_cct',
     'spd_to_cct',
     'xyz_to_cct',
