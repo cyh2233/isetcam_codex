@@ -43,6 +43,7 @@ from .scene_depth_overlay import scene_depth_overlay
 from .scene_depth_range import scene_depth_range
 from .scene_list import scene_list
 from .scene_make_video import scene_make_video
+from .scene_dead_leaves import scene_dead_leaves
 from .scene_wb_create import scene_wb_create
 from .scene_plot import scene_plot
 from .scene_description import scene_description
@@ -97,6 +98,7 @@ __all__ = [
     "scene_depth_overlay",
     "scene_depth_range",
     "scene_list",
+    "scene_dead_leaves",
     "scene_wb_create",
     "scene_description",
     "scene_clear_data",
