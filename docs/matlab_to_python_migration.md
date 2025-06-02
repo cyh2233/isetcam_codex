@@ -99,6 +99,20 @@ Check `.github/workflows/python-tests.yml` for details.
 pytest -q
 ```
 
+## Command Line Interface
+
+Installing the package in editable mode exposes an ``isetcam`` command
+with a few helper subcommands:
+
+```bash
+isetcam info          # show version and repository path
+isetcam list-scenes   # list bundled sample scenes
+isetcam run-tests     # execute the Python test suite
+```
+
+The ``run-tests`` command simply invokes ``pytest`` in the repository
+root.
+
 ## Building the Documentation
 
 HTML documentation is generated with Sphinx. After installing the
