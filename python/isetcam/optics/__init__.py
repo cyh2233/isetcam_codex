@@ -12,6 +12,7 @@ from .optics_otf import optics_otf
 from .optics_cos4th import optics_cos4th
 from .optics_defocused_mtf import optics_defocused_mtf, optics_defocus_core
 from .optics_coc import optics_coc
+from .optics_clear_data import optics_clear_data
 
 __all__ = [
     "Optics",
@@ -26,4 +27,5 @@ __all__ = [
     "optics_defocused_mtf",
     "optics_defocus_core",
     "optics_coc",
+    "optics_clear_data",
 ]
