@@ -184,7 +184,8 @@ from .camera import (
 )
 from .optics import optics_to_file, optics_from_file
 from .scene import scene_plot
-from .scene import scene_from_font
+from .scene import scene_from_font, scene_slanted_bar
+from .scene.imgtargets import img_slanted_bar
 from .illuminant import (
     illuminant_to_file,
     illuminant_from_file,
@@ -412,6 +413,8 @@ __all__ = [
     'font_set',
     'font_bitmap_get',
     'scene_from_font',
+    'img_slanted_bar',
+    'scene_slanted_bar',
     'hc_basis',
     'hc_blur',
     'hc_illuminant_scale',
