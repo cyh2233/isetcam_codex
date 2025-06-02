@@ -43,6 +43,8 @@ from .sensor_replace_filter import sensor_replace_filter
 from .sensor_set_size_to_fov import sensor_set_size_to_fov
 from .sensor_wb_compute import sensor_wb_compute
 from .sensor_vignetting import sensor_vignetting
+from .sensor_pixel_coord import sensor_pixel_coord
+from .sensor_jiggle import sensor_jiggle
 
 
 def get_volts(sensor: Sensor) -> np.ndarray:
@@ -110,4 +112,6 @@ __all__ = [
     "sensor_set_size_to_fov",
     "sensor_wb_compute",
     "sensor_vignetting",
+    "sensor_pixel_coord",
+    "sensor_jiggle",
 ]
