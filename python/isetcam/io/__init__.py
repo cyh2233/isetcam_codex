@@ -8,6 +8,8 @@ from .dng_read import dng_read
 from .dng_write import dng_write
 from .pfm_write import pfm_write
 from .color_filter import ie_read_color_filter, ie_save_color_filter
+from .ie_save_multispectral_image import ie_save_multispectral_image
+from .ie_load_multispectral_image import ie_load_multispectral_image
 
 __all__ = [
     "openexr_read",
@@ -18,4 +20,6 @@ __all__ = [
     "dng_write",
     "ie_read_color_filter",
     "ie_save_color_filter",
+    "ie_save_multispectral_image",
+    "ie_load_multispectral_image",
 ]
