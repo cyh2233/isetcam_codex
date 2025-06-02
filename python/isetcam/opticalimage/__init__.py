@@ -23,6 +23,8 @@ from .oi_frequency_resample import oi_frequency_resample
 from .oi_interpolate_w import oi_interpolate_w
 from .oi_adjust_illuminance import oi_adjust_illuminance
 from .oi_extract_waveband import oi_extract_waveband
+from .oi_extract_bright import oi_extract_bright
+from .oi_extract_mask import oi_extract_mask
 from .oi_calculate_irradiance import oi_calculate_irradiance
 from .oi_calculate_illuminance import oi_calculate_illuminance
 from .oi_show_image import oi_show_image
@@ -61,6 +63,8 @@ __all__ = [
     "oi_to_file",
     "oi_adjust_illuminance",
     "oi_extract_waveband",
+    "oi_extract_bright",
+    "oi_extract_mask",
     "oi_calculate_irradiance",
     "oi_calculate_illuminance",
     "oi_show_image",
