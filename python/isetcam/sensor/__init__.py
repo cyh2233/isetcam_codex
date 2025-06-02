@@ -38,6 +38,7 @@ from .sensor_dr import sensor_dr
 from .sensor_add_filter import sensor_add_filter
 from .sensor_delete_filter import sensor_delete_filter
 from .sensor_replace_filter import sensor_replace_filter
+from .sensor_set_size_to_fov import sensor_set_size_to_fov
 from .sensor_wb_compute import sensor_wb_compute
 from .sensor_vignetting import sensor_vignetting
 
@@ -103,6 +104,7 @@ __all__ = [
     "sensor_add_filter",
     "sensor_delete_filter",
     "sensor_replace_filter",
+    "sensor_set_size_to_fov",
     "sensor_wb_compute",
     "sensor_vignetting",
 ]
