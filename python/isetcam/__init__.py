@@ -148,7 +148,7 @@ from .hypercube import (
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube  # noqa: E501
+from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts  # noqa: E501
 from .opticalimage import oi_to_file, oi_plot
 from .sensor import sensor_to_file
 from .display import (
@@ -169,6 +169,7 @@ from .camera import (
 )
 from .optics import optics_to_file, optics_from_file
 from .scene import scene_plot
+from .scene import scene_from_font
 from .illuminant import (
     illuminant_to_file,
     illuminant_from_file,
@@ -176,6 +177,7 @@ from .illuminant import (
     illuminant_set,
     illuminant_list,
 )
+from .fonts import font_create, font_get, font_set, font_bitmap_get
 from .ip import ip_to_file, ip_from_file, ip_plot
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
 from .ie_scp import ie_scp
@@ -307,6 +309,7 @@ __all__ = [
     'human',
     'ip',
     'cp',
+    'fonts',
     'hypercube',
     'oi_to_file',
     'sensor_to_file',
@@ -355,6 +358,11 @@ __all__ = [
     'vc_set_selected_object',
     'vc_new_object_name',
     'vc_new_object_value',
+    'font_create',
+    'font_get',
+    'font_set',
+    'font_bitmap_get',
+    'scene_from_font',
     'hc_basis',
     'hc_blur',
     'hc_illuminant_scale',
