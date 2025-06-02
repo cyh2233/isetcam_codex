@@ -6,9 +6,11 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List
 
+from .web_loc import WebLOC
+
 import requests
 
-__all__ = ["web_flickr", "web_pixabay"]
+__all__ = ["web_flickr", "web_pixabay", "WebLOC"]
 
 
 def _write_image(content: bytes, path: Path) -> None:
