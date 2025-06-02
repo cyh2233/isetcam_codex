@@ -15,6 +15,7 @@ from .iso12233_sfr import iso12233_sfr
 from .iso_speed_saturation import iso_speed_saturation
 from .metrics_compute import metrics_compute
 from .metrics_camera import metrics_camera
+from .cie_whiteness import cie_whiteness
 
 __all__ = [
     "ie_psnr",
@@ -31,6 +32,7 @@ __all__ = [
     "iso_acutance",
     "iso12233_sfr",
     "iso_speed_saturation",
+    "cie_whiteness",
     "metrics_compute",
     "metrics_camera",
 ]
