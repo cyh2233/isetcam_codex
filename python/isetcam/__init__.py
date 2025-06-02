@@ -180,6 +180,7 @@ from .illuminant import (
 from .fonts import font_create, font_get, font_set, font_bitmap_get
 from .ip import ip_to_file, ip_from_file, ip_plot
 from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
+from .animated_gif import animated_gif
 from .ie_scp import ie_scp
 from .web import web_flickr, web_pixabay
 
@@ -344,6 +345,7 @@ __all__ = [
     'pfm_write',
     'dng_read',
     'dng_write',
+    'animated_gif',
     'ie_scp',
     'web_flickr',
     'web_pixabay',
