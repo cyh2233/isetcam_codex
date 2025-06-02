@@ -547,6 +547,20 @@ sensor_to_exr(sensor, path)
 
 Run `pytest -q` after editing the EXR export helper.
 
+## Multispectral Image I/O
+
+Use `ie_save_multispectral_image` and `ie_load_multispectral_image` to write or read multispectral data cubes.
+
+```python
+from isetcam.io import ie_save_multispectral_image, ie_load_multispectral_image
+
+ie_save_multispectral_image("cube.mat", coeffs, basis)
+cube = ie_load_multispectral_image("cube.mat")
+```
+
+Run `pytest -q` after editing the multispectral I/O helpers.
+
+
 ## Updated Tests
 
 Unit tests in `python/tests` exercise the conversion helpers, format
@@ -976,6 +990,20 @@ temp, table = srgb_to_cct(srgb)
 ```
 
 Run `pytest -q` to confirm the color temperature routine functions correctly.
+## XYZ to CCT
+
+`xyz_to_cct` estimates the correlated color temperature directly from XYZ values.
+
+```python
+import numpy as np
+from isetcam import xyz_to_cct
+
+xyz = np.random.rand(4, 3)
+temps = xyz_to_cct(xyz)
+```
+
+Run `pytest -q` when modifying this conversion helper.
+
 
 ## Color Temperature to sRGB
 
@@ -1351,6 +1379,16 @@ deuv = delta_e_uv(luv1, luv2)
 ```
 
 Remember to run `pytest -q` after working with the color difference metrics.
+## color_rendering_index
+
+`color_rendering_index` computes the CIE color rendering index for test and reference spectra.
+
+```python
+cri = color_rendering_index(test_spd, ref_spd, wave)
+```
+
+Run `pytest -q` after editing the CRI calculations.
+
 
 ## Visual Signal-to-Noise Ratio
 
@@ -2301,6 +2339,19 @@ new_name = vc_new_object_name("scene")
 
 Run `pytest -q` after updating the session utilities.
 
+## vc_copy_object, vc_rename_object and ROI Helpers
+
+Duplicate or rename objects in the global session and convert regions between rectangle and location formats.
+
+```python
+idx2 = vc_copy_object("scene")
+vc_rename_object("scene", "copy", index=idx2)
+rows, cols = vc_rect_to_locs((0, 0, 4, 4))
+rect = vc_locs_to_rect((rows, cols))
+```
+
+Run `pytest -q` after updating these session helpers.
+
 ## oi_create
 
 `oi_create` builds a uniform `OpticalImage` of a specified size.
@@ -2411,6 +2462,20 @@ sensor_replace_filter(s, 0, data_path("sensor/colorfilters/R.mat"))
 ```
 
 Run `pytest -q` after editing the CFA helpers.
+
+## Color Filter File Utilities
+
+Read or write color filter spectra using `ie_save_color_filter` and `ie_read_color_filter`.
+
+```python
+from isetcam.io import ie_save_color_filter, ie_read_color_filter
+
+ie_save_color_filter("filters.mat", spectra, names, wave)
+filters, names, wv = ie_read_color_filter("filters.mat", wave)
+```
+
+Run `pytest -q` after updating the color filter helpers.
+
 
 ## sensor_stats
 
