@@ -36,6 +36,24 @@ def _cmd_run_tests(args: argparse.Namespace) -> int:
     return result.returncode
 
 
+def _cmd_pipeline(args: argparse.Namespace) -> int:
+    """Run a simple camera pipeline and save the result."""
+    from isetcam.scene import scene_create
+    from isetcam.camera import camera_create, camera_compute, camera_to_file
+    from isetcam.opticalimage import oi_compute
+    from isetcam.sensor import sensor_compute
+
+    cam = camera_create()
+    cam.name = f"Camera-{args.scene}"
+    scene = scene_create(args.scene)
+    oi = oi_compute(scene, cam.optics)
+    cam.optical_image = oi
+    cam.sensor = sensor_compute(cam.sensor, oi)
+    camera_compute(cam, cam.sensor)
+    camera_to_file(cam, args.output)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     """Entry point for the ``isetcam`` command."""
     parser = argparse.ArgumentParser(prog="isetcam")
@@ -49,6 +67,11 @@ def main(argv: list[str] | None = None) -> int:
 
     p_tests = subparsers.add_parser("run-tests", help="Run the unit tests")
     p_tests.set_defaults(func=_cmd_run_tests)
+
+    p_pipe = subparsers.add_parser("pipeline", help="Run a demo pipeline")
+    p_pipe.add_argument("--scene", required=True, help="Scene name")
+    p_pipe.add_argument("--output", required=True, help="Output MAT-file path")
+    p_pipe.set_defaults(func=_cmd_pipeline)
 
     args = parser.parse_args(argv)
     if not hasattr(args, "func"):
