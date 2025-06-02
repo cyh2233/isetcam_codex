@@ -81,7 +81,13 @@ functions behave as expected.
 ## Basic Pipeline Notebook
 
 A short Jupyter notebook demonstrates constructing a scene, computing an optical image, simulating a sensor and rendering the result.
-See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow.
+See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow. Validate it using the ``nbval`` plugin:
+
+```bash
+pytest --nbval notebooks/basic_pipeline.ipynb
+```
+
+Run ``pytest -q`` afterwards to execute the unit tests.
 
 
 ## Flake8 Workflow
@@ -114,10 +120,16 @@ with a few helper subcommands:
 isetcam info          # show version and repository path
 isetcam list-scenes   # list bundled sample scenes
 isetcam run-tests     # execute the Python test suite
+isetcam pipeline      # run a demo pipeline
 ```
 
 The ``run-tests`` command simply invokes ``pytest`` in the repository
-root.
+root. The ``pipeline`` subcommand runs a small camera pipeline and
+stores the resulting camera structure in a MAT-file:
+
+```bash
+isetcam pipeline --scene "grid lines" --output cam.mat
+```
 
 ## Building the Documentation
 
@@ -262,6 +274,20 @@ grid = scene_create('grid lines', spacing=32, thickness=2)
 ```
 
 Run `pytest -q` to confirm the factory works.
+## Slanted Bar Pattern
+
+The functions `img_slanted_bar` and `scene_slanted_bar` generate a slanted bar test target. `img_slanted_bar` creates the binary image while `scene_slanted_bar` wraps it in a `Scene`:
+
+```python
+from isetcam.scene.imgtargets import img_slanted_bar
+from isetcam.scene import scene_slanted_bar
+
+pattern = img_slanted_bar(im_size=256, bar_slope=3.0)
+sc = scene_slanted_bar(im_size=256, bar_slope=3.0, field_of_view=3)
+```
+
+Run `pytest -q` after modifying these helpers.
+
 
 ## scene_list
 
@@ -625,14 +651,13 @@ environment to ensure these functions behave as expected.
 ## Basic Pipeline Notebook
 
 A short Jupyter notebook demonstrates constructing a scene, computing an optical image, simulating a sensor and rendering the result.
-See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow.
-
-
-After working with these modules you can rerun the unit tests using:
+See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow. Validate it using the ``nbval`` plugin:
 
 ```bash
-pytest -q
+pytest --nbval notebooks/basic_pipeline.ipynb
 ```
+
+After running the notebook, execute the unit tests with ``pytest -q``.
 
 ## Display Dataclass
 
@@ -1256,7 +1281,13 @@ As always, run `pytest -q` to confirm these functions behave as expected.
 ## Basic Pipeline Notebook
 
 A short Jupyter notebook demonstrates constructing a scene, computing an optical image, simulating a sensor and rendering the result.
-See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow.
+See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow. Validate it using the ``nbval`` plugin:
+
+```bash
+pytest --nbval notebooks/basic_pipeline.ipynb
+```
+
+Run ``pytest -q`` afterwards to execute the unit tests.
 
 
 ## Structural Similarity (SSIM)
@@ -1465,6 +1496,20 @@ cri = color_rendering_index(test_spd, ref_spd, wave)
 ```
 
 Run `pytest -q` after editing the CRI calculations.
+
+## cie_whiteness
+
+The function `cie_whiteness` evaluates material whiteness from XYZ data or spectral reflectance.
+
+```python
+import numpy as np
+from isetcam.metrics import cie_whiteness
+
+xyz = np.array([[0.9, 1.0, 1.1]])
+W = cie_whiteness(xyz)
+```
+
+Run `pytest -q` after updating the whiteness calculation.
 
 
 ## Visual Signal-to-Noise Ratio
