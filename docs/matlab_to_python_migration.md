@@ -2896,3 +2896,76 @@ sensor_vignetting(sensor)
 
 Run `pytest -q` after updating these sensor utilities.
 
+## scene_from_basis
+
+Construct a scene from basis coefficients and an illuminant.
+
+```python
+from isetcam.scene import scene_from_basis
+
+sceneS = {"mcCOEF": coef, "basis": basis, "illuminant": illum}
+sc = scene_from_basis(sceneS)
+```
+
+Run `pytest -q` after adding or modifying this helper.
+
+## illuminant_modernize
+
+Convert legacy illuminant structures into the modern dataclass.
+
+```python
+from isetcam.illuminant import illuminant_modernize
+
+legacy = {"data": np.ones(3), "wave": np.array([500, 510, 520])}
+illum = illuminant_modernize(legacy)
+```
+
+Run `pytest -q` after updating the illuminant utilities.
+
+## optics_coc and oi_make_even_row_col
+
+`optics_coc` computes the circle of confusion at various evaluation
+distances. `oi_make_even_row_col` pads an optical image so its dimensions
+are even while preserving field of view.
+
+```python
+import numpy as np
+from isetcam.optics import Optics, optics_coc
+from isetcam.opticalimage import OpticalImage, oi_make_even_row_col
+
+opt = Optics(f_number=4.0, f_length=0.05)
+diam = optics_coc(opt, 1.0, np.linspace(0.5, 2.0, 3))
+
+oi = OpticalImage(photons=np.ones((5, 3, 1)), wave=np.array([550]))
+oi_even = oi_make_even_row_col(oi)
+```
+
+Run `pytest -q` after modifying these optics helpers.
+
+## sensor_show_cfa_weights and sensor_set_size_to_fov
+
+`sensor_show_cfa_weights` visualizes a weight matrix using the sensor CFA
+colors. `sensor_set_size_to_fov` resizes the sensor so its field of view
+matches an optical image or optics definition.
+
+```python
+import numpy as np
+from isetcam.sensor import (
+    Sensor,
+    sensor_show_cfa_weights,
+    sensor_set_size_to_fov,
+)
+from isetcam.opticalimage import OpticalImage
+from isetcam.optics import Optics
+
+weights = np.arange(9).reshape(3, 3)
+s = Sensor(volts=np.zeros((4, 4)), wave=np.array([550]), exposure_time=0.01)
+s.filter_color_letters = "rggb"
+img = sensor_show_cfa_weights(weights, s)
+
+oi = OpticalImage(photons=np.zeros((1, 1, 1)), wave=np.array([550]))
+oi.optics = Optics(f_number=4.0, f_length=1e-3, wave=oi.wave)
+sensor_set_size_to_fov(s, 0.5, oi)
+```
+
+Run `pytest -q` after updating these sensor routines.
