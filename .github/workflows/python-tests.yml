@@ -26,9 +26,11 @@ jobs:
             python/pyproject.toml
             python/requirements.txt
       - name: Install package
-        run: pip install -e "python[tests]" flake8 mypy pytest-cov
+        run: pip install -e "python[tests]" flake8 mypy pytest-cov nbval
       - name: Run tests
         run: pytest --cov=python/isetcam --cov-report=xml -q
+      - name: Run notebook
+        run: pytest --nbval notebooks/basic_pipeline.ipynb -q
       - name: Upload coverage
         uses: codecov/codecov-action@v3
         with:
