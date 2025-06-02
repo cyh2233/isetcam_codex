@@ -1,0 +1,27 @@
+name: Documentation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+          cache-dependency-path: |
+            python/pyproject.toml
+            python/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r python/requirements.txt
+          pip install sphinx
+          pip install -e python
+      - name: Build documentation
+        run: |
+          cd docs
+          make html
