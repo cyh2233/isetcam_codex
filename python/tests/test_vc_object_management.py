@@ -16,6 +16,8 @@ from isetcam import (
     vc_set_selected_object,
     vc_new_object_name,
     vc_new_object_value,
+    vc_copy_object,
+    vc_rename_object,
 )
 from isetcam.scene import Scene
 from isetcam.opticalimage import OpticalImage
@@ -159,4 +161,29 @@ def test_vc_new_object_helpers():
 
     vals = vc_new_object_value("camera")
     assert isinstance(vals, tuple) and len(vals) == 3
+
+
+def test_vc_copy_object():
+    ie_init()
+    sc = Scene(photons=np.zeros((1, 1, 1)), name="orig")
+    idx = vc_add_and_select_object("scene", sc)
+
+    new_idx = vc_copy_object("scene")
+    assert vcSESSION["SCENE"][idx] is sc
+    assert vcSESSION["SCENE"][new_idx] is not sc
+    assert vcSESSION["SELECTED"]["SCENE"] == idx
+    assert vc_count_objects("scene") == 2
+
+
+def test_vc_rename_object():
+    ie_init()
+    sc = Scene(photons=np.zeros((1, 1, 1)), name="orig")
+    idx = vc_add_and_select_object("scene", sc)
+
+    vc_rename_object("scene", "newname")
+    assert sc.name == "newname"
+
+    idx2 = vc_copy_object("scene")
+    vc_rename_object("scene", "copy", index=idx2)
+    assert vcSESSION["SCENE"][idx2].name == "copy"
 

@@ -56,6 +56,8 @@ from .vc_new_object_name import vc_new_object_name
 from .vc_new_object_value import vc_new_object_value
 from .vc_rect_to_locs import vc_rect_to_locs
 from .vc_locs_to_rect import vc_locs_to_rect
+from .vc_copy_object import vc_copy_object
+from .vc_rename_object import vc_rename_object
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
@@ -83,6 +85,7 @@ from .srgb_xyz import (
 from .rgb_ycbcr import rgb_to_ycbcr, ycbcr_to_rgb
 from .srgb_to_cct import srgb_to_cct
 from .spd_to_cct import spd_to_cct
+from .xyz_to_cct import xyz_to_cct
 from .srgb_parameters import srgb_parameters
 from .adobergb_parameters import adobergb_parameters
 from .ctemp_to_srgb import ctemp_to_srgb
@@ -183,7 +186,16 @@ from .illuminant import (
 )
 from .fonts import font_create, font_get, font_set, font_bitmap_get
 from .ip import ip_to_file, ip_from_file, ip_plot
-from .io import openexr_read, openexr_write, pfm_read, pfm_write, dng_read, dng_write
+from .io import (
+    openexr_read,
+    openexr_write,
+    pfm_read,
+    pfm_write,
+    dng_read,
+    dng_write,
+    ie_save_multispectral_image,
+    ie_load_multispectral_image,
+)
 from .animated_gif import animated_gif
 from .ie_scp import ie_scp
 from .web import web_flickr, web_pixabay, WebLOC
@@ -244,6 +256,7 @@ __all__ = [
     'ycbcr_to_rgb',
     'srgb_to_cct',
     'spd_to_cct',
+    'xyz_to_cct',
     'srgb_parameters',
     'adobergb_parameters',
     'ctemp_to_srgb',
@@ -350,6 +363,8 @@ __all__ = [
     'pfm_write',
     'dng_read',
     'dng_write',
+    'ie_save_multispectral_image',
+    'ie_load_multispectral_image',
     'animated_gif',
     'ie_scp',
     'web_flickr',
@@ -371,6 +386,8 @@ __all__ = [
     'vc_new_object_value',
     'vc_rect_to_locs',
     'vc_locs_to_rect',
+    'vc_copy_object',
+    'vc_rename_object',
     'font_create',
     'font_get',
     'font_set',
