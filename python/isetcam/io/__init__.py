@@ -7,5 +7,16 @@ from .pfm_read import pfm_read
 from .dng_read import dng_read
 from .dng_write import dng_write
 from .pfm_write import pfm_write
+from .ie_save_multispectral_image import ie_save_multispectral_image
+from .ie_load_multispectral_image import ie_load_multispectral_image
 
-__all__ = ["openexr_read", "openexr_write", "pfm_read", "pfm_write", "dng_read", "dng_write"]
+__all__ = [
+    "openexr_read",
+    "openexr_write",
+    "pfm_read",
+    "pfm_write",
+    "dng_read",
+    "dng_write",
+    "ie_save_multispectral_image",
+    "ie_load_multispectral_image",
+]
