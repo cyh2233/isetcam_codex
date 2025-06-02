@@ -135,6 +135,7 @@ from .human import (
     human_cone_isolating,
     human_cones,
     human_cone_mosaic,
+    human_cone_plot,
     watson_impulse_response,
     watson_rgc_spacing,
 )
@@ -293,6 +294,7 @@ __all__ = [
     'human_cone_isolating',
     'human_cones',
     'human_cone_mosaic',
+    'human_cone_plot',
     'watson_impulse_response',
     'watson_rgc_spacing',
     'iset_root_path',
