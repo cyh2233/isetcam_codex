@@ -81,6 +81,7 @@ from .srgb_xyz import (
 from .rgb_ycbcr import rgb_to_ycbcr, ycbcr_to_rgb
 from .srgb_to_cct import srgb_to_cct
 from .spd_to_cct import spd_to_cct
+from .xyz_to_cct import xyz_to_cct
 from .srgb_parameters import srgb_parameters
 from .adobergb_parameters import adobergb_parameters
 from .ctemp_to_srgb import ctemp_to_srgb
@@ -251,6 +252,7 @@ __all__ = [
     'ycbcr_to_rgb',
     'srgb_to_cct',
     'spd_to_cct',
+    'xyz_to_cct',
     'srgb_parameters',
     'adobergb_parameters',
     'ctemp_to_srgb',
