@@ -28,6 +28,7 @@ from .sensor_dng_read import sensor_dng_read
 from .sensor_show_image import sensor_show_image
 from .sensor_rotate import sensor_rotate
 from .sensor_show_cfa import sensor_show_cfa
+from .sensor_show_cfa_weights import sensor_show_cfa_weights
 from .sensor_stats import sensor_stats
 from .sensor_clear_data import sensor_clear_data
 from .sensor_iso_speed import sensor_iso_speed
@@ -92,6 +93,7 @@ __all__ = [
     "sensor_dng_read",
     "sensor_show_image",
     "sensor_show_cfa",
+    "sensor_show_cfa_weights",
     "sensor_rotate",
     "sensor_stats",
     "sensor_clear_data",
