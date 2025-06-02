@@ -12,6 +12,7 @@ from .oi_photon_noise import oi_photon_noise
 from .oi_to_file import oi_to_file
 from .oi_crop import oi_crop
 from .oi_pad import oi_pad
+from .oi_pad_value import oi_pad_value
 from .oi_make_even_row_col import oi_make_even_row_col
 from .oi_translate import oi_translate
 from .oi_rotate import oi_rotate
@@ -48,6 +49,7 @@ __all__ = [
     "oi_compute",
     "oi_crop",
     "oi_pad",
+    "oi_pad_value",
     "oi_make_even_row_col",
     "oi_translate",
     "oi_rotate",
