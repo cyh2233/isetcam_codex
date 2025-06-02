@@ -31,6 +31,7 @@ from .oi_illuminant_ss import oi_illuminant_ss
 from .oi_clear_data import oi_clear_data
 from .oi_calculate_otf import oi_calculate_otf
 from .oi_plot import oi_plot
+from .oi_wb_compute import oi_wb_compute
 
 __all__ = [
     "OpticalImage",
@@ -66,4 +67,5 @@ __all__ = [
     "oi_illuminant_ss",
     "oi_clear_data",
     "oi_calculate_otf",
+    "oi_wb_compute",
 ]
