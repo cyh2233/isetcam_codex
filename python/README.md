@@ -19,6 +19,13 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+Optional helpers for reading DNG and OpenEXR files require extra
+dependencies. Install them with:
+
+```bash
+pip install -e .[rawpy,OpenEXR]
+```
+
 Inside MATLAB, point `pyenv` to the environment's Python interpreter:
 
 ```matlab

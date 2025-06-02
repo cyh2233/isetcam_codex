@@ -17,6 +17,13 @@ pip install -r python/requirements.txt
 pip install -e python
 ```
 
+Optional DNG and OpenEXR helpers rely on extra dependencies. Install
+them when needed with:
+
+```bash
+pip install -e python[rawpy,OpenEXR]
+```
+
 Within MATLAB, point `pyenv` to the environment interpreter:
 
 ```matlab
@@ -451,6 +458,11 @@ Remember to run `pytest -q` after using these I/O helpers.
 
 Raw sensor data can be stored or loaded using `dng_write` and
 `dng_read`. These helpers rely on the optional ``rawpy`` package.
+Install it via the corresponding extra:
+
+```bash
+pip install -e python[rawpy]
+```
 
 ```python
 from isetcam.io import dng_read, dng_write
@@ -481,6 +493,11 @@ Run `pytest -q` after updating the DNG sensor loader.
 Floating point images can be saved or loaded using `openexr_write` and
 `openexr_read`. These helpers rely on the OpenEXR bindings when
 available and fall back to the ``imageio`` backend.
+Install the bindings via the extra group:
+
+```bash
+pip install -e python[OpenEXR]
+```
 
 ```python
 from isetcam.io import openexr_read, openexr_write
