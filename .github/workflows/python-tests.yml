@@ -26,9 +26,13 @@ jobs:
             python/pyproject.toml
             python/requirements.txt
       - name: Install package
-        run: pip install -e python flake8 mypy
+        run: pip install -e "python[tests]" flake8 mypy pytest-cov
       - name: Run tests
-        run: pytest -q
+        run: pytest --cov=python/isetcam --cov-report=xml -q
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage.xml
       - name: Run flake8
         run: flake8 python/isetcam
       - name: Run mypy

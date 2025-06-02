@@ -19,7 +19,7 @@ imageio = "*"
 scikit-image = "*"
 
 [project.optional-dependencies]
-tests = ["pytest"]
+tests = ["pytest", "coverage"]
 rawpy = ["rawpy"]
 OpenEXR = ["OpenEXR"]
 
