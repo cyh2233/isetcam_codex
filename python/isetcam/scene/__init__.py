@@ -27,6 +27,7 @@ from .scene_interpolate_w import scene_interpolate_w
 from .scene_to_file import scene_to_file
 from .scene_extract_waveband import scene_extract_waveband
 from .scene_add_grid import scene_add_grid
+from .scene_grid_lines import scene_grid_lines
 from .scene_combine import scene_combine
 from .scene_adjust_pixel_size import scene_adjust_pixel_size
 from .scene_show_image import scene_show_image
@@ -85,6 +86,7 @@ __all__ = [
     "scene_to_file",
     "scene_extract_waveband",
     "scene_add_grid",
+    "scene_grid_lines",
     "scene_combine",
     "scene_adjust_pixel_size",
     "scene_show_image",
