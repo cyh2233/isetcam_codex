@@ -2515,7 +2515,7 @@ scene = CPScene([scene_create('uniform', size=8)])
 module = CPCModule(sensor_create(), optics_create())
 camera = CPCamera([module])
 
-exp_times = cp_burst_camera(3, 0.01, mode='hdr')
+exp_times = cp_burst_camera(3, 0.01, mode='hdr', ev_step=1.0)
 captures = camera.take_picture(scene, exposure_times=exp_times)
 combined = cp_burst_ip(captures, mode='sum')
 ```
