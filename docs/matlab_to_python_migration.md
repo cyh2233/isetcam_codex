@@ -1792,6 +1792,22 @@ ax_img, ax_mtf = camera_plot(cam)
 
 Run `pytest -q` after editing these camera visualization helpers.
 
+## iso12233_sfr
+
+`iso12233_sfr` computes the spatial frequency response (SFR) from a
+slanted-edge test chart.
+
+```python
+import numpy as np
+from isetcam.metrics import iso12233_sfr
+
+x, y = np.meshgrid(np.arange(32), np.arange(32))
+edge = (x > 0.25 * y + 8).astype(float)
+freq, mtf = iso12233_sfr(edge, delta_x=0.002)
+```
+
+Run `pytest -q` after implementing the slanted-edge metric.
+
 ## Human Pupil Size and Macular Transmittance
 
 `human_pupil_size` estimates the diameter and area of the human pupil while
@@ -2429,6 +2445,24 @@ iso = sensor_iso_speed(s)
 
 Run `pytest -q` after editing the ISO speed calculation.
 
+## iso_speed_saturation
+
+`iso_speed_saturation` evaluates the saturation-based ISO speed using a
+uniform D65 source.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor
+from isetcam.metrics import iso_speed_saturation
+
+s = Sensor(volts=np.zeros((1,)), wave=np.array([550]), exposure_time=0.01)
+s.well_capacity = 5000.0
+s.qe = np.array([1.0])
+iso = iso_speed_saturation(s)
+```
+
+Run `pytest -q` after adding the saturation speed routine.
+
 ## human_cones, human_cone_mosaic, watson_impulse_response and watson_rgc_spacing
 
 These helpers return cone spectral sensitivities, simulate a simple cone mosaic and model ganglion cell temporal and spatial characteristics.
@@ -2503,7 +2537,9 @@ Run `pytest -q` after modifying the HDR factory.
 
 ## CPCamera, CPScene, CPCModule, cp_burst_camera and cp_burst_ip
 
-The `cp` package provides simple computational photography helpers.
+The `cp` package provides simple computational photography helpers. In HDR
+mode `cp_burst_camera` now returns exposure times symmetric around the
+``base_exposure`` with steps of ``ev_step`` in exposure value (EV).
 
 ```python
 from isetcam.cp import CPScene, CPCModule, CPCamera, cp_burst_camera, cp_burst_ip
@@ -2515,7 +2551,7 @@ scene = CPScene([scene_create('uniform', size=8)])
 module = CPCModule(sensor_create(), optics_create())
 camera = CPCamera([module])
 
-exp_times = cp_burst_camera(3, 0.01, mode='hdr', ev_step=1.0)
+exp_times = cp_burst_camera(3, 0.01, mode='hdr', ev_step=1.0)  # [0.005, 0.01, 0.02]
 captures = camera.take_picture(scene, exposure_times=exp_times)
 combined = cp_burst_ip(captures, mode='sum')
 ```
@@ -2616,6 +2652,22 @@ img = ie_apply_tone(img, curve)
 ```
 
 Run `pytest -q` after implementing the gamma and tone modules.
+
+## ie_tikhonov
+
+`ie_tikhonov` solves a regularized least-squares problem with optional
+minimum-norm and smoothness terms.
+
+```python
+import numpy as np
+from isetcam import ie_tikhonov
+
+A = np.array([[1, 2], [3, 4], [5, 6]], dtype=float)
+b = np.array([1.0, 2.0, 3.0])
+x, x_ols = ie_tikhonov(A, b, minnorm=0.1, smoothness=0.05)
+```
+
+Run `pytest -q` after editing the regularization helper.
 ## sensor_resample_wave
 
 Interpolate sensor spectral data to a new wavelength grid.
