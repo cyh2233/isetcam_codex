@@ -137,10 +137,18 @@ from .human import (
     watson_impulse_response,
     watson_rgc_spacing,
 )
+from .hypercube import (
+    hc_basis,
+    hc_blur,
+    hc_illuminant_scale,
+    hc_image,
+    hc_image_crop,
+    hc_image_rotate_clip,
+)
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, fonts  # noqa: E501
+from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts  # noqa: E501
 from .opticalimage import oi_to_file, oi_plot
 from .sensor import sensor_to_file
 from .display import (
@@ -302,6 +310,7 @@ __all__ = [
     'ip',
     'cp',
     'fonts',
+    'hypercube',
     'oi_to_file',
     'sensor_to_file',
     'display_to_file',
@@ -354,4 +363,10 @@ __all__ = [
     'font_set',
     'font_bitmap_get',
     'scene_from_font',
+    'hc_basis',
+    'hc_blur',
+    'hc_illuminant_scale',
+    'hc_image',
+    'hc_image_crop',
+    'hc_image_rotate_clip',
 ]
