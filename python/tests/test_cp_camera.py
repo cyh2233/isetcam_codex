@@ -34,3 +34,22 @@ def test_burst_capture_sum():
     combined = cp_burst_ip(sensors, mode="sum")
     expected = sensors[0].volts * 3
     assert np.allclose(combined, expected)
+
+
+def test_burst_camera_hdr_odd():
+    exp = cp_burst_camera(3, 0.01, mode="hdr")
+    expected = [0.01 * 2 ** -1, 0.01, 0.01 * 2 ** 1]
+    assert np.allclose(exp, expected)
+
+
+def test_burst_camera_hdr_even():
+    exp = cp_burst_camera(4, 0.01, mode="hdr")
+    offset = (4 - 1) / 2
+    expected = [0.01 * 2 ** ((i - offset)) for i in range(4)]
+    assert np.allclose(exp, expected)
+
+
+def test_burst_camera_hdr_ev_step():
+    exp = cp_burst_camera(3, 0.01, mode="hdr", ev_step=0.5)
+    expected = [0.01 * 2 ** (-0.5), 0.01, 0.01 * 2 ** (0.5)]
+    assert np.allclose(exp, expected)

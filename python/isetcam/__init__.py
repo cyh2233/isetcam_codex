@@ -96,6 +96,7 @@ from .ie_prctile import ie_prctile
 from .ie_mvnrnd import ie_mvnrnd
 from .ie_poisson import ie_poisson
 from .ie_normpdf import ie_normpdf
+from .ie_tikhonov import ie_tikhonov
 from .ie_format_figure import (
     ie_format_figure,
     set_ie_figure_defaults,
@@ -119,6 +120,7 @@ from .metrics.scielab import scielab, sc_params, SCIELABParams
 from .metrics.xyz_to_vsnr import xyz_to_vsnr
 from .metrics.ssim_metric import ssim_metric
 from .metrics.exposure_value import exposure_value
+from .metrics.iso_speed_saturation import iso_speed_saturation
 from .human import (
     human_pupil_size,
     human_macular_transmittance,
@@ -243,6 +245,7 @@ __all__ = [
     'ie_mvnrnd',
     'ie_poisson',
     'ie_normpdf',
+    'ie_tikhonov',
     'ie_format_figure',
     'set_ie_figure_defaults',
     '_IE_FIGURE_DEFAULTS',
@@ -264,6 +267,7 @@ __all__ = [
     'xyz_to_vsnr',
     'ssim_metric',
     'exposure_value',
+    'iso_speed_saturation',
     'human_pupil_size',
     'human_macular_transmittance',
     'human_optical_density',

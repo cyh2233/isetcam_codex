@@ -11,6 +11,7 @@ from .ssim_metric import ssim_metric
 from .exposure_value import exposure_value
 from .iso_acutance import iso_acutance
 from .iso12233_sfr import iso12233_sfr
+from .iso_speed_saturation import iso_speed_saturation
 from .metrics_compute import metrics_compute
 
 __all__ = [
@@ -27,5 +28,6 @@ __all__ = [
     "exposure_value",
     "iso_acutance",
     "iso12233_sfr",
+    "iso_speed_saturation",
     "metrics_compute",
 ]
