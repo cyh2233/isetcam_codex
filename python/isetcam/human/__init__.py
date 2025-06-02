@@ -5,10 +5,12 @@ from .human_pupil_size import human_pupil_size
 from .human_macular_transmittance import human_macular_transmittance
 from .human_optical_density import human_optical_density
 from .human_otf import human_otf
+from .human_otf_ibio import human_otf_ibio
 from .human_wave_defocus import human_wave_defocus
 from .human_core import human_core
 from .human_achromatic_otf import human_achromatic_otf
 from .human_lsf import human_lsf
+from .ijspeert import ijspeert
 from .human_space_time import human_space_time
 from .kelly_space_time import kelly_space_time
 from .westheimer_lsf import westheimer_lsf
@@ -30,8 +32,10 @@ __all__ = [
     'human_wave_defocus',
     'human_core',
     'human_otf',
+    'human_otf_ibio',
     'human_achromatic_otf',
     'human_lsf',
+    'ijspeert',
     'human_space_time',
     'kelly_space_time',
     'westheimer_lsf',
