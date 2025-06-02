@@ -120,6 +120,7 @@ from .metrics.scielab import scielab, sc_params, SCIELABParams
 from .metrics.xyz_to_vsnr import xyz_to_vsnr
 from .metrics.ssim_metric import ssim_metric
 from .metrics.exposure_value import exposure_value
+from .metrics.iso_speed_saturation import iso_speed_saturation
 from .human import (
     human_pupil_size,
     human_macular_transmittance,
@@ -266,6 +267,7 @@ __all__ = [
     'xyz_to_vsnr',
     'ssim_metric',
     'exposure_value',
+    'iso_speed_saturation',
     'human_pupil_size',
     'human_macular_transmittance',
     'human_optical_density',
