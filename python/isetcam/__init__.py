@@ -193,6 +193,8 @@ from .io import (
     pfm_write,
     dng_read,
     dng_write,
+    ie_read_color_filter,
+    ie_save_color_filter,
     ie_save_multispectral_image,
     ie_load_multispectral_image,
 )
@@ -363,6 +365,8 @@ __all__ = [
     'pfm_write',
     'dng_read',
     'dng_write',
+    'ie_read_color_filter',
+    'ie_save_color_filter',
     'ie_save_multispectral_image',
     'ie_load_multispectral_image',
     'animated_gif',
