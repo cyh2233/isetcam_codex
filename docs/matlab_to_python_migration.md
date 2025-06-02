@@ -2782,3 +2782,74 @@ val, level, safe = human_uv_safety(energy, wave, method='eye', duration=100)
 ```
 
 Run `pytest -q` after modifying the UV safety routine.
+
+## camera_vsnr_sl
+
+`camera_vsnr_sl` computes visible SNR values for a camera over a sweep of mean luminances.
+
+```python
+from isetcam.camera import camera_create, camera_vsnr_sl
+
+cam = camera_create()
+result = camera_vsnr_sl(cam, [1, 10, 100])
+print(result.vsnr)
+```
+
+Run `pytest -q` after implementing the VSNR sweep.
+
+## oi_wb_compute and oi_camera_motion
+
+`oi_wb_compute` loads single-waveband scenes from a directory and saves the corresponding optical images. `oi_camera_motion` shifts and averages an optical image according to a motion path.
+
+```python
+from isetcam.opticalimage import (
+    OpticalImage,
+    oi_wb_compute,
+    oi_camera_motion,
+)
+from isetcam.optics import optics_create
+import numpy as np
+
+paths = oi_wb_compute("wb_dir", optics_create())
+oi = OpticalImage(photons=np.ones((2, 2, 1)), wave=np.array([550]))
+moved = oi_camera_motion(oi, {"path": [(0, 0), (1, 0)], "fill": 0})
+```
+
+Run `pytest -q` after adding or modifying these optical image helpers.
+
+## camera_computesrgb
+
+`camera_computesrgb` renders a scene with a camera and returns the approximate and ideal sRGB images along with the raw sensor volts.
+
+```python
+from isetcam.camera import camera_create, camera_computesrgb
+
+cam = camera_create()
+srgb_res, srgb_ideal, volts = camera_computesrgb(
+    cam,
+    scene="macbeth d65",
+    patch_size=4,
+    mean_luminance=20,
+)
+```
+
+Run `pytest -q` once the sRGB computation routine is in place.
+
+## sensor_wb_compute and sensor_vignetting
+
+`sensor_wb_compute` accumulates the response of a sensor to multiple optical images. `sensor_vignetting` attaches a pixel vignetting map.
+
+```python
+import numpy as np
+from isetcam.sensor import Sensor, sensor_wb_compute, sensor_vignetting
+from isetcam.opticalimage import OpticalImage
+
+sensor = Sensor(volts=np.zeros((2, 2)), wave=np.array([500, 510]), exposure_time=0.5)
+oi1 = OpticalImage(photons=np.ones((2, 2)), wave=np.array([500]))
+oi2 = OpticalImage(photons=2 * np.ones((2, 2)), wave=np.array([510]))
+sensor_wb_compute(sensor, [oi1, oi2])
+sensor_vignetting(sensor)
+```
+
+Run `pytest -q` after updating these sensor utilities.
+
