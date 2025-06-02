@@ -11,6 +11,7 @@ from .camera_mtf import camera_mtf
 from .camera_plot import camera_plot
 from .camera_moire import camera_moire
 from .camera_vsnr import camera_vsnr
+from .camera_vsnr_sl import camera_vsnr_sl, VSNRSLResult
 from .camera_acutance import camera_acutance
 from .camera_color_accuracy import camera_color_accuracy
 from .camera_compute_sequence import camera_compute_sequence
@@ -29,6 +30,8 @@ __all__ = [
     "camera_plot",
     "camera_moire",
     "camera_vsnr",
+    "camera_vsnr_sl",
+    "VSNRSLResult",
     "camera_acutance",
     "camera_color_accuracy",
     "camera_compute_sequence",
