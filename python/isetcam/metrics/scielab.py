@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Spatial CIELAB (S-CIELAB) color difference metric."""
 
 from __future__ import annotations

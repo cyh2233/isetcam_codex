@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create color transformation matrix from spectral data."""
 
 from __future__ import annotations

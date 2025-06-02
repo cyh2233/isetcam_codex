@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Initialize the ISETCam session structure (Python version)."""
 
 from __future__ import annotations

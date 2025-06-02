@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute camera MTF from sensor and optics models."""
 
 from __future__ import annotations

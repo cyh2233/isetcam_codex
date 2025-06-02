@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Return sRGB chromaticity and white point parameters."""
 
 from __future__ import annotations

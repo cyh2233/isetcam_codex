@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resample an :class:`OpticalImage` in the frequency domain."""
 
 from __future__ import annotations

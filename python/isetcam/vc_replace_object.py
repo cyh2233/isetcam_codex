@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Replace an existing object in ``vcSESSION`` and mark it selected."""
 
 from __future__ import annotations

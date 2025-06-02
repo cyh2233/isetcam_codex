@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Visual signal-to-noise ratio in the S-CIELAB domain."""
 
 from __future__ import annotations

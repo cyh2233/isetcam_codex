@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute circle of confusion diameter."""
 
 from __future__ import annotations

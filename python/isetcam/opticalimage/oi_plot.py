@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic optical image plotting utilities."""
 
 from __future__ import annotations

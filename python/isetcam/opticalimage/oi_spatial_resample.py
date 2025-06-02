@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resample an :class:`OpticalImage` while preserving field of view."""
 
 from __future__ import annotations

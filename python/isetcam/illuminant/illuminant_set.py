@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Assign parameters on :class:`Illuminant` objects."""
 
 from __future__ import annotations

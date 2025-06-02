@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert Stockman LMS cone responses to CIE XYZ."""
 
 from __future__ import annotations

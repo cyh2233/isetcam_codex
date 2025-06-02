@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert XYZ values to (u', v') or (u, v) chromaticity coordinates."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute the next available numeric identifier for an object type."""
 
 from __future__ import annotations

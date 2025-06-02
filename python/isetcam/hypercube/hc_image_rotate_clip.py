@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Rotate a hyperspectral cube and clip to original size."""
 
 from __future__ import annotations

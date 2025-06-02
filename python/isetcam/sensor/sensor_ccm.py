@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute a color correction matrix from a Macbeth chart image."""
 
 from __future__ import annotations

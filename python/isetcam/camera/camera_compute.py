@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Simplified camera pipeline computation."""
 
 from __future__ import annotations

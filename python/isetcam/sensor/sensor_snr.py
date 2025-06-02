@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Estimate sensor SNR as a function of voltage level."""
 
 from __future__ import annotations

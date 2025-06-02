@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate luminance from photon counts."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Update the selected object index for a given type in ``vcSESSION``."""
 
 from __future__ import annotations

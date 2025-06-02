@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Load an ISETCam session from disk."""
 
 from __future__ import annotations

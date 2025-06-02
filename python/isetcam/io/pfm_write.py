@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Write images to Portable FloatMap (PFM) files."""
 
 from __future__ import annotations

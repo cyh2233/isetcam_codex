@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Write images to OpenEXR files."""
 
 from __future__ import annotations

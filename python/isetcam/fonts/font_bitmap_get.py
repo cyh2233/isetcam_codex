@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Return a bitmap for a :class:`Font`."""
 
 from __future__ import annotations

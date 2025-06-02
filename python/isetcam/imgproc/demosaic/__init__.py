@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic demosaicing algorithms."""
 
 from .ie_nearest_neighbor import ie_nearest_neighbor

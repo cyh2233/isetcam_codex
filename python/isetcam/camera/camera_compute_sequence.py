@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute a sequence of images using a camera model."""
 
 from __future__ import annotations

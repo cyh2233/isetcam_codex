@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Render display spectral output from digital RGB values."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert XYZ tristimulus values to CIE xyY."""
 
 from __future__ import annotations

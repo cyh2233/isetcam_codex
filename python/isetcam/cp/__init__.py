@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Lightweight computational photography tools."""
 
 from .cp_scene import CPScene

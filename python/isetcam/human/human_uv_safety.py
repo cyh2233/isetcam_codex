@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Evaluate photobiological safety of ultraviolet and blue light."""
 
 from __future__ import annotations

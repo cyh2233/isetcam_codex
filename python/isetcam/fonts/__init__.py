@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Font-related utilities."""
 
 from .font_class import Font

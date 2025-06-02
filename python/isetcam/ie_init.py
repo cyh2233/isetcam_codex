@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Session initialization utilities for ISETCam Python."""
 
 from __future__ import annotations

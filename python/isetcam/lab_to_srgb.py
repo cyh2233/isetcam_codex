@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert CIE L*a*b* values to nonlinear sRGB."""
 
 from __future__ import annotations

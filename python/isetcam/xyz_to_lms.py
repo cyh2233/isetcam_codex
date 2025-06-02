@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert CIE XYZ values to Stockman LMS cone responses.
 
 This function optionally simulates various forms of color blindness

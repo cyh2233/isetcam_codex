@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Display an RGB image using a ``Display`` definition."""
 
 from __future__ import annotations

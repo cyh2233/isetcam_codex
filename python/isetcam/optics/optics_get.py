@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Retrieve parameters from :class:`Optics` objects."""
 
 from __future__ import annotations

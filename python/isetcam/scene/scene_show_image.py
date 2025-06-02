@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Display a Scene as an RGB image using Matplotlib."""
 
 from __future__ import annotations

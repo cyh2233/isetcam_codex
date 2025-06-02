@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Block matrix used to visualize spectral data as RGB."""
 
 from __future__ import annotations

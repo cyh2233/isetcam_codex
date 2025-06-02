@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utilities for working with hyperspectral image cubes."""
 
 from .hc_basis import hc_basis

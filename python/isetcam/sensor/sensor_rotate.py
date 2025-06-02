@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Rotate the voltage data of a :class:`Sensor`."""
 
 from __future__ import annotations

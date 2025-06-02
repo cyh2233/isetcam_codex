@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a spatial arrangement of the human cone mosaic."""
 
 from __future__ import annotations

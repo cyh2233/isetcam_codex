@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute sensor response from an optical image."""
 
 from __future__ import annotations

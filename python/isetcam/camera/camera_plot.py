@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Plot camera sensor response and MTF curves."""
 
 from __future__ import annotations

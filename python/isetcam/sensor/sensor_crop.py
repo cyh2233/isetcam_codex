@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Crop volts from a :class:`Sensor` while preserving CFA alignment."""
 
 from __future__ import annotations

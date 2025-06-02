@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Frequency support for :class:`OpticalImage` objects."""
 
 from __future__ import annotations

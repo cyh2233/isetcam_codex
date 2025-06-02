@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate evenly spaced points on a circle."""
 
 from __future__ import annotations

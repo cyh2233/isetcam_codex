@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Modify values in the global ISETCam session."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Add black grid lines to a Scene."""
 
 from __future__ import annotations

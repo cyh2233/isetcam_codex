@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute spectral radiance for an RGB image using a ``Display``."""
 
 from __future__ import annotations

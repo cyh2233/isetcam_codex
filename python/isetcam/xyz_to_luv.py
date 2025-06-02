@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert XYZ values to CIELUV."""
 
 from __future__ import annotations

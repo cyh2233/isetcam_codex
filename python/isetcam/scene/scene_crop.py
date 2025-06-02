@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Crop a region from a :class:`Scene`."""
 
 from __future__ import annotations

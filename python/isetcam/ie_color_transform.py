@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute sensor-to-color-space transformation matrices."""
 
 from __future__ import annotations

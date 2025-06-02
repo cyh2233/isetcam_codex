@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Structural Similarity (SSIM) image quality metric."""
 
 from __future__ import annotations

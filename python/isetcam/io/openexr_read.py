@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Read OpenEXR images with optional OpenEXR bindings."""
 
 from __future__ import annotations

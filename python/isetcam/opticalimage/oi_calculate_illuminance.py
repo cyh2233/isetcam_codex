@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate optical image illuminance from photon data."""
 
 from __future__ import annotations

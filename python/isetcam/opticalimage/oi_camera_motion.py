@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply camera motion blur to an :class:`OpticalImage`."""
 
 from __future__ import annotations

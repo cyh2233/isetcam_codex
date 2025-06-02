@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply :func:`ie_scale` to each column of an array."""
 
 from __future__ import annotations

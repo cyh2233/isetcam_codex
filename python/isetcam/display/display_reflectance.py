@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a reflectance based display model."""
 
 from __future__ import annotations

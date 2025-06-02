@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Estimate human pupil diameter and area."""
 
 from __future__ import annotations

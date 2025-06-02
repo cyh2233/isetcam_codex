@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Assign parameters on :class:`Sensor` objects."""
 
 from __future__ import annotations

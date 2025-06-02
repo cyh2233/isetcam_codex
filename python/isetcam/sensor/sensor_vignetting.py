@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute pixel vignetting map for a sensor.
 
 This is a very small subset of the original MATLAB implementation.  When

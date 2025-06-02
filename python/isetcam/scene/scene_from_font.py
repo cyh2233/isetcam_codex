@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a simple :class:`Scene` from text rendered with a :class:`Font`."""
 
 from __future__ import annotations

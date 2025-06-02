@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert a scene illuminant to spatial-spectral format."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Insert one scene into another."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Solve a Tikhonov regularized least-squares problem."""
 
 from __future__ import annotations

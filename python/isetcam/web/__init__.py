@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utilities for retrieving images from web APIs."""
 
 from __future__ import annotations

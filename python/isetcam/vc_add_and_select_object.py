@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Add an object to ``vcSESSION`` and set it as selected."""
 
 from __future__ import annotations

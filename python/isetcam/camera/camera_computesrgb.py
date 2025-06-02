@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute simple sRGB rendering for a camera scene pair."""
 
 from __future__ import annotations

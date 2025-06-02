@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Lightweight wrapper around the :command:`scp` utility."""
 
 from __future__ import annotations

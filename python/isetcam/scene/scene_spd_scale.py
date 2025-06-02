@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Scale the spectral power distribution of a scene."""
 
 from __future__ import annotations

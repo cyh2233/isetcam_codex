@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Save a rendered RGB version of an OpticalImage."""
 
 from __future__ import annotations

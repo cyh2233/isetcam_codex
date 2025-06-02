@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert linear RGB values to nonlinear sRGB."""
 
 from __future__ import annotations

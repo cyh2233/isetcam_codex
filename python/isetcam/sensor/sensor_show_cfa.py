@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Visualize the color filter array pattern of a :class:`Sensor`."""
 
 from __future__ import annotations

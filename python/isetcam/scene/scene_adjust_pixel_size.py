@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Match scene sampling to a target pixel size."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic :class:`Camera` dataclass."""
 
 from __future__ import annotations

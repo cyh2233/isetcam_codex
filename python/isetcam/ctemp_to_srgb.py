@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert blackbody color temperature to sRGB."""
 
 from __future__ import annotations

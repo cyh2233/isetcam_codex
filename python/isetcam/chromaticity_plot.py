@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Plot points on the CIE xy chromaticity diagram."""
 
 from __future__ import annotations

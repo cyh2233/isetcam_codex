@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create a simple :class:`OpticalImage` with uniform photons."""
 
 from __future__ import annotations

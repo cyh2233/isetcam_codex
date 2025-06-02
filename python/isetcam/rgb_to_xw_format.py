@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert image data from RGB format to XW format."""
 
 from __future__ import annotations

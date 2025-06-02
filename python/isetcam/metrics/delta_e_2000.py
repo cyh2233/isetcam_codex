@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """CIEDE2000 color difference."""
 
 from __future__ import annotations

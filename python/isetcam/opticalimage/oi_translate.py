@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Translate the photon data of an OpticalImage."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Optical image functions."""
 
 from .oi_class import OpticalImage

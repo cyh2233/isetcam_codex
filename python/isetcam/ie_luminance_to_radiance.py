@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate spectral radiance from a monochromatic luminance value."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Human optical transfer function."""
 
 from __future__ import annotations

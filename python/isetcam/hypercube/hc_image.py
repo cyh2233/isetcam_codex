@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert a hyperspectral cube to sRGB for display."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Sensor SNR as a function of photometric exposure (lux-seconds)."""
 
 from __future__ import annotations

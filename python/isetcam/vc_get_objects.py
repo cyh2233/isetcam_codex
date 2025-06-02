@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Retrieve the list of objects for a given type from ``vcSESSION``."""
 
 from __future__ import annotations

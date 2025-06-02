@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Human line spread function."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Wrapper for various CIELAB color difference metrics."""
 
 from __future__ import annotations

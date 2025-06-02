@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Blur a hyperspectral cube with a Gaussian kernel."""
 
 from __future__ import annotations

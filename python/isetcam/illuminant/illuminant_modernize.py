@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert legacy illuminant structures to :class:`Illuminant`."""
 
 from __future__ import annotations

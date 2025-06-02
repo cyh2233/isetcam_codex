@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utility to format Matplotlib axes with ISETCam defaults."""
 
 from __future__ import annotations

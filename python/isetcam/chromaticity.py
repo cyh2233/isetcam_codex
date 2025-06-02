@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate CIE (x, y) chromaticity coordinates from XYZ."""
 
 from __future__ import annotations

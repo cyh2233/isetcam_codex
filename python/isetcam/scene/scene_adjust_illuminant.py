@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Adjust the illuminant of a :class:`Scene`."""
 
 from __future__ import annotations

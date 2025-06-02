@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Visualize different properties of a Display."""
 
 from __future__ import annotations

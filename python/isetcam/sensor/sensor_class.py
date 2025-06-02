@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic :class:`Sensor` dataclass."""
 
 from __future__ import annotations

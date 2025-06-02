@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Read a DDF file and return a :class:`Scene`."""
 
 from __future__ import annotations

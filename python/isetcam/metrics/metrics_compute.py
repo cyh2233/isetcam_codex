@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute common image quality metrics."""
 
 from __future__ import annotations

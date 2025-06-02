@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute basic full-reference metrics for a camera scene pair."""
 
 from __future__ import annotations

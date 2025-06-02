@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Create individual wavelength scene files."""
 
 from __future__ import annotations

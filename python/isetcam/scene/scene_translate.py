@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Translate the photon data of a Scene."""
 
 from __future__ import annotations

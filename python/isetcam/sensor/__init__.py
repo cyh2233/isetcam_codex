@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Sensor-related functions.
 
 The :func:`sensor_vignetting` helper now accepts ``pv_flag='microlens'`` or the

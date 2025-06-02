@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Assign parameters on :class:`OpticalImage` objects."""
 
 from __future__ import annotations

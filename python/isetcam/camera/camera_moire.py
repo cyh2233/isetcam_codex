@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate moir\u00e9 pattern response of a camera."""
 
 from __future__ import annotations

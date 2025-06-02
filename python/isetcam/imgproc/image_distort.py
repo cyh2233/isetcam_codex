@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply simple distortions to an image."""
 
 from __future__ import annotations

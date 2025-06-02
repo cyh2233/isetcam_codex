@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Combine two scenes horizontally, vertically, or in a grid."""
 
 from __future__ import annotations

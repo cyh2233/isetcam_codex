@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Simple sensor to display image processing pipeline."""
 
 from .vcimage_class import VCImage

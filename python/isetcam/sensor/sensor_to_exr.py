@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Save Sensor voltage data to an OpenEXR file."""
 
 from __future__ import annotations

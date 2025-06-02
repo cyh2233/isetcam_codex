@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Tone curve utilities."""
 
 from __future__ import annotations

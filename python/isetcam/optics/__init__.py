@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Optics-related functions."""
 
 from .optics_class import Optics

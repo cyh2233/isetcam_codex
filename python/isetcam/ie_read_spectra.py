@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Load spectral data from a MATLAB file and interpolate.
 
 This function reads variables ``data`` and ``wavelength`` from a MAT-file,

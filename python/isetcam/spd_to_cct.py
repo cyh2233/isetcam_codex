@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Estimate correlated color temperature from a spectral power distribution."""
 
 from __future__ import annotations

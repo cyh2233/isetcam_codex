@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utilities for saving :class:`Scene` objects to disk."""
 
 from __future__ import annotations

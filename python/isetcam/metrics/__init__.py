@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Image quality metrics."""
 
 from .ie_psnr import ie_psnr

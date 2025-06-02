@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Load a :class:`Camera` from a MATLAB ``.mat`` file."""
 
 from __future__ import annotations

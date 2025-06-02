@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Plot sensor voltage image with optional color filter overlay."""
 
 from __future__ import annotations

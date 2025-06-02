@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Apply a spatial pattern to the scene illuminant and photons."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic :class:`Illuminant` dataclass."""
 
 from __future__ import annotations

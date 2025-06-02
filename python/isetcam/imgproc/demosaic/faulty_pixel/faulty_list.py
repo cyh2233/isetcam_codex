@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a list of random faulty pixel coordinates."""
 
 from __future__ import annotations

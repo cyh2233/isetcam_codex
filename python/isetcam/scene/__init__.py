@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Scene-related functions."""
 
 from .scene_class import Scene

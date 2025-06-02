@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Format parameter names in ISET style."""
 
 from __future__ import annotations

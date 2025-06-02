@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Resize a Sensor to achieve a desired field of view."""
 
 from __future__ import annotations

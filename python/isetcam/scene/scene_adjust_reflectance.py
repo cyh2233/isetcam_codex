@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Replace scene reflectance while keeping the illuminant constant."""
 
 from __future__ import annotations

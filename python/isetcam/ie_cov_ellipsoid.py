@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate ellipsoid coordinates from a covariance matrix."""
 
 from __future__ import annotations

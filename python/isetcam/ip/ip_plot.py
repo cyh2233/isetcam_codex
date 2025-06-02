@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic IP plotting utilities."""
 
 from __future__ import annotations

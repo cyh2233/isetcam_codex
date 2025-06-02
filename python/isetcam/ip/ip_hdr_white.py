@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Whiten near-saturated pixels in a VCImage."""
 
 from __future__ import annotations

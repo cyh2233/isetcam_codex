@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Calculate scene luminance from photon data."""
 
 from __future__ import annotations

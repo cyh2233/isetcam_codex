@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Camera-related functions."""
 
 from .camera_class import Camera

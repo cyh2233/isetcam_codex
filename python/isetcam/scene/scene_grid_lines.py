@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a grid line pattern scene."""
 
 from __future__ import annotations

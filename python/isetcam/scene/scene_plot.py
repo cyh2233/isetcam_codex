@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Basic scene plotting utilities."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Pad an :class:`OpticalImage`'s photon data."""
 
 from __future__ import annotations

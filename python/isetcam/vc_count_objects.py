@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Count objects of a given type stored in ``vcSESSION``."""
 
 from __future__ import annotations

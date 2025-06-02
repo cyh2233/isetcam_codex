@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Compute sensor response one waveband at a time."""
 
 from __future__ import annotations

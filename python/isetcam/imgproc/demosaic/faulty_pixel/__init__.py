@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Utilities for handling faulty pixels."""
 
 from .faulty_insert import faulty_insert

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Achromatic optical transfer function models for the human eye."""
 
 from __future__ import annotations

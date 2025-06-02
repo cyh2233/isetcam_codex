@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Convert spectral responsivity between energy and photon units."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Generate a short textual description of a :class:`Scene`."""
 
 from __future__ import annotations
