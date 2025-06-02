@@ -14,6 +14,7 @@ from .iso_acutance import iso_acutance
 from .iso12233_sfr import iso12233_sfr
 from .iso_speed_saturation import iso_speed_saturation
 from .metrics_compute import metrics_compute
+from .metrics_camera import metrics_camera
 
 __all__ = [
     "ie_psnr",
@@ -31,4 +32,5 @@ __all__ = [
     "iso12233_sfr",
     "iso_speed_saturation",
     "metrics_compute",
+    "metrics_camera",
 ]
