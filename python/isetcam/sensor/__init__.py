@@ -1,4 +1,8 @@
-"""Sensor-related functions."""
+"""Sensor-related functions.
+
+The :func:`sensor_vignetting` helper now accepts ``pv_flag='microlens'`` or the
+numeric values ``1``-``3`` to emulate different microlens configurations.
+"""
 
 from __future__ import annotations
 
