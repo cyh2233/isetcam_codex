@@ -2559,6 +2559,20 @@ print(cmd, rc)
 
 Run `pytest -q` to verify the secure copy wrapper.
 
+## ie_gamma and ie_tone
+
+Gamma correction and tone mapping helpers.
+
+```python
+import numpy as np
+from isetcam import ie_gamma, ie_tone_curve, ie_apply_tone
+
+img = ie_gamma(np.random.rand(4, 4, 3), 2.2)
+curve = ie_tone_curve(num_points=64)
+img = ie_apply_tone(img, curve)
+```
+
+Run `pytest -q` after implementing the gamma and tone modules.
 ## sensor_resample_wave
 
 Interpolate sensor spectral data to a new wavelength grid.
@@ -2704,6 +2718,23 @@ vec = scene_radiance_from_vector(sc, 0, 1)
 Run `pytest -q` after editing this routine.
 
 
+## scene_checkerboard, scene_dead_leaves and scene_grid_lines
+
+Generate synthetic patterns for resolution and texture testing.
+
+```python
+from isetcam.scene import (
+    scene_checkerboard,
+    scene_dead_leaves,
+    scene_grid_lines,
+)
+
+cb = scene_checkerboard(8, 4)
+dl = scene_dead_leaves(patch_size=128, noise_level=0.05)
+gl = scene_grid_lines(size=64, spacing=8, spectral_type="ep")
+```
+
+Run `pytest -q` after implementing these scene generators.
 ## oi_calculate_otf
 
 Compute the optical transfer function for an optical image and optics model.
