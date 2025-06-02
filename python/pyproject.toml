@@ -25,3 +25,6 @@ OpenEXR = ["OpenEXR"]
 
 [tool.setuptools.package-data]
 "isetcam" = ["data/**/*"]
+
+[project.scripts]
+isetcam = "isetcam.cli:main"
