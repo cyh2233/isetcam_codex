@@ -20,6 +20,7 @@ from .oi_camera_motion import oi_camera_motion
 from .oi_spatial_support import oi_spatial_support
 from .oi_spatial_resample import oi_spatial_resample
 from .oi_frequency_support import oi_frequency_support
+from .oi_frequency_resolution import oi_frequency_resolution
 from .oi_frequency_resample import oi_frequency_resample
 from .oi_interpolate_w import oi_interpolate_w
 from .oi_adjust_illuminance import oi_adjust_illuminance
@@ -61,6 +62,7 @@ __all__ = [
     "oi_spatial_support",
     "oi_spatial_resample",
     "oi_frequency_support",
+    "oi_frequency_resolution",
     "oi_frequency_resample",
     "oi_interpolate_w",
     "oi_photon_noise",
