@@ -3021,3 +3021,74 @@ sensor_set_size_to_fov(s, 0.5, oi)
 ```
 
 Run `pytest -q` after updating these sensor routines.
+
+## Hypercube utilities
+
+The `hypercube` package contains helpers for processing hyperspectral image cubes.
+
+```python
+import numpy as np
+from isetcam.hypercube import (
+    hc_basis,
+    hc_blur,
+    hc_illuminant_scale,
+    hc_image,
+    hc_image_crop,
+    hc_image_rotate_clip,
+)
+
+cube = np.random.rand(4, 4, 31)
+basis = np.random.rand(31, 5)
+cube_basis = hc_basis(cube, basis)
+cube_blur = hc_blur(cube, 1.5)
+scaled_illum = hc_illuminant_scale(cube, np.ones(31))
+img = hc_image(cube, np.arange(400, 710, 10))
+crop = hc_image_crop(cube, (1, 1, 2, 2))
+rot = hc_image_rotate_clip(cube, 15.0)
+```
+
+Run `pytest -q` after implementing these hypercube utilities.
+
+## Font management and `scene_from_font`
+
+Font creation, parameter access and modification mirror the MATLAB routines. The
+`scene_from_font` function builds a simple scene from rendered text.
+
+```python
+from isetcam.fonts import font_create, font_get, font_set
+from isetcam.scene import scene_from_font
+
+f = font_create(letter="A", size=20)
+bitmap = font_get(f, "bitmap")
+f = font_set(f, "size", 24)
+scene = scene_from_font("ISET", f)
+```
+
+Run `pytest -q` after updating these font helpers.
+
+## `web_flickr` and `web_pixabay`
+
+These utilities download photos from their respective web APIs.
+
+```python
+from isetcam.web import web_flickr, web_pixabay
+
+flickr_paths = web_flickr("cats", "FLICKR_API_KEY", 5, "flickr_dir")
+pixabay_paths = web_pixabay("dogs", "PIXABAY_API_KEY", 5, "pixabay_dir")
+```
+
+Run `pytest -q` after adding these web utilities.
+
+## `animated_gif`
+
+Write a series of frames into an animated GIF.
+
+```python
+import numpy as np
+from isetcam import animated_gif
+
+frames = np.random.rand(10, 16, 16, 3)
+animated_gif(frames, "movie.gif", fps=5, loop=1)
+```
+
+Run `pytest -q` after modifying this animation helper.
