@@ -78,6 +78,12 @@ pytest -q
 Running these tests verifies that the initialization routines and helper
 functions behave as expected.
 
+## Basic Pipeline Notebook
+
+A short Jupyter notebook demonstrates constructing a scene, computing an optical image, simulating a sensor and rendering the result.
+See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow.
+
+
 ## Flake8 Workflow
 
 The GitHub workflow `.github/workflows/python-tests.yml` installs
@@ -615,6 +621,12 @@ xy = chromaticity(xyz)
 
 Remember to run the Python unit tests via `pytest` after installing the
 environment to ensure these functions behave as expected.
+
+## Basic Pipeline Notebook
+
+A short Jupyter notebook demonstrates constructing a scene, computing an optical image, simulating a sensor and rendering the result.
+See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow.
+
 
 After working with these modules you can rerun the unit tests using:
 
@@ -1240,6 +1252,12 @@ print(f"PSNR: {score:.2f} dB")
 ```
 
 As always, run `pytest -q` to confirm these functions behave as expected.
+
+## Basic Pipeline Notebook
+
+A short Jupyter notebook demonstrates constructing a scene, computing an optical image, simulating a sensor and rendering the result.
+See [notebooks/basic_pipeline.ipynb](../notebooks/basic_pipeline.ipynb) for the full workflow.
+
 
 ## Structural Similarity (SSIM)
 
