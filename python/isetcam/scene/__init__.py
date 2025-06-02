@@ -28,6 +28,7 @@ from .scene_to_file import scene_to_file
 from .scene_extract_waveband import scene_extract_waveband
 from .scene_add_grid import scene_add_grid
 from .scene_grid_lines import scene_grid_lines
+from .scene_checkerboard import scene_checkerboard
 from .scene_combine import scene_combine
 from .scene_adjust_pixel_size import scene_adjust_pixel_size
 from .scene_show_image import scene_show_image
@@ -44,6 +45,7 @@ from .scene_depth_overlay import scene_depth_overlay
 from .scene_depth_range import scene_depth_range
 from .scene_list import scene_list
 from .scene_make_video import scene_make_video
+from .scene_dead_leaves import scene_dead_leaves
 from .scene_wb_create import scene_wb_create
 from .scene_plot import scene_plot
 from .scene_description import scene_description
@@ -87,6 +89,7 @@ __all__ = [
     "scene_extract_waveband",
     "scene_add_grid",
     "scene_grid_lines",
+    "scene_checkerboard",
     "scene_combine",
     "scene_adjust_pixel_size",
     "scene_show_image",
@@ -99,6 +102,7 @@ __all__ = [
     "scene_depth_overlay",
     "scene_depth_range",
     "scene_list",
+    "scene_dead_leaves",
     "scene_wb_create",
     "scene_description",
     "scene_clear_data",
