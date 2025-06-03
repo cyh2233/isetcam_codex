@@ -3,6 +3,8 @@ import numpy as np
 from isetcam.sensor import Sensor
 from isetcam.opticalimage import OpticalImage
 from isetcam.camera import Camera, camera_get, camera_set
+from isetcam.optics import Optics
+from isetcam.ip import VCImage
 
 
 def test_camera_get_set():
@@ -28,3 +30,16 @@ def test_camera_get_set():
 
     camera_set(cam, " NaMe", "new")
     assert camera_get(cam, " NaMe ") == "new"
+
+    # optics and ip forwarding
+    cam.optics = Optics(f_number=4.0, f_length=0.005, wave=wave)
+    cam.ip = VCImage(rgb=np.zeros_like(volts), wave=wave,
+                     illuminant_correction_method="gray world")
+
+    assert camera_get(cam, "optics fnumber") == 4.0
+    camera_set(cam, "optics fnumber", 2.8)
+    assert camera_get(cam, "optics f_number") == 2.8
+
+    assert camera_get(cam, "ip illuminant correction method") == "gray world"
+    camera_set(cam, "ip illuminant correction method", "none")
+    assert camera_get(cam, "ip illuminant correction method") == "none"
