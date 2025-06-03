@@ -1,6 +1,7 @@
 import numpy as np
 
 from isetcam.display import Display, display_get, display_set
+from isetcam import ie_xyz_from_energy
 
 
 def test_display_get_set():
@@ -14,6 +15,13 @@ def test_display_get_set():
     assert display_get(disp, "N WaVe") == 3
     assert np.array_equal(display_get(disp, "  gAmMa"), gamma)
     assert display_get(disp, " NAME ") == "orig"
+
+    # White and primary XYZ from the original data
+    expected_white = ie_xyz_from_energy(spd.sum(axis=1), wave).reshape(3)
+    assert np.allclose(display_get(disp, "white xyz"), expected_white)
+
+    expected_primaries = ie_xyz_from_energy(spd.T, wave)
+    assert np.allclose(display_get(disp, "primaries xyz"), expected_primaries)
 
     new_spd = np.zeros_like(spd)
     display_set(disp, " SpD ", new_spd)
