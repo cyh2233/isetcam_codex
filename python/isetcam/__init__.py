@@ -181,6 +181,7 @@ from .camera import (
     camera_from_file,
     camera_plot,
     camera_moire,
+    camera_show,
 )
 from .optics import optics_to_file, optics_from_file
 from .scene import scene_plot
@@ -367,6 +368,7 @@ __all__ = [
     'camera_from_file',
     'camera_plot',
     'camera_moire',
+    'camera_show',
     'scene_plot',
     'oi_plot',
     'optics_to_file',
