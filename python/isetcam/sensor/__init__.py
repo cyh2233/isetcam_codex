@@ -15,7 +15,7 @@ from .sensor_class import Sensor
 from .sensor_get import sensor_get
 from .sensor_set import sensor_set
 from .sensor_from_file import sensor_from_file
-from .sensor_compute import sensor_compute
+from .sensor_compute import sensor_compute, auto_exposure
 from .sensor_photon_noise import sensor_photon_noise
 from .sensor_add_noise import sensor_add_noise
 from .sensor_to_file import sensor_to_file
@@ -85,6 +85,7 @@ __all__ = [
     "sensor_set",
     "sensor_from_file",
     "sensor_compute",
+    "auto_exposure",
     "sensor_photon_noise",
     "sensor_add_noise",
     "sensor_to_file",
