@@ -12,6 +12,7 @@ from .scene_class import Scene
 from ..luminance_from_photons import luminance_from_photons
 from ..data_path import data_path
 from .scene_adjust_illuminant import scene_adjust_illuminant
+from .scene_freq_orient import scene_freq_orient
 
 
 _DEF_DIR = "data"
@@ -135,6 +136,7 @@ _VALID_TYPES = {
     "whitenoise": _create_whitenoise,
     "frequencysweep": _create_frequency_sweep,
     "gridlines": _create_grid_lines,
+    "freqorient": scene_freq_orient,
 }
 
 
