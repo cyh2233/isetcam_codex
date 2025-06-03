@@ -12,6 +12,8 @@ from .ip_plot import ip_plot
 from .ip_clear_data import ip_clear_data
 from .ip_hdr_white import ip_hdr_white
 from .ip_demosaic import ip_demosaic
+from .ip_jpeg_compress import ip_jpeg_compress
+from .ip_jpeg_decompress import ip_jpeg_decompress
 
 __all__ = [
     "VCImage",
@@ -25,4 +27,6 @@ __all__ = [
     "ip_clear_data",
     "ip_hdr_white",
     "ip_demosaic",
+    "ip_jpeg_compress",
+    "ip_jpeg_decompress",
 ]
