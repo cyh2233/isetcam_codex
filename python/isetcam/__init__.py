@@ -163,7 +163,7 @@ from .hypercube import (
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts  # noqa: E501
+from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts, printing  # noqa: E501
 from .opticalimage import oi_to_file, oi_plot
 from .sensor import sensor_to_file
 from .display import (
@@ -210,6 +210,7 @@ from .io import (
 )
 from .animated_gif import animated_gif
 from .ie_scp import ie_scp
+from .printing import halftone_dither, halftone_error_diffusion
 from .web import web_flickr, web_pixabay, WebLOC
 
 __all__ = [
@@ -305,6 +306,8 @@ __all__ = [
     'faulty_insert',
     'faulty_list',
     'faulty_pixel_correction',
+    'halftone_dither',
+    'halftone_error_diffusion',
     'ie_psnr',
     'scielab',
     'sc_params',
@@ -347,6 +350,7 @@ __all__ = [
     'human',
     'ip',
     'cp',
+    'printing',
     'fonts',
     'hypercube',
     'oi_to_file',
