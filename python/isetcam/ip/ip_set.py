@@ -21,6 +21,9 @@ def ip_set(ip: VCImage, param: str, val: Any) -> None:
     if key == "name":
         ip.name = None if val is None else str(val)
         return
+    if key == "demosaicmethod":
+        ip.demosaic_method = None if val is None else str(val)
+        return
     if key == "internalcs":
         ip.internal_cs = None if val is None else str(val)
         return
