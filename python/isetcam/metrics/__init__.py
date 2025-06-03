@@ -16,6 +16,7 @@ from .iso_speed_saturation import iso_speed_saturation
 from .metrics_compute import metrics_compute
 from .metrics_camera import metrics_camera
 from .cie_whiteness import cie_whiteness
+from .sensor_sqr_i import sensor_sqr_i
 
 __all__ = [
     "ie_psnr",
@@ -35,4 +36,5 @@ __all__ = [
     "cie_whiteness",
     "metrics_compute",
     "metrics_camera",
+    "sensor_sqr_i",
 ]
