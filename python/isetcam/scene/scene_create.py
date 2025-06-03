@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import Optional
 
 import numpy as np
@@ -12,6 +11,7 @@ from scipy.io import loadmat
 from .scene_class import Scene
 from ..luminance_from_photons import luminance_from_photons
 from ..data_path import data_path
+from .scene_adjust_illuminant import scene_adjust_illuminant
 
 
 _DEF_DIR = "data"
@@ -60,6 +60,17 @@ def _create_macbeth_d65(patch_size: int = 16, wave: Optional[np.ndarray] = None,
         if cur > 0:
             sc.photons = sc.photons * (mean_luminance / cur)
     return sc
+
+
+def _create_macbeth_tungsten(
+    patch_size: int = 16,
+    wave: Optional[np.ndarray] = None,
+    mean_luminance: Optional[float] = None,
+) -> Scene:
+    """Return a Macbeth chart illuminated by Tungsten light."""
+    sc = _create_macbeth_d65(patch_size=patch_size, wave=wave,
+                             mean_luminance=mean_luminance)
+    return scene_adjust_illuminant(sc, data_path("lights/Tungsten.mat"))
 
 
 def _create_uniform_monochromatic(wavelength: float = 550.0, size: int = 128) -> Scene:
@@ -119,6 +130,7 @@ def _create_grid_lines(size: int = 128, spacing: int = 16, thickness: int = 1,
 
 _VALID_TYPES = {
     "macbethd65": _create_macbeth_d65,
+    "macbethtungsten": _create_macbeth_tungsten,
     "uniformmonochromatic": _create_uniform_monochromatic,
     "whitenoise": _create_whitenoise,
     "frequencysweep": _create_frequency_sweep,
@@ -137,6 +149,7 @@ def scene_create(name: str, **kwargs) -> Scene:
 __all__ = [
     "scene_create",
     "_create_macbeth_d65",
+    "_create_macbeth_tungsten",
     "_create_uniform_monochromatic",
     "_create_whitenoise",
     "_create_frequency_sweep",

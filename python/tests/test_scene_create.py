@@ -48,3 +48,10 @@ def test_scene_create_grid_lines():
     assert np.allclose(sc.photons[mid, :, 0], sc.photons.max())
     assert np.allclose(sc.photons[:, mid, 0], sc.photons.max())
 
+
+def test_scene_create_macbeth_tungsten_different():
+    sc_d65 = scene_create("macbeth d65", patch_size=4)
+    sc_t = scene_create("macbeth tungsten", patch_size=4)
+    assert sc_d65.photons.shape == sc_t.photons.shape
+    assert not np.allclose(sc_d65.photons, sc_t.photons)
+
