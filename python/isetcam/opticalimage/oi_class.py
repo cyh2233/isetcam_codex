@@ -17,6 +17,9 @@ class OpticalImage:
     photons: np.ndarray
     wave: np.ndarray | None = None
     name: str | None = None
+    optics_f_number: float = 0.0
+    optics_f_length: float = 0.0
+    optics_model: str = ""
 
     def __post_init__(self) -> None:
         if self.wave is None:

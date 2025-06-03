@@ -32,6 +32,8 @@ def sensor_clear_data(sensor: Sensor) -> Sensor:
     for attr in _OPTIONAL_ATTRS:
         if hasattr(sensor, attr):
             delattr(sensor, attr)
+    if getattr(sensor, "name", None) is None:
+        sensor.name = ""
     return sensor
 
 

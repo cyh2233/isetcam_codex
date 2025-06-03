@@ -12,11 +12,11 @@ from ..luminance_from_photons import luminance_from_photons
 from ..ie_param_format import ie_param_format
 
 
-def oi_get(oi: OpticalImage, param: str) -> Any:
+def oi_get(oi: OpticalImage, param: str, units: str | None = None) -> Any:
     """Return a parameter value from ``oi``.
 
-    Supported parameters are ``photons``, ``wave``, ``n_wave``/``nwave``,
-    ``name``, and ``luminance``.
+    Supported parameters include ``photons``, ``wave``, ``n_wave``/``nwave``,
+    ``name``, ``luminance``, and several optics parameters.
     """
     key = ie_param_format(param)
     if key == "photons":
@@ -29,4 +29,28 @@ def oi_get(oi: OpticalImage, param: str) -> Any:
         return getattr(oi, "name", None)
     if key == "luminance":
         return luminance_from_photons(oi.photons, oi.wave)
+    if key in {"opticsfnumber", "opticsf_number"}:
+        if oi.optics_f_number is None:
+            return None
+        return float(oi.optics_f_number)
+    if key in {"opticsfocallength", "opticsf_length"}:
+        if oi.optics_f_length is None:
+            return None
+        val = float(oi.optics_f_length)
+        if units == "mm":
+            val *= 1e3
+        return val
+    if key == "opticsaperturediameter":
+        if oi.optics_f_number is None or oi.optics_f_length is None:
+            return None
+        dia = float(oi.optics_f_length) / float(oi.optics_f_number)
+        if units == "mm":
+            dia *= 1e3
+        return dia
+    if key == "opticsdiopters":
+        if oi.optics_f_length is None:
+            return None
+        return 1.0 / float(oi.optics_f_length)
+    if key == "opticsmodel":
+        return oi.optics_model
     raise KeyError(f"Unknown optical image parameter '{param}'")

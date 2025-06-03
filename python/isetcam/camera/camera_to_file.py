@@ -9,6 +9,7 @@ from pathlib import Path
 from scipy.io import savemat
 
 from .camera_class import Camera
+from .camera_clear_data import camera_clear_data
 
 
 def camera_to_file(camera: Camera, path: str | Path) -> None:
@@ -17,5 +18,5 @@ def camera_to_file(camera: Camera, path: str | Path) -> None:
     The sensor and optical image dataclasses are stored as nested structures
     under the variable name ``'camera'``.
     """
-    data = asdict(camera)
+    data = asdict(camera_clear_data(camera))
     savemat(str(Path(path)), {"camera": data})
