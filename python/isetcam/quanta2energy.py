@@ -46,7 +46,10 @@ def quanta_to_energy(wavelength: np.ndarray, photons: np.ndarray) -> np.ndarray:
         if photons.ndim == 1:
             photons = photons[np.newaxis, :]
         if photons.shape[1] != len(wavelength):
-            raise ValueError('Photons (Quanta) must be in XW format.')
+            if photons.shape[0] == len(wavelength) and photons.shape[1] == 1:
+                photons = photons.T
+            else:
+                raise ValueError('Photons (Quanta) must be in XW format.')
         return (h * c / 1e-9) * photons / wavelength
 
     raise ValueError('Unknown image format')

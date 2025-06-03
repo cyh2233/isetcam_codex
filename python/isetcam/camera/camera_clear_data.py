@@ -18,6 +18,14 @@ def camera_clear_data(camera: Camera) -> Camera:
     """
     camera.optical_image = oi_clear_data(camera.optical_image)
     camera.sensor = sensor_clear_data(camera.sensor)
+    if getattr(camera.optical_image, "name", None) is None:
+        camera.optical_image.name = ""
+    if getattr(camera.sensor, "name", None) is None:
+        camera.sensor.name = ""
+    if getattr(camera.optical_image, "optics_model", None) is None:
+        camera.optical_image.optics_model = ""
+    if getattr(camera, "name", None) is None:
+        camera.name = ""
     if hasattr(camera, "ip"):
         camera.ip = ip_clear_data(camera.ip)
     return camera

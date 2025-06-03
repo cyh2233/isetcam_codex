@@ -27,8 +27,12 @@ def vc_get_image_format(data: np.ndarray, wave: np.ndarray) -> Optional[str]:
     if data.ndim == 3 and len(wave) == data.shape[2]:
         return 'RGB'
     if data.ndim == 2 and len(wave) == 1:
+        if data.shape[1] == 1:
+            return 'XW'
         return 'RGB'
     if data.ndim == 2 and len(wave) == data.shape[1]:
+        return 'XW'
+    if data.ndim == 2 and len(wave) == data.shape[0] and data.shape[1] == 1:
         return 'XW'
     if data.ndim == 1 and data.size == len(wave):
         return 'XW'

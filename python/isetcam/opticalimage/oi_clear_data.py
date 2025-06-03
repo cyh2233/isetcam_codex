@@ -37,6 +37,8 @@ def oi_clear_data(oi: OpticalImage) -> OpticalImage:
     for attr in _OPTIONAL_ATTRS:
         if hasattr(oi, attr):
             delattr(oi, attr)
+    if getattr(oi, "name", None) is None:
+        oi.name = ""
     return oi
 
 

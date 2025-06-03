@@ -25,12 +25,15 @@ def iso_speed_saturation(sensor: Sensor) -> float:
         raise AttributeError("sensor must have 'well_capacity' attribute")
 
     wave = sensor.wave
-    oi = _uniform_d65_oi(wave)
-
-    tmp = sensor_compute(sensor, oi)
-    electrons = float(np.mean(tmp.volts))
-
-    lux = float(oi_calculate_illuminance(oi).mean())
+    ill = illuminant_create("D65", wave)
+    photons = energy_to_quanta(wave, ill.spd)
+    qe = getattr(sensor, "qe", np.ones_like(wave))
+    electrons = np.sum(photons * qe) * sensor.exposure_time
+    lux = float(
+        oi_calculate_illuminance(
+            OpticalImage(photons=photons.reshape(1, 1, -1), wave=wave)
+        ).mean()
+    )
     lux_sec = lux * sensor_get(sensor, "exposure_time")
 
     sat_lux_sec = lux_sec * (well_capacity / electrons)
