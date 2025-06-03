@@ -2,7 +2,9 @@
 """Sensor-related functions.
 
 The :func:`sensor_vignetting` helper now accepts ``pv_flag='microlens'`` or the
-numeric values ``1``-``3`` to emulate different microlens configurations.
+numeric values ``1``-``3`` to emulate different microlens configurations.  The
+:func:`sensor_create` helper also understands Bayer pattern strings such as
+``"bayer (rggb)"`` or ``"bayer (gbrg)"``.
 """
 
 from __future__ import annotations
@@ -18,7 +20,7 @@ from .sensor_photon_noise import sensor_photon_noise
 from .sensor_add_noise import sensor_add_noise
 from .sensor_to_file import sensor_to_file
 from .sensor_to_exr import sensor_to_exr
-from .sensor_create import sensor_create
+from .sensor_create import sensor_create, parse_bayer_pattern, BAYER_PATTERN_MAP
 from .sensor_snr import sensor_snr
 from .sensor_snr_luxsec import sensor_snr_luxsec
 from .sensor_crop import sensor_crop
@@ -88,6 +90,8 @@ __all__ = [
     "sensor_to_file",
     "sensor_to_exr",
     "sensor_create",
+    "parse_bayer_pattern",
+    "BAYER_PATTERN_MAP",
     "sensor_crop",
     "sensor_roi",
     "sensor_snr",
