@@ -2,6 +2,7 @@ import numpy as np
 
 from isetcam.scene import Scene, scene_get, scene_set
 from isetcam.luminance_from_photons import luminance_from_photons
+from isetcam.ie_xyz_from_photons import ie_xyz_from_photons
 
 
 def test_scene_get_set():
@@ -28,3 +29,15 @@ def test_scene_get_set():
 
     scene_set(sc, " NaMe", "new")
     assert scene_get(sc, " NAME ") == "new"
+
+
+def test_scene_get_xyz():
+    wave = np.array([500, 510, 520])
+    photons = np.ones((1, 1, 3))
+    sc = Scene(photons=photons, wave=wave)
+
+    xyz = scene_get(sc, "xyz")
+    expected = ie_xyz_from_photons(photons, wave)
+
+    assert xyz.shape == (1, 1, 3)
+    assert np.allclose(xyz, expected)
