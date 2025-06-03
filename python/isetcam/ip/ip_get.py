@@ -18,6 +18,8 @@ def ip_get(ip: VCImage, param: str) -> Any:
         return len(ip.wave)
     if key == "name":
         return getattr(ip, "name", None)
+    if key == "demosaicmethod":
+        return getattr(ip, "demosaic_method", None)
     if key == "internalcs":
         return getattr(ip, "internal_cs", None)
     if key == "conversionmethodsensor":

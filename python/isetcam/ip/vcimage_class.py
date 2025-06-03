@@ -15,6 +15,7 @@ class VCImage:
     rgb: np.ndarray
     wave: np.ndarray
     name: str | None = None
+    demosaic_method: str | None = None
     internal_cs: str | None = None
     conversion_method_sensor: str | None = None
     illuminant_correction_method: str | None = None
