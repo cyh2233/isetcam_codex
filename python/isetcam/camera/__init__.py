@@ -19,6 +19,7 @@ from .camera_compute_sequence import camera_compute_sequence
 from .camera_clear_data import camera_clear_data
 from .camera_full_reference import camera_full_reference
 from .camera_computesrgb import camera_computesrgb
+from .camera_show import camera_show
 
 __all__ = [
     "Camera",
@@ -40,4 +41,5 @@ __all__ = [
     "camera_clear_data",
     "camera_full_reference",
     "camera_computesrgb",
+    "camera_show",
 ]
