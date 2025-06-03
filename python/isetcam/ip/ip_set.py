@@ -21,5 +21,13 @@ def ip_set(ip: VCImage, param: str, val: Any) -> None:
     if key == "name":
         ip.name = None if val is None else str(val)
         return
+    if key == "internalcs":
+        ip.internal_cs = None if val is None else str(val)
+        return
+    if key == "conversionmethodsensor":
+        ip.conversion_method_sensor = None if val is None else str(val)
+        return
+    if key == "illuminantcorrectionmethod":
+        ip.illuminant_correction_method = None if val is None else str(val)
+        return
     raise KeyError(f"Unknown or read-only VCImage parameter '{param}'")
-
