@@ -1,29 +1,26 @@
 import numpy as np
-from isetcam import (
-    ie_init,
-    data_path,
+from isetcam import ie_init, data_path
+from isetcam.scene import (
     scene_create,
     scene_adjust_illuminant,
     scene_adjust_luminance,
     scene_show_image,
-    optics_create,
-    optics_set,
-    oi_compute,
-    oi_show_image,
+    scene_slanted_bar,
+)
+from isetcam.optics import optics_create, optics_set
+from isetcam.opticalimage import oi_compute, oi_show_image
+from isetcam.sensor import (
+    Sensor,
     sensor_create,
     sensor_set,
     sensor_compute,
     sensor_add_noise,
     sensor_gain_offset,
     sensor_show_image,
-    display_create,
-    ip_compute,
-    ip_set,
-    ip_plot,
-    scene_slanted_bar,
-    iso12233_sfr,
 )
-from isetcam.sensor import Sensor
+from isetcam.display import display_create
+from isetcam.ip import ip_compute, ip_set, ip_plot
+from isetcam.metrics import iso12233_sfr
 
 
 def build_sensor(rows: int, cols: int) -> Sensor:
@@ -54,7 +51,6 @@ def main() -> None:
     optics_set(optics, "f_length", 3e-3)
 
     oi = oi_compute(scene, optics)
-    oi_show_image(oi)
 
     sensor = build_sensor(466, 642)
     sensor = sensor_compute(sensor, oi)
@@ -63,6 +59,8 @@ def main() -> None:
     sensor_show_image(sensor)
 
     disp = display_create()
+    disp.wave = sensor.wave
+    oi_show_image(oi, disp)
     ip = ip_compute(sensor, disp)
     ip_plot(ip, kind="image")
 
@@ -76,6 +74,7 @@ def main() -> None:
     bar_oi = oi_compute(bar_scene, optics)
     bar_sensor = build_sensor(512, 512)
     bar_sensor = sensor_compute(bar_sensor, bar_oi)
+    disp.wave = bar_sensor.wave
     bar_ip = ip_compute(bar_sensor, disp)
     freq, mtf = iso12233_sfr(bar_ip.rgb)
     print("ISO12233 SFR frequencies:", freq)
