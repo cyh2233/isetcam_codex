@@ -14,6 +14,11 @@ from .optics_defocused_mtf import optics_defocused_mtf, optics_defocus_core
 from .optics_coc import optics_coc
 from .optics_clear_data import optics_clear_data
 from .optics_dof import optics_dof
+from .optics_airy_psf import optics_airy_psf
+from .optics_barrel_distortion import optics_barrel_distortion
+from .optics_fresnel import optics_fresnel
+from .wvf_mtf import wvf_mtf
+from .wvf_zernike import wvf_zernike
 
 __all__ = [
     "Optics",
@@ -30,4 +35,9 @@ __all__ = [
     "optics_coc",
     "optics_clear_data",
     "optics_dof",
+    "optics_airy_psf",
+    "optics_barrel_distortion",
+    "optics_fresnel",
+    "wvf_mtf",
+    "wvf_zernike",
 ]
