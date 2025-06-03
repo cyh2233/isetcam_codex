@@ -2667,6 +2667,22 @@ iso = iso_speed_saturation(s)
 
 Run `pytest -q` after adding the saturation speed routine.
 
+## iso_acutance
+
+`iso_acutance` integrates an MTF curve using the CPIQ contrast sensitivity
+function to yield an ISO acutance score.
+
+```python
+import numpy as np
+from isetcam.metrics import iso_acutance
+
+freq = np.linspace(0, 50, 5)
+mtf = np.exp(-freq / 25)
+acutance = iso_acutance(freq, mtf)
+```
+
+Run `pytest -q` after implementing the ISO acutance calculation.
+
 ## human_cones, human_cone_mosaic, watson_impulse_response and watson_rgc_spacing
 
 These helpers return cone spectral sensitivities, simulate a simple cone mosaic and model ganglion cell temporal and spatial characteristics.
