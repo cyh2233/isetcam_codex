@@ -19,6 +19,7 @@ class Optics:
     wave: np.ndarray | None = None
     transmittance: np.ndarray | None = None
     name: str | None = None
+    off_axis_method: str | None = None
 
     def __post_init__(self) -> None:
         if self.wave is None:

@@ -17,6 +17,9 @@ def optics_set(optics: Optics, param: str, val: Any) -> None:
     if key in {"fnumber", "f_number"}:
         optics.f_number = float(val)
         return
+    if key in {"offaxismethod", "off_axis_method"}:
+        optics.off_axis_method = None if val is None else str(val)
+        return
     if key in {"flength", "focallength", "f_length"}:
         optics.f_length = float(val)
         return

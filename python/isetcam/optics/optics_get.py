@@ -5,8 +5,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import numpy as np
-
 from .optics_class import Optics
 from ..ie_param_format import ie_param_format
 
@@ -26,4 +24,6 @@ def optics_get(optics: Optics, param: str) -> Any:
         return optics.transmittance
     if key == "name":
         return getattr(optics, "name", None)
+    if key in {"offaxismethod", "off_axis_method"}:
+        return getattr(optics, "off_axis_method", None)
     raise KeyError(f"Unknown optics parameter '{param}'")
