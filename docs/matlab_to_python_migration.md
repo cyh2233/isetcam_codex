@@ -3296,3 +3296,23 @@ animated_gif(frames, "movie.gif", fps=5, loop=1)
 ```
 
 Run `pytest -q` after modifying this animation helper.
+## `t_system_simulate.py`
+
+This tutorial script walks through a minimal camera pipeline implemented in Python. It demonstrates scene creation, optics configuration, sensor simulation, image processing and a slanted-edge SFR metric.
+
+The main steps are:
+
+1. Create a Macbeth D65 scene and adjust its illuminant and luminance.
+2. Build an `Optics` instance with a custom f-number and off-axis method.
+3. Generate a Bayer `Sensor` and compute its voltage image.
+4. Process the sensor data through an `Ip` using a `Display` model.
+5. Create a slanted bar scene and compute the MTF via `iso12233_sfr`.
+
+Run the script from the repository root after installing the package:
+
+```bash
+python python/tutorials/camera/t_system_simulate.py
+```
+
+Run `pytest -q` to execute the accompanying unit test.
+
