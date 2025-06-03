@@ -258,6 +258,9 @@ print(scene_get(sc, 'n wave'))
 scene_set(sc, 'name', 'demo scene')
 ```
 
+Use `scene_get(sc, 'xyz')` to retrieve CIE XYZ values computed from the
+scene photon data.
+
 ## Scene Creation
 
 The helper `scene_create` generates simple scenes by name. Available
@@ -414,6 +417,10 @@ sensor_set(sensor, "name", "demo sensor")
 nwave = sensor_get(sensor, "n wave")
 set_exposure_time(sensor, 0.02)
 ```
+
+Additional utilities provide color correction matrices, noise metrics,
+vignetting adjustments and more through the various `sensor_*`
+functions.
 
 ## Pixel Dataclass
 
@@ -691,7 +698,9 @@ lcd = display_create("lcdExample")
 ## Updated Display Accessors
 
 `display_get` and `display_set` now handle a `gamma` table in addition to
-`spd`, `wave` and `name`.  Set the gamma to `None` to remove it:
+`spd`, `wave` and `name`. Additional parameters include
+`max_luminance`, `white_point`, and the derived values
+`white_xyz` and `primaries_xyz`.  Set the gamma to `None` to remove it:
 
 ```python
 from isetcam.display import display_get, display_set
@@ -3331,4 +3340,63 @@ python python/tutorials/camera/t_system_simulate.py
 ```
 
 Run `pytest -q` to execute the accompanying unit test.
+
+## Color Tutorials
+
+Example scripts under `python/tutorials/color` demonstrate color
+conversions and chromaticity calculations:
+
+* `t_color_energy_quanta.py`
+* `t_color_chromaticity.py`
+* `t_color_spectrum.py`
+* `t_color_matching.py`
+
+Run one using:
+
+```bash
+python python/tutorials/color/t_color_energy_quanta.py
+```
+
+Replace the filename to execute the other examples.  Always run
+`pytest -q` afterwards to check the tutorial tests.
+
+## Scene Tutorial
+
+The script `t_scene_introduction.py` shows basic scene creation and
+adjustment steps:
+
+```bash
+python python/tutorials/scene/t_scene_introduction.py
+```
+
+Run `pytest -q` when modifying the scene tutorial.
+
+## Optical-Image Tutorials
+
+Tutorials in `python/tutorials/oi` illustrate optical image operations:
+
+* `t_oi_introduction.py`
+* `t_oi_principles.py`
+* `t_oi_radiance_to_irradiance.py`
+* `t_oi_rt_compute.py`
+
+Execute one with:
+
+```bash
+python python/tutorials/oi/t_oi_introduction.py
+```
+
+After running any of the OI tutorials execute `pytest -q`.
+
+## Sensor Tutorials
+
+Sensor functionality is covered by the camera tutorials located in
+`python/tutorials/camera`.  Scripts such as `t_camera_compute.py` and
+`t_camera_noise.py` exercise the sensor creation and noise utilities.
+
+```bash
+python python/tutorials/camera/t_camera_compute.py
+```
+
+Remember to run `pytest -q` to execute all tutorial tests.
 
