@@ -9,3 +9,16 @@ def test_data_path_packaged_human_xyz(tmp_path):
     assert path != fallback
     expected_b64 = resources.files('isetcam.data') / 'human' / 'XYZ.mat.b64'
     assert expected_b64.is_file()
+
+
+def test_data_path_packaged_cmatch_camera(tmp_path):
+    path = data_path('sensors/cMatch/camera.mat')
+    assert path.is_file()
+    fallback = (
+        iset_root_path() / 'data' / 'sensors' / 'cMatch' / 'camera.mat'
+    )
+    assert path != fallback
+    expected_b64 = (
+        resources.files('isetcam.data') / 'sensors' / 'cMatch' / 'camera.mat.b64'
+    )
+    assert expected_b64.is_file()

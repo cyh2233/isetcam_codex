@@ -164,7 +164,7 @@ from .hypercube import (
 
 # Expose subpackages that mirror the MATLAB modules. These are currently
 # placeholders for future development.
-from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts, printing  # noqa: E501
+from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts, printing, data  # noqa: E501
 from .opticalimage import oi_to_file, oi_plot
 from .sensor import sensor_to_file, sensor_save_png
 from .display import (
@@ -337,6 +337,7 @@ __all__ = [
     'watson_rgc_spacing',
     'iset_root_path',
     'data_path',
+    'data',
     'ie_init',
     'ie_init_session',
     'camera',
