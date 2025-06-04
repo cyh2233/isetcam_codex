@@ -34,6 +34,7 @@ from .sensor_show_cfa import sensor_show_cfa
 from .sensor_show_cfa_weights import sensor_show_cfa_weights
 from .sensor_stats import sensor_stats
 from .sensor_clear_data import sensor_clear_data
+from .sensor_save_png import sensor_save_png
 from .sensor_iso_speed import sensor_iso_speed
 from .sensor_resample_wave import sensor_resample_wave
 from .sensor_rescale import sensor_rescale
@@ -119,4 +120,5 @@ __all__ = [
     "sensor_vignetting",
     "sensor_pixel_coord",
     "sensor_jiggle",
+    "sensor_save_png",
 ]
