@@ -10,6 +10,7 @@ from .pfm_write import pfm_write
 from .color_filter import ie_read_color_filter, ie_save_color_filter
 from .ie_save_multispectral_image import ie_save_multispectral_image
 from .ie_load_multispectral_image import ie_load_multispectral_image
+from .ie_save_si_data_file import ie_save_si_data_file
 
 __all__ = [
     "openexr_read",
@@ -22,4 +23,5 @@ __all__ = [
     "ie_save_color_filter",
     "ie_save_multispectral_image",
     "ie_load_multispectral_image",
+    "ie_save_si_data_file",
 ]

@@ -58,6 +58,7 @@ from .vc_rect_to_locs import vc_rect_to_locs
 from .vc_locs_to_rect import vc_locs_to_rect
 from .vc_copy_object import vc_copy_object
 from .vc_rename_object import vc_rename_object
+from .vc_import_object import vc_import_object
 from .rgb_to_xw_format import rgb_to_xw_format
 from .xw_to_rgb_format import xw_to_rgb_format
 from .xyz_to_lab import xyz_to_lab
@@ -165,7 +166,7 @@ from .hypercube import (
 # placeholders for future development.
 from . import scene, opticalimage, sensor, pixel, display, illuminant, camera, imgproc, metrics, optics, human, ip, cp, hypercube, fonts, printing  # noqa: E501
 from .opticalimage import oi_to_file, oi_plot
-from .sensor import sensor_to_file
+from .sensor import sensor_to_file, sensor_save_png
 from .display import (
     display_to_file,
     display_list,
@@ -207,6 +208,7 @@ from .io import (
     ie_save_color_filter,
     ie_save_multispectral_image,
     ie_load_multispectral_image,
+    ie_save_si_data_file,
 )
 from .animated_gif import animated_gif
 from .ie_scp import ie_scp
@@ -355,6 +357,7 @@ __all__ = [
     'hypercube',
     'oi_to_file',
     'sensor_to_file',
+    'sensor_save_png',
     'display_to_file',
     'display_list',
     'display_max_contrast',
@@ -391,6 +394,7 @@ __all__ = [
     'ie_save_color_filter',
     'ie_save_multispectral_image',
     'ie_load_multispectral_image',
+    'ie_save_si_data_file',
     'animated_gif',
     'ie_scp',
     'web_flickr',
@@ -414,6 +418,7 @@ __all__ = [
     'vc_locs_to_rect',
     'vc_copy_object',
     'vc_rename_object',
+    'vc_import_object',
     'font_create',
     'font_get',
     'font_set',
