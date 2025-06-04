@@ -184,6 +184,18 @@ xyz_mat = data_path("human/XYZ.mat")
 
 Run `pytest -q` when modifying the packaged data.
 
+## cMatch/camera.mat Sample Data
+
+Sensor estimation examples use a sample camera response file stored in
+`sensors/cMatch`. Access it with `data_path`:
+
+```python
+from isetcam import data_path
+
+cam_mat = data_path('sensors/cMatch/camera.mat')
+```
+
+Always run `pytest -q` after editing code that relies on this file.
 
 ## Conversion Functions
 
@@ -3400,6 +3412,16 @@ python python/tutorials/camera/t_camera_compute.py
 
 Remember to run `pytest -q` to execute all tutorial tests.
 
+## t_sensor_estimation.py
+
+Estimate sensor quantum efficiency using a Macbeth chart.
+
+```bash
+python python/tutorials/sensor/t_sensor_estimation.py
+```
+
+Run `pytest -q` after adding or modifying this tutorial.
+
 ## optics_airy_psf
 Generate an Airy disk PSF.
 ```python
@@ -3440,6 +3462,16 @@ wvf = wvf_zernike(np.array([1e-6]), R, T)
 mtf = wvf_mtf(np.abs(wvf))
 ```
 Run `pytest -q` after working on the wavefront functions.
+
+## t_wvf_overview.py
+
+Overview of wavefront modeling and PSF computation.
+
+```bash
+python python/tutorials/optics/t_wvf_overview.py
+```
+
+Run `pytest -q` when adding or modifying this tutorial.
 
 ## halftone_dither and halftone_error_diffusion
 Threshold and error diffusion halftoning utilities.
@@ -3496,6 +3528,7 @@ Scripts in `python/tutorials/optics` demonstrate PSFs and distortion:
 * `t_optics_fresnel.py`
 * `t_wvf_mtf.py`
 * `t_wvf_zernike.py`
+* `t_wvf_overview.py`
 ```bash
 python python/tutorials/optics/t_optics_airy_disk.py
 ```
