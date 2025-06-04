@@ -3009,6 +3009,21 @@ print(sc.photons.shape)
 
 Run `pytest -q` after modifying the DDF reader.
 
+## scene_from_pbrt
+
+Render a PBRT file (or recipe) using the optional ISET3D toolbox or a
+local ``pbrt`` executable.
+
+```python
+from isetcam.scene import scene_from_pbrt
+
+sc, oi, extras = scene_from_pbrt('example.pbrt')
+print(extras.get('depth'))
+```
+
+This helper requires additional software and the tests are skipped when
+the backend is not available.
+
 ## scene_make_video
 
 Encode a list of scenes into a movie using ``ffmpeg``.
