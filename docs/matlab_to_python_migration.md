@@ -3400,3 +3400,131 @@ python python/tutorials/camera/t_camera_compute.py
 
 Remember to run `pytest -q` to execute all tutorial tests.
 
+## optics_airy_psf
+Generate an Airy disk PSF.
+```python
+from isetcam.optics import optics_airy_psf
+psf = optics_airy_psf(33, 8.0)
+```
+Run `pytest -q` after editing the Airy PSF helper.
+
+## optics_barrel_distortion
+Apply radial barrel distortion.
+```python
+import numpy as np
+from isetcam.optics import optics_barrel_distortion
+x, y = np.meshgrid(np.linspace(-1, 1, 5), np.linspace(-1, 1, 5))
+xd, yd = optics_barrel_distortion(x, y, -0.2)
+```
+Run `pytest -q` after modifying the distortion routine.
+
+## optics_fresnel
+Propagate a complex field using the Fresnel approximation.
+```python
+import numpy as np
+from isetcam.optics import optics_fresnel
+field = np.ones((64, 64), dtype=complex)
+prop = optics_fresnel(field, 1e-6, 550e-9, 0.1)
+```
+Run `pytest -q` after updating the Fresnel helper.
+
+## wvf_mtf and wvf_zernike
+Compute a wavefront from Zernike coefficients and its MTF.
+```python
+import numpy as np
+from isetcam.optics import wvf_zernike, wvf_mtf
+rho = np.linspace(0, 1, 32)
+theta = np.linspace(0, 2*np.pi, 32)
+R, T = np.meshgrid(rho, theta)
+wvf = wvf_zernike(np.array([1e-6]), R, T)
+mtf = wvf_mtf(np.abs(wvf))
+```
+Run `pytest -q` after working on the wavefront functions.
+
+## halftone_dither and halftone_error_diffusion
+Threshold and error diffusion halftoning utilities.
+```python
+import numpy as np
+from isetcam.printing import halftone_dither, halftone_error_diffusion
+img = np.random.rand(16, 16)
+dithered = halftone_dither([[0, 0.5],[0.75,1]], img)
+ediff = halftone_error_diffusion([[0,0,7],[3,5,1]], img)
+```
+Run `pytest -q` after editing the halftone helpers.
+
+## ip_jpeg_compress and ip_jpeg_decompress
+JPEG coefficient encoding and decoding helpers.
+```python
+import numpy as np
+from isetcam.ip import ip_jpeg_compress, ip_jpeg_decompress
+coef = ip_jpeg_compress(np.random.rand(16,16)*255, 75)
+img = ip_jpeg_decompress(coef)
+```
+Run `pytest -q` after modifying the JPEG routines.
+
+## sensor_sqr_i
+Barten's SQRI perceptual quality metric.
+```python
+import numpy as np
+from isetcam.metrics import sensor_sqr_i
+sf = np.logspace(-1, 1, 50)
+d_mtf = np.ones_like(sf)
+sqri, csf = sensor_sqr_i(sf, d_mtf, luminance=100)
+```
+Run `pytest -q` once the SQRI implementation is complete.
+
+## Introduction Tutorial
+Run the introductory pipeline script:
+```bash
+python python/tutorials/introduction/t_introduction_to_iset.py
+```
+Execute `pytest -q` after changing the introduction tutorial.
+
+## Display Tutorials
+Tutorials under `python/tutorials/display` explore display models:
+* `t_display_introduction.py`
+* `t_display_rendering.py`
+```bash
+python python/tutorials/display/t_display_introduction.py
+```
+Run `pytest -q` after these display examples.
+
+## Optics Tutorials
+Scripts in `python/tutorials/optics` demonstrate PSFs and distortion:
+* `t_optics_airy_disk.py`
+* `t_optics_barrel_distortion.py`
+* `t_optics_fresnel.py`
+* `t_wvf_mtf.py`
+* `t_wvf_zernike.py`
+```bash
+python python/tutorials/optics/t_optics_airy_disk.py
+```
+Remember to execute `pytest -q` when experimenting with the optics tutorials.
+
+## Image-Processing Tutorials
+Examples under `python/tutorials/image` cover demosaicing and JPEG coding:
+* `t_ip.py`
+* `t_ip_demosaic.py`
+* `t_ip_jpeg_color.py`
+* `t_ip_jpeg_monochrome.py`
+```bash
+python python/tutorials/image/t_ip.py
+```
+Run `pytest -q` after updating the IP tutorials.
+
+## Metrics Tutorials
+Metrics scripts demonstrate color and SQRI calculations:
+* `t_metrics_cielab.py`
+* `t_metrics_color.py`
+* `t_metrics_sqri.py`
+```bash
+python python/tutorials/metrics/t_metrics_sqri.py
+```
+Always run `pytest -q` once you modify these examples.
+
+## Printing Tutorial
+Halftone rendering is covered by `t_printing_halftone.py`:
+```bash
+python python/tutorials/printing/t_printing_halftone.py
+```
+Run `pytest -q` after working through the printing tutorial.
