@@ -131,6 +131,23 @@ stores the resulting camera structure in a MAT-file:
 isetcam pipeline --scene "grid lines" --output cam.mat
 ```
 
+## Running Tutorials
+
+Tutorial scripts live under ``python/tutorials``.  Each one can be
+executed using the command line interface:
+
+```bash
+isetcam tutorial introduction/t_introduction_to_iset
+```
+
+Automated tests in ``python/tests`` import and run every tutorial
+script.  After editing a tutorial, run the full test suite to confirm it
+still executes correctly:
+
+```bash
+pytest -q
+```
+
 ## Building the Documentation
 
 HTML documentation is generated with Sphinx. After installing the
