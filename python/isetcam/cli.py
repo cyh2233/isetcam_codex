@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+from pathlib import Path
+import runpy
 
 import isetcam
 
@@ -54,6 +56,29 @@ def _cmd_pipeline(args: argparse.Namespace) -> int:
     return 0
 
 
+def _available_tutorials() -> list[str]:
+    """Return a sorted list of available tutorial script names."""
+    base = Path(__file__).resolve().parents[1] / "tutorials"
+    names: list[str] = []
+    for path in base.rglob("*.py"):
+        if path.name.startswith("t_"):
+            rel = path.relative_to(base).with_suffix("")
+            names.append(str(rel))
+    names.sort()
+    return names
+
+
+def _cmd_tutorial(args: argparse.Namespace) -> int:
+    """Run a tutorial script under ``python/tutorials``."""
+    base = Path(__file__).resolve().parents[1] / "tutorials"
+    script = base / f"{args.name}.py"
+    if not script.is_file():
+        print(f"Tutorial not found: {args.name}", file=sys.stderr)
+        return 1
+    runpy.run_path(script, run_name="__main__")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     """Entry point for the ``isetcam`` command."""
     parser = argparse.ArgumentParser(prog="isetcam")
@@ -72,6 +97,15 @@ def main(argv: list[str] | None = None) -> int:
     p_pipe.add_argument("--scene", required=True, help="Scene name")
     p_pipe.add_argument("--output", required=True, help="Output MAT-file path")
     p_pipe.set_defaults(func=_cmd_pipeline)
+
+    tut_list = ', '.join(_available_tutorials())
+    p_tut = subparsers.add_parser(
+        "tutorial",
+        help="Run a tutorial script",
+        description="Run a tutorial script. Available: " + tut_list,
+    )
+    p_tut.add_argument("name", help="Tutorial script name")
+    p_tut.set_defaults(func=_cmd_tutorial)
 
     args = parser.parse_args(argv)
     if not hasattr(args, "func"):
