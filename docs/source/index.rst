@@ -7,3 +7,11 @@ Welcome to the experimental Python documentation.
    :maxdepth: 2
 
    api/modules
+
+Tutorials
+---------
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorials/index

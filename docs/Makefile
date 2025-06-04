@@ -5,7 +5,7 @@ BUILDDIR      = build
 .PHONY: html clean
 
 html:
-$(SPHINXBUILD) -b html $(SOURCEDIR) $(BUILDDIR)
+	$(SPHINXBUILD) -b html $(SOURCEDIR) $(BUILDDIR)
 
 clean:
-rm -rf $(BUILDDIR) $(SOURCEDIR)/api
+	rm -rf $(BUILDDIR) $(SOURCEDIR)/api
