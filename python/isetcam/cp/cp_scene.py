@@ -38,7 +38,13 @@ class CPScene:
         """Return the first scene in the sequence."""
         return self.scenes[0]
 
-    def render(self, exp_times: Sequence[float]) -> List[Scene | object]:
+    def render(
+        self,
+        exp_times: Sequence[float],
+        *,
+        focus_dists: Sequence[float] | None = None,
+        render_flags: Sequence[bool] | None = None,
+    ) -> List[Scene | object]:
         """Return scenes or optical images for ``exp_times``."""
 
         exp_list = list(exp_times)
