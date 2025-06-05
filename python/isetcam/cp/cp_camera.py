@@ -22,7 +22,13 @@ class CPCamera:
         focus_dists: Sequence[float] | float | None = None,
         render_flags: Sequence[bool] | bool | None = None,
     ) -> List:
-        """Capture ``scene`` using ``exposure_times`` for each frame."""
+        """Capture ``scene`` using ``exposure_times`` for each frame.
+
+        The method accepts PBRT-based :class:`CPScene` instances and forwards
+        the optional ``focus_dists`` and ``render_flags`` arguments to
+        :meth:`CPScene.render` so that PBRT scenes can be rendered with
+        varying focus settings and rendering flags.
+        """
         if isinstance(exposure_times, Sequence) and not isinstance(exposure_times, (str, bytes)):
             exp_list = list(exposure_times)
         else:
