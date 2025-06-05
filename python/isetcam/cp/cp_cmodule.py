@@ -22,7 +22,13 @@ class CPCModule:
     def compute(
         self, scenes: List[Scene | OpticalImage], exp_times: Sequence[float]
     ) -> List[Sensor]:
-        """Return sensor captures for each scene or optical image."""
+        """Return sensor captures for each scene or optical image.
+
+        When rendering PBRT scenes, ``CPScene.render`` may return an
+        :class:`~isetcam.opticalimage.OpticalImage` instead of a
+        :class:`~isetcam.scene.Scene`.  In that case the optical image is used
+        directly without calling :func:`oi_compute`.
+        """
 
         outputs: List[Sensor] = []
         for sc, t in zip(scenes, exp_times):
