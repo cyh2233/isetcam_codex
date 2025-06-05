@@ -3037,6 +3037,32 @@ print(len(names))
 
 Run `pytest -q` after adding or modifying the listing helper.
 
+## Using PBRT Scenes
+
+PBRT files can be rendered with the optional
+`scene_from_pbrt` helper.  It relies on the `iset3d` package or a local
+`pbrt` executable.  Complex scenes can be wrapped in a `CPScene` instance
+and captured with `CPCamera` to simulate burst sequences or varying
+exposures.
+
+```python
+from isetcam.scene import scene_from_pbrt
+from isetcam.cp import CPScene, CPCModule, CPCamera
+from isetcam.sensor import sensor_create
+from isetcam.optics import optics_create
+
+# Render a single frame using ISET3D or PBRT
+scene, oi, extras = scene_from_pbrt("example.pbrt")
+
+# Create a camera and capture a short sequence
+pbrt_seq = CPScene(scene_type="pbrt", scene_path="example.pbrt")
+module = CPCModule(sensor_create(), optics_create())
+camera = CPCamera([module])
+captures = camera.take_picture(pbrt_seq, exposure_times=[0.01, 0.02])
+```
+
+These routines require ISET3D or the ``pbrt`` binary to be installed.
+
 ## scene_make_video
 
 Encode a list of scenes into a movie using ``ffmpeg``.
