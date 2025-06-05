@@ -8,6 +8,7 @@ from .scene_from_file import scene_from_file
 from .scene_from_ddf_file import scene_from_ddf_file
 from .scene_from_font import scene_from_font
 from .scene_from_pbrt import scene_from_pbrt
+from .pbrt_scene_list import pbrt_scene_list
 from .scene_get import scene_get
 from .scene_set import scene_set
 from .scene_adjust_luminance import scene_adjust_luminance
@@ -120,6 +121,7 @@ __all__ = [
     "scene_hdr_lights",
     "scene_create_hdr",
     "scene_make_video",
+    "pbrt_scene_list",
     "scene_init_geometry",
     "scene_init_spatial",
     "scene_photons_from_vector",

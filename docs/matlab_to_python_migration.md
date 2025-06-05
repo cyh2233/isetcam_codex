@@ -3024,6 +3024,19 @@ print(extras.get('depth'))
 This helper requires additional software and the tests are skipped when
 the backend is not available.
 
+## pbrt_scene_list
+
+Retrieve the PBRT scene names from the optional ISET3D resources.
+
+```python
+from isetcam.scene import pbrt_scene_list
+
+names = pbrt_scene_list()
+print(len(names))
+```
+
+Run `pytest -q` after adding or modifying the listing helper.
+
 ## scene_make_video
 
 Encode a list of scenes into a movie using ``ffmpeg``.
