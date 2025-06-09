@@ -21,8 +21,7 @@ def main() -> None:
     camera_compute(cam, scene)
 
     # Render an sRGB image for display
-    disp = display_create()
-    disp.wave = cam.sensor.wave
+    disp = display_create(wave=cam.sensor.wave)
     ip = ip_compute(cam.sensor, disp)
     cam.ip = ip
 

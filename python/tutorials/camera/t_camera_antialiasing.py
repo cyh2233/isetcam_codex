@@ -32,8 +32,7 @@ def main() -> None:
     sensor.pixel_size = 1.5e-6
     sensor = sensor_set_size_to_fov(sensor, 5, oi)
     sensor = sensor_compute(sensor, oi)
-    disp = display_create()
-    disp.wave = sensor.wave
+    disp = display_create(wave=sensor.wave)
     sensor_show_image(sensor, disp)
 
     ip = ip_compute(sensor, disp)

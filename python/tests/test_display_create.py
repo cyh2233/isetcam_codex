@@ -16,3 +16,10 @@ def test_display_create_specific():
     assert disp.name == "lcdExample"
     assert disp.spd.shape[0] == disp.wave.shape[0]
     assert disp.gamma is not None
+
+
+def test_display_create_custom_wave():
+    new_wave = np.arange(400, 701, 10)
+    disp = display_create(wave=new_wave)
+    assert np.array_equal(disp.wave, new_wave)
+    assert disp.spd.shape[0] == len(new_wave)

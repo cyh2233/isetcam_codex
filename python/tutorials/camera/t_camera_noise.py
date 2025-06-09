@@ -33,8 +33,7 @@ def main() -> None:
     cam.sensor.exposure_time = 0.01
     camera_compute(cam, scene)
 
-    disp = display_create()
-    disp.wave = cam.sensor.wave
+    disp = display_create(wave=cam.sensor.wave)
     ip_no = ip_compute(cam.sensor, disp)
     ip_no.name = "No noise"
 
