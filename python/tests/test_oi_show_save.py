@@ -27,6 +27,16 @@ def test_oi_show_image_runs():
 
 
 @pytest.mark.skipif(not _matplotlib_available(), reason="matplotlib not installed")
+def test_oi_show_image_wave_mismatch():
+    wave = np.array([500, 600, 700])
+    photons = np.ones((1, 1, 3))
+    oi = OpticalImage(photons=photons, wave=wave)
+    disp = Display(spd=np.eye(3), wave=np.array([400, 500, 600, 700]), gamma=None)
+    with pytest.raises(ValueError, match="display.spd must be resampled"):
+        oi_show_image(oi, disp)
+
+
+@pytest.mark.skipif(not _matplotlib_available(), reason="matplotlib not installed")
 def test_oi_save_image(tmp_path):
     wave = np.array([500, 600, 700])
     photons = np.ones((1, 1, 3))

@@ -48,6 +48,11 @@ def oi_show_image(oi: OpticalImage, display: Display | None = None):
     rgb = _photons_to_rgb(oi, display)
     # Render through the display model
     spectral = display_render(rgb, display, apply_gamma=True)
+    if spectral.shape[-1] != len(display.wave):
+        raise ValueError(
+            "display.spd must be resampled to display.wave; expected"
+            f" {len(display.wave)}, got {spectral.shape[-1]}"
+        )
     xyz = ie_xyz_from_photons(spectral, display.wave)
     srgb, _, _ = xyz_to_srgb(xyz)
 
