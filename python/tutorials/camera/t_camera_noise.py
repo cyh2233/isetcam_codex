@@ -41,7 +41,7 @@ def main() -> None:
     # ----- Photon noise only -----
     sensor_set(cam.sensor, "gain_sd", 0)
     sensor_set(cam.sensor, "offset_sd", 0)
-    scene_low = scene_adjust_luminance(scene, 5)
+    scene_low = scene_adjust_luminance(scene, "mean", 5)
     camera_compute(cam, scene_low)
     sensor_photon_noise(cam.sensor)
     ip_photon = ip_compute(cam.sensor, disp)
@@ -50,7 +50,7 @@ def main() -> None:
     # ----- All noise -----
     sensor_set(cam.sensor, "gain_sd", 5)
     sensor_set(cam.sensor, "offset_sd", 0.01)
-    scene_high = scene_adjust_luminance(scene, 100)
+    scene_high = scene_adjust_luminance(scene, "mean", 100)
     camera_compute(cam, scene_high)
     sensor_photon_noise(cam.sensor)
     ip_all = ip_compute(cam.sensor, disp)

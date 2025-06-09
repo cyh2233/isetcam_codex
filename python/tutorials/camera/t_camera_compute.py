@@ -2,6 +2,7 @@ import numpy as np
 from isetcam import ie_init
 from isetcam.scene import scene_create, scene_show_image
 from isetcam.camera import camera_create, camera_compute, camera_show
+from isetcam.sensor import sensor_show_image
 from isetcam.display import display_create
 from isetcam.ip import ip_compute
 
@@ -27,7 +28,7 @@ def main() -> None:
 
     # Visualize results
     camera_show(cam, "ip")
-    camera_show(cam, "sensor")
+    sensor_show_image(cam.sensor, disp)
 
 
 if __name__ == "__main__":

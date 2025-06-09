@@ -24,12 +24,12 @@ def main() -> None:
     camera_compute(cam, scene)
 
     # Visualize the intermediate objects
-    oi_show_image(camera_get(cam, "oi"))
-    sensor_show_image(camera_get(cam, "sensor"))
-
-    # Render to an sRGB image using a default display model
     disp = display_create()
     disp.wave = cam.sensor.wave
+    oi_show_image(camera_get(cam, "oi"), disp)
+    sensor_show_image(camera_get(cam, "sensor"), disp)
+
+    # Render to an sRGB image using the same display model
     ip = ip_compute(cam.sensor, disp)
     ip_plot(ip, kind="image")
 
