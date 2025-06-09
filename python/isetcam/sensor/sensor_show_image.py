@@ -65,6 +65,11 @@ def sensor_show_image(sensor: Sensor, display: Display | None = None):
 
     lrgb = srgb_to_lrgb(volts)
     spectral = display_render(lrgb, display, apply_gamma=False)
+    if spectral.shape[-1] != len(display.wave):
+        raise ValueError(
+            "display.spd must be resampled to display.wave; expected"
+            f" {len(display.wave)}, got {spectral.shape[-1]}"
+        )
     xyz = ie_xyz_from_photons(spectral, display.wave)
     srgb, _, _ = xyz_to_srgb(xyz)
 
