@@ -11,7 +11,13 @@ except Exception:  # pragma: no cover - matplotlib might not be installed
     plt = None  # type: ignore
 
 from .sensor_class import Sensor
-from ..display import Display, display_create, display_render
+from ..display import (
+    Display,
+    display_create,
+    display_render,
+    display_apply_gamma,
+)
+from ..ip import ip_demosaic
 from ..srgb_to_lrgb import srgb_to_lrgb
 from ..ie_xyz_from_photons import ie_xyz_from_photons
 from ..srgb_xyz import xyz_to_srgb
@@ -40,8 +46,22 @@ def sensor_show_image(sensor: Sensor, display: Display | None = None):
         display = display_create()
 
     volts = np.asarray(sensor.volts, dtype=float)
-    if volts.ndim != 3 or volts.shape[2] != 3:
-        raise ValueError("sensor.volts must be (rows, cols, 3)")
+
+    if volts.ndim == 2:
+        pattern = getattr(sensor, "filter_color_letters", None)
+        if pattern is not None:
+            pattern_str = "".join(np.ravel(pattern).tolist()) if not isinstance(pattern, str) else str(pattern)
+            vols_rgb = ip_demosaic(volts, pattern_str, method="bilinear")
+        else:
+            vols_rgb = np.repeat(volts[:, :, None], 3, axis=2)
+        if display.gamma is not None:
+            volts = display_apply_gamma(vols_rgb, display, inverse=True)
+        else:
+            volts = vols_rgb
+    elif volts.ndim == 3 and volts.shape[2] == 3:
+        pass
+    else:
+        raise ValueError("sensor.volts must be (rows, cols) or (rows, cols, 3)")
 
     lrgb = srgb_to_lrgb(volts)
     spectral = display_render(lrgb, display, apply_gamma=False)
