@@ -14,8 +14,7 @@ def main():
     cam.sensor.volts = np.zeros((340, 420), dtype=float)
     camera_compute(cam, scene)
 
-    disp = display_create()
-    disp.wave = cam.sensor.wave
+    disp = display_create(wave=cam.sensor.wave)
     ip = ip_compute(cam.sensor, disp)
     return ip.rgb.shape
 

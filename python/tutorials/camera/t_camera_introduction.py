@@ -24,8 +24,7 @@ def main() -> None:
     camera_compute(cam, scene)
 
     # Visualize the intermediate objects
-    disp = display_create()
-    disp.wave = cam.sensor.wave
+    disp = display_create(wave=cam.sensor.wave)
     oi_show_image(camera_get(cam, "oi"), disp)
     sensor_show_image(camera_get(cam, "sensor"), disp)
 

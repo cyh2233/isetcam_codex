@@ -23,8 +23,7 @@ def main():
     sensor = sensor_compute(sensor, oi)
 
     # Render to an sRGB image using a default display
-    disp = display_create()
-    disp.wave = sensor.wave
+    disp = display_create(wave=sensor.wave)
     ip = ip_compute(sensor, disp)
 
     return scene.photons.shape, oi.photons.shape, sensor.volts.shape, ip.rgb.shape

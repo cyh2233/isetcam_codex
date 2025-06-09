@@ -3,7 +3,8 @@
 
 Use :func:`display_create` to load one of the calibration files that ship
 with ISETCam, or :func:`display_from_file` to load a display definition from a
-MAT-file. :func:`display_get` can be used to query various parameters
+MAT-file. Both functions accept an optional ``wave`` argument to resample the
+spectral data. :func:`display_get` can be used to query various parameters
 including the display white point (``"white xyz"``) and the XYZ values of
 each primary (``"primaries xyz"``).
 """

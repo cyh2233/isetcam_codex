@@ -28,7 +28,7 @@ def _load_display(path: Path) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     return wave, spd, gamma
 
 
-def display_create(name: str | None = None) -> Display:
+def display_create(name: str | None = None, wave: np.ndarray | None = None) -> Display:
     """Create a :class:`Display` by name.
 
     Parameters
@@ -42,5 +42,16 @@ def display_create(name: str | None = None) -> Display:
     path = data_path(f"displays/{name}.mat")
     if not path.exists():
         raise FileNotFoundError(f"Unknown display '{name}'")
-    wave, spd, gamma = _load_display(path)
-    return Display(spd=spd, wave=wave, gamma=gamma, name=name)
+    file_wave, spd, gamma = _load_display(path)
+    if wave is not None:
+        new_wave = np.asarray(wave, dtype=float).ravel()
+        if len(new_wave) != len(file_wave):
+            spd = np.column_stack(
+                [np.interp(new_wave, file_wave, spd[:, i]) for i in range(spd.shape[1])]
+            )
+            if gamma is not None and gamma.shape[0] == len(file_wave):
+                gamma = np.column_stack(
+                    [np.interp(new_wave, file_wave, gamma[:, i]) for i in range(gamma.shape[1])]
+                )
+            file_wave = new_wave
+    return Display(spd=spd, wave=file_wave, gamma=gamma, name=name)

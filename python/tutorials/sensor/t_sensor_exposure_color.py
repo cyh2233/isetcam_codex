@@ -35,8 +35,7 @@ def main():
     sensor = sensor_compute(sensor, oi)
     exp_time = sensor.exposure_time
 
-    disp = display_create()
-    disp.wave = sensor.wave
+    disp = display_create(wave=sensor.wave)
     ip = ip_compute(sensor, disp)
     ip_set(ip, "illuminant correction method", "gray world")
     rgb1 = ip.rgb.mean(axis=(0, 1))

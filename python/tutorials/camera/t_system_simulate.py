@@ -56,8 +56,7 @@ def main() -> None:
     sensor = sensor_compute(sensor, oi)
     sensor_add_noise(sensor)
     sensor_gain_offset(sensor, gain=1.0, offset=0.0)
-    disp = display_create()
-    disp.wave = sensor.wave
+    disp = display_create(wave=sensor.wave)
     sensor_show_image(sensor, disp)
     oi_show_image(oi, disp)
     ip = ip_compute(sensor, disp)

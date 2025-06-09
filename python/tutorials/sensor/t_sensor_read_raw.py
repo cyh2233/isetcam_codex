@@ -10,8 +10,7 @@ def main():
     sensor = sensor_dng_read(path)
     cropped = sensor_crop(sensor, (500, 1000, 2500, 2500))
 
-    disp = display_create()
-    disp.wave = cropped.wave
+    disp = display_create(wave=cropped.wave)
     ip = ip_compute(cropped, disp)
     return cropped.volts.shape, ip.rgb.shape
 
