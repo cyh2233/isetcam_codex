@@ -64,7 +64,10 @@ def srgb_to_cct(rgb: np.ndarray, *, table: np.ndarray | None = None) -> tuple[fl
 
     Y = xw[:, 1]
     topY = np.percentile(Y, 98)
-    topXYZ = xw[Y > topY]
+    # Use >= to avoid an empty selection when all Y values are equal.
+    topXYZ = xw[Y >= topY]
+    if topXYZ.size == 0:
+        topXYZ = xw
     topxy = chromaticity(topXYZ).mean(axis=0)
 
     diffs = np.linalg.norm(xy_table - topxy, axis=1)

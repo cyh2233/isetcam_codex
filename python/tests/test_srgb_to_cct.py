@@ -36,3 +36,9 @@ def test_srgb_to_cct_reuse_table():
     est2, table2 = srgb_to_cct(srgb2, table=table)
     assert table2 is table
     assert np.isclose(est2, 5000, atol=500)
+
+
+def test_srgb_to_cct_constant_image():
+    srgb = np.full((5, 5, 3), 0.5)
+    est, _ = srgb_to_cct(srgb)
+    assert isinstance(est, float)
