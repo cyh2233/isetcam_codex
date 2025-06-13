@@ -126,6 +126,13 @@ from .imgproc import (
     faulty_insert,
     faulty_list,
     faulty_pixel_correction,
+    image_rotate,
+    image_translate,
+    image_flip,
+    image_crop_border,
+    ie_lut_digital,
+    ie_lut_linear,
+    ie_lut_invert,
 )
 from .ie_spectra_sphere import ie_spectra_sphere
 from .metrics.ie_psnr import ie_psnr
@@ -308,6 +315,13 @@ __all__ = [
     'faulty_insert',
     'faulty_list',
     'faulty_pixel_correction',
+    'image_rotate',
+    'image_translate',
+    'image_flip',
+    'image_crop_border',
+    'ie_lut_digital',
+    'ie_lut_linear',
+    'ie_lut_invert',
     'halftone_dither',
     'halftone_error_diffusion',
     'ie_psnr',
